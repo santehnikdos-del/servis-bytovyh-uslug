@@ -1,5 +1,10 @@
 import Header from "../Header";
 import Footer from "../Footer";
+export const metadata = {
+  title: "Электрик Алматы – вызов электрика на дом | Сервис бытовых услуг",
+  description:
+    "Услуги электрика в Алматы. Установка и замена розеток, выключателей, светильников, ремонт электрики и срочный выезд мастера на дом.",
+};
 export default function ElektrikPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
