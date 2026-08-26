@@ -13,7 +13,10 @@ export default function AkkumulyatoryPage() {
     <main className="min-h-screen bg-white text-slate-950">
 
       <div className="[&>div]:!static [&>header]:!static">
-  <Header />
+  <Header
+    phone="77082000513"
+    displayPhone="+7 708 200 05 13"
+  />
 </div>
 
       {/* ================= МОБИЛЬНЫЙ ПЕРВЫЙ ЭКРАН ================= */}
@@ -102,14 +105,14 @@ export default function AkkumulyatoryPage() {
             <div className="mt-8 flex flex-wrap gap-4">
 
               <a
-                href="tel:+77771696969"
+              href="tel:+77082000513"
                 className="rounded-full bg-yellow-400 px-8 py-4 text-lg font-black text-slate-950 shadow-xl transition hover:-translate-y-1 hover:bg-yellow-300"
               >
                 📞 Позвонить
               </a>
 
               <a
-                href="https://wa.me/77771696969"
+                href="https://wa.me/77082000513"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full bg-green-500 px-8 py-4 text-lg font-black text-white shadow-xl transition hover:-translate-y-1 hover:bg-green-600"
@@ -494,14 +497,14 @@ export default function AkkumulyatoryPage() {
 
         <div className="flex flex-wrap gap-4">
           <a
-            href="tel:+77771696969"
+            href="tel:+77082000513"
             className="rounded-2xl bg-yellow-400 px-8 py-4 text-lg font-black text-slate-950 transition hover:bg-yellow-300"
           >
             📞 Позвонить
           </a>
 
           <a
-            href="https://wa.me/77771696969"
+            href="https://wa.me/77082000513"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-2xl bg-green-500 px-8 py-4 text-lg font-black text-white transition hover:bg-green-600"
