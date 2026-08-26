@@ -12,6 +12,10 @@ export default function FloatingContacts() {
   if (pathname.startsWith("/elektrik")) {
     phone = "77073232632";
   }
+  // Аккумуляторы с доставкой
+if (pathname.startsWith("/akkumulyatory-s-dostavkoy")) {
+  phone = "77082000513";
+}
 
   return (
     <>
