@@ -3,8 +3,13 @@ import Footer from "../Footer";
 
 export const metadata = {
   title: "Установка раковины в Алматы | Сервис бытовых услуг",
+
   description:
     "Установка и замена раковины в Алматы. Монтаж умывальника, мойки, сифона и смесителя. Аккуратно, быстро и с гарантией.",
+
+  alternates: {
+    canonical: "https://home-services.kz/ustanovka-rakoviny",
+  },
 };
 
 const services = [

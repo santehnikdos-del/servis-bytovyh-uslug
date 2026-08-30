@@ -2,8 +2,13 @@
       import Footer from "../Footer";
 export const metadata = {
   title: "Сантехник Алматы — вызов сантехника на дом | Сервис бытовых услуг",
+
   description:
     "Профессиональный сантехник в Алматы с выездом на дом. Ремонт сантехники, устранение протечек, установка унитазов, смесителей и другой сантехники.",
+
+  alternates: {
+    canonical: "https://home-services.kz/santehnik",
+  },
 };
 
 export default function SantehnikPage() {

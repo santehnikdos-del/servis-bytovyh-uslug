@@ -1,9 +1,29 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+
+type Review = {
+  rating?: number;
+  approved?: boolean;
+};
+
+function getReviewWord(count: number) {
+  const lastTwo = count % 100;
+  const last = count % 10;
+
+  if (lastTwo >= 11 && lastTwo <= 14) return "отзывов";
+  if (last === 1) return "отзыв";
+  if (last >= 2 && last <= 4) return "отзыва";
+
+  return "отзывов";
+}
 
 export default function FloatingContacts() {
   const pathname = usePathname();
+
+  const [reviewCount, setReviewCount] = useState(0);
+  const [averageRating, setAverageRating] = useState(0);
 
   // Номер по умолчанию: Главная + Сантехник
   let phone = "77771696969";
@@ -12,13 +32,78 @@ export default function FloatingContacts() {
   if (pathname.startsWith("/elektrik")) {
     phone = "77073232632";
   }
+
   // Аккумуляторы с доставкой
-if (pathname.startsWith("/akkumulyatory-s-dostavkoy")) {
-  phone = "77082000513";
-}
+  if (pathname.startsWith("/akkumulyatory-s-dostavkoy")) {
+    phone = "77082000513";
+  }
+
+  useEffect(() => {
+    async function loadReviews() {
+      try {
+        const response = await fetch("/api/reviews");
+
+        if (!response.ok) return;
+
+        const data = await response.json();
+
+        const reviews: Review[] = Array.isArray(data)
+          ? data
+          : data.reviews || [];
+
+        const approvedReviews = reviews.filter(
+          (review) => review.approved !== false
+        );
+
+        if (approvedReviews.length === 0) return;
+
+        const total = approvedReviews.reduce(
+          (sum, review) => sum + Number(review.rating || 5),
+          0
+        );
+
+        setReviewCount(approvedReviews.length);
+        setAverageRating(total / approvedReviews.length);
+      } catch (error) {
+        console.error("Ошибка загрузки рейтинга:", error);
+      }
+    }
+
+    loadReviews();
+  }, []);
 
   return (
     <>
+      {/* ЛИПКАЯ ПЛАШКА РЕЙТИНГА */}
+      {reviewCount > 0 && (
+        <a
+          href="/otzyvy"
+          aria-label="Отзывы клиентов"
+          className="
+            fixed bottom-[72px] left-3 z-[9999]
+            flex items-center gap-1
+            rounded-lg bg-slate-900/95
+            px-2.5 py-1.5
+text-[11px] font-bold text-white
+            shadow-2xl
+            transition hover:scale-105
+            md:bottom-5 md:left-5
+          "
+        >
+          <span className="text-sm font-black">
+            {averageRating.toFixed(1)}
+          </span>
+
+          <span className="text-yellow-400">
+            ★★★★★
+          </span>
+
+          <span className="ml-1 text-slate-300">
+            ({reviewCount} {getReviewWord(reviewCount)})
+          </span>
+        </a>
+      )}
+
       {/* МОБИЛЬНЫЙ — ПОЗВОНИТЬ */}
       <div className="fixed bottom-0 left-0 z-[9998] w-full md:hidden">
         <a

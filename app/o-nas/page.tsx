@@ -1,7 +1,12 @@
 export const metadata = {
   title: "О нас | Сервис бытовых услуг Алматы",
+
   description:
     "Сервис бытовых услуг в Алматы. Сантехнические работы, монтаж, ремонт, выезд мастера и гарантия на выполненные работы.",
+
+  alternates: {
+    canonical: "https://home-services.kz/o-nas",
+  },
 };
 
 export default function ONasPage() {

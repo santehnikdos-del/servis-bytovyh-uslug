@@ -4,8 +4,13 @@ import Footer from "../Footer";
 export const metadata = {
   title:
     "Прочистка канализации Алматы – устранение засоров | Сервис бытовых услуг",
+
   description:
     "Прочистка канализации в Алматы. Устранение засоров труб, раковин, унитазов и стояков. Быстрый выезд мастера по Алматы.",
+
+  alternates: {
+    canonical: "https://home-services.kz/prochistka-kanalizacii",
+  },
 };
 
 export default function ProchistkaKanalizaciiPage() {

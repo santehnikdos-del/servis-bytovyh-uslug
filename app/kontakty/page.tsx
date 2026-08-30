@@ -1,7 +1,12 @@
 export const metadata = {
   title: "Контакты сантехника в Алматы | Сервис бытовых услуг",
+
   description:
     "Контакты сервиса бытовых услуг в Алматы. Позвоните или напишите в WhatsApp, чтобы вызвать мастера.",
+
+  alternates: {
+    canonical: "https://home-services.kz/kontakty",
+  },
 };
 
 export default function KontaktyPage() {

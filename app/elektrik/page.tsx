@@ -1,9 +1,15 @@
 import Header from "../Header";
 import Footer from "../Footer";
+import ManagedServices from "../ManagedServices";
 export const metadata = {
   title: "Электрик Алматы – вызов электрика на дом | Сервис бытовых услуг",
+
   description:
     "Услуги электрика в Алматы. Установка и замена розеток, выключателей, светильников, ремонт электрики и срочный выезд мастера на дом.",
+
+  alternates: {
+    canonical: "https://home-services.kz/elektrik",
+  },
 };
 export default function ElektrikPage() {
   return (
@@ -12,7 +18,7 @@ export default function ElektrikPage() {
   phone="77073232632"
   displayPhone="+7 707 323 26 32"
 />
-      
+
       {/* ================= МОБИЛЬНЫЙ ПЕРВЫЙ ЭКРАН ================= */}
 <section className="bg-[#303030] px-6 py-8 text-white md:hidden">
 
@@ -154,28 +160,7 @@ export default function ElektrikPage() {
             Выполняем любые электромонтажные работы
           </h2>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              "Замена розеток",
-              "Установка выключателей",
-              "Монтаж освещения",
-              "Замена электропроводки",
-              "Установка электрощита",
-              "Поиск и устранение неисправностей",
-            ].map((service) => (
-              <div
-                key={service}
-               className="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-yellow-50 hover:shadow-xl"
-              >
-                <h3 className="text-xl font-black">{service}</h3>
-
-                <p className="mt-3 text-slate-600">
-                  Работаем аккуратно, согласовываем стоимость до начала и даём
-                  гарантию.
-                </p>
-              </div>
-            ))}
-          </div>
+          <ManagedServices type="electric" />
         </div>
       </section>
 

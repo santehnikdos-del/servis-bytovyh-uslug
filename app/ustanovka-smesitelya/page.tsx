@@ -3,8 +3,13 @@ import Footer from "../Footer";
 
 export const metadata = {
   title: "Установка смесителя в Алматы | Сервис бытовых услуг",
+
   description:
     "Установка и замена смесителя в Алматы. Подключение смесителя на кухне, в ванной и душе. Аккуратно, быстро и с гарантией.",
+
+  alternates: {
+    canonical: "https://home-services.kz/ustanovka-smesitelya",
+  },
 };
 
 const services = [

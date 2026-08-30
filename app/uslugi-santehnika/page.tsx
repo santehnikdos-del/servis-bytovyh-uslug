@@ -1,62 +1,18 @@
 import Header from "../Header";
 import Footer from "../Footer";
+import ManagedServices from "../ManagedServices";
 
 export const metadata = {
   title: "Услуги сантехника в Алматы | Сервис бытовых услуг",
+
   description:
     "Услуги сантехника в Алматы: установка унитаза, смесителя, раковины, ванны, бойлера, замена труб и прочистка канализации.",
+
+  alternates: {
+    canonical: "https://home-services.kz/uslugi-santehnika",
+  },
 };
 
-const services = [
-  {
-    title: "Установка унитаза",
-    href: "/ustanovka-unitaza",
-    description:
-      "Установка и замена унитазов. Демонтаж старого оборудования, подключение к воде и канализации.",
-  },
-  {
-    title: "Установка смесителя",
-    href: "/ustanovka-smesitelya",
-    description:
-      "Установка и замена смесителей на кухне и в ванной. Подключение и проверка соединений на протечки.",
-  },
-  {
-    title: "Установка раковины",
-    href: "/ustanovka-rakoviny",
-    description:
-      "Монтаж раковин, моек и тумб. Установка смесителя, сифона и подключение коммуникаций.",
-  },
-  {
-    title: "Прочистка канализации",
-    href: "/prochistka-kanalizacii",
-    description:
-      "Устранение засоров канализации в квартирах, частных домах и офисах. Механическая прочистка труб.",
-  },
-  {
-    title: "Установка ванны",
-    href: "/ustanovka-vanny",
-    description:
-      "Установка акриловых, стальных и чугунных ванн. Подключение сифона, смесителя и канализации.",
-  },
-  {
-    title: "Установка душевой кабины",
-    href: "/ustanovka-dushevoy-kabiny",
-    description:
-      "Сборка и установка душевых кабин. Подключение воды и канализации, проверка герметичности.",
-  },
-  {
-    title: "Установка бойлера",
-    href: "/ustanovka-boylera",
-    description:
-      "Монтаж и подключение бойлеров и водонагревателей. Проверка соединений и правильности работы.",
-  },
-  {
-    title: "Замена труб",
-    href: "/zamena-trub",
-    description:
-      "Замена и монтаж труб водоснабжения, канализации и отопления в квартирах, домах и офисах.",
-  },
-];
 
 export default function UslugiSantehnikaPage() {
   return (
@@ -172,29 +128,7 @@ export default function UslugiSantehnikaPage() {
             Выберите нужную работу
           </h2>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {services.map((service) => (
-              <a
-                key={service.href}
-                href={service.href}
-                className="group flex flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:shadow-lg"
-              >
-                <div className="mb-5 h-1 w-12 rounded-full bg-yellow-400" />
-
-                <h3 className="text-xl font-black">
-                  {service.title}
-                </h3>
-
-                <p className="mt-3 leading-6 text-slate-600">
-                  {service.description}
-                </p>
-
-                <p className="mt-auto pt-6 font-bold text-yellow-600">
-                  Подробнее →
-                </p>
-              </a>
-            ))}
-          </div>
+          <ManagedServices type="plumbing" />
         </div>
       </section>
       {/* ПОЧЕМУ ВЫБИРАЮТ НАС */}
@@ -406,7 +340,7 @@ export default function UslugiSantehnikaPage() {
   phone="77771696969"
   displayPhone="+7 777 169 69 69"
 />
-      
+
 
     </main>
   );
