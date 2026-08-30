@@ -50,29 +50,39 @@ const schema = {
       name: "Сервис бытовых услуг",
       url: "https://home-services.kz",
       telephone: "+77771696969",
+
       logo: "https://home-services.kz/icon.png",
+
+      image: "https://home-services.kz/og-image.png",
     },
+
     {
       "@type": "WebSite",
       "@id": "https://home-services.kz/#website",
       url: "https://home-services.kz",
       name: "Сервис бытовых услуг",
+
       publisher: {
         "@id": "https://home-services.kz/#organization",
       },
+
       inLanguage: "ru",
     },
+
     {
       "@type": "Service",
       "@id": "https://home-services.kz/#service",
       name: "Бытовые услуги в Алматы",
+
       provider: {
         "@id": "https://home-services.kz/#organization",
       },
+
       areaServed: {
         "@type": "City",
         name: "Алматы",
       },
+
       serviceType: [
         "Услуги сантехника",
         "Услуги электрика",
