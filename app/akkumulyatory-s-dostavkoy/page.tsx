@@ -1,5 +1,6 @@
 import Header from "../Header";
 import Footer from "../Footer";
+import Script from "next/script";
 
 export const metadata = {
   title:
