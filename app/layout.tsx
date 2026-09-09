@@ -17,6 +17,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://home-services.kz"),
 
+    icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
+
   title: "Сервис бытовых услуг в Алматы | Сантехник, электрик",
 
   description:
