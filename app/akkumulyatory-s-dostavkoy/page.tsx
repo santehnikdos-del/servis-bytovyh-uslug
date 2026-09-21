@@ -6,12 +6,28 @@ export const metadata = {
   title:
     "Автомобильные аккумуляторы с доставкой по Алматы | Сервис бытовых услуг",
   description:
-    "Автомобильные аккумуляторы с доставкой по Алматы. Поможем подобрать аккумулятор, доставим по адресу и при необходимости заменим.",
+    "Автомобильные аккумуляторы с доставкой по Алматы. Поможем подобрать аккумулятор и доставим по городу.",
+  alternates: {
+    canonical: "https://home-services.kz/akkumulyatory-s-dostavkoy",
+  },
 };
 
 export default function AkkumulyatoryPage() {
   return (
     <main className="min-h-screen bg-white text-slate-950">
+      <Script
+  src="https://www.googletagmanager.com/gtag/js?id=AW-18420476013"
+  strategy="afterInteractive"
+/>
+
+<Script id="google-ads-akkumulyatory" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18420476013');
+  `}
+</Script>
 
       <div className="[&>div]:!static [&>header]:!static">
   <Header
