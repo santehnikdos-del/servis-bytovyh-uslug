@@ -38,6 +38,26 @@ export default function FloatingContacts() {
     phone = "77082000513";
   }
 
+  // Отправляем событие в Google Analytics
+  const trackContact = (type: "phone" | "whatsapp") => {
+    if (typeof window === "undefined") return;
+
+    const gtag = (window as Window & {
+      gtag?: (...args: unknown[]) => void;
+    }).gtag;
+
+    if (!gtag) return;
+
+    gtag(
+      "event",
+      type === "phone" ? "phone_click" : "whatsapp_click",
+      {
+        page_path: pathname,
+        phone_number: phone,
+      }
+    );
+  };
+
   useEffect(() => {
     async function loadReviews() {
       try {
@@ -84,7 +104,7 @@ export default function FloatingContacts() {
             flex items-center gap-1
             rounded-lg bg-slate-900/95
             px-2.5 py-1.5
-text-[11px] font-bold text-white
+            text-[11px] font-bold text-white
             shadow-2xl
             transition hover:scale-105
             md:bottom-5 md:left-5
@@ -108,6 +128,7 @@ text-[11px] font-bold text-white
       <div className="fixed bottom-0 left-0 z-[9998] w-full md:hidden">
         <a
           href={`tel:+${phone}`}
+          onClick={() => trackContact("phone")}
           className="flex h-16 items-center justify-center bg-cyan-600 text-lg font-black text-white shadow-2xl"
         >
           📞 Позвонить
@@ -120,6 +141,7 @@ text-[11px] font-bold text-white
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"
+        onClick={() => trackContact("whatsapp")}
         className="fixed bottom-24 right-5 z-[9999] flex h-16 w-16 animate-pulse items-center justify-center rounded-full bg-green-500 text-white shadow-2xl"
       >
         <svg
@@ -135,6 +157,7 @@ text-[11px] font-bold text-white
       <a
         href={`tel:+${phone}`}
         aria-label="Позвонить"
+        onClick={() => trackContact("phone")}
         className="fixed bottom-5 right-5 z-[9999] hidden h-16 w-16 animate-pulse items-center justify-center rounded-full bg-cyan-600 text-3xl text-white shadow-2xl md:flex"
       >
         ☎
