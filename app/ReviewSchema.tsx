@@ -25,9 +25,9 @@ export default async function ReviewSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://home-services.kz/#organization",
+    "@id": "https://www.home-services.kz/#organization",
     name: "Сервис бытовых услуг",
-    url: "https://home-services.kz",
+    url: "https://www.home-services.kz",
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: Number(average.toFixed(1)),

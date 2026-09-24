@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://home-services.kz"),
+  metadataBase: new URL("https://www.home-services.kz"),
 
   icons: {
     icon: "/icon.png",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ru_KZ",
-    url: "https://home-services.kz",
+    url: "https://www.home-services.kz",
     siteName: "Сервис бытовых услуг",
     title: "Сервис бытовых услуг в Алматы | Сантехник, электрик",
     description:
@@ -53,24 +53,24 @@ const schema = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://home-services.kz/#organization",
+      "@id": "https://www.home-services.kz/#organization",
       name: "Сервис бытовых услуг",
-      url: "https://home-services.kz",
+      url: "https://www.home-services.kz",
       telephone: "+77771696969",
 
-      logo: "https://home-services.kz/icon.png",
+      logo: "https://www.home-services.kz/icon.png",
 
-      image: "https://home-services.kz/og-image.png",
+      image: "https://www.home-services.kz/og-image.png",
     },
 
     {
       "@type": "WebSite",
-      "@id": "https://home-services.kz/#website",
-      url: "https://home-services.kz",
+      "@id": "https://www.home-services.kz/#website",
+      url: "https://www.home-services.kz",
       name: "Сервис бытовых услуг",
 
       publisher: {
-        "@id": "https://home-services.kz/#organization",
+        "@id": "https://www.home-services.kz/#organization",
       },
 
       inLanguage: "ru",
@@ -78,11 +78,11 @@ const schema = {
 
     {
       "@type": "Service",
-      "@id": "https://home-services.kz/#service",
+      "@id": "https://www.home-services.kz/#service",
       name: "Бытовые услуги в Алматы",
 
       provider: {
-        "@id": "https://home-services.kz/#organization",
+        "@id": "https://www.home-services.kz/#organization",
       },
 
       areaServed: {

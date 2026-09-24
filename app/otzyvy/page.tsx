@@ -10,7 +10,7 @@ export const metadata = {
     "Отзывы клиентов о сантехнических работах в Алматы. Установка, ремонт, монтаж труб, устранение протечек и другие услуги.",
 
   alternates: {
-    canonical: "https://home-services.kz/otzyvy",
+    canonical: "https://www.home-services.kz/otzyvy",
   },
 };
 

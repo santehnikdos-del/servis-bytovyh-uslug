@@ -8,7 +8,7 @@ export const metadata = {
     "Профессиональная установка и замена унитаза в Алматы. Монтаж подвесных и напольных унитазов, подключение инсталляции, гарантия на работы.",
 
   alternates: {
-    canonical: "https://home-services.kz/ustanovka-unitaza",
+    canonical: "https://www.home-services.kz/ustanovka-unitaza",
   },
 };
 

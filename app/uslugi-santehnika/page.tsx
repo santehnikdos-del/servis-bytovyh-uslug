@@ -9,7 +9,7 @@ export const metadata = {
     "Услуги сантехника в Алматы: установка унитаза, смесителя, раковины, ванны, бойлера, замена труб и прочистка канализации.",
 
   alternates: {
-    canonical: "https://home-services.kz/uslugi-santehnika",
+    canonical: "https://www.home-services.kz/uslugi-santehnika",
   },
 };
 

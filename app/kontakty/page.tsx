@@ -5,7 +5,7 @@ export const metadata = {
     "Контакты сервиса бытовых услуг в Алматы. Позвоните или напишите в WhatsApp, чтобы вызвать мастера.",
 
   alternates: {
-    canonical: "https://home-services.kz/kontakty",
+    canonical: "https://www.home-services.kz/kontakty",
   },
 };
 

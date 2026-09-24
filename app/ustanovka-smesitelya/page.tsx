@@ -8,7 +8,7 @@ export const metadata = {
     "Установка и замена смесителя в Алматы. Подключение смесителя на кухне, в ванной и душе. Аккуратно, быстро и с гарантией.",
 
   alternates: {
-    canonical: "https://home-services.kz/ustanovka-smesitelya",
+    canonical: "https://www.home-services.kz/ustanovka-smesitelya",
   },
 };
 

@@ -8,7 +8,7 @@ export const metadata = {
     "Установка и замена раковины в Алматы. Монтаж умывальника, мойки, сифона и смесителя. Аккуратно, быстро и с гарантией.",
 
   alternates: {
-    canonical: "https://home-services.kz/ustanovka-rakoviny",
+    canonical: "https://www.home-services.kz/ustanovka-rakoviny",
   },
 };
 

@@ -8,7 +8,7 @@ export const metadata = {
     "Услуги электрика в Алматы. Установка и замена розеток, выключателей, светильников, ремонт электрики и срочный выезд мастера на дом.",
 
   alternates: {
-    canonical: "https://home-services.kz/elektrik",
+    canonical: "https://www.home-services.kz/elektrik",
   },
 };
 export default function ElektrikPage() {

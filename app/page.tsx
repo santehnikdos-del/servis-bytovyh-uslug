@@ -7,7 +7,7 @@ export const metadata = {
     "Сантехник, электрик, прочистка канализации и другие бытовые услуги в Алматы. Быстрый выезд мастера, гарантия на выполненные работы.",
 
   alternates: {
-    canonical: "https://home-services.kz/",
+    canonical: "https://www.home-services.kz/",
   },
 };
 

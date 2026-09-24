@@ -8,7 +8,7 @@ export const metadata = {
   description:
     "Автомобильные аккумуляторы с доставкой по Алматы. Поможем подобрать аккумулятор и доставим по городу.",
   alternates: {
-    canonical: "https://home-services.kz/akkumulyatory-s-dostavkoy",
+    canonical: "https://www.home-services.kz/akkumulyatory-s-dostavkoy",
   },
 };
 

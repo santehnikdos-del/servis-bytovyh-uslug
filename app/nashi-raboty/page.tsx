@@ -9,7 +9,7 @@ export const metadata = {
     "Примеры выполненных сантехнических работ в Алматы. Монтаж труб, водоснабжения, отопления и сантехнического оборудования.",
 
   alternates: {
-    canonical: "https://home-services.kz/nashi-raboty",
+    canonical: "https://www.home-services.kz/nashi-raboty",
   },
 };
 

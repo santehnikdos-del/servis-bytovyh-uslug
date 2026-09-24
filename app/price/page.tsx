@@ -9,7 +9,7 @@ export const metadata = {
     "Цены на сантехнические работы в Алматы: монтаж труб, кухня, ванная, туалет, прочистка канализации и установка сантехники.",
 
   alternates: {
-    canonical: "https://home-services.kz/price",
+    canonical: "https://www.home-services.kz/price",
   },
 };
 

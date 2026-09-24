@@ -7,7 +7,7 @@ export const metadata = {
     "Сантехник в Алматы с выездом на дом. Вызов сантехника, ремонт и установка сантехники, устранение протечек, замена труб, унитазов и смесителей.",
 
   alternates: {
-    canonical: "https://home-services.kz/santehnik",
+    canonical: "https://www.home-services.kz/santehnik",
   },
 };
 
