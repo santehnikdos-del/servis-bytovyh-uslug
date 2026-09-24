@@ -73,14 +73,9 @@ export default function Header({
   return (
     <div className="sticky top-0 z-[9999] bg-white text-slate-950">
       {/* МОБИЛЬНАЯ ШАПКА */}
-      <header className="relative bg-cyan-600 text-white md:hidden">
+      <header className="relative border-b-4 border-yellow-400 bg-white text-slate-950 md:hidden">
         <div className="grid grid-cols-3 items-center">
-          <a
-            href="/"
-            className="flex h-14 items-center justify-center border-r border-white/20 font-black hover:bg-sky-700"
-          >
-            Главная
-          </a>
+         
 
           <button
             type="button"
@@ -88,10 +83,16 @@ export default function Header({
               setServicesOpen(!servicesOpen);
               setMenuOpen(false);
             }}
-            className="flex h-14 items-center justify-center gap-2 border-r border-white/20 font-black hover:bg-sky-700"
-          >
-            Услуги <span className="text-xs">{servicesOpen ? "▲" : "▼"}</span>
+className="flex h-14 items-center justify-center gap-1 border-r border-slate-200 text-base font-medium uppercase text-slate-600 hover:bg-yellow-50"          >
+            Услуги <span className="text-[10px]">{servicesOpen ? "▲" : "▼"}</span>
           </button>
+          <a
+  href="/"
+  aria-label="На главную"
+  className="flex h-14 items-center justify-center border-r border-white/20"
+>
+  <img src="/hs-logo.png" alt="HS — Сервис бытовых услуг" className="h-10 w-auto" />
+</a>
 
           <button
             type="button"
@@ -99,18 +100,17 @@ export default function Header({
               setMenuOpen(!menuOpen);
               setServicesOpen(false);
             }}
-            className="flex h-14 items-center justify-center gap-2 font-black hover:bg-sky-700"
-          >
-            Меню <span className="text-xs">{menuOpen ? "▲" : "▼"}</span>
+className="flex h-14 items-center justify-center gap-1 text-base font-medium uppercase text-slate-600 hover:bg-yellow-50"          >
+            Меню <span className="text-[10px]">{menuOpen ? "▲" : "▼"}</span>
           </button>
         </div>
 
         {servicesOpen && (
-          <div className="absolute left-0 top-full z-[200] w-full bg-white text-slate-900 shadow-2xl">
-            <MobileGroupButton
-              title="Услуги сантехника"
+<div className="absolute left-0 top-full z-[200] w-[75%] max-w-sm bg-white text-slate-900 shadow-2xl">            <MobileGroupButton
+              title="Сантехник"
+              href="/santehnik"
               open={plumbingOpen}
-              onClick={() => setPlumbingOpen(!plumbingOpen)}
+             onClick={() => setPlumbingOpen(!plumbingOpen)}
             />
             {plumbingOpen && (
               <MobileList
@@ -121,10 +121,11 @@ export default function Header({
             )}
 
             <MobileGroupButton
-              title="Услуги электрика"
-              open={electricOpen}
-              onClick={() => setElectricOpen(!electricOpen)}
-            />
+  title="Электрик"
+  href="/elektrik"
+  open={electricOpen}
+  onClick={() => setElectricOpen(!electricOpen)}
+/>
             {electricOpen && (
               <MobileList
                 items={electric}
@@ -134,10 +135,11 @@ export default function Header({
             )}
 
             <MobileGroupButton
-              title="Прочистка канализации"
-              open={drainOpen}
-              onClick={() => setDrainOpen(!drainOpen)}
-            />
+  title="Прочистка канализации"
+  href="/prochistka-kanalizacii"
+  open={drainOpen}
+  onClick={() => setDrainOpen(!drainOpen)}
+/>
             {drainOpen && (
               <div className="bg-sky-50">
                 {[
@@ -180,16 +182,20 @@ export default function Header({
 
         {menuOpen && (
           <div className="absolute right-0 top-full z-[200] w-[75%] max-w-sm bg-white text-slate-900 shadow-2xl">
-            <a href="/o-nas" className="block border-b border-slate-200 px-5 py-4 font-bold">
+            
+            <a href="/" className="block border-b border-slate-200 px-5 py-4 font-normal">
+              Главная
+            </a>
+            <a href="/o-nas" className="block border-b border-slate-200 px-5 py-4 font-normal">
               О нас
             </a>
-            <a href="/nashi-raboty" className="block border-b border-slate-200 px-5 py-4 font-bold">
+            <a href="/nashi-raboty" className="block border-b border-slate-200 px-5 py-4 font-normal">
               Наши работы
             </a>
-            <a href="/otzyvy" className="block border-b border-slate-200 px-5 py-4 font-bold">
+            <a href="/otzyvy" className="block border-b border-slate-200 px-5 py-4 font-normal">
               Отзывы
             </a>
-            <a href="/price" className="block border-b border-slate-200 px-5 py-4 font-bold">
+            <a href="/price" className="block border-b border-slate-200 px-5 py-4 font-normal">
               Цены
             </a>
             <a href="/kontakty" className="block bg-sky-700 px-5 py-4 font-black text-white">
@@ -202,16 +208,16 @@ export default function Header({
       {/* КОМПЬЮТЕР */}
       <div className="hidden md:block">
         <header className="bg-white text-slate-900">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-0">
             <a href="/" className="flex items-center">
               <img
                 src="/logo.png"
                 alt="Сервис бытовых услуг"
-                className="h-23 w-auto object-contain"
+                className="h-20 w-auto object-contain"
               />
             </a>
 
-            <nav className="flex items-center gap-7 font-semibold">
+            <nav className="flex items-center gap-7 font-normal text-x0 ">
               <a href="/o-nas" className="hover:text-yellow-500">О нас</a>
               <a href="/nashi-raboty" className="hover:text-yellow-500">Наши работы</a>
               <a href="/otzyvy" className="hover:text-yellow-500">Отзывы</a>
@@ -239,9 +245,12 @@ export default function Header({
         </header>
 
         <nav className="bg-yellow-400 text-slate-950 shadow-md">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-1 font-bold">
-            <DesktopMenu
-              title="Услуги сантехника"
+<div className="mx-auto flex max-w-7xl items-center justify-center gap-12 px-6 py-0 font-semibold">            
+              <a href="/" className="py-3 hover:opacity-70">
+                Главная
+                </a>
+              <DesktopMenu
+               title="Услуги сантехника"
               href="/uslugi-santehnika"
               items={plumbing}
               allTitle="Все услуги →"
@@ -314,22 +323,34 @@ export default function Header({
 
 function MobileGroupButton({
   title,
+  href,
   open,
   onClick,
 }: {
   title: string;
+  href?: string;
   open: boolean;
   onClick: () => void;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="flex w-full items-center justify-between border-b border-slate-200 px-5 py-4 text-left font-black"
-    >
-      <span>{title}</span>
-      <span>{open ? "▲" : "▼"}</span>
-    </button>
+    <div className="flex items-center justify-between border-b border-slate-200">
+      {href ? (
+        <a href={href} className="flex-1 px-5 py-4 font-normal">
+          {title}
+        </a>
+      ) : (
+        <span className="flex-1 px-5 py-4 font-normal">{title}</span>
+      )}
+      <button
+        type="button"
+        onClick={onClick}
+        aria-label={`Раскрыть: ${title}`}
+        aria-expanded={open}
+        className="mr-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#FDC700]"
+      >
+        <span className="text-[10px]">{open ? "▲" : "▼"}</span>
+      </button>
+    </div>
   );
 }
 
