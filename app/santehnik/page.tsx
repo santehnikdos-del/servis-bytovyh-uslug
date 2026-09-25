@@ -19,59 +19,67 @@ export default function SantehnikPage() {
       <Header />
 
       {/* ================= МОБИЛЬНЫЙ ПЕРВЫЙ ЭКРАН ================= */}
-<section className="bg-[#303030] px-6 py-8 text-white md:hidden">
-
-  <h1 className="text-center text-3xl font-bold text-yellow-400">
-    Сантехник в Алматы
+<section className="bg-[#333333] px-6 py-8 text-white md:hidden">
+  <h1 className="text-center text-4xl font-bold leading-tight text-white">
+    САНТЕХНИК АЛМАТЫ
   </h1>
 
-  <p className="mt-4 text-center text-lg font-bold text-white">
-    Вызов сантехника на дом. Ремонт, установка сантехники,
-    устранение протечек и срочный выезд мастера.
+  
+
+  <div className="mx-auto mt-8 grid w-max max-w-full gap-y-0">
+  {[
+    ["/banner-fast.png", "Быстрый выезд"],
+    ["/banner-garantiya.png", "Гарантия до 3 лет"],
+    ["/banner-everyday.png", "Работаем каждый день"],
+  ].map(([icon, label]) => (
+    <div key={label} className="grid min-h-10 grid-cols-[48px_auto] items-center gap-1">
+      <img src={icon} alt="" className="h-14 w-14 object-contain" />
+      <span className="text-lg font-normal text-white">{label}</span>
+    </div>
+  ))}
+</div>
+  <p className="mt-7 text-center text-lg leading-7">
+    Вызов сантехника на дом. Ремонт, Установка, Прочистка сантехники
+    и устранение протечек.
   </p>
 
-  <div className="mt-10 grid grid-cols-3 gap-2 text-center">
+ <>
+  <style>{`
+    @keyframes callButtonShine {
+      from { transform: translateX(0) skewX(-25deg); }
+      to { transform: translateX(1800%) skewX(-25deg); }
+    }
 
-    <div className="flex flex-col items-center">
-      <img
-        src="/banner-fast.png"
-        alt="Быстрый выезд"
-        className="h-12 w-12 object-contain"
-      />
-      <p className="mt-3 text-base text-white">
-        Быстрый<br />выезд
-      </p>
-    </div>
+    .call-button-shine {
+      position: relative;
+      overflow: hidden;
+    }
 
-    <div className="flex flex-col items-center border-x border-white/20">
-      <img
-        src="/banner-garantiya.png"
-        alt="Гарантия до 3 лет"
-        className="h-12 w-12 object-contain"
-      />
-      <p className="mt-3 text-base text-white">
-        Гарантия<br />до 3 лет
-      </p>
-    </div>
+    .call-button-shine::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -25%;
+      width: 8%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+      );
+      animation: callButtonShine 2.5s linear infinite;
+      pointer-events: none;
+    }
+  `}</style>
 
-    <div className="flex flex-col items-center">
-      <img
-        src="/banner-everyday.png"
-        alt="Работаем каждый день"
-        className="h-12 w-12 object-contain"
-      />
-      <p className="mt-3 text-base text-white">
-        Работаем<br />каждый день
-      </p>
-    </div>
-
-  </div>
-
-  <p className="mt-5 px-5 text-center text-base leading-6 text-white">
-    Опытные сантехники. Работаем аккуратно и ответственно.
-    Предоставляем гарантию на выполненные работы.
-  </p>
-
+  <a
+    href="tel:+77771696969"
+    className="call-button-shine mx-auto mt-10 flex max-w-sm items-center justify-center rounded-full bg-[#0092B8]/40 px-6 py-4 text-lg font-normal text-white"
+  >
+    Вызвать мастера
+  </a>
+</>
 </section>
 
 
@@ -96,15 +104,15 @@ export default function SantehnikPage() {
         Сантехник в Алматы
       </h1>
 
-      <p className="mt-6 max-w-2xl text-xl leading-8 text-slate-100">
+      <p className="ml-25 mt-10 max-w-2xl text-xl leading-8 text-slate-100">
         Установка и ремонт сантехники, устранение протечек,
         замена смесителей, унитазов и труб. Срочный выезд мастера по Алматы.
       </p>
 
-      <div className="mt-8 flex flex-wrap gap-4">
+      <div className="ml-50 mt-13 flex flex-wrap gap-9">
         <a
           href="tel:+77771696969"
-          className="rounded-full bg-yellow-400 px-8 py-4 text-lg font-black text-slate-950 shadow-xl transition hover:-translate-y-1 hover:bg-yellow-300"
+          className="rounded-full bg-[#FDC700] px-8 py-4 text-lg font-black text-slate-950 shadow-xl transition hover:-translate-y-1 hover:bg-[#e8b700]"
         >
           📞 Позвонить
         </a>
@@ -113,39 +121,40 @@ export default function SantehnikPage() {
           href="https://wa.me/77771696969"
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full bg-green-500 px-8 py-4 text-lg font-black text-white shadow-xl transition hover:-translate-y-1 hover:bg-green-600"
+          className="rounded-full bg-[#0092B8] px-8 py-4 text-lg font-black text-white shadow-xl transition hover:-translate-y-1 hover:bg-[#007a99]"
         >
           WhatsApp
         </a>
       </div>
 
-      <div className="mt-5 grid grid-cols-2 gap-y-10 md:grid-cols-4 md:gap-0">
-        {[
-          ["/banner-everyday.png", "Работаем", "каждый день"],
-          ["/banner-fast.png", "Быстрый", "выезд"],
-          ["/banner-garantiya.png", "Гарантия", "до 3 лет"],
-          ["/banner-master.png", "Опытные", "мастера"],
-        ].map(([icon, line1, line2]) => (
-          <div
-            key={line1}
-            className="flex flex-col items-center justify-center text-center md:border-r md:border-white/20 md:last:border-r-0"
-          >
-            <div className="mb-4 flex h-14 items-center justify-center">
-              <img
-                src={icon}
-                alt=""
-                className="h-12 w-12 object-contain"
-              />
-            </div>
+<div className="mx-auto mt-15 grid w-full max-w-[1200px] grid-cols-2 gap-4 px-2 text-white md:grid-cols-4">
+  {[
+    ["/clients.png", "1000+", "довольных клиентов"],
+    ["/time.png", "30–45 мин", "срочный выезд"],
+    ["/guarantee.png", "до 3 лет", "гарантия на работы"],
+    ["/calendar.png", "7 дней", "работаем без выходных"],
+  ].map(([icon, number, caption]) => (
+    <div
+      key={icon}
+      className="group relative flex min-w-0 items-center justify-center gap-3 px-2 pb-5"
+    >
+      <img
+        src={icon}
+        alt=""
+        className="h-12 w-12 shrink-0 object-contain transition-transform duration-300 group-hover:scale-110 md:h-14 md:w-14"
+      />
 
-            <p className="text-lg font-black text-white">
-              {line1}
-              <br />
-              {line2}
-            </p>
-          </div>
-        ))}
+      <div className="origin-left transition-transform duration-300 group-hover:scale-110">
+        <div className="whitespace-nowrap text-xl font-black text-[#FDC700] md:text-3xl">
+       {number}
+       </div>
+        <div className="text-sm">{caption}</div>
       </div>
+
+      <span className="absolute bottom-4 left-[15%] h-1 w-[70%] origin-center scale-x-50 rounded-full bg-[#FDC700] transition-transform duration-300 group-hover:scale-x-100" />
+    </div>
+  ))}
+</div>
 
     </div>
   </div>
