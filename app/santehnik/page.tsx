@@ -19,21 +19,21 @@ export default function SantehnikPage() {
       <Header />
 
       {/* ================= МОБИЛЬНЫЙ ПЕРВЫЙ ЭКРАН ================= */}
-<section className="bg-[#333333] px-6 py-8 text-white md:hidden">
-  <h1 className="text-center text-4xl font-bold leading-tight text-white">
+<section className="relative overflow-hidden bg-[#333333] px-6 py-8 text-white md:hidden before:pointer-events-none before:absolute before:inset-0 before:z-0 before:bg-[url('/hero-mark.png')] before:bg-center before:bg-no-repeat before:bg-[length:85%_auto] before:opacity-10 [&>*]:relative [&>*]:z-10">
+  <h1 className="text-center text-3xl font-bold leading-tight text-white">
     САНТЕХНИК АЛМАТЫ
   </h1>
 
   
 
-  <div className="mx-auto mt-8 grid w-max max-w-full gap-y-0">
+  <div className="mx-auto mt-5 grid w-max max-w-full gap-y-0">
   {[
     ["/banner-fast.png", "Быстрый выезд"],
     ["/banner-garantiya.png", "Гарантия до 3 лет"],
     ["/banner-everyday.png", "Работаем каждый день"],
   ].map(([icon, label]) => (
     <div key={label} className="grid min-h-10 grid-cols-[48px_auto] items-center gap-1">
-      <img src={icon} alt="" className="h-14 w-14 object-contain" />
+      <img src={icon} alt="" className="h-10 w-10 object-contain" />
       <span className="text-lg font-normal text-white">{label}</span>
     </div>
   ))}
@@ -159,18 +159,98 @@ export default function SantehnikPage() {
     </div>
   </div>
 </section>
+<section className="bg-white px-5 py-12 text-[#171717] md:py-16">
+  <div className="mx-auto max-w-3xl">
+    <h2 className="text-center text-3xl font-bold leading-tight text-[#171717] md:text-4xl">
+  Столкнулись с проблемой
+  <br />
+  <span className="relative inline-block text-[#0092B8]">
+    в сантехнике?
+    <span
+      aria-hidden="true"
+      className="absolute -bottom-2 left-1/2 h-1 w-24 -translate-x-1/2 rounded-full bg-[#FDC700]"
+    />
+  </span>
+</h2>
+
+    
+
+    <div className="mt-8 space-y-3">
+  {[
+    { icon: "/leak.png", text: "Протекли трубы и есть риск затопить соседей" },
+{ icon: "/drain.png", text: "Из слива появился неприятный запах" },
+{ icon: "/heating.png", text: "Батареи или отопительная система работают плохо" },
+{ icon: "/tap.png", text: "Кран постоянно капает" },
+{ icon: "/repair.png", text: "Сантехника сломалась, а причину трудно определить" },
+{ icon: "/tools.png", text: "Ремонт в квартире, но нарвались на недобросовестного специалиста и приходится переделывать его работу" },
+  ].map(({ icon, text }) => (
+    <div key={text} className="grid grid-cols-[44px_1fr] items-center gap-7">
+      <span
+        aria-hidden="true"
+        className="block h-15 w-15 bg-[#0092B8]"
+        style={{
+          WebkitMask: `url("${icon}") center / contain no-repeat`,
+          mask: `url("${icon}") center / contain no-repeat`,
+        }}
+      />
+      <p className="text-[17px] leading-snug md:text-xl">{text}</p>
+    </div>
+  ))}
+</div>
+  </div>
+</section>
+<section className="relative -mt-px bg-white px-5 pt-6 pb-12 text-[#171717]" style={{ border: 0 }}>
+  <div className="mx-auto max-w-3xl">
+    <div className="mx-auto mb-3 h-1 w-20 rounded-full bg-[#FDC700]" />
+
+    <p className="text-center text-sm font-bold uppercase tracking-wider text-[#0092B8]">
+      Сервис бытовых услуг
+    </p>
+
+    <h2 className="mt-3 text-center text-3xl font-bold leading-tight md:text-4xl">
+      Поможем решить вашу задачу
+    </h2>
+
+    <p className="mt-6 text-center text-base leading-relaxed text-slate-700 md:text-lg">
+      Свой штат квалифицированных работников. Высокий уровень сервиса. 15 лет опыта и более 1000 клиентов. Наши мастера выполняют
+      сантехнические работы аккуратно, от замены смесителя до сложного ремонта.
+    </p>
+
+    <p className="mt-3 text-center text-sm leading-relaxed text-slate-600 md:text-base">
+      Стоимость согласуем заранее. Принимаем наличную и безналичную оплату,
+      предоставляем документы.
+    </p>
+
+    <div className="mt-7 grid gap-3 sm:grid-cols-2">
+      <a
+        href="/nashi-raboty"
+        className="rounded-full bg-[#0092B8] px-6 py-4 text-center font-bold text-white"
+      >
+        Посмотреть работы →
+      </a>
+      <a
+        href="/otzyvy" 
+        className="rounded-full bg-[#FDC700] px-6 py-4 text-center font-bold text-[#171717]"
+      >
+        Читать отзывы →
+      </a>
+    </div>
+  </div>
+</section>
 
       {/* ================= УСЛУГИ ================= */}
-      <section id="services" className="bg-white py-20 text-slate-900">
+      <section id="services" className="relative z-10 -mt-px border-0 bg-white pt-8 pb-20 text-slate-900">
         <div className="mx-auto max-w-7xl px-6">
 
-          <p className="font-bold text-yellow-500">
-            Услуги сантехника
-          </p>
+         <div className="mx-auto mb-3 h-1 w-16 rounded-full bg-[#FDC700]" />
 
-          <h2 className="mt-2 text-4xl font-black">
-            Выполняем любые сантехнические работы
-          </h2>
+<h2 className="text-center text-xl font-bold text-[#0092B8]">
+  Услуги сантехника
+</h2>
+
+<h3 className="mt-2 text-center text-3xl font-black leading-tight md:text-4xl">
+  Какая помощь вам нужна?
+</h3>
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {[
