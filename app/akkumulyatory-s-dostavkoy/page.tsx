@@ -1,6 +1,7 @@
 import Header from "../Header";
 import Footer from "../Footer";
 import Script from "next/script";
+import ConversionTracking from "./ConversionTracking";
 
 export const metadata = {
   title:
@@ -15,6 +16,7 @@ export const metadata = {
 export default function AkkumulyatoryPage() {
   return (
     <main className="min-h-screen bg-white text-slate-950">
+      <ConversionTracking />
       <Script
   src="https://www.googletagmanager.com/gtag/js?id=AW-18420476013"
   strategy="afterInteractive"
