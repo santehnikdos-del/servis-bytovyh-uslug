@@ -56,6 +56,9 @@ export default function FloatingContacts() {
         phone_number: phone,
       }
     );
+        gtag("event", "conversion", {
+      send_to: "AW-18185370143/QhaoCJ-Wtr8cEJ_0ut9D",
+    });
   };
 
   useEffect(() => {
