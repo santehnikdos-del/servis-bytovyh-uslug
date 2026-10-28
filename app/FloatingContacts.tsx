@@ -25,44 +25,80 @@ export default function FloatingContacts() {
   const [reviewCount, setReviewCount] = useState(0);
   const [averageRating, setAverageRating] = useState(0);
 
-  // Номер по умолчанию: Главная + Сантехник
   let phone = "77771696969";
 
-  // Электрик
   if (pathname.startsWith("/elektrik")) {
     phone = "77073232632";
   }
 
-  // Аккумуляторы с доставкой
   if (pathname.startsWith("/akkumulyatory-s-dostavkoy")) {
     phone = "77082000513";
   }
 
-  // Отправляем событие в Google Analytics
-  const trackContact = (type: "phone" | "whatsapp") => {
-    if (typeof window === "undefined") return;
+  // Отслеживание всех ссылок телефона и WhatsApp на странице
+  useEffect(() => {
+    const handleContactClick = (event: MouseEvent) => {
+      if (!(event.target instanceof Element)) return;
 
-    const gtag = (window as Window & {
-      gtag?: (...args: unknown[]) => void;
-    }).gtag;
+      const link = event.target.closest<HTMLAnchorElement>("a[href]");
+      if (!link) return;
 
-    if (!gtag) return;
+      const url = new URL(link.href, window.location.href);
 
-    gtag(
-      "event",
-      type === "phone" ? "phone_click" : "whatsapp_click",
-      {
-        page_path: pathname,
-        phone_number: phone,
+      let contactType: "phone" | "whatsapp";
+      let contactPhone = "";
+
+      if (url.protocol === "tel:") {
+        contactType = "phone";
+        contactPhone = url.pathname.replace(/\D/g, "");
+      } else if (
+        (url.protocol === "https:" || url.protocol === "http:") &&
+        ["wa.me", "api.whatsapp.com", "web.whatsapp.com"].includes(
+          url.hostname.toLowerCase()
+        )
+      ) {
+        contactType = "whatsapp";
+        contactPhone =
+          url.hostname.toLowerCase() === "wa.me"
+            ? url.pathname.replace(/\D/g, "")
+            : (url.searchParams.get("phone") || "").replace(/\D/g, "");
+      } else {
+        return;
       }
-    );
-           gtag("event", "conversion", {
-      send_to:
-        type === "phone"
-          ? "AW-18185370143/BbGECKzbn6wdEJ_0ut9D"
-          : "AW-18185370143/LPwiCK_bn6wdEJ_0ut9D",
-    });
-  };
+
+      const gtag = (
+        window as Window & {
+          gtag?: (...args: unknown[]) => void;
+        }
+      ).gtag;
+
+      if (!gtag) return;
+
+      gtag(
+        "event",
+        contactType === "phone" ? "phone_click" : "whatsapp_click",
+        {
+          page_path: pathname,
+          phone_number: contactPhone,
+          transport_type: "beacon",
+        }
+      );
+
+      gtag("event", "conversion", {
+        send_to:
+          contactType === "phone"
+            ? "AW-18185370143/BbGECKzbn6wdEJ_0ut9D"
+            : "AW-18185370143/LPwiCK_bn6wdEJ_0ut9D",
+        transport_type: "beacon",
+      });
+    };
+
+    document.addEventListener("click", handleContactClick, true);
+
+    return () => {
+      document.removeEventListener("click", handleContactClick, true);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     async function loadReviews() {
@@ -120,9 +156,7 @@ export default function FloatingContacts() {
             {averageRating.toFixed(1)}
           </span>
 
-          <span className="text-yellow-400">
-            ★★★★★
-          </span>
+          <span className="text-yellow-400">★★★★★</span>
 
           <span className="ml-1 text-slate-300">
             ({reviewCount} {getReviewWord(reviewCount)})
@@ -134,7 +168,6 @@ export default function FloatingContacts() {
       <div className="fixed bottom-0 left-0 z-[9998] w-full md:hidden">
         <a
           href={`tel:+${phone}`}
-          onClick={() => trackContact("phone")}
           className="flex h-16 items-center justify-center bg-cyan-600 text-lg font-black text-white shadow-2xl"
         >
           📞 Позвонить
@@ -147,7 +180,6 @@ export default function FloatingContacts() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"
-        onClick={() => trackContact("whatsapp")}
         className="fixed bottom-24 right-5 z-[9999] flex h-16 w-16 animate-pulse items-center justify-center rounded-full bg-green-500 text-white shadow-2xl"
       >
         <svg
@@ -163,7 +195,6 @@ export default function FloatingContacts() {
       <a
         href={`tel:+${phone}`}
         aria-label="Позвонить"
-        onClick={() => trackContact("phone")}
         className="fixed bottom-5 right-5 z-[9999] hidden h-16 w-16 animate-pulse items-center justify-center rounded-full bg-cyan-600 text-3xl text-white shadow-2xl md:flex"
       >
         ☎
