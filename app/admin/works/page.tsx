@@ -8,6 +8,8 @@ type Work = {
   title: string;
   beforeImage: string;
   afterImage: string;
+  thirdImage?: string;
+thirdLabel?: string;
   beforeLabel: string;
   afterLabel: string;
   enabled: boolean;
@@ -23,6 +25,8 @@ export default function AdminWorksPage() {
   const [message, setMessage] = useState("");
   const beforeRef = useRef<HTMLInputElement>(null);
   const afterRef = useRef<HTMLInputElement>(null);
+  const thirdRef = useRef<HTMLInputElement>(null);
+const [thirdLabel, setThirdLabel] = useState("Результат");
 
   async function load() {
     const response = await fetch("/api/works", { cache: "no-store" });
@@ -43,6 +47,8 @@ export default function AdminWorksPage() {
     setTitle("");
     setBeforeLabel("До");
     setAfterLabel("После");
+    setThirdLabel("Результат");
+if (thirdRef.current) thirdRef.current.value = "";
     setMessage("");
 
     if (beforeRef.current) beforeRef.current.value = "";
@@ -55,6 +61,11 @@ export default function AdminWorksPage() {
     setTitle(work.title);
     setBeforeLabel(work.beforeLabel);
     setAfterLabel(work.afterLabel);
+    setThirdLabel(work.thirdLabel || "Результат");
+
+if (beforeRef.current) beforeRef.current.value = "";
+if (afterRef.current) afterRef.current.value = "";
+if (thirdRef.current) thirdRef.current.value = "";
     setMessage("");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -80,6 +91,11 @@ export default function AdminWorksPage() {
 
     if (before) form.append("beforeImage", before);
     if (after) form.append("afterImage", after);
+    const third = thirdRef.current?.files?.[0];
+
+if (third) form.append("thirdImage", third);
+
+form.append("thirdLabel", thirdLabel);
 
     if (!editingId && (!before || !after)) {
       setMessage("Для новой работы выбери две фотографии");
@@ -195,6 +211,25 @@ export default function AdminWorksPage() {
                   className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3"
                 />
               </div>
+              <div>
+  <label className="mb-2 block font-bold">
+    Третья фотография — необязательно
+  </label>
+
+  <input
+    ref={thirdRef}
+    type="file"
+    accept="image/*"
+    className="block w-full rounded-xl bg-slate-950 p-3"
+  />
+
+  <input
+    value={thirdLabel}
+    onChange={(e) => setThirdLabel(e.target.value)}
+    placeholder="Результат"
+    className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3"
+  />
+</div>
             </div>
 
             {editingId && (

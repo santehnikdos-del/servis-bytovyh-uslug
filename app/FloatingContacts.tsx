@@ -65,6 +65,7 @@ export default function FloatingContacts() {
       } else {
         return;
       }
+<<<<<<< HEAD
 
       const gtag = (
         window as Window & {
@@ -99,6 +100,13 @@ export default function FloatingContacts() {
       document.removeEventListener("click", handleContactClick, true);
     };
   }, [pathname]);
+=======
+    );
+        gtag("event", "conversion", {
+      send_to: "AW-18185370143/QhaoCJ-Wtr8cEJ_0ut9D",
+    });
+  };
+>>>>>>> df7abf4 (Update pages, logo and works gallery)
 
   useEffect(() => {
     async function loadReviews() {

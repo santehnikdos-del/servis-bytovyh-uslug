@@ -26,17 +26,45 @@ export default function SantehnikPage() {
 
   
 
-  <div className="mx-auto mt-5 grid w-max max-w-full gap-y-0">
+<div
+  className="mx-auto mt-6 flex w-fit max-w-full items-center justify-center gap-4"
+  style={{ position: "relative", left: "0px" }}
+><ul className="flex flex-col gap-3 text-left">
   {[
-    ["/banner-fast.png", "Быстрый выезд"],
-    ["/banner-garantiya.png", "Гарантия до 3 лет"],
-    ["/banner-everyday.png", "Работаем каждый день"],
-  ].map(([icon, label]) => (
-    <div key={label} className="grid min-h-10 grid-cols-[48px_auto] items-center gap-1">
-      <img src={icon} alt="" className="h-10 w-10 object-contain" />
-      <span className="text-lg font-normal text-white">{label}</span>
-    </div>
+    "Быстрый выезд",
+    "Гарантия до 3 лет",
+    "Работаем 24/7",
+  ].map((text) => (
+    <li key={text} className="flex items-center gap-3">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        className="h-7 w-7 shrink-0"
+        aria-hidden="true"
+      >
+        <path
+          fill="#0092B8"
+          d="m12 1 3 2.2 3.7-.1 1.1 3.5 3.1 2.1-1.2 3.5
+             1.2 3.5-3.1 2.1-1.1 3.5-3.7-.1L12 23l-3-2.2
+             -3.7.1-1.1-3.5-3.1-2.1L2.3 12 1.1 8.5l3.1-2.1
+             1.1-3.5 3.7.1Z"
+        />
+        <path
+          d="m7.5 12 3 3 6-6"
+          fill="none"
+          stroke="white"
+          strokeWidth="2.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+
+      <span>{text}</span>
+    </li>
   ))}
+</ul>
+
+
 </div>
   <p className="mt-7 text-center text-lg leading-7">
     Вызов сантехника на дом. Ремонт, Установка, Прочистка сантехники

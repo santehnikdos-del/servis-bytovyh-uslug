@@ -8,6 +8,8 @@ type WorkRow = {
   title: string | null;
   before_image: string | null;
   after_image: string | null;
+  third_image: string | null;
+third_label: string | null;
   before_label: string | null;
   after_label: string | null;
   enabled: boolean | null;
@@ -37,6 +39,8 @@ function toWork(row: WorkRow) {
     title: row.title || "",
     beforeImage: row.before_image || "",
     afterImage: row.after_image || "",
+    thirdImage: row.third_image || "",
+thirdLabel: row.third_label || "Результат",
     beforeLabel: row.before_label || "До",
     afterLabel: row.after_label || "После",
     enabled: row.enabled ?? true,
@@ -153,13 +157,20 @@ export async function POST(request: Request) {
     const beforeImage = await uploadImage(beforeFile);
 
     let afterImage = "";
+let thirdImage = "";
 
-    try {
-      afterImage = await uploadImage(afterFile);
-    } catch (error) {
-      await deleteStorageImage(beforeImage);
-      throw error;
-    }
+try {
+  afterImage = await uploadImage(afterFile);
+
+  thirdImage = await uploadImage(
+    form.get("thirdImage") as File | null
+  );
+} catch (error) {
+  await deleteStorageImage(beforeImage);
+  await deleteStorageImage(afterImage);
+  await deleteStorageImage(thirdImage);
+  throw error;
+}
 
     const supabase = getSupabaseAdmin();
 
@@ -172,6 +183,7 @@ export async function POST(request: Request) {
     if (orderError) {
       await deleteStorageImage(beforeImage);
       await deleteStorageImage(afterImage);
+      await deleteStorageImage(thirdImage);
       throw new Error(orderError.message);
     }
 
@@ -188,6 +200,9 @@ export async function POST(request: Request) {
         title,
         before_image: beforeImage,
         after_image: afterImage,
+        third_image: thirdImage,
+third_label:
+  form.get("thirdLabel")?.toString().trim() || "Результат",
         before_label:
           form.get("beforeLabel")?.toString().trim() || "До",
         after_label:
@@ -199,10 +214,11 @@ export async function POST(request: Request) {
       .single();
 
     if (error) {
-      await deleteStorageImage(beforeImage);
-      await deleteStorageImage(afterImage);
-      throw new Error(error.message);
-    }
+  await deleteStorageImage(beforeImage);
+  await deleteStorageImage(afterImage);
+  await deleteStorageImage(thirdImage);
+  throw new Error(error.message);
+}
 
     return NextResponse.json(toWork(data as WorkRow));
   } catch (error) {
@@ -255,18 +271,38 @@ export async function PUT(request: Request) {
     const beforeFile = form.get("beforeImage") as File | null;
     const afterFile = form.get("afterImage") as File | null;
 
-    let newBeforeImage = "";
-    let newAfterImage = "";
+ let newBeforeImage = "";
+let newAfterImage = "";
+let newThirdImage = "";
 
-    if (beforeFile && beforeFile.size > 0) {
-      newBeforeImage = await uploadImage(beforeFile);
-    }
+try {
+  if (beforeFile && beforeFile.size > 0) {
+    newBeforeImage = await uploadImage(beforeFile);
+  }
 
-    if (afterFile && afterFile.size > 0) {
-      newAfterImage = await uploadImage(afterFile);
-    }
+  if (afterFile && afterFile.size > 0) {
+    newAfterImage = await uploadImage(afterFile);
+  }
+
+  const thirdFile = form.get("thirdImage") as File | null;
+
+  if (thirdFile && thirdFile.size > 0) {
+    newThirdImage = await uploadImage(thirdFile);
+  }
+} catch (error) {
+  await deleteStorageImage(newBeforeImage);
+  await deleteStorageImage(newAfterImage);
+  await deleteStorageImage(newThirdImage);
+  throw error;
+}
 
     const updateData = {
+      third_image:
+  newThirdImage || currentWork.third_image || "",
+third_label:
+  form.get("thirdLabel")?.toString().trim() ||
+  currentWork.third_label ||
+  "Результат",
       category:
         form.get("category")?.toString().trim() ||
         currentWork.category ||
@@ -306,6 +342,9 @@ export async function PUT(request: Request) {
       if (newAfterImage) {
         await deleteStorageImage(newAfterImage);
       }
+      if (newThirdImage) {
+  await deleteStorageImage(newThirdImage);
+}
 
       throw new Error(error.message);
     }
@@ -317,6 +356,9 @@ export async function PUT(request: Request) {
     if (newAfterImage && currentWork.after_image) {
       await deleteStorageImage(currentWork.after_image);
     }
+    if (newThirdImage && currentWork.third_image) {
+  await deleteStorageImage(currentWork.third_image);
+}
 
     return NextResponse.json({ success: true });
   } catch (error) {
@@ -380,6 +422,9 @@ export async function DELETE(request: Request) {
     if (currentWork.after_image) {
       await deleteStorageImage(currentWork.after_image);
     }
+    if (currentWork.third_image) {
+  await deleteStorageImage(currentWork.third_image);
+}
 
     return NextResponse.json({ success: true });
   } catch (error) {
