@@ -17,64 +17,89 @@ export default function Home() {
       <Header />
 
 {/* ================= МОБИЛЬНЫЙ ПЕРВЫЙ ЭКРАН ================= */}
-<section className="bg-[#303030] px-6 py-8 text-white md:hidden">
+<section className="relative overflow-hidden bg-[#333333] px-6 py-8 text-white md:hidden before:pointer-events-none before:absolute before:inset-0 before:z-0 before:bg-[url('/hero-mark.png')] before:bg-center before:bg-no-repeat before:bg-[length:85%_auto] before:opacity-10 [&>*]:relative [&>*]:z-10">
+  <h1 className="text-center text-3xl font-bold leading-tight text-white">
+    СЕРВИС БЫТОВЫХ УСЛУГ
+  </h1>
 
-  <h1 className="text-3xl font-bold text-yellow-400 text-center">
-  Сервис бытовых услуг
-</h1>
+  <div className="mx-auto mt-6 flex w-fit max-w-full items-center justify-center">
+    <ul className="flex flex-col gap-3 text-left">
+      {[
+        "Быстрый выезд",
+        "Гарантия до 3 лет",
+        "Работаем 24/7",
+      ].map((text) => (
+        <li key={text} className="flex items-center gap-3">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            className="h-7 w-7 shrink-0"
+            aria-hidden="true"
+          >
+            <path
+              fill="#0092B8"
+              d="m12 1 3 2.2 3.7-.1 1.1 3.5 3.1 2.1-1.2 3.5
+                 1.2 3.5-3.1 2.1-1.1 3.5-3.7-.1L12 23l-3-2.2
+                 -3.7.1-1.1-3.5-3.1-2.1L2.3 12 1.1 8.5l3.1-2.1
+                 1.1-3.5 3.7.1Z"
+            />
+            <path
+              d="m7.5 12 3 3 6-6"
+              fill="none"
+              stroke="white"
+              strokeWidth="2.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
 
-  <p className="mt-4 text-lg font-bold text-white text-center">
-  Услуги сантехника и электрика. Мелкосрочные вызовы и другие бытовые услуги в Алматы.
-</p>
-
-
-  <div className="mt-10 grid grid-cols-3 gap-2 text-center">
-
-  {/* БЫСТРЫЙ ВЫЕЗД */}
-  <div className="flex flex-col items-center">
-    <img
-      src="/banner-fast.png"
-      alt="Быстрый выезд"
-      className="h-12 w-12 object-contain"
-    />
-    <p className="mt-3 text-base text-white">
-      Быстрый<br />выезд
-    </p>
+          <span>{text}</span>
+        </li>
+      ))}
+    </ul>
   </div>
 
-  {/* ГАРАНТИЯ */}
-  <div className="flex flex-col items-center border-x border-white/20">
-    <img
-      src="/banner-garantiya.png"
-      alt="Гарантия до 3 лет"
-      className="h-12 w-12 object-contain"
-    />
-    <p className="mt-3 text-base text-white">
-      Гарантия<br />до 3 лет
-    </p>
-    
-  </div>
+  <p className="mt-7 text-center text-lg leading-7">
+    Услуги сантехника и электрика в Алматы.
+    Ремонт, установка, прочистка канализации
+    и срочный вызов мастера.
+  </p>
 
-  {/* РАБОТАЕМ КАЖДЫЙ ДЕНЬ */}
-  <div className="flex flex-col items-center">
-    <img
-     src="/banner-everyday.png"
-      alt="Работаем каждый день"
-      className="h-12 w-12 object-contain"
-    />
-    <p className="mt-3 text-base text-white">
-      Работаем<br />каждый день
-    </p>
-    
-  </div>
-  
+  <style>{`
+    @keyframes homeCallButtonShine {
+      from { transform: translateX(0) skewX(-25deg); }
+      to { transform: translateX(1800%) skewX(-25deg); }
+    }
 
-</div>
-<p className="mt-5 px-5 text-center text-base leading-6 text-white">
-  В штате — квалифицированные мастера. Высокий уровень сервиса.
-  Предоставляем документы. Высокий рейтинг и доверие клиентов.
-</p>
+    .home-call-button-shine {
+      position: relative;
+      overflow: hidden;
+    }
 
+    .home-call-button-shine::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -25%;
+      width: 8%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+      );
+      animation: homeCallButtonShine 2.5s linear infinite;
+      pointer-events: none;
+    }
+  `}</style>
+
+  <a
+    href="tel:+77771696969"
+    className="home-call-button-shine mx-auto mt-10 flex max-w-sm items-center justify-center rounded-full bg-[#0092B8]/40 px-6 py-4 text-lg font-normal text-white"
+  >
+    Вызвать мастера
+  </a>
 </section>
 
 
@@ -156,193 +181,198 @@ export default function Home() {
   </div>
 </section>
 
-      <section id="services" className="bg-white py-16">
+    <section id="services" className="bg-white py-10 md:py-16">
   <div className="mx-auto max-w-7xl px-6">
-
+    {/* ЗАГОЛОВОК */}
     <div className="text-center">
-      <p className="font-bold uppercase text-blue-700">
+      <div className="mx-auto mb-3 h-1 w-16 rounded-full bg-[#FDC700] md:hidden" />
+
+      <p className="font-bold uppercase text-[#0092B8] md:text-blue-700">
         Наши услуги
       </p>
 
-      <h2 className="mt-2 text-3xl font-black text-slate-950 md:text-5xl">
-        Сервис бытовых услуг в Алматы
+      <h2 className="mt-2 text-3xl font-bold leading-tight text-slate-950 md:text-5xl md:font-black">
+        <span className="md:hidden">Какая помощь вам нужна?</span>
+        <span className="hidden md:inline">
+          Сервис бытовых услуг в Алматы
+        </span>
       </h2>
 
-      <div className="mx-auto mt-4 h-1 w-16 rounded bg-blue-700" />
+      <div className="mx-auto mt-4 hidden h-1 w-16 rounded bg-blue-700 md:block" />
     </div>
 
-    <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-
-      {/* САНТЕХНИК */}
-      <div className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-md transition hover:-translate-y-1 hover:shadow-xl">
-        <img
-          src="/gazovyi.png"
-          alt="Сантехник"
-          className="mx-auto h-20 w-20 object-contain"
-        />
-
-       <h3 className="mt-3 text-2xl font-black text-slate-950">
-          Сантехник
-        </h3>
-
-        <p className="mt-2 text-base leading-6 text-slate-600">
-          Все виды сантехнических работ любой сложности.
-        </p>
-
+    {/* УСЛУГИ — МОБИЛЬНАЯ ВЕРСИЯ */}
+    <div className="mt-6 space-y-4 md:hidden">
+      {[
+        {
+          icon: "/gazovyi.png",
+          title: "Сантехник",
+          text: "Установка и ремонт сантехники, устранение протечек.",
+          href: "/santehnik",
+        },
+        {
+          icon: "/electrik.png",
+          title: "Электрик",
+          text: "Монтаж и ремонт электрики, замена розеток и выключателей.",
+          href: "/elektrik",
+        },
+        {
+          icon: "/prochistka.png",
+          title: "Прочистка канализации",
+          text: "Устранение засоров в квартирах, домах и офисах.",
+          href: "/prochistka-kanalizacii",
+        },
+        {
+          icon: "/plotnik.png",
+          title: "Плотник",
+          text: "Изготовление и ремонт деревянных конструкций.",
+          href: "#contacts",
+        },
+      ].map(({ icon, title, text, href }) => (
         <a
-          href="/santehnik"
-          className="mt-6 inline-block rounded-xl border border-blue-700 px-6 py-3 font-bold text-blue-700 transition hover:bg-blue-700 hover:text-white"
+          key={title}
+          href={href}
+          className="grid grid-cols-[60px_minmax(0,1fr)] items-center gap-4"
         >
-          Подробнее →
-        </a>
-      </div>
+          <img
+            src={icon}
+            alt=""
+            className="h-[60px] w-[60px] object-contain"
+          />
 
-      {/* ЭЛЕКТРИК */}
-      <div className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-md transition hover:-translate-y-1 hover:shadow-xl">
-        <img
-          src="/electrik.png"
-          alt="Электрик"
-          className="mx-auto h-20 w-20 object-contain"
-        />
+          <div>
+           <h3 className="text-xl font-bold leading-tight text-[#0092B8] underline decoration-1 underline-offset-4">
+  {title}
+</h3>
 
-        <h3 className="mt-3 text-2xl font-black text-slate-950">
-          Электрик
-        </h3>
-
-       <p className="mt-2 text-base leading-6 text-slate-600">
-          Монтаж и ремонт электрики любой сложности.
-        </p>
-
-        <a
-          href="/elektrik"
-          className="mt-6 inline-block rounded-xl border border-blue-700 px-6 py-3 font-bold text-blue-700 transition hover:bg-blue-700 hover:text-white"
-        >
-          Подробнее →
-        </a>
-      </div>
-
-      {/* ПРОЧИСТКА */}
-      <div className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-md transition hover:-translate-y-1 hover:shadow-xl">
-        <img
-          src="/prochistka.png"
-          alt="Прочистка канализации"
-          className="mx-auto h-20 w-20 object-contain"
-        />
-
-       <h3 className="mt-3 text-2xl font-black text-slate-950">
-          Прочистка канализации
-        </h3>
-
-        <p className="mt-2 text-base leading-6 text-slate-600">
-          Прочистка засоров любой сложности. Быстро и чисто.
-        </p>
-
-        <a
-          href="/prochistka-kanalizacii"
-          className="mt-6 inline-block rounded-xl border border-blue-700 px-6 py-3 font-bold text-blue-700 transition hover:bg-blue-700 hover:text-white"
-        >
-          Подробнее →
-        </a>
-      </div>
-
-      {/* ПЛОТНИК */}
-      <div className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-md transition hover:-translate-y-1 hover:shadow-xl">
-        <img
-          src="/plotnik.png"
-          alt="Плотник"
-          className="mx-auto h-20 w-20 object-contain"
-        />
-
-        <h3 className="mt-3 text-2xl font-black text-slate-950">
-          Плотник
-        </h3>
-
-        <p className="mt-2 text-base leading-6 text-slate-600">
-          Изготовление и ремонт деревянных конструкций.
-        </p>
-
-        <a
-          href="#"
-          className="mt-6 inline-block rounded-xl border border-blue-700 px-6 py-3 font-bold text-blue-700 transition hover:bg-blue-700 hover:text-white"
-        >
-          Подробнее →
-        </a>
-      </div>
-   
-
-    </div>
-   <p className="mt-8 w-full text-center text-xl leading-8 text-slate-700">
-  <strong>Квалифицированные мастера</strong> с большим опытом работы.
-  Высокий уровень сервиса и профессиональный подход к каждому заказу.
-  Работаем аккуратно и ответственно. Предоставляем необходимые документы
-  и <strong>гарантию на выполненные работы</strong>.
-  Высокий рейтинг и доверие клиентов.
+<p className="mt-1 text-base leading-5 text-slate-700">
+  {text}
 </p>
 
-   {/* НИЖНЯЯ ПОЛОСА */}
-<div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-7 rounded-2xl bg-blue-800 px-4 py-6 text-white md:grid-cols-4 md:px-6">
-
-  {/* КЛИЕНТЫ */}
-  <div className="flex items-center justify-center gap-4">
-    <img
-      src="/clients.png"
-      alt="Довольные клиенты"
-      className="h-14 w-14 object-contain"
-    />
-    <div>
-      <div className="text-xl font-black md:text-3xl">1000+</div>
-      <div className="text-sm">довольных клиентов</div>
+<span className="mt-1 inline-flex items-center gap-1 text-sm text-[#0092B8]">
+  Подробнее
+  <span className="text-xs" aria-hidden="true">→</span>
+</span>
+          </div>
+        </a>
+      ))}
     </div>
-  </div>
 
-  {/* ВЫЕЗД */}
-  <div className="flex items-center justify-center gap-4">
-    <img
-      src="/time.png"
-      alt="Срочный выезд"
-      className="h-14 w-14 object-contain"
-    />
-    <div>
-      <div className="text-[20px] font-black leading-tight md:text-3xl">
-  30–45 мин
-</div>
-      <div className="text-sm">срочный выезд</div>
+    {/* УСЛУГИ — КОМПЬЮТЕР */}
+    <div className="mt-10 hidden gap-6 md:grid md:grid-cols-2 lg:grid-cols-4">
+      {[
+        {
+          icon: "/gazovyi.png",
+          title: "Сантехник",
+          text: "Все виды сантехнических работ любой сложности.",
+          href: "/santehnik",
+        },
+        {
+          icon: "/electrik.png",
+          title: "Электрик",
+          text: "Монтаж и ремонт электрики любой сложности.",
+          href: "/elektrik",
+        },
+        {
+          icon: "/prochistka.png",
+          title: "Прочистка канализации",
+          text: "Прочистка засоров любой сложности. Быстро и чисто.",
+          href: "/prochistka-kanalizacii",
+        },
+        {
+          icon: "/plotnik.png",
+          title: "Плотник",
+          text: "Изготовление и ремонт деревянных конструкций.",
+          href: "#",
+        },
+      ].map(({ icon, title, text, href }) => (
+        <div
+          key={title}
+          className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-md transition hover:-translate-y-1 hover:shadow-xl"
+        >
+          <img
+            src={icon}
+            alt={title}
+            className="mx-auto h-20 w-20 object-contain"
+          />
+
+          <h3 className="mt-2 text-xl font-bold text-slate-950">
+            {title}
+          </h3>
+
+          <p className="mt-2 text-base leading-6 text-slate-600">
+            {text}
+          </p>
+
+          <a
+            href={href}
+            className="mt-3 inline-block text-sm font-medium text-[#0092B8] transition hover:underline"
+          >
+            Подробнее →
+          </a>
+        </div>
+      ))}
     </div>
-  </div>
+    
+      {/* КНОПКИ — МОБИЛЬНАЯ ВЕРСИЯ */}
+<div className="mt-8 grid gap-3 md:hidden">
+  <a
+    href="/nashi-raboty"
+    className="rounded-full bg-[#0092B8] px-6 py-4 text-center font-bold text-white"
+  >
+    Наши работы →
+  </a>
 
-  {/* ГАРАНТИЯ */}
-  <div className="flex items-center justify-center gap-4">
-    <img
-      src="/guarantee.png"
-      alt="Гарантия"
-      className="h-14 w-14 object-contain"
-    />
-    <div>
-      <div className="text-[20px] font-black leading-tight md:text-3xl">
-  до 3 лет
+  <a
+    href="/otzyvy"
+    className="rounded-full bg-[#FDC700] px-6 py-4 text-center font-bold text-[#171717]"
+  >
+    Читать отзывы →
+  </a>
 </div>
-      <div className="text-sm">гарантия на работы</div>
-    </div>
-  </div>
 
-  {/* КАЛЕНДАРЬ */}
-  <div className="flex items-center justify-center gap-4">
-    <img
-      src="/calendar.png"
-      alt="Работаем без выходных"
-      className="h-14 w-14 object-contain"
-    />
-    <div>
-      <div className="text-[20px] font-black leading-tight md:text-3xl">
-  7 дней
-</div>
-      <div className="text-sm">работаем без выходных</div>
-    </div>
-  </div>
+    <p className="mt-8 w-full text-center text-xl leading-8 text-slate-700">
+      <strong>Квалифицированные мастера</strong> с большим опытом работы.
+      Высокий уровень сервиса и профессиональный подход к каждому заказу.
+      Работаем аккуратно и ответственно. Предоставляем необходимые документы
+      и <strong>гарантию на выполненные работы</strong>.
+      Высокий рейтинг и доверие клиентов.
+    </p>
 
+    {/* ПОКАЗАТЕЛИ */}
+<div className="mt-10 rounded-xl bg-[#F7F8F8] px-5 py-5 md:bg-[#0092B8] md:px-6 md:py-6">
+  <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+    {[
+      ["/clients.png", "1000+", "довольных клиентов"],
+      ["/time.png", "30–45 мин", "срочный выезд"],
+      ["/guarantee.png", "до 3 лет", "гарантия на работы"],
+      ["/calendar.png", "7 дней", "работаем без выходных"],
+    ].map(([icon, number, caption]) => (
+      <div
+        key={icon}
+        className="md:flex md:items-center md:justify-center md:gap-4"
+      >
+        <img
+          src={icon}
+          alt=""
+          className="hidden h-14 w-14 object-contain md:block"
+        />
+
+        <div>
+          <div className="text-4xl font-semibold leading-tight text-[#0092B8] md:text-3xl md:font-black md:text-white">
+            {number}
+          </div>
+
+          <p className="mt-1 text-sm leading-5 text-slate-700 md:mt-0 md:text-white">
+            {caption}
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
 </div>
-</div>
-</section>/
+  </div>
+</section> 
 
       <section id="about" className="bg-slate-100 py-20 text-slate-900">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-2">

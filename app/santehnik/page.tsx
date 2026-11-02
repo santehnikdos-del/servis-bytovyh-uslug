@@ -28,7 +28,7 @@ export default function SantehnikPage() {
 
 <div
   className="mx-auto mt-6 flex w-fit max-w-full items-center justify-center gap-4"
-  style={{ position: "relative", left: "0px" }}
+  style={{ position: "relative", left: "0px" }}ё
 ><ul className="flex flex-col gap-3 text-left">
   {[
     "Быстрый выезд",
