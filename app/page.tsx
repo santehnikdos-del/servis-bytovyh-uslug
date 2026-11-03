@@ -105,80 +105,176 @@ export default function Home() {
 
       {/* ================= ПЕРВЫЙ ЭКРАН ================= */}
 <section
-  className="hidden md:block relative min-h-[535px] overflow-hidden bg-[length:170%_auto] bg-[position:220%_0] bg-no-repeat md:bg-[length:100%_auto] md:bg-[position:center_0]"
+  className="relative hidden h-[490px] overflow-hidden text-white md:block"
+  style={{ backgroundColor: "#281E12" }}
+>  {/* ФОТО СПРАВА */}
+  <div className="absolute inset-y-0 right-0 w-[53%]">
+    <img
+      src="/banner-master.jpg"
+      alt="Мастер сервиса бытовых услуг"
+      className="h-full w-full object-cover object-[60%_center]"
+    />
+
+    {/* ПЛАВНЫЙ КРАЙ */}
+    <div
+  aria-hidden="true"
+  className="pointer-events-none absolute inset-y-0 -left-px w-[240px]"
   style={{
-    backgroundImage: "url('/master.jpg')",
-    backgroundPosition: "center 0px",
+    background:
+      "linear-gradient(to right, #281E12 0%, transparent 100%)",
   }}
->
-  {/* ЗАТЕМНЕНИЕ */}
-  <div className="absolute inset-0 bg-black/20" />
-
-  <div className="relative z-10 mx-auto flex min-h-[535px] max-w-7xl items-start px-6 pb-8 pt-8">
-    <div className="max-w-5xl">
-
-      <p className="font-bold text-yellow-400">
-        Выезд мастера по Алматы
-      </p>
-
-      <h1 className="mt-0 text-5xl font-black leading-tight text-white md:text-7xl">
-        Сервис бытовых услуг
-      </h1>
-
-      <p className="mt-6 max-w-2xl text-xl leading-8 text-slate-100">
-        Сантехник, электрик и другие бытовые услуги в Алматы.
-        Ремонт, установка, прочистка канализации и срочный выезд мастера.
-      </p>
-
-      {/* КНОПКИ */}
-      <div className="mt-8 flex flex-wrap gap-4">
-        <a
-          href="tel:+77771696969"
-          className="rounded-full bg-yellow-400 px-8 py-4 text-lg font-black text-slate-950 shadow-xl transition hover:-translate-y-1 hover:bg-yellow-300"
-        >
-          📞 Позвонить
-        </a>
-
-        <a
-          href="https://wa.me/77771696969"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full bg-green-500 px-8 py-4 text-lg font-black text-white shadow-xl transition hover:-translate-y-1 hover:bg-green-600"
-        >
-          WhatsApp
-        </a>
-      </div>
-
-      {/* ПРЕИМУЩЕСТВА */}
-      <div className="mt-5 grid grid-cols-2 gap-y-10 md:grid-cols-4 md:gap-0">
-        {[
-  ["/banner-everyday.png", "Работаем", "каждый день"],
-  ["/banner-fast.png", "Быстрый", "выезд"],
-  ["/banner-garantiya.png", "Гарантия", "до 3 лет"],
-  ["/banner-master.png", "Опытные", "мастера"],
-].map(([icon, line1, line2]) => (
-          <div
-            key={line1}
-            className="flex flex-col items-center justify-center text-center md:border-r md:border-white/20 md:last:border-r-0"
-          >
-            <div className="mb-4 flex h-14 items-center justify-center">
-  <img
-    src={icon}
-    alt=""
-    className="h-12 w-12 object-contain"
-  />
-</div>
-            <p className="text-lg font-black text-white">
-              {line1}
-              <br />
-              {line2}
-            </p>
-          </div>
-        ))}
-      </div>
-
-    </div>
+/>
   </div>
+
+  {/* ТЕКСТ СЛЕВА */}
+<div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6">
+  <div className="relative w-[47%]">
+    <h1 className="relative -top-7 text-5xl font-bold uppercase leading-[1.05] lg:text-[64px]">
+      Сервис
+      <span className="block text-[#FDC700]">
+        бытовых услуг
+      </span>
+    </h1>
+
+    <p className="mt-4 text-lg leading-7 text-white/85">
+      <span className="block whitespace-nowrap">
+        Сантехник, электрик и другие бытовые услуги в Алматы.
+      </span>
+      <span className="block whitespace-nowrap">
+        Ремонт, установка и прочистка канализации.
+      </span>
+    </p>
+
+    <div className="mt-8 flex gap-3">
+  <a
+  href="tel:+77771696969"
+  className="home-call-button-shine inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-[#0092B8]/80 px-6 text-xl font-normal text-white transition hover:bg-[#007D9E]"
+>
+  Вызвать мастера
+</a>
+
+  <div className="relative shrink-0">
+  <a
+    href="https://wa.me/77771696969"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-white px-6 text-xl font-normal text-[#292929] transition hover:bg-gray-100"
+  >
+    Написать в WhatsApp
+  </a>
+
+  {/* КОЛЬЦО И БИРКА */}
+<div className="pointer-events-none absolute left-[calc(100%-6px)] top-1/2 z-20 h-0 w-0">
+  <div className="home-discount-hanging absolute left-0 top-0">
+    <img
+      src="/discount-15.png"
+      alt="Скидка 15% на все услуги"
+      className="absolute left-0 top-[-47px] h-auto w-[180px] max-w-none drop-shadow-[0_5px_7px_rgba(0,0,0,0.25)]"
+    />
+
+    <svg
+      width="30"
+      height="20"
+      viewBox="0 0 30 20"
+      aria-hidden="true"
+      className="absolute -left-[9px] -top-[10px] z-10"
+    >
+      <ellipse
+        cx="15"
+        cy="10"
+        rx="12"
+        ry="7"
+        fill="none"
+        stroke="#64748B"
+        strokeWidth="4"
+      />
+      <ellipse
+        cx="15"
+        cy="9"
+        rx="12"
+        ry="7"
+        fill="none"
+        stroke="#E2E8F0"
+        strokeWidth="2"
+      />
+    </svg>
+  </div>
+</div>
+</div>
+</div>
+
+<ul className="mt-10 flex w-max items-center gap-5 text-base">
+  {[
+    "Быстрый выезд",
+    "Гарантия до 3 лет",
+    "Работаем каждый день",
+  ].map((text) => (
+<li key={text} className="flex shrink-0 items-center gap-2 whitespace-nowrap">      <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        className="home-check-icon h-7 w-7 shrink-0"
+      >
+        <path
+          fill="#0092B8"
+          d="M12 1 15 3 19 3 20 7 23 10 21 14 21 18 17 20 14 23 10 21 6 21 4 17 1 14 3 10 3 6 7 4Z"
+        />
+        <path
+          className="home-check-line"
+          pathLength="1"
+          d="m7 12 3 3 7-7"
+          fill="none"
+          stroke="white"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+      {text}
+    </li>
+  ))}
+</ul>
+
+<style>{`
+  @keyframes homeDiscountSwing {
+    0%, 100% { transform: rotate(-4deg); }
+    50% { transform: rotate(4deg); }
+  }
+
+  .home-discount-hanging {
+    transform-origin: 0 0;
+    animation: homeDiscountSwing 3s ease-in-out infinite;
+  }
+
+  @keyframes homeCheckAppear {
+    from { opacity: 0; transform: scale(0.75); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes homeCheckDraw {
+    from { stroke-dashoffset: 1; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  .home-check-icon {
+    animation: homeCheckAppear 0.45s ease-out both;
+  }
+
+  .home-check-line {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+    animation: homeCheckDraw 2s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-discount-hanging,
+    .home-check-icon,
+    .home-check-line {
+      animation: none;
+    }
+  }
+`}</style>
+  </div>
+</div>
 </section>
 
     <section id="services" className="bg-white py-10 md:py-16">
@@ -187,18 +283,13 @@ export default function Home() {
     <div className="text-center">
       <div className="mx-auto mb-3 h-1 w-16 rounded-full bg-[#FDC700] md:hidden" />
 
-      <p className="font-bold uppercase text-[#0092B8] md:text-blue-700">
-        Наши услуги
-      </p>
 
-      <h2 className="mt-2 text-3xl font-bold leading-tight text-slate-950 md:text-5xl md:font-black">
-        <span className="md:hidden">Какая помощь вам нужна?</span>
+<h2 className="mt-0 text-3xl font-bold leading-tight text-[#0092B8] md:text-[54px] md:font-black">        <span className="md:hidden">Какая помощь вам нужна?</span>
         <span className="hidden md:inline">
           Сервис бытовых услуг в Алматы
         </span>
       </h2>
 
-      <div className="mx-auto mt-4 hidden h-1 w-16 rounded bg-blue-700 md:block" />
     </div>
 
     {/* УСЛУГИ — МОБИЛЬНАЯ ВЕРСИЯ */}
@@ -374,24 +465,8 @@ export default function Home() {
   </div>
 </section> 
 
-      <section id="about" className="bg-slate-100 py-20 text-slate-900">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-2">
-          <div>
-            <p className="font-bold text-blue-600">О нас</p>
-            <h2 className="mt-2 text-4xl font-black">
-              Работаем по Алматы каждый день
-            </h2>
-          </div>
-
-          <p className="mt-6 text-lg leading-9 text-slate-600">
-  Выполняем сантехнические, электрические и другие бытовые работы в Алматы.
-  Работаем с квартирами, домами и коммерческими помещениями.
-  Заранее согласовываем стоимость, приезжаем в удобное время
-  и оставляем после себя порядок.
-</p>
-        </div>
-      </section>
-      <section className="bg-sky-700 py-16 text-white">
+      
+      <section className="bg-[#0092B8] py-16 text-white">
   <div className="mx-auto max-w-7xl px-6">
 
     <div className="text-center">
@@ -408,14 +483,14 @@ export default function Home() {
 
       {/* РАЙОНЫ */}
       <div className="space-y-3 text-lg font-medium">
-        <p>✓ Алмалинский район</p>
-        <p>✓ Медеуский район</p>
-        <p>✓ Бостандыкский район</p>
-        <p>✓ Ауэзовский район</p>
-        <p>✓ Турксибский район</p>
-        <p>✓ Наурызбайский район</p>
-        <p>✓ Алатауский район</p>
-        <p>✓ Жетысуский район</p>
+        <p>✓ <span className="underline underline-offset-4 transition-colors duration-200 hover:text-[#FDC700]">Алмалинский район</span></p>
+<p>✓ <span className="underline underline-offset-4 transition-colors duration-200 hover:text-[#FDC700]">Медеуский район</span></p>
+<p>✓ <span className="underline underline-offset-4 transition-colors duration-200 hover:text-[#FDC700]">Бостандыкский район</span></p>
+<p>✓ <span className="underline underline-offset-4 transition-colors duration-200 hover:text-[#FDC700]">Ауэзовский район</span></p>
+<p>✓ <span className="underline underline-offset-4 transition-colors duration-200 hover:text-[#FDC700]">Турксибский район</span></p>
+<p>✓ <span className="underline underline-offset-4 transition-colors duration-200 hover:text-[#FDC700]">Наурызбайский район</span></p>
+<p>✓ <span className="underline underline-offset-4 transition-colors duration-200 hover:text-[#FDC700]">Алатауский район</span></p>
+<p>✓ <span className="underline underline-offset-4 transition-colors duration-200 hover:text-[#FDC700]">Жетысуский район</span></p>
 
         <div className="mt-6 rounded-xl bg-white/10 p-4">
           Быстрый выезд мастера в ваш район.
@@ -443,192 +518,79 @@ export default function Home() {
   <div className="mx-auto max-w-7xl px-6">
 
     {/* ЗАГОЛОВОК */}
-    <div className="mx-auto max-w-3xl text-center">
-      <p className="font-bold uppercase tracking-widest text-blue-600">
-        Наши преимущества
-      </p>
+<div className="mx-auto max-w-3xl text-center">
+  <h2 className="text-3xl font-black text-[#0092B8] md:text-[54px]">
+    Наши преимущества
+  </h2>
+</div>
 
-      <h2 className="mt-2 text-3xl font-black text-slate-950 md:text-4xl">
-        Почему выбирают наш Сервис бытовых услуг
-      </h2>
-
-      <div className="mx-auto mt-5 flex w-24 justify-center gap-2">
-        <span className="h-1 w-12 rounded-full bg-yellow-400"></span>
-        <span className="h-1 w-8 rounded-full bg-blue-600"></span>
-      </div>
-    </div>
-
-    {/* КАРТОЧКИ */}
+        {/* КАРТОЧКИ */}
     <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {[
+        {
+          icon: "/professional.png",
+          title: "Опытные мастера",
+          text: "Квалифицированные специалисты с большим опытом работы.",
+        },
+        {
+          icon: "/fast-vyezd.png",
+          title: "Быстрый выезд",
+          text: "При срочном вызове мастер может приехать в течение 30–45 минут.",
+        },
+        {
+          icon: "/garantiya.png",
+          title: "Гарантия на работы",
+          text: "Предоставляем гарантию на выполненные работы.",
+        },
+        {
+          icon: "/almaty.png",
+          title: "Работаем по всему Алматы",
+          text: "Выезжаем во все районы города и ближайший пригород.",
+        },
+        {
+          icon: "/chistota.png",
+          title: "Чистота после работы",
+          text: "Работаем аккуратно и оставляем после себя порядок.",
+        },
+        {
+          icon: "/economiya-vremeni.png",
+          title: "Экономия времени",
+          text: "Быстро определяем неисправность и приступаем к работе.",
+        },
+        {
+          icon: "/bez-vyhodnyh.png",
+          title: "Работаем без выходных",
+          text: "Принимаем заявки ежедневно, включая выходные и праздничные дни.",
+        },
+        {
+          icon: "/ceny.png",
+          title: "Доступные цены",
+          text: "Стоимость работ согласовываем с клиентом до начала выполнения.",
+        },
+      ].map((item) => (
+        <div
+          key={item.title}
+          className="group relative rounded-3xl border border-slate-100 bg-white px-6 py-3 text-center shadow-md transition-all duration-300 hover:-translate-y-2 hover:border-blue-300 hover:shadow-xl"
+        >
+          <div className="absolute left-4 top-4 h-10 w-10 rounded-tl-xl border-l-4 border-t-4 border-yellow-400"></div>
 
-      {/* 1 */}
-      <div className="group relative rounded-3xl bg-white px-6 py-8 text-center shadow-md border border-slate-100 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-blue-300">
-        <div className="absolute left-4 top-4 h-10 w-10 rounded-tl-xl border-l-4 border-t-4 border-yellow-400"></div>
+          <img
+            src={item.icon}
+            alt={item.title}
+            className="mx-auto h-20 w-20 object-contain transition-transform duration-300 group-hover:scale-110"
+          />
 
-        <img
-          src="/professional.png"
-          alt="Опытные мастера"
-          className="mx-auto h-24 w-24 object-contain transition-transform duration-300 group-hover:scale-110"
-        />
+          <h3 className="mt-2 text-xl font-black text-slate-950">
+            {item.title}
+          </h3>
 
-        <h3 className="mt-5 text-xl font-black text-slate-950">
-          Опытные мастера
-        </h3>
+          <div className="mx-auto my-2 h-1 w-10 rounded-full bg-[#0092B8]"></div>
 
-        <div className="mx-auto my-4 h-1 w-10 rounded-full bg-blue-600"></div>
-
-        <p className="leading-7 text-slate-600">
-          Квалифицированные специалисты с большим опытом работы.
-        </p>
-      </div>
-
-      {/* 2 */}
-      <div className="group relative rounded-3xl bg-white px-6 py-8 text-center shadow-md border border-slate-100 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-blue-300">
-        <div className="absolute left-4 top-4 h-10 w-10 rounded-tl-xl border-l-4 border-t-4 border-yellow-400"></div>
-
-        <img
-          src="/fast-vyezd.png"
-          alt="Быстрый выезд"
-          className="mx-auto h-24 w-24 object-contain transition-transform duration-300 group-hover:scale-110"
-        />
-
-        <h3 className="mt-5 text-xl font-black text-slate-950">
-          Быстрый выезд
-        </h3>
-
-        <div className="mx-auto my-4 h-1 w-10 rounded-full bg-blue-600"></div>
-
-        <p className="leading-7 text-slate-600">
-          При срочном вызове мастер может приехать в течение 30–45 минут.
-        </p>
-      </div>
-
-      {/* 3 */}
-      <div className="group relative rounded-3xl bg-white px-6 py-8 text-center shadow-md border border-slate-100 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-blue-300">
-        <div className="absolute left-4 top-4 h-10 w-10 rounded-tl-xl border-l-4 border-t-4 border-yellow-400"></div>
-
-        <img
-          src="/garantiya.png"
-          alt="Гарантия на работы"
-          className="mx-auto h-24 w-24 object-contain transition-transform duration-300 group-hover:scale-110"
-        />
-
-        <h3 className="mt-5 text-xl font-black text-slate-950">
-          Гарантия на работы
-        </h3>
-
-        <div className="mx-auto my-4 h-1 w-10 rounded-full bg-blue-600"></div>
-
-        <p className="leading-7 text-slate-600">
-          Предоставляем гарантию на выполненные работы.
-        </p>
-      </div>
-
-      {/* 4 */}
-      <div className="group relative rounded-3xl bg-white px-6 py-8 text-center shadow-md border border-slate-100 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-blue-300">
-        <div className="absolute left-4 top-4 h-10 w-10 rounded-tl-xl border-l-4 border-t-4 border-yellow-400"></div>
-
-        <img
-          src="/almaty.png"
-          alt="Работаем по всему Алматы"
-          className="mx-auto h-24 w-24 object-contain transition-transform duration-300 group-hover:scale-110"
-        />
-
-        <h3 className="mt-5 text-xl font-black text-slate-950">
-          Работаем по всему Алматы
-        </h3>
-
-        <div className="mx-auto my-4 h-1 w-10 rounded-full bg-blue-600"></div>
-
-        <p className="leading-7 text-slate-600">
-          Выезжаем во все районы города и ближайший пригород.
-        </p>
-      </div>
-
-      {/* 5 */}
-      <div className="group relative rounded-3xl bg-white px-6 py-8 text-center shadow-md border border-slate-100 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-blue-300">
-        <div className="absolute left-4 top-4 h-10 w-10 rounded-tl-xl border-l-4 border-t-4 border-yellow-400"></div>
-
-        <img
-          src="/chistota.png"
-          alt="Чистота после работы"
-         className="mx-auto h-24 w-24 object-contain transition-transform duration-300 group-hover:scale-110"
-        />
-
-        <h3 className="mt-5 text-xl font-black text-slate-950">
-          Чистота после работы
-        </h3>
-
-        <div className="mx-auto my-4 h-1 w-10 rounded-full bg-blue-600"></div>
-
-        <p className="leading-7 text-slate-600">
-          Работаем аккуратно и оставляем после себя порядок.
-        </p>
-      </div>
-
-      {/* 6 */}
-      <div className="group relative rounded-3xl bg-white px-6 py-8 text-center shadow-md border border-slate-100 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-blue-300">
-        <div className="absolute left-4 top-4 h-10 w-10 rounded-tl-xl border-l-4 border-t-4 border-yellow-400"></div>
-
-        <img
-          src="/economiya-vremeni.png"
-          alt="Экономия времени"
-         className="mx-auto h-24 w-24 object-contain transition-transform duration-300 group-hover:scale-110"
-        />
-
-        <h3 className="mt-5 text-xl font-black text-slate-950">
-          Экономия времени
-        </h3>
-
-        <div className="mx-auto my-4 h-1 w-10 rounded-full bg-blue-600"></div>
-
-        <p className="leading-7 text-slate-600">
-          Быстро определяем неисправность и приступаем к работе.
-        </p>
-      </div>
-
-      {/* 7 */}
-      <div className="group relative rounded-3xl bg-white px-6 py-8 text-center shadow-md border border-slate-100 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-blue-300">
-        <div className="absolute left-4 top-4 h-10 w-10 rounded-tl-xl border-l-4 border-t-4 border-yellow-400"></div>
-
-        <img
-          src="/bez-vyhodnyh.png"
-          alt="Работаем без выходных"
-          className="mx-auto h-24 w-24 object-contain transition-transform duration-300 group-hover:scale-110"
-        />
-
-        <h3 className="mt-5 text-xl font-black text-slate-950">
-          Работаем без выходных
-        </h3>
-
-        <div className="mx-auto my-4 h-1 w-10 rounded-full bg-blue-600"></div>
-
-        <p className="leading-7 text-slate-600">
-          Принимаем заявки ежедневно, включая выходные и праздничные дни.
-        </p>
-      </div>
-
-      {/* 8 */}
-      <div className="group relative rounded-3xl bg-white px-6 py-8 text-center shadow-md border border-slate-100 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-blue-300">
-        <div className="absolute left-4 top-4 h-10 w-10 rounded-tl-xl border-l-4 border-t-4 border-yellow-400"></div>
-
-        <img
-          src="/ceny.png"
-          alt="Доступные цены"
-          className="mx-auto h-24 w-24 object-contain transition-transform duration-300 group-hover:scale-110"
-        />
-
-        <h3 className="mt-5 text-xl font-black text-slate-950">
-          Доступные цены
-        </h3>
-
-        <div className="mx-auto my-4 h-1 w-10 rounded-full bg-blue-600"></div>
-
-        <p className="leading-7 text-slate-600">
-          Стоимость работ согласовываем с клиентом до начала выполнения.
-        </p>
-      </div>
-
+          <p className="leading-7 text-slate-600">
+            {item.text}
+          </p>
+        </div>
+      ))}
     </div>
   </div>
 </section>
@@ -637,12 +599,10 @@ export default function Home() {
      {/* ПРИЗЫВ К ДЕЙСТВИЮ */}
 <section
   id="contacts"
-  className="py-16"
-  style={{ backgroundColor: "#1263ae" }}
+  className="bg-[#0092B8] py-16"
 >
   <div className="mx-auto max-w-5xl px-6 text-center">
-
-    <p className="font-bold uppercase tracking-wider text-yellow-400">
+    <p className="font-bold uppercase tracking-wider text-[#FDC700]">
       Сервис бытовых услуг
     </p>
 
@@ -650,35 +610,72 @@ export default function Home() {
       Нужен мастер?
     </h2>
 
-    <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-slate-300">
+    <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-white/90">
       Позвоните или напишите нам в WhatsApp. Уточним задачу,
       согласуем стоимость и удобное время выезда мастера.
     </p>
 
-    <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-
+    <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
       <a
         href="tel:+77771696969"
-        className="rounded-full bg-yellow-400 px-8 py-4 text-lg font-black text-slate-950 shadow-lg transition hover:scale-105 hover:bg-yellow-300"
+        className="home-call-button-shine inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-[#007D9E] ring-1 ring-white/30 px-6 text-xl font-normal text-white transition hover:bg-[#007D9E]"
       >
-        ☎ Позвонить
+        Вызвать мастера
       </a>
 
-      <a
-        href="https://wa.me/77771696969"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="rounded-full bg-green-500 px-8 py-4 text-lg font-black text-white shadow-lg transition hover:scale-105 hover:bg-green-400"
-      >
-        WhatsApp
-      </a>
+      <div className="relative shrink-0">
+        <a
+          href="https://wa.me/77771696969"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-white px-6 text-xl font-normal text-[#292929] transition hover:bg-gray-100"
+        >
+          Написать в WhatsApp
+        </a>
 
+        {/* КОЛЬЦО И БИРКА */}
+        <div className="pointer-events-none absolute left-[calc(100%-6px)] top-1/2 z-20 hidden h-0 w-0 md:block">
+          <div className="home-discount-hanging absolute left-0 top-0">
+            <img
+              src="/discount-15.png"
+              alt="Скидка 15% на все услуги"
+              className="absolute left-0 top-[-47px] h-auto w-[180px] max-w-none drop-shadow-[0_5px_7px_rgba(0,0,0,0.25)]"
+            />
+
+            <svg
+              width="30"
+              height="20"
+              viewBox="0 0 30 20"
+              aria-hidden="true"
+              className="absolute -left-[9px] -top-[10px] z-10"
+            >
+              <ellipse
+                cx="15"
+                cy="10"
+                rx="12"
+                ry="7"
+                fill="none"
+                stroke="#64748B"
+                strokeWidth="4"
+              />
+              <ellipse
+                cx="15"
+                cy="9"
+                rx="12"
+                ry="7"
+                fill="none"
+                stroke="#E2E8F0"
+                strokeWidth="2"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <p className="mt-6 text-sm text-slate-500">
+    <p className="mt-6 text-sm text-white/80">
       Работаем ежедневно по Алматы
     </p>
-
   </div>
 </section>
 {/* FAQ */}

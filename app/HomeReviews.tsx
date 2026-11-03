@@ -68,13 +68,13 @@ export default function HomeReviews() {
   const average = total / reviews.length;
 
   return (
-    <section className="bg-slate-50 py-16">
+    <section id="reviews" className="bg-slate-50 py-16">
       <div className="mx-auto max-w-5xl px-6">
-        <h2 className="text-center text-3xl font-black text-slate-950 md:text-4xl">
+        <h2 className="text-center text-3xl font-black text-[#0092B8] md:text-[54px]">
           Отзывы клиентов
         </h2>
 
-        <div className="mt-10 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+        <div className="mt-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-lg text-slate-600">
               На сайте{" "}
@@ -88,18 +88,27 @@ export default function HomeReviews() {
               <span className="text-2xl font-black text-slate-900">
                 {average.toFixed(1)}
               </span>
-              <span className="ml-3 text-yellow-400">
+              <span className="ml-3 text-[#FDC700]">
                 ★★★★★
               </span>
             </p>
           </div>
 
-          <a
-            href="/otzyvy"
-            className="font-bold text-blue-600 hover:text-blue-700"
-          >
-            Все отзывы →
-          </a>
+          <div className="flex flex-wrap items-center gap-5">
+            <a
+              href="/otzyvy"
+              className="font-bold text-[#0092B8] hover:underline"
+            >
+              Все отзывы →
+            </a>
+
+            <a
+              href="/otzyvy"
+              className="inline-flex items-center justify-center rounded-full bg-[#FDC700] px-6 py-3 font-medium text-slate-950 transition hover:bg-[#edba00]"
+            >
+              Оставить отзыв
+            </a>
+          </div>
         </div>
 
         <div className="mt-8 space-y-5">
@@ -109,12 +118,12 @@ export default function HomeReviews() {
               className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
             >
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center gap-3">
                   <h3 className="text-xl font-black">
                     {review.name}
                   </h3>
 
-                  <span className="text-yellow-400">
+                  <span className="text-[#FDC700]">
                     {"★".repeat(review.rating)}
                     <span className="text-slate-300">
                       {"★".repeat(5 - review.rating)}
