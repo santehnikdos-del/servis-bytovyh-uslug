@@ -4,721 +4,762 @@ import Footer from "../Footer";
 export const metadata = {
   title:
     "Прочистка канализации Алматы – устранение засоров | Сервис бытовых услуг",
-
   description:
     "Прочистка канализации в Алматы. Устранение засоров труб, раковин, унитазов и стояков. Быстрый выезд мастера по Алматы.",
-
   alternates: {
-    canonical: "https://www.home-services.kz/prochistka-kanalizacii",
+    canonical: "https://home-services.kz/prochistka-kanalizacii",
   },
 };
 
+const services = [
+  {
+    title: "Прочистка труб",
+    text: "Устраняем засоры и восстанавливаем нормальный слив воды.",
+    href: "/prochistka-trub",
+  },
+  {
+    title: "Прочистка раковины",
+    text: "Быстро устраняем засор в раковине и проверяем слив.",
+    href: "/prochistka-rakoviny",
+  },
+  {
+    title: "Прочистка унитаза",
+    text: "Устраняем сложные засоры и восстанавливаем работу унитаза.",
+    href: "/prochistka-unitaza",
+  },
+  {
+    title: "Прочистка стояка",
+    text: "Прочищаем канализационные стояки в квартирах, домах и офисах.",
+    href: "/prochistka-stoyaka",
+  },
+  {
+    title: "Прочистка аппаратом",
+    text: "Используем профессиональное оборудование для сложных засоров.",
+    href: "/prochistka-apparatom",
+  },
+  {
+    title: "Гидродинамическая прочистка",
+    text: "Промываем трубы водой под высоким давлением и удаляем загрязнения.",
+    href: "/gidrodinamicheskaya-prochistka",
+  },
+];
+
+const prices = [
+  ["Прочистка раковины", "от 15 000 ₸"],
+  ["Прочистка унитаза", "от 15 000 ₸"],
+  ["Прочистка труб", "от 15 000 ₸"],
+  ["Прочистка стояка", "от 20 000 ₸"],
+  ["Прочистка канализации аппаратом", "от 20 000 ₸"],
+  ["Гидродинамическая прочистка", "от 30 000 ₸"],
+];
+
+const advantages = [
+  ["15+ лет опыта", "Большой опыт устранения засоров."],
+  ["Выезд 30–45 минут", "Быстро выезжаем по Алматы."],
+  [
+    "Профессиональное оборудование",
+    "Используем оборудование для сложных засоров.",
+  ],
+  ["Свои мастера", "Работаем своей командой специалистов."],
+  ["Цена заранее", "Согласовываем стоимость до начала работ."],
+  ["Без выходных", "Принимаем заявки каждый день."],
+];
+
+const steps = [
+  ["01", "Заявка", "Позвоните или напишите нам в WhatsApp."],
+  [
+    "02",
+    "Уточняем проблему",
+    "Уточняем место и характер засора.",
+  ],
+  [
+    "03",
+    "Выезд мастера",
+    "Мастер приезжает с необходимым оборудованием.",
+  ],
+  [
+    "04",
+    "Прочистка",
+    "Устраняем засор и проверяем работу канализации.",
+  ],
+];
+
+const reviews = [
+  [
+    "Айдар",
+    "Был сильный засор на кухне. Мастер приехал и быстро прочистил трубу.",
+  ],
+  [
+    "Динара",
+    "Прочистили канализацию аппаратом. Вода теперь уходит нормально.",
+  ],
+  [
+    "Марат",
+    "Мастер приехал вовремя, устранил засор и всё проверил.",
+  ],
+  [
+    "Алия",
+    "Быстро прочистили засор в раковине. Работой довольна.",
+  ],
+  [
+    "Руслан",
+    "Обратились из-за засора стояка. Проблему устранили в тот же день.",
+  ],
+  [
+    "Сауле",
+    "Хороший сервис. Мастер аккуратно выполнил прочистку канализации.",
+  ],
+];
+
+const questions = [
+  [
+    "Сколько стоит прочистка канализации?",
+    "Стоимость зависит от сложности засора, длины труб и способа прочистки.",
+  ],
+  [
+    "Как быстро приедет мастер?",
+    "По Алматы стараемся приезжать максимально быстро.",
+  ],
+  [
+    "Каким оборудованием вы прочищаете канализацию?",
+    "Используем профессиональное оборудование в зависимости от типа и сложности засора.",
+  ],
+  [
+    "Можно ли устранить сложный засор?",
+    "Да, подбираем подходящий способ прочистки после оценки причины и места засора.",
+  ],
+  [
+    "Делаете гидродинамическую прочистку?",
+    "Да, выполняем гидродинамическую промывку канализационных труб.",
+  ],
+  [
+    "Работаете ли в выходные?",
+    "Да, принимаем заявки каждый день.",
+  ],
+];
+
+const districts = [
+  "Алатауский район",
+  "Алмалинский район",
+  "Ауэзовский район",
+  "Бостандыкский район",
+  "Жетысуский район",
+  "Медеуский район",
+  "Наурызбайский район",
+  "Турксибский район",
+];
+
+function Arrow() {
+  return (
+    <span aria-hidden="true" className="drain-arrow inline-block">
+      →
+    </span>
+  );
+}
+
+function Check({ text }: { text: string }) {
+  return (
+    <li className="flex items-center gap-3">
+      <svg
+        viewBox="0 0 24 24"
+        className="h-7 w-7 shrink-0"
+        aria-hidden="true"
+      >
+        <path
+          fill="#0092B8"
+          d="m12 1 3 2.2 3.7-.1 1.1 3.5 3.1 2.1-1.2 3.5
+             1.2 3.5-3.1 2.1-1.1 3.5-3.7-.1L12 23l-3-2.2
+             -3.7.1-1.1-3.5-3.1-2.1L2.3 12 1.1 8.5l3.1-2.1
+             1.1-3.5 3.7.1Z"
+        />
+        <path
+          className="drain-check"
+          pathLength="1"
+          d="m7.5 12 3 3 6-6"
+          fill="none"
+          stroke="white"
+          strokeWidth="2.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+      <span>{text}</span>
+    </li>
+  );
+}
+
 export default function ProchistkaKanalizaciiPage() {
   return (
-    <main className="min-h-screen bg-neutral-800 pb-20 text-white md:pb-0">
+    <main className="min-h-screen bg-white pb-20 text-slate-900 md:pb-0">
+      <Header
+        phone="77771696969"
+        displayPhone="+7 777 169 69 69"
+      />
 
-      <Header />
+      <style>{`
+        @keyframes drainShine {
+          from { transform: translateX(0) skewX(-25deg); }
+          to { transform: translateX(1800%) skewX(-25deg); }
+        }
 
-      {/* ================= МОБИЛЬНЫЙ ПЕРВЫЙ ЭКРАН ================= */}
-      <section className="bg-[#303030] px-6 py-8 text-white md:hidden">
+        .drain-call-shine {
+          position: relative;
+          overflow: hidden;
+        }
 
-        <h1 className="text-center text-3xl font-bold text-yellow-400">
-          Прочистка канализации в Алматы
-        </h1>
+        .drain-call-shine::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: -25%;
+          width: 8%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent
+          );
+          animation: drainShine 2.5s linear infinite;
+          pointer-events: none;
+        }
 
-        <p className="mt-4 text-center text-lg font-bold text-white">
-          Устранение засоров труб, раковин, унитазов и канализации.
-          Быстрый выезд мастера по Алматы.
-        </p>
+        @keyframes drainDiscountSwing {
+          0%, 100% { transform: rotate(-4deg); }
+          50% { transform: rotate(4deg); }
+        }
 
-        <div className="mt-10 grid grid-cols-3 gap-2 text-center">
+        .drain-discount {
+          transform-origin: 0 0;
+          animation: drainDiscountSwing 3s ease-in-out infinite;
+        }
 
-          <div className="flex flex-col items-center">
-            <img
-              src="/banner-fast.png"
-              alt="Быстрый выезд"
-              className="h-12 w-12 object-contain"
-            />
-            <p className="mt-3 text-base text-white">
-              Быстрый<br />выезд
-            </p>
-          </div>
+        @keyframes drainCheckDraw {
+          0%, 15% { stroke-dashoffset: 1; }
+          45%, 85% { stroke-dashoffset: 0; }
+          100% { stroke-dashoffset: 1; }
+        }
 
-          <div className="flex flex-col items-center border-x border-white/20">
-            <img
-              src="/banner-garantiya.png"
-              alt="Гарантия до 3 лет"
-              className="h-12 w-12 object-contain"
-            />
-            <p className="mt-3 text-base text-white">
-              Гарантия<br />до 3 лет
-            </p>
-          </div>
+        .drain-check {
+          stroke-dasharray: 1;
+          stroke-dashoffset: 0;
+          animation: drainCheckDraw 2s ease-in-out infinite;
+        }
 
-          <div className="flex flex-col items-center">
-            <img
-              src="/banner-everyday.png"
-              alt="Работаем каждый день"
-              className="h-12 w-12 object-contain"
-            />
-            <p className="mt-3 text-base text-white">
-              Работаем<br />каждый день
-            </p>
-          </div>
+        @keyframes drainArrowMove {
+          0%, 100% { transform: translateX(0); }
+          50% { transform: translateX(6px); }
+        }
 
+        .drain-arrow {
+          animation: drainArrowMove 1.2s ease-in-out infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .drain-call-shine::after,
+          .drain-discount,
+          .drain-check,
+          .drain-arrow {
+            animation: none;
+          }
+        }
+      `}</style>
+
+      {/* БАННЕР */}
+      <section className="relative overflow-hidden bg-[#333333] text-white md:h-[490px] md:bg-[#281E12]">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[url('/hero-mark.png')] bg-[length:85%_auto] bg-center bg-no-repeat opacity-10 md:hidden"
+        />
+
+        <div className="absolute inset-y-0 right-0 hidden w-[53%] md:block">
+          <img
+            src="/banner-master.jpg"
+            alt="Мастер сервиса бытовых услуг в Алматы"
+            className="h-full w-full object-cover object-[60%_center]"
+          />
+
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 -left-px w-[240px]"
+            style={{
+              background:
+                "linear-gradient(to right, #281E12 0%, transparent 100%)",
+            }}
+          />
         </div>
 
-        <p className="mt-5 px-5 text-center text-base leading-6 text-white">
-          Профессионально устраняем засоры канализации.
-          Работаем аккуратно и предоставляем гарантию.
-        </p>
+        <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6 py-8 md:py-0">
+          <div className="w-full md:w-[47%]">
+            <nav
+              aria-label="Хлебные крошки"
+              className="mb-5 flex flex-wrap items-center gap-2 text-sm text-white/70"
+            >
+              <a href="/" className="hover:text-[#FDC700]">
+                Главная
+              </a>
+              <span aria-hidden="true">→</span>
+              <span aria-current="page" className="text-white">
+                Прочистка канализации
+              </span>
+            </nav>
 
-      </section>
-
-      {/* ================= ПЕРВЫЙ ЭКРАН — КОМПЬЮТЕР ================= */}
-      <section
-        className="relative hidden min-h-[535px] overflow-hidden bg-no-repeat md:block md:bg-[length:100%_auto] md:bg-[position:center_0]"
-        style={{
-          backgroundImage: "url('/master.jpg')",
-          backgroundPosition: "center 0px",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/20" />
-
-        <div className="relative z-10 mx-auto flex min-h-[535px] max-w-7xl items-start px-6 pb-8 pt-8">
-          <div className="max-w-5xl">
-
-            <p className="font-bold text-yellow-400">
-              Выезд мастера по Алматы
-            </p>
-
-            <h1 className="mt-0 text-5xl font-black leading-tight text-white md:text-7xl">
-              Прочистка канализации в Алматы
+            <h1 className="text-center text-3xl font-bold uppercase leading-[1.1] md:text-left md:text-[40px] lg:text-[48px]">
+              Прочистка канализации
+              <span className="block text-[#FDC700]">
+                в Алматы
+              </span>
             </h1>
 
-            <p className="mt-6 max-w-2xl text-xl leading-8 text-slate-100">
-              Устранение засоров канализации, прочистка труб,
-              раковин, унитазов и стояков. Быстрый выезд мастера по Алматы.
+            <p className="mt-5 max-w-lg text-center text-lg leading-7 text-white/85 md:text-left">
+              Устранение засоров труб, раковин, унитазов
+              и стояков. Подбираем способ прочистки
+              и согласовываем стоимость заранее.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 md:mx-0 md:max-w-none md:flex-row md:flex-wrap md:items-center">
               <a
                 href="tel:+77771696969"
-                className="rounded-full bg-yellow-400 px-8 py-4 text-lg font-black text-slate-950 shadow-xl transition hover:-translate-y-1 hover:bg-yellow-300"
+                className="drain-call-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal transition hover:bg-[#007D9E]"
               >
-                📞 Позвонить
+                Вызвать мастера
               </a>
 
-              <a
-                href="https://wa.me/77771696969"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-green-500 px-8 py-4 text-lg font-black text-white shadow-xl transition hover:-translate-y-1 hover:bg-green-600"
-              >
-                WhatsApp
-              </a>
-            </div>
-
-            <div className="mt-5 grid grid-cols-2 gap-y-10 md:grid-cols-4 md:gap-0">
-              {[
-                ["/banner-everyday.png", "Работаем", "каждый день"],
-                ["/banner-fast.png", "Быстрый", "выезд"],
-                ["/banner-garantiya.png", "Гарантия", "до 3 лет"],
-                ["/banner-master.png", "Опытные", "мастера"],
-              ].map(([icon, line1, line2]) => (
-                <div
-                  key={line1}
-                  className="flex flex-col items-center justify-center text-center md:border-r md:border-white/20 md:last:border-r-0"
+              <div className="relative shrink-0">
+                <a
+                  href="https://wa.me/77771696969"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-14 w-full items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100 md:w-auto"
                 >
-                  <div className="mb-4 flex h-14 items-center justify-center">
-                    <img
-                      src={icon}
-                      alt=""
-                      className="h-12 w-12 object-contain"
-                    />
-                  </div>
+                  Написать в WhatsApp
+                </a>
 
-                  <p className="text-lg font-black text-white">
-                    {line1}
-                    <br />
-                    {line2}
-                  </p>
+                {/* СКИДКА */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute left-[calc(100%-6px)] top-1/2 z-20 hidden h-0 w-0 md:block"
+                >
+                  <div className="drain-discount absolute left-0 top-0">
+                    <img
+                      src="/discount-15.png"
+                      alt=""
+                      className="absolute left-0 top-[-47px] w-[180px] max-w-none drop-shadow-lg"
+                    />
+
+                    <svg
+                      viewBox="0 0 30 20"
+                      className="absolute -left-[9px] -top-[10px] z-10 h-5 w-[30px]"
+                    >
+                      <ellipse
+                        cx="15"
+                        cy="10"
+                        rx="12"
+                        ry="7"
+                        fill="none"
+                        stroke="#6B7280"
+                        strokeWidth="4"
+                      />
+                      <ellipse
+                        cx="15"
+                        cy="9"
+                        rx="12"
+                        ry="7"
+                        fill="none"
+                        stroke="#E5E7EB"
+                        strokeWidth="2"
+                      />
+                    </svg>
+                  </div>
                 </div>
-              ))}
+              </div>
             </div>
 
+            <ul className="mx-auto mt-8 flex w-fit flex-col gap-3 text-base md:mx-0 md:w-auto md:flex-row md:flex-wrap md:gap-x-5">
+              <Check text="Быстрый выезд" />
+              <Check text="Свои мастера" />
+              <Check text="Каждый день" />
+            </ul>
           </div>
         </div>
       </section>
-      {/* ================= УСЛУГИ ================= */}
-<section id="services" className="bg-white py-20 text-slate-900">
-  <div className="mx-auto max-w-7xl px-6">
 
-    <p className="font-bold text-yellow-500">
-      Услуги прочистки канализации
-    </p>
-
-    <h2 className="mt-2 text-4xl font-black">
-      Устраняем засоры любой сложности
-    </h2>
-
-    <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-
-      {/* ПРОЧИСТКА ТРУБ */}
-      <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-yellow-50 hover:shadow-xl">
-        <h3 className="text-xl font-black">
-          Прочистка труб
-        </h3>
-
-        <p className="mt-3 text-slate-600">
-          Устраняем засоры и восстанавливаем нормальный слив воды.
-        </p>
-
-        <a
-          href="/prochistka-trub"
-          className="mt-6 inline-block rounded-xl border border-blue-600 px-5 py-3 font-bold text-blue-600 transition hover:bg-blue-600 hover:text-white"
-        >
-          Подробнее →
-        </a>
-      </div>
-
-      {/* ПРОЧИСТКА РАКОВИНЫ */}
-      <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-yellow-50 hover:shadow-xl">
-        <h3 className="text-xl font-black">
-          Прочистка раковины
-        </h3>
-
-        <p className="mt-3 text-slate-600">
-          Быстро устраняем засор в раковине и проверяем слив.
-        </p>
-
-        <a
-          href="/prochistka-rakoviny"
-          className="mt-6 inline-block rounded-xl border border-blue-600 px-5 py-3 font-bold text-blue-600 transition hover:bg-blue-600 hover:text-white"
-        >
-          Подробнее →
-        </a>
-      </div>
-
-      {/* ПРОЧИСТКА УНИТАЗА */}
-      <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-yellow-50 hover:shadow-xl">
-        <h3 className="text-xl font-black">
-          Прочистка унитаза
-        </h3>
-
-        <p className="mt-3 text-slate-600">
-          Устраняем сложные засоры и восстанавливаем работу унитаза.
-        </p>
-
-        <a
-          href="/prochistka-unitaza"
-          className="mt-6 inline-block rounded-xl border border-blue-600 px-5 py-3 font-bold text-blue-600 transition hover:bg-blue-600 hover:text-white"
-        >
-          Подробнее →
-        </a>
-      </div>
-
-      {/* ПРОЧИСТКА СТОЯКА */}
-      <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-yellow-50 hover:shadow-xl">
-        <h3 className="text-xl font-black">
-          Прочистка стояка
-        </h3>
-
-        <p className="mt-3 text-slate-600">
-          Прочищаем канализационные стояки в квартирах, домах и офисах.
-        </p>
-
-        <a
-          href="/prochistka-stoyaka"
-          className="mt-6 inline-block rounded-xl border border-blue-600 px-5 py-3 font-bold text-blue-600 transition hover:bg-blue-600 hover:text-white"
-        >
-          Подробнее →
-        </a>
-      </div>
-
-      {/* ПРОЧИСТКА АППАРАТОМ */}
-      <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-yellow-50 hover:shadow-xl">
-        <h3 className="text-xl font-black">
-          Прочистка канализации аппаратом
-        </h3>
-
-        <p className="mt-3 text-slate-600">
-          Используем профессиональное оборудование для сложных засоров.
-        </p>
-
-        <a
-          href="/prochistka-apparatom"
-          className="mt-6 inline-block rounded-xl border border-blue-600 px-5 py-3 font-bold text-blue-600 transition hover:bg-blue-600 hover:text-white"
-        >
-          Подробнее →
-        </a>
-      </div>
-
-      {/* ГИДРОДИНАМИЧЕСКАЯ ПРОЧИСТКА */}
-      <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-yellow-50 hover:shadow-xl">
-        <h3 className="text-xl font-black">
-          Гидродинамическая прочистка
-        </h3>
-
-        <p className="mt-3 text-slate-600">
-          Промываем трубы водой под высоким давлением и удаляем загрязнения.
-        </p>
-
-        <a
-          href="/gidrodinamicheskaya-prochistka"
-          className="mt-6 inline-block rounded-xl border border-blue-600 px-5 py-3 font-bold text-blue-600 transition hover:bg-blue-600 hover:text-white"
-        >
-          Подробнее →
-        </a>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-{/* ================= ЦЕНЫ ================= */}
-<section id="prices" className="bg-slate-50 py-20 text-slate-900">
-  <div className="mx-auto max-w-7xl px-6">
-
-    <p className="font-bold text-yellow-500">
-      Цены на прочистку канализации
-    </p>
-
-    <h2 className="mt-2 text-4xl font-black">
-      Примерная стоимость работ
-    </h2>
-
-    <p className="mt-4 text-slate-600">
-      Точная стоимость зависит от сложности засора и способа прочистки.
-      Цена согласовывается до начала работ.
-    </p>
-
-    <div className="mt-10 overflow-hidden rounded-3xl border border-slate-200 bg-white">
-      {[
-        ["Прочистка раковины", "от 15 000 ₸"],
-        ["Прочистка унитаза", "от 15 000 ₸"],
-        ["Прочистка труб", "от 15 000 ₸"],
-        ["Прочистка стояка", "от 20 000 ₸"],
-        ["Прочистка канализации аппаратом", "от 20 000 ₸"],
-        ["Гидродинамическая прочистка", "от 30 000 ₸"],
-      ].map(([name, price]) => (
-        <div
-          key={name}
-          className="flex items-center justify-between border-b border-slate-200 px-6 py-5 transition hover:bg-yellow-50 last:border-0"
-        >
-          <span className="font-semibold">
-            {name}
-          </span>
-
-          <span className="ml-4 whitespace-nowrap font-black text-yellow-500">
-            {price}
-          </span>
-        </div>
-      ))}
-    </div>
-
-  </div>
-</section>
-{/* ================= ПОЧЕМУ МЫ ================= */}
-<section id="about" className="bg-sky-800 py-20 text-white">
-  <div className="mx-auto max-w-7xl px-6">
-
-    <p className="font-bold text-yellow-400">
-      Почему выбирают нас
-    </p>
-
-    <h2 className="mt-2 text-4xl font-black">
-      Профессиональная прочистка канализации в Алматы
-    </h2>
-
-    <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {[
-        ["15+ лет опыта", "Большой опыт устранения засоров."],
-        ["Выезд 30–45 минут", "Быстро выезжаем по Алматы."],
-        ["Проф. оборудование", "Используем оборудование для сложных засоров."],
-        ["Свои мастера", "Работаем своей командой специалистов."],
-        ["Цена заранее", "Согласовываем стоимость до начала работ."],
-        ["Без выходных", "Принимаем заявки каждый день."],
-      ].map(([title, text]) => (
-        <div
-          key={title}
-          className="rounded-3xl border border-white/10 bg-transparent p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-white/10 hover:shadow-xl"
-        >
-          <div className="mb-4 h-2 w-12 rounded-full bg-yellow-400" />
-
-          <h3 className="text-xl font-black">
-            {title}
-          </h3>
-
-          <p className="mt-3 text-slate-200">
-            {text}
-          </p>
-        </div>
-      ))}
-    </div>
-
-  </div>
-</section>
-{/* ================= КАК РАБОТАЕМ ================= */}
-<section className="bg-white py-20 text-slate-900">
-  <div className="mx-auto max-w-7xl px-6">
-
-    <p className="font-bold text-yellow-500">
-      Как мы работаем
-    </p>
-
-    <h2 className="mt-2 text-4xl font-black">
-      От заявки до устранения засора
-    </h2>
-
-    <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-      {[
-        [
-          "01",
-          "Заявка",
-          "Позвоните или напишите нам в WhatsApp.",
-        ],
-        [
-          "02",
-          "Уточняем проблему",
-          "Уточняем место и характер засора.",
-        ],
-        [
-          "03",
-          "Выезд мастера",
-          "Мастер приезжает с необходимым оборудованием.",
-        ],
-        [
-          "04",
-          "Прочистка",
-          "Устраняем засор и проверяем работу канализации.",
-        ],
-      ].map(([number, title, text]) => (
-        <div
-          key={number}
-          className="rounded-3xl border border-slate-200 bg-slate-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-yellow-50 hover:shadow-xl"
-        >
-          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-yellow-400 text-xl font-black">
-            {number}
+      {/* УСЛУГИ */}
+      <section id="services" className="bg-white py-12 md:py-16">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="font-bold text-[#0092B8]">
+              Услуги прочистки канализации
+            </p>
+            <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[48px]">
+              Устраняем засоры любой сложности
+            </h2>
           </div>
 
-          <h3 className="mt-5 text-xl font-black">
-            {title}
-          </h3>
-
-          <p className="mt-3 text-slate-600">
-            {text}
-          </p>
-        </div>
-      ))}
-    </div>
-
-  </div>
-</section>
-
-{/* ================= НАШИ РАБОТЫ ================= */}
-<section id="works" className="bg-sky-800 py-20 text-white">
-  <div className="mx-auto max-w-7xl px-6">
-
-    <p className="font-bold text-yellow-400">
-      Наши работы
-    </p>
-
-    <h2 className="mt-2 text-4xl font-black">
-      Примеры выполненных работ
-    </h2>
-
-    <p className="mt-4 max-w-3xl text-slate-200">
-      Примеры работ по устранению засоров и прочистке канализации в Алматы.
-    </p>
-
-  </div>
-</section>
-{/* ================= ОТЗЫВЫ ================= */}
-<section id="reviews" className="bg-white py-20 text-slate-900">
-  <div className="mx-auto max-w-7xl px-6">
-
-    <p className="font-bold text-yellow-500">
-      Отзывы клиентов
-    </p>
-
-    <h2 className="mt-2 text-4xl font-black">
-      Что говорят о нашей работе
-    </h2>
-
-    <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {[
-        [
-          "Айдар",
-          "Был сильный засор на кухне. Мастер приехал и быстро прочистил трубу.",
-        ],
-        [
-          "Динара",
-          "Прочистили канализацию аппаратом. Вода теперь уходит нормально.",
-        ],
-        [
-          "Марат",
-          "Мастер приехал вовремя, устранил засор и всё проверил.",
-        ],
-        [
-          "Алия",
-          "Быстро прочистили засор в раковине. Работой довольна.",
-        ],
-        [
-          "Руслан",
-          "Обратились из-за засора стояка. Проблему устранили в тот же день.",
-        ],
-        [
-          "Сауле",
-          "Хороший сервис. Мастер аккуратно выполнил прочистку канализации.",
-        ],
-      ].map(([name, text]) => (
-        <div
-          key={name}
-          className="rounded-3xl border border-slate-200 bg-slate-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-blue-400 hover:bg-blue-50 hover:shadow-xl"
-        >
-          <div className="text-xl text-yellow-400">
-            ★★★★★
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {services.map((service) => (
+              <a
+                key={service.href}
+                href={service.href}
+                className="flex min-w-0 flex-col rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#0092B8]/40 hover:bg-white hover:shadow-lg"
+              >
+                <h3 className="text-lg font-bold leading-6 text-[#0092B8]">
+                  {service.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">
+                  {service.text}
+                </p>
+                <span className="mt-auto flex items-center gap-3 pt-4 text-sm font-semibold text-[#0092B8]">
+                  <Arrow />
+                  Подробнее
+                </span>
+              </a>
+            ))}
           </div>
-
-          <p className="mt-4 leading-7 text-slate-600">
-            “{text}”
-          </p>
-
-          <p className="mt-5 font-black">{name}</p>
-          <p className="text-sm text-slate-500">Алматы</p>
         </div>
-      ))}
-    </div>
+      </section>
 
-  </div>
-</section>
-{/* ================= FAQ ================= */}
-<section id="faq" className="bg-white py-16 text-slate-950">
-  <div className="mx-auto max-w-4xl px-6">
-
-    <h2 className="text-center text-3xl font-black md:text-4xl">
-      Часто задаваемые вопросы
-    </h2>
-
-    <div className="mt-10 space-y-4">
-      {[
-        [
-          "Сколько стоит прочистка канализации?",
-          "Стоимость зависит от сложности засора, длины труб и способа прочистки.",
-        ],
-        [
-          "Как быстро приедет мастер?",
-          "По Алматы стараемся приезжать максимально быстро.",
-        ],
-        [
-          "Каким оборудованием вы прочищаете канализацию?",
-          "Используем профессиональное оборудование в зависимости от типа и сложности засора.",
-        ],
-        [
-          "Можно ли устранить сложный засор?",
-          "Да, подбираем подходящий способ прочистки после оценки причины и места засора.",
-        ],
-        [
-          "Делаете гидродинамическую прочистку?",
-          "Да, выполняем гидродинамическую промывку канализационных труб.",
-        ],
-        [
-          "Работаете ли в выходные?",
-          "Да, принимаем заявки каждый день.",
-        ],
-      ].map(([question, answer]) => (
-        <details
-          key={question}
-          className="group overflow-hidden rounded-2xl border border-transparent bg-slate-50 transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:bg-blue-50 hover:shadow-lg"
-        >
-          <summary className="flex cursor-pointer list-none items-center justify-between px-7 py-7">
-            <span className="text-xl font-black text-slate-950">
-              {question}
-            </span>
-
-            <span className="ml-5 text-3xl font-light text-blue-600 transition-transform duration-300 group-open:rotate-45">
-              +
-            </span>
-          </summary>
-
-          <div className="px-7 pb-7">
-            <p className="text-lg leading-7 text-slate-600">
-              {answer}
+      {/* ЦЕНЫ */}
+      <section id="prices" className="bg-slate-50 py-12 md:py-16">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="font-bold text-[#0092B8]">
+              Цены на прочистку канализации
+            </p>
+            <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[48px]">
+              Примерная стоимость работ
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">
+              Точная стоимость зависит от сложности засора
+              и способа прочистки. Цена согласовывается
+              до начала работ.
             </p>
           </div>
-        </details>
-      ))}
-    </div>
 
-  </div>
-</section>
-{/* ================= РАЙОНЫ ================= */}
-<section className="bg-slate-100 py-20 text-slate-900">
-  <div className="mx-auto max-w-7xl px-6">
-
-    <p className="font-bold text-yellow-500">
-      Выезд по городу
-    </p>
-
-    <h2 className="mt-2 text-4xl font-black">
-      Прочистка канализации во всех районах Алматы
-    </h2>
-
-    <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
-      Выезжаем на устранение засоров и прочистку канализации по всему Алматы.
-    </p>
-
-    <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {[
-        "Алатауский район",
-        "Алмалинский район",
-        "Ауэзовский район",
-        "Бостандыкский район",
-        "Жетысуский район",
-        "Медеуский район",
-        "Наурызбайский район",
-        "Турксибский район",
-      ].map((district) => (
-        <div
-          key={district}
-          className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-yellow-50 hover:shadow-xl"
-        >
-          📍 {district}
+          <div className="mt-8 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+            {prices.map(([name, price]) => (
+              <div
+                key={name}
+                className="flex flex-col gap-2 border-b border-slate-100 px-5 py-4 transition last:border-0 hover:bg-[#0092B8]/5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 md:px-7 md:py-5"
+              >
+                <span className="font-medium leading-7 text-slate-700">
+                  {name}
+                </span>
+                <span className="shrink-0 font-bold text-[#0092B8]">
+                  {price}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
+      </section>
 
-  </div>
-</section>
-{/* ================= КОНТАКТЫ ================= */}
-<section id="contacts" className="bg-white py-20 text-slate-900">
-  <div className="mx-auto max-w-7xl px-6">
+      {/* ПРЕИМУЩЕСТВА */}
+      <section id="about" className="bg-white py-12 md:py-16">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="font-bold text-[#0092B8]">
+              Почему выбирают нас
+            </p>
+            <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
+              Профессиональная прочистка канализации в Алматы
+            </h2>
+          </div>
 
-    <p className="font-bold text-yellow-500">
-      Контакты
-    </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {advantages.map(([title, text]) => (
+              <div
+                key={title}
+                className="rounded-2xl border border-slate-200 bg-slate-50 p-6 transition hover:border-[#0092B8]/40 hover:shadow-lg"
+              >
+                <h3 className="text-xl font-bold text-[#0092B8]">
+                  {title}
+                </h3>
+                <p className="mt-2 leading-7 text-slate-600">
+                  {text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-    <h2 className="mt-2 text-4xl font-black">
-      Вызвать мастера по прочистке канализации
-    </h2>
+      {/* КАК РАБОТАЕМ */}
+      <section className="bg-slate-50 py-12 md:py-16">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="text-center">
+            <p className="font-bold text-[#0092B8]">
+              Как мы работаем
+            </p>
+            <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[48px]">
+              От заявки до устранения засора
+            </h2>
+          </div>
 
-    <div className="mt-12 grid gap-10 lg:grid-cols-2">
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {steps.map(([number, title, text]) => (
+              <div
+                key={number}
+                className="rounded-2xl border border-slate-200 bg-white p-6"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#FDC700] text-lg font-bold text-[#171717]">
+                  {number}
+                </div>
+                <h3 className="mt-4 text-lg font-bold text-[#0092B8]">
+                  {title}
+                </h3>
+                <p className="mt-2 leading-7 text-slate-600">
+                  {text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <div className="space-y-6">
-
-        <div className="rounded-3xl bg-slate-100 p-6">
-          <p className="text-sm text-slate-500">
-            Телефон
+      {/* НАШИ РАБОТЫ */}
+      <section id="works" className="bg-white py-12 md:py-16">
+        <div className="mx-auto max-w-5xl px-6 text-center">
+          <p className="font-bold text-[#0092B8]">
+            Наши работы
           </p>
-
+          <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[48px]">
+            Примеры выполненных работ
+          </h2>
+          <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-600">
+            Примеры работ по устранению засоров
+            и прочистке канализации в Алматы.
+          </p>
           <a
-            href="tel:+77771696969"
-            className="mt-2 block text-2xl font-black"
+            href="/nashi-raboty"
+            className="mt-7 inline-flex items-center gap-3 rounded-full bg-[#FDC700] px-8 py-4 text-lg text-[#171717] transition hover:bg-[#eab800]"
           >
-            +7 777 169 69 69
+            <Arrow />
+            Посмотреть работы
           </a>
         </div>
+      </section>
 
-        <div className="rounded-3xl bg-slate-100 p-6">
-          <p className="text-sm text-slate-500">
-            WhatsApp
-          </p>
+      {/* ОТЗЫВЫ */}
+      <section id="reviews" className="bg-slate-50 py-12 md:py-16">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="text-center">
+            <p className="font-bold text-[#0092B8]">
+              Отзывы клиентов
+            </p>
+            <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[48px]">
+              Что говорят о нашей работе
+            </h2>
+          </div>
 
-          <a
-            href="https://wa.me/77771696969"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 block text-2xl font-black text-green-600"
-          >
-            Написать в WhatsApp
-          </a>
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {reviews.map(([name, text]) => (
+              <article
+                key={name}
+                className="rounded-2xl border border-slate-200 bg-white p-6 transition hover:border-[#0092B8]/40 hover:shadow-lg"
+              >
+                <div className="flex items-center gap-3">
+                  <div
+                    aria-hidden="true"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#0092B8]/10 text-lg font-bold text-[#0092B8]"
+                  >
+                    {name.charAt(0)}
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#0092B8]">
+                      {name}
+                    </h3>
+                    <p className="text-sm text-slate-500">
+                      Алматы
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="mt-4 text-lg tracking-wide text-[#FDC700]"
+                  aria-label="Оценка 5 из 5"
+                >
+                  <span aria-hidden="true">★★★★★</span>
+                </div>
+                <p className="mt-3 leading-7 text-slate-600">
+                  {text}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
+      </section>
 
-        <div className="rounded-3xl bg-slate-100 p-6">
-          <p className="text-sm text-slate-500">
-            Режим работы
-          </p>
-
-          <p className="mt-2 text-xl font-bold">
-            Каждый день · Без выходных
-          </p>
-        </div>
-
-        <div className="rounded-3xl bg-slate-100 p-6">
-          <p className="text-sm text-slate-500">
-            Обслуживаем
-          </p>
-
-          <p className="mt-2 text-xl font-bold">
-            Весь Алматы и пригород
-          </p>
-        </div>
-
-      </div>
-
-      <div className="overflow-hidden rounded-3xl shadow-xl">
-        <iframe
-          src="https://www.google.com/maps?q=Алматы&output=embed"
-          className="h-[520px] w-full border-0"
-          loading="lazy"
-          title="Карта Алматы"
-        />
-      </div>
-
-    </div>
-
-  </div>
-</section>
-{/* ================= СРОЧНЫЙ ВЫЗОВ ================= */}
-<section className="bg-sky-800 py-20 text-white">
-  <div className="mx-auto max-w-7xl px-6">
-
-    <div className="rounded-3xl border border-yellow-400/20 bg-slate-900 p-10">
-
-      <p className="font-bold text-yellow-400">
-        Срочный вызов мастера
-      </p>
-
-      <div className="mt-3 flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
-
-        <div>
-          <h2 className="text-4xl font-black md:text-5xl">
-            Засорилась канализация?
+      {/* FAQ */}
+      <section id="faq" className="bg-white py-12 md:py-16">
+        <div className="mx-auto max-w-4xl px-6">
+          <h2 className="text-center text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
+            Часто задаваемые вопросы
           </h2>
 
-          <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
-            Позвоните или напишите в WhatsApp. Уточним проблему
-            и согласуем время выезда мастера по Алматы.
+          <div className="mt-8 space-y-3">
+            {questions.map(([question, answer]) => (
+              <details
+                key={question}
+                className="group rounded-2xl border border-slate-200 bg-slate-50 p-5 transition open:border-[#0092B8]/40 hover:border-[#0092B8]/40 md:p-6"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-[#0092B8] [&::-webkit-details-marker]:hidden">
+                  {question}
+                  <span
+                    aria-hidden="true"
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#FDC700] text-2xl font-normal text-[#171717] transition-transform group-open:rotate-45"
+                  >
+                    +
+                  </span>
+                </summary>
+                <p className="mt-4 leading-7 text-slate-600">
+                  {answer}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* РАЙОНЫ */}
+      <section className="bg-slate-50 py-12 md:py-16">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="font-bold text-[#0092B8]">
+              Выезд по городу
+            </p>
+            <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
+              Прочистка канализации во всех районах Алматы
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">
+              Выезжаем на устранение засоров
+              и прочистку канализации по всему Алматы.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {districts.map((district) => (
+              <div
+                key={district}
+                className="rounded-2xl border border-slate-200 bg-white p-5 font-medium text-[#0092B8] transition hover:border-[#0092B8]/40 hover:shadow-sm"
+              >
+                {district}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* КОНТАКТЫ */}
+      <section id="contacts" className="bg-white py-12 md:py-16">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="text-center">
+            <p className="font-bold text-[#0092B8]">
+              Контакты
+            </p>
+            <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
+              Вызвать мастера по прочистке канализации
+            </h2>
+          </div>
+
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl bg-slate-50 p-6">
+                <p className="text-sm text-slate-500">
+                  Телефон
+                </p>
+                <a
+                  href="tel:+77771696969"
+                  className="mt-3 block text-xl font-bold text-[#0092B8]"
+                >
+                  +7 777 169 69 69
+                </a>
+              </div>
+
+              <div className="rounded-2xl bg-slate-50 p-6">
+                <p className="text-sm text-slate-500">
+                  WhatsApp
+                </p>
+                <a
+                  href="https://wa.me/77771696969"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex items-center gap-3 font-bold text-[#0092B8]"
+                >
+                  <Arrow />
+                  Написать
+                </a>
+              </div>
+
+              <div className="rounded-2xl bg-slate-50 p-6">
+                <p className="text-sm text-slate-500">
+                  Режим работы
+                </p>
+                <p className="mt-3 text-lg font-bold text-[#0092B8]">
+                  Каждый день · Без выходных
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-slate-50 p-6">
+                <p className="text-sm text-slate-500">
+                  Обслуживаем
+                </p>
+                <p className="mt-3 text-lg font-bold text-[#0092B8]">
+                  Весь Алматы и пригород
+                </p>
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-3xl border border-slate-200">
+              <iframe
+                src="https://www.google.com/maps?q=Алматы&output=embed"
+                className="h-[320px] w-full border-0"
+                loading="lazy"
+                title="Карта Алматы"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* СРОЧНЫЙ ВЫЗОВ */}
+      <section className="bg-[#0092B8] py-16 text-white">
+        <div className="mx-auto max-w-5xl px-6 text-center">
+          <p className="font-bold uppercase tracking-wider text-[#FDC700]">
+            Срочный вызов мастера
           </p>
+          <h2 className="mt-3 text-3xl font-black leading-tight md:text-[54px]">
+            Засорилась канализация?
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/90">
+            Позвоните или напишите в WhatsApp.
+            Уточним проблему и согласуем время
+            выезда мастера по Алматы.
+          </p>
+
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href="tel:+77771696969"
+              className="drain-call-shine inline-flex min-h-14 w-full items-center justify-center rounded-full bg-[#FDC700] px-8 py-4 text-lg text-[#171717] transition hover:bg-[#eab800] sm:w-auto"
+            >
+              Вызвать мастера
+            </a>
+
+            <a
+              href="https://wa.me/77771696969"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-white px-8 py-4 text-lg text-[#292929] transition hover:bg-gray-100 sm:w-auto"
+            >
+              Написать в WhatsApp
+            </a>
+          </div>
         </div>
+      </section>
 
-        <div className="flex flex-wrap gap-4">
-          <a
-            href="tel:+77771696969"
-            className="rounded-2xl bg-yellow-400 px-8 py-4 text-lg font-black text-slate-950 transition hover:bg-yellow-300"
-          >
-            📞 Позвонить
-          </a>
-
-          <a
-            href="https://wa.me/77771696969"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-2xl bg-green-500 px-8 py-4 text-lg font-black text-white transition hover:bg-green-600"
-          >
-            WhatsApp
-          </a>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-      <Footer />
-
+      <Footer
+        phone="77771696969"
+        displayPhone="+7 777 169 69 69"
+      />
     </main>
   );
 }

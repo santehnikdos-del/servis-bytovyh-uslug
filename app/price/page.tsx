@@ -4,12 +4,10 @@ import { createClient } from "@supabase/supabase-js";
 
 export const metadata = {
   title: "Цены на услуги сантехника в Алматы | Сервис бытовых услуг",
-
   description:
     "Цены на сантехнические работы в Алматы: монтаж труб, кухня, ванная, туалет, прочистка канализации и установка сантехники.",
-
   alternates: {
-    canonical: "https://www.home-services.kz/price",
+    canonical: "https://home-services.kz/price",
   },
 };
 
@@ -71,7 +69,6 @@ const sections = [
       ],
     ],
   },
-
   {
     title: "Кухня",
     subtitle: "Установка, подключение и ремонт",
@@ -146,7 +143,6 @@ const sections = [
       ],
     ],
   },
-
   {
     title: "Ванная / туалет",
     subtitle: "Установка и ремонт сантехники",
@@ -272,7 +268,6 @@ const sections = [
   },
 ];
 
-
 type KeyValueRow = {
   key: string;
   value: string;
@@ -294,7 +289,9 @@ function getSupabaseAdmin() {
   });
 }
 
-async function loadKeyValueTable(table: "prices" | "service_names") {
+async function loadKeyValueTable(
+  table: "prices" | "service_names"
+) {
   const supabase = getSupabaseAdmin();
 
   const { data, error } = await supabase
@@ -329,99 +326,311 @@ export default async function CenyPage() {
   ]);
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="min-h-screen bg-white text-slate-900">
       <Header
         phone="77771696969"
         displayPhone="+7 777 169 69 69"
       />
 
-      {/* ЗАГОЛОВОК */}
-      <section className="bg-sky-800 py-16 text-white md:py-24">
-        <div className="mx-auto max-w-7xl px-5 md:px-6">
-          <p className="font-bold text-yellow-400">
-            Сервис бытовых услуг
-          </p>
+      <style>{`
+        @keyframes priceShine {
+          from {
+            transform: translateX(0) skewX(-25deg);
+          }
+          to {
+            transform: translateX(1800%) skewX(-25deg);
+          }
+        }
 
-          <h1 className="mt-3 text-4xl font-black md:text-6xl">
-            Цены на услуги сантехника
-          </h1>
+        .price-call-shine {
+          position: relative;
+          overflow: hidden;
+        }
 
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-white">
-            Базовая стоимость основных сантехнических работ.
-            Работаем по Алматы. Итоговая цена согласовывается
-            с мастером до начала работ.
-          </p>
+        .price-call-shine::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: -25%;
+          width: 8%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent
+          );
+          animation: priceShine 2.5s linear infinite;
+          pointer-events: none;
+        }
+
+        @keyframes priceDiscountSwing {
+          0%, 100% {
+            transform: rotate(-4deg);
+          }
+          50% {
+            transform: rotate(4deg);
+          }
+        }
+
+        .price-discount {
+          transform-origin: 0 0;
+          animation: priceDiscountSwing 3s ease-in-out infinite;
+        }
+
+        @keyframes priceCheckDraw {
+          0%, 15% {
+            stroke-dashoffset: 1;
+          }
+          45%, 85% {
+            stroke-dashoffset: 0;
+          }
+          100% {
+            stroke-dashoffset: 1;
+          }
+        }
+
+        .price-check {
+          stroke-dasharray: 1;
+          stroke-dashoffset: 0;
+          animation: priceCheckDraw 2s ease-in-out infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .price-call-shine::after,
+          .price-discount,
+          .price-check {
+            animation: none;
+          }
+        }
+      `}</style>
+
+      {/* БАННЕР */}
+      <section className="relative overflow-hidden bg-[#333333] text-white md:h-[490px] md:bg-[#281E12]">
+        {/* ФОН — МОБИЛЬНЫЙ */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[url('/hero-mark.png')] bg-[length:85%_auto] bg-center bg-no-repeat opacity-10 md:hidden"
+        />
+
+        {/* ФОТО — КОМПЬЮТЕР */}
+        <div className="absolute inset-y-0 right-0 hidden w-[53%] md:block">
+          <img
+            src="/banner-master.jpg"
+            alt="Мастер сервиса бытовых услуг в Алматы"
+            className="h-full w-full object-cover object-[60%_center]"
+          />
+
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 -left-px w-[240px]"
+            style={{
+              background:
+                "linear-gradient(to right, #281E12 0%, transparent 100%)",
+            }}
+          />
+        </div>
+
+        <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6 py-8 md:py-0">
+          <div className="w-full md:w-[47%]">
+            <nav
+              aria-label="Хлебные крошки"
+              className="mb-5 flex items-center gap-2 text-sm text-white/70"
+            >
+              <a
+                href="/"
+                className="transition hover:text-[#FDC700]"
+              >
+                Главная
+              </a>
+
+              <span aria-hidden="true">→</span>
+
+              <span aria-current="page" className="text-white">
+                Цены
+              </span>
+            </nav>
+
+            <h1 className="text-center text-3xl font-bold uppercase leading-[1.05] md:text-left md:text-5xl lg:text-[64px]">
+              Цены на{" "}
+              <span className="text-[#FDC700]">
+                услуги
+              </span>
+            </h1>
+
+            <p className="mt-5 max-w-lg text-center text-lg leading-7 text-white/85 md:text-left">
+              Стоимость сантехнических работ в Алматы.
+              Согласовываем цену до начала работы —
+              вы заранее знаете, за что платите.
+            </p>
+
+            <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 md:mx-0 md:max-w-none md:flex-row md:flex-wrap md:items-center">
+              <a
+                href="tel:+77771696969"
+                className="price-call-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal transition hover:bg-[#007D9E]"
+              >
+                Вызвать мастера
+              </a>
+
+              <div className="relative shrink-0">
+                <a
+                  href="https://wa.me/77771696969"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-14 w-full items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100 md:w-auto"
+                >
+                  Написать в WhatsApp
+                </a>
+
+                {/* СКИДКА */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute left-[calc(100%-6px)] top-1/2 z-20 hidden h-0 w-0 md:block"
+                >
+                  <div className="price-discount absolute left-0 top-0">
+                    <img
+                      src="/discount-15.png"
+                      alt=""
+                      className="absolute left-0 top-[-47px] w-[180px] max-w-none drop-shadow-lg"
+                    />
+
+                    <svg
+                      viewBox="0 0 30 20"
+                      className="absolute -left-[9px] -top-[10px] z-10 h-5 w-[30px]"
+                    >
+                      <ellipse
+                        cx="15"
+                        cy="10"
+                        rx="12"
+                        ry="7"
+                        fill="none"
+                        stroke="#6B7280"
+                        strokeWidth="4"
+                      />
+                      <ellipse
+                        cx="15"
+                        cy="9"
+                        rx="12"
+                        ry="7"
+                        fill="none"
+                        stroke="#E5E7EB"
+                        strokeWidth="2"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <ul className="mx-auto mt-8 flex w-fit flex-col gap-3 text-base md:mx-0 md:w-auto md:flex-row md:flex-wrap md:gap-x-5">
+              {["Цена заранее", "Свои мастера", "Гарантия"].map(
+                (text) => (
+                  <li
+                    key={text}
+                    className="flex items-center gap-3"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-7 w-7 shrink-0"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill="#0092B8"
+                        d="m12 1 3 2.2 3.7-.1 1.1 3.5 3.1 2.1-1.2 3.5
+                           1.2 3.5-3.1 2.1-1.1 3.5-3.7-.1L12 23l-3-2.2
+                           -3.7.1-1.1-3.5-3.1-2.1L2.3 12 1.1 8.5l3.1-2.1
+                           1.1-3.5 3.7.1Z"
+                      />
+
+                      <path
+                        className="price-check"
+                        pathLength="1"
+                        d="m7.5 12 3 3 6-6"
+                        fill="none"
+                        stroke="white"
+                        strokeWidth="2.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+
+                    <span>{text}</span>
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
         </div>
       </section>
 
       {/* ПРАЙС */}
-      <section className="bg-sky-100 py-14 text-slate-900 md:py-20">
-        <div className="mx-auto max-w-7xl space-y-12 px-4 md:px-6">
-          {sections.map((section) => {
-            return (
-              <div key={section.title}>
-                <div className="mb-6">
-                  <p className="text-sm font-black uppercase tracking-wider text-yellow-500">
-                    Прайс-лист
-                  </p>
+      <section className="bg-slate-50 py-12 md:py-16">
+        <div className="mx-auto max-w-7xl space-y-12 px-5 md:px-6">
+          {sections.map((section) => (
+            <div key={section.title}>
+              <div className="mb-6">
+                <p className="text-sm font-bold uppercase tracking-wider text-[#0092B8]">
+                  Прайс-лист
+                </p>
 
-                  <h2 className="mt-2 text-3xl font-black md:text-4xl">
-                    {section.title}
-                  </h2>
+                <h2 className="mt-2 text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
+                  {section.title}
+                </h2>
 
-                  <p className="mt-2 text-slate-500">
-                    {section.subtitle}
-                  </p>
-                </div>
+                <p className="mt-3 text-slate-600">
+                  {section.subtitle}
+                </p>
 
-                <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-                  {section.items.map(
-                    ([key, fallbackName, fallbackPrice]) => {
-                      const name =
-                        names[key] || fallbackName;
-
-                      const price =
-                        prices[key] || fallbackPrice;
-
-                      return (
-                        <div
-                          key={key}
-                          className="flex flex-col gap-2 border-b border-slate-200 px-5 py-5 transition duration-200 last:border-0 hover:bg-yellow-50 md:flex-row md:items-center md:justify-between md:px-7"
-                        >
-                          <span className="font-semibold leading-6 md:pr-10">
-                            {name}
-                          </span>
-
-                          <span className="shrink-0">
-                            {formatPrice(price)}
-                          </span>
-                        </div>
-                      );
-                    }
-                  )}
-
-                </div>
+                <div
+                  aria-hidden="true"
+                  className="mt-4 h-1 w-16 rounded-full bg-[#FDC700]"
+                />
               </div>
-            );
-          })}
 
-          {/* ВНИМАНИЕ */}
-          <div className="rounded-3xl border border-yellow-300 bg-yellow-50 p-6 text-red-600 md:p-8">
-            <h2 className="text-xl font-black">
-              Внимание
+              <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+                {section.items.map(
+                  ([key, fallbackName, fallbackPrice]) => {
+                    const name = names[key] || fallbackName;
+                    const price = prices[key] || fallbackPrice;
+
+                    return (
+                      <div
+                        key={key}
+                        className="flex flex-col gap-2 border-b border-slate-100 px-5 py-4 transition last:border-0 hover:bg-[#0092B8]/5 md:flex-row md:items-center md:justify-between md:gap-6 md:px-7 md:py-5"
+                      >
+                        <span className="font-medium leading-7 text-slate-700">
+                          {name}
+                        </span>
+
+                        <span className="shrink-0 text-lg font-bold text-[#0092B8]">
+                          {formatPrice(price)}
+                        </span>
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+            </div>
+          ))}
+
+          {/* УСЛОВИЯ */}
+          <div className="rounded-3xl border border-[#FDC700]/50 bg-[#FDC700]/10 p-6 md:p-8">
+            <h2 className="text-xl font-bold text-[#0092B8]">
+              Что влияет на стоимость
             </h2>
 
-            <p className="mt-3 leading-7 text-slate-700">
+            <p className="mt-3 leading-7 text-slate-600">
               Цены указаны за стандартную работу. Если выполнение
               работ усложняется из-за трудного доступа, состояния
               коммуникаций или других особенностей объекта,
-              стоимость может измениться.
+              стоимость может измениться. Итоговую цену мастер
+              согласует с вами до начала работ.
             </p>
           </div>
 
           {/* ТЕКСТ */}
-          <div className="rounded-3xl bg-white p-6 shadow-sm md:p-8">
-            <h2 className="text-2xl font-black">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+            <h2 className="text-2xl font-bold text-[#0092B8] md:text-3xl">
               Профессиональные сантехнические работы
             </h2>
 
@@ -435,37 +644,39 @@ export default async function CenyPage() {
         </div>
       </section>
 
-      {/* НИЖНИЙ БЛОК */}
-      <section className="bg-sky-800 py-16 text-white">
-        <div className="mx-auto max-w-7xl px-5 md:px-6">
-          <div className="rounded-3xl border border-white/20 bg-white/10 p-7 shadow-lg md:p-10">
-            <p className="font-bold text-yellow-400">
-              Нужна точная стоимость?
-            </p>
+      {/* КОНТАКТЫ */}
+      <section className="bg-[#0092B8] py-16 text-white">
+        <div className="mx-auto max-w-5xl px-6 text-center">
+          <p className="font-bold uppercase tracking-wider text-[#FDC700]">
+            Нужна точная стоимость?
+          </p>
 
-            <h2 className="mt-2 text-3xl font-black md:text-4xl">
-              Свяжитесь с мастером
-            </h2>
+          <h2 className="mt-3 text-3xl font-black leading-tight md:text-[54px]">
+            Свяжитесь с мастером
+          </h2>
 
-            <p className="mt-4 text-slate-300">
-              Расскажите, какую работу необходимо выполнить.
-            </p>
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/90">
+            Расскажите, какую работу необходимо выполнить.
+            Можно отправить фотографии в WhatsApp —
+            уточним задачу и согласуем стоимость.
+          </p>
 
-            <div className="mt-7 flex flex-wrap gap-4">
-              <a
-                href="tel:+77771696969"
-                className="rounded-full bg-yellow-400 px-7 py-4 font-black text-black"
-              >
-                📞 Позвонить
-              </a>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href="tel:+77771696969"
+              className="price-call-shine inline-flex min-h-14 w-full items-center justify-center rounded-full bg-[#FDC700] px-8 py-4 text-lg text-[#171717] transition hover:bg-[#eab800] sm:w-auto"
+            >
+              Вызвать мастера
+            </a>
 
-              <a
-                href="https://wa.me/77771696969"
-                className="rounded-full bg-green-500 px-7 py-4 font-black text-white"
-              >
-                WhatsApp
-              </a>
-            </div>
+            <a
+              href="https://wa.me/77771696969"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-white px-8 py-4 text-lg text-[#292929] transition hover:bg-gray-100 sm:w-auto"
+            >
+              Написать в WhatsApp
+            </a>
           </div>
         </div>
       </section>

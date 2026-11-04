@@ -1,5 +1,5 @@
 import Header from "./Header";
-
+import Rayony from "./Rayony";
 import HomeReviews from "./HomeReviews";
 export const metadata = {
   title: "Сервис бытовых услуг в Алматы | Сантехник, электрик",
@@ -374,7 +374,7 @@ export default function Home() {
           icon: "/plotnik.png",
           title: "Плотник",
           text: "Изготовление и ремонт деревянных конструкций.",
-          href: "#",
+          href: "/plotnik",
         },
       ].map(({ icon, title, text, href }) => (
         <div
@@ -466,53 +466,7 @@ export default function Home() {
 </section> 
 
       
-      <section className="bg-[#0092B8] py-16 text-white">
-  <div className="mx-auto max-w-7xl px-6">
-
-    <div className="text-center">
-      <p className="font-bold uppercase text-yellow-300">
-        География выезда
-      </p>
-
-      <h2 className="mt-2 text-3xl font-black md:text-4xl">
-        Работаем по всему Алматы и пригороду
-      </h2>
-    </div>
-
-    <div className="mt-10 grid gap-8 md:grid-cols-[320px_1fr] md:items-center">
-
-      {/* РАЙОНЫ */}
-      <div className="space-y-3 text-lg font-medium">
-        <p>✓ <span className="underline underline-offset-4 transition-colors duration-200 hover:text-[#FDC700]">Алмалинский район</span></p>
-<p>✓ <span className="underline underline-offset-4 transition-colors duration-200 hover:text-[#FDC700]">Медеуский район</span></p>
-<p>✓ <span className="underline underline-offset-4 transition-colors duration-200 hover:text-[#FDC700]">Бостандыкский район</span></p>
-<p>✓ <span className="underline underline-offset-4 transition-colors duration-200 hover:text-[#FDC700]">Ауэзовский район</span></p>
-<p>✓ <span className="underline underline-offset-4 transition-colors duration-200 hover:text-[#FDC700]">Турксибский район</span></p>
-<p>✓ <span className="underline underline-offset-4 transition-colors duration-200 hover:text-[#FDC700]">Наурызбайский район</span></p>
-<p>✓ <span className="underline underline-offset-4 transition-colors duration-200 hover:text-[#FDC700]">Алатауский район</span></p>
-<p>✓ <span className="underline underline-offset-4 transition-colors duration-200 hover:text-[#FDC700]">Жетысуский район</span></p>
-
-        <div className="mt-6 rounded-xl bg-white/10 p-4">
-          Быстрый выезд мастера в ваш район.
-        </div>
-      </div>
-
-      {/* КАРТА */}
-      <div className="overflow-hidden rounded-2xl shadow-xl">
-        <iframe
-          src="https://www.google.com/maps?q=Шакарима+25,+Алматы,+Казахстан&output=embed"
-          width="100%"
-          height="520"
-          style={{ border: 0 }}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
-      </div>
-
-    </div>
-
-  </div>
-</section>
+      
 {/* ПОЧЕМУ ВЫБИРАЮТ НАС */}
 <section className="bg-slate-50 py-16">
   <div className="mx-auto max-w-7xl px-6">
@@ -748,6 +702,7 @@ export default function Home() {
     </div>
   </div>
 </section>
+<Rayony />
 {/* FOOTER */}
 <footer className="bg-[#292929] text-white">
   <div className="mx-auto max-w-7xl px-5 py-10 md:px-6 md:py-14">
@@ -852,6 +807,7 @@ export default function Home() {
     </div>
 
   </div>
+  
 </footer>
            
 

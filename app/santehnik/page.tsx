@@ -113,92 +113,187 @@ export default function SantehnikPage() {
 
 {/* ================= ПЕРВЫЙ ЭКРАН — КОМПЬЮТЕР ================= */}
 <section
-  className="relative hidden min-h-[535px] overflow-hidden bg-no-repeat md:block md:bg-[length:100%_auto] md:bg-[position:center_0]"
-  style={{
-    backgroundImage: "url('/master.jpg')",
-    backgroundPosition: "center 0px",
-  }}
+  className="relative hidden h-[490px] overflow-hidden text-white md:block"
+  style={{ backgroundColor: "#281E12" }}
 >
-  <div className="absolute inset-0 bg-black/20" />
+  {/* ФОТО СПРАВА */}
+  <div className="absolute inset-y-0 right-0 w-[53%]">
+    <img
+      src="/banner-master.jpg"
+      alt="Сантехник в Алматы"
+      className="h-full w-full object-cover object-[60%_center]"
+    />
 
-  <div className="relative z-10 mx-auto flex min-h-[535px] max-w-7xl items-start px-6 pb-8 pt-8">
-    <div className="max-w-5xl">
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-y-0 -left-px w-[240px]"
+      style={{
+        background:
+          "linear-gradient(to right, #281E12 0%, transparent 100%)",
+      }}
+    />
+  </div>
 
-      <p className="font-bold text-yellow-400">
-        Выезд сантехника по Алматы
-      </p>
-
-      <h1 className="mt-0 text-5xl font-black leading-tight text-white md:text-7xl">
-        Сантехник в Алматы
+  {/* ТЕКСТ СЛЕВА */}
+  <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6">
+    <div className="relative w-[47%]">
+      <h1 className="relative -top-7 text-5xl font-bold uppercase leading-[1.05] lg:text-[64px]">
+        Сантехник
+        <span className="block text-[#FDC700]">
+          Алматы
+        </span>
       </h1>
 
-      <p className="ml-25 mt-10 max-w-2xl text-xl leading-8 text-slate-100">
-        Установка и ремонт сантехники, устранение протечек,
-        замена смесителей, унитазов и труб. Срочный выезд мастера по Алматы.
+      <p className="mt-4 text-lg leading-7 text-white/85">
+        <span className="block whitespace-nowrap">
+          Установка и ремонт сантехники в Алматы.
+        </span>
+        <span className="block whitespace-nowrap">
+          Устранение протечек и прочистка канализации.
+        </span>
       </p>
 
-      <div className="ml-50 mt-13 flex flex-wrap gap-9">
+      <div className="mt-8 flex gap-3">
         <a
           href="tel:+77771696969"
-          className="rounded-full bg-[#FDC700] px-8 py-4 text-lg font-black text-slate-950 shadow-xl transition hover:-translate-y-1 hover:bg-[#e8b700]"
+          className="call-button-shine inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-[#0092B8]/80 px-6 text-xl font-normal text-white transition hover:bg-[#007D9E]"
         >
-          📞 Позвонить
+          Вызвать мастера
         </a>
 
-        <a
-          href="https://wa.me/77771696969"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full bg-[#0092B8] px-8 py-4 text-lg font-black text-white shadow-xl transition hover:-translate-y-1 hover:bg-[#007a99]"
-        >
-          WhatsApp
-        </a>
+        <div className="relative shrink-0">
+          <a
+            href="https://wa.me/77771696969"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-white px-6 text-xl font-normal text-[#292929] transition hover:bg-gray-100"
+          >
+            Написать в WhatsApp
+          </a>
+
+          {/* КОЛЬЦО И БИРКА */}
+          <div className="pointer-events-none absolute left-[calc(100%-6px)] top-1/2 z-20 h-0 w-0">
+            <div className="santehnik-discount-hanging absolute left-0 top-0">
+              <img
+                src="/discount-15.png"
+                alt="Скидка 15% на все услуги"
+                className="absolute left-0 top-[-47px] h-auto w-[180px] max-w-none drop-shadow-[0_5px_7px_rgba(0,0,0,0.25)]"
+              />
+
+              <svg
+                width="30"
+                height="20"
+                viewBox="0 0 30 20"
+                aria-hidden="true"
+                className="absolute -left-[9px] -top-[10px] z-10"
+              >
+                <ellipse
+                  cx="15"
+                  cy="10"
+                  rx="12"
+                  ry="7"
+                  fill="none"
+                  stroke="#64748B"
+                  strokeWidth="4"
+                />
+                <ellipse
+                  cx="15"
+                  cy="9"
+                  rx="12"
+                  ry="7"
+                  fill="none"
+                  stroke="#E2E8F0"
+                  strokeWidth="2"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
 
-<div className="mx-auto mt-15 grid w-full max-w-[1200px] grid-cols-2 gap-4 px-2 text-white md:grid-cols-4">
-  {[
-    ["/clients.png", "1000+", "довольных клиентов"],
-    ["/time.png", "30–45 мин", "срочный выезд"],
-    ["/guarantee.png", "до 3 лет", "гарантия на работы"],
-    ["/calendar.png", "7 дней", "работаем без выходных"],
-  ].map(([icon, number, caption]) => (
-    <div
-      key={icon}
-      className="group relative flex min-w-0 items-center justify-center gap-3 px-2 pb-5"
-    >
-      <img
-        src={icon}
-        alt=""
-        className="h-12 w-12 shrink-0 object-contain transition-transform duration-300 group-hover:scale-110 md:h-14 md:w-14"
-      />
+      <ul className="mt-10 flex w-max items-center gap-5 text-base">
+        {[
+          "Быстрый выезд",
+          "Гарантия до 3 лет",
+          "Работаем каждый день",
+        ].map((text) => (
+          <li
+            key={text}
+            className="flex shrink-0 items-center gap-2 whitespace-nowrap"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              className="santehnik-check-icon h-7 w-7 shrink-0"
+            >
+              <path
+                fill="#0092B8"
+                d="M12 1 15 3 19 3 20 7 23 10 21 14 21 18 17 20 14 23 10 21 6 21 4 17 1 14 3 10 3 6 7 4Z"
+              />
+              <path
+                className="santehnik-check-line"
+                pathLength="1"
+                d="m7 12 3 3 7-7"
+                fill="none"
+                stroke="white"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            {text}
+          </li>
+        ))}
+      </ul>
 
-      <div className="origin-left transition-transform duration-300 group-hover:scale-110">
-        <div className="whitespace-nowrap text-xl font-black text-[#FDC700] md:text-3xl">
-       {number}
-       </div>
-        <div className="text-sm">{caption}</div>
-      </div>
+      <style>{`
+        @keyframes santehnikDiscountSwing {
+          0%, 100% { transform: rotate(-4deg); }
+          50% { transform: rotate(4deg); }
+        }
 
-      <span className="absolute bottom-4 left-[15%] h-1 w-[70%] origin-center scale-x-50 rounded-full bg-[#FDC700] transition-transform duration-300 group-hover:scale-x-100" />
-    </div>
-  ))}
-</div>
+        .santehnik-discount-hanging {
+          transform-origin: 0 0;
+          animation: santehnikDiscountSwing 3s ease-in-out infinite;
+        }
 
+        @keyframes santehnikCheckAppear {
+          from { opacity: 0; transform: scale(0.75); }
+          to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes santehnikCheckDraw {
+          from { stroke-dashoffset: 1; }
+          to { stroke-dashoffset: 0; }
+        }
+
+        .santehnik-check-icon {
+          animation: santehnikCheckAppear 0.45s ease-out both;
+        }
+
+        .santehnik-check-line {
+          stroke-dasharray: 1;
+          stroke-dashoffset: 0;
+          animation: santehnikCheckDraw 2s ease-in-out infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .santehnik-discount-hanging,
+          .santehnik-check-icon,
+          .santehnik-check-line {
+            animation: none;
+          }
+        }
+      `}</style>
     </div>
   </div>
 </section>
 <section className="bg-white px-5 py-12 text-[#171717] md:py-16">
   <div className="mx-auto max-w-3xl">
-    <h2 className="text-center text-3xl font-bold leading-tight text-[#171717] md:text-4xl">
+    <h2 className="text-center text-4xl font-bold leading-tight text-[#0092B8] md:text-[54px]">
   Столкнулись с проблемой
   <br />
-  <span className="relative inline-block text-[#0092B8]">
-    в сантехнике?
-    <span
-      aria-hidden="true"
-      className="absolute -bottom-2 left-1/2 h-1 w-24 -translate-x-1/2 rounded-full bg-[#FDC700]"
-    />
-  </span>
+  в сантехнике?
 </h2>
 
     
@@ -229,15 +324,11 @@ export default function SantehnikPage() {
 </section>
 <section className="relative -mt-px bg-white px-5 pt-6 pb-12 text-[#171717]" style={{ border: 0 }}>
   <div className="mx-auto max-w-3xl">
-    <div className="mx-auto mb-3 h-1 w-20 rounded-full bg-[#FDC700]" />
+    
 
-    <p className="text-center text-sm font-bold uppercase tracking-wider text-[#0092B8]">
-      Сервис бытовых услуг
-    </p>
-
-    <h2 className="mt-3 text-center text-3xl font-bold leading-tight md:text-4xl">
-      Поможем решить вашу задачу
-    </h2>
+    <h2 className="mt-3 text-center text-4xl font-bold leading-tight text-[#0092B8] md:text-[54px]">
+  Поможем решить вашу задачу
+</h2>
 
     <p className="mt-6 text-center text-base leading-relaxed text-slate-700 md:text-lg">
       Свой штат квалифицированных работников. Высокий уровень сервиса. 15 лет опыта и более 1000 клиентов. Наши мастера выполняют
@@ -254,53 +345,126 @@ export default function SantehnikPage() {
         href="/nashi-raboty"
         className="rounded-full bg-[#0092B8] px-6 py-4 text-center font-bold text-white"
       >
-        Посмотреть работы →
+        <span aria-hidden="true" className="services-arrow mr-3 inline-block">
+  →
+</span>
+Посмотреть работы
       </a>
       <a
         href="/otzyvy" 
         className="rounded-full bg-[#FDC700] px-6 py-4 text-center font-bold text-[#171717]"
       >
-        Читать отзывы →
+        <span aria-hidden="true" className="services-arrow mr-3 inline-block">
+  →
+</span>
+Читать отзывы
       </a>
     </div>
   </div>
 </section>
 
-      {/* ================= УСЛУГИ ================= */}
-      <section id="services" className="relative z-10 -mt-px border-0 bg-white pt-8 pb-20 text-slate-900">
-        <div className="mx-auto max-w-7xl px-6">
+  {/* ================= УСЛУГИ ================= */}
+<section
+  id="services"
+  className="relative z-10 -mt-px border-0 bg-white pt-8 pb-20 text-slate-900"
+>
+  <div className="mx-auto max-w-7xl px-6">
+    <div className="mb-10">
+      <p className="text-center text-4xl font-bold leading-tight text-[#0092B8] md:text-[54px]">
+        Какая помощь вам нужна?
+      </p>
 
-         <div className="mx-auto mb-3 h-1 w-16 rounded-full bg-[#FDC700]" />
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-5">
+        <h2 className="inline-flex items-center gap-3 text-xl font-bold text-[#0092B8]">
+  <a href="/uslugi-santehnika" className="hover:underline">
+    Услуги сантехника
+  </a>
 
-<h2 className="text-center text-xl font-bold text-[#0092B8]">
-  Услуги сантехника
+  <span aria-hidden="true" className="services-arrow inline-block">
+    →
+  </span>
 </h2>
 
-<h3 className="mt-2 text-center text-3xl font-black leading-tight md:text-4xl">
-  Какая помощь вам нужна?
-</h3>
+<style>{`
+  @keyframes servicesArrowMove {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(8px); }
+  }
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+  .services-arrow {
+    animation: servicesArrowMove 1.2s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .services-arrow {
+      animation: none;
+    }
+  }
+`}</style>
+
+        <a
+         href="/uslugi-santehnika"
+          className="inline-flex items-center justify-center rounded-full bg-[#FDC700] px-8 py-4 text-lg font-normal text-[#171717] transition hover:bg-[#eab800]"
+        >
+          Подробнее
+        </a>
+      </div>
+    </div>
+
+                   <div
+            id="service-list"
+            className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3"
+          >
             {[
-              "Устранение протечек",
-              "Установка смесителя",
-              "Установка унитаза",
-              "Замена труб",
-              "Монтаж водоснабжения",
-              "Прочистка канализации",
-            ].map((service) => (
+              [
+                "Устранение протечек",
+                "Устраняем течи труб, кранов, сифонов и соединений.",
+              ],
+              [
+                "Устранение засоров",
+                "Прочищаем раковины, ванны, унитазы и канализационные трубы.",
+              ],
+              [
+                "Ремонт и установка сантехники",
+                "Устанавливаем и ремонтируем смесители, унитазы, раковины и другое оборудование.",
+              ],
+              [
+                "Монтаж и ремонт отопления",
+                "Устанавливаем радиаторы, меняем трубы и устраняем неисправности отопления.",
+              ],
+              [
+                "Замена стояков",
+                "Меняем стояки холодной и горячей воды, канализации.",
+              ],
+              [
+                "Монтаж водопровода и канализации",
+                "Прокладываем и заменяем трубы в квартирах и частных домах.",
+              ],
+            ].map(([title, description]) => (
               <div
-                key={service}
+                key={title}
                 className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm transition hover:-translate-y-1 hover:border-yellow-400 hover:shadow-lg"
               >
-                <h3 className="text-xl font-black">
-                  {service}
+                <h3 className="text-xl font-black text-[#0092B8]">
+                  {title}
                 </h3>
 
                 <p className="mt-3 text-slate-600">
-                  Работаем аккуратно, согласовываем стоимость заранее
-                  и предоставляем гарантию.
-                </p>
+  {description}
+</p>
+
+<a
+  href="/uslugi-santehnika"
+  className="mt-5 inline-flex items-center gap-3 font-semibold text-[#0092B8] hover:underline"
+>
+  <span
+    aria-hidden="true"
+    className="services-arrow inline-block"
+  >
+    →
+  </span>
+  Подробнее
+</a>
               </div>
             ))}
           </div>
@@ -312,13 +476,28 @@ export default function SantehnikPage() {
       <section id="prices" className="bg-slate-50 py-20 text-slate-900">
         <div className="mx-auto max-w-7xl px-6">
 
-          <p className="font-bold text-yellow-500">
-            Цены на услуги
-          </p>
+          <p className="text-center text-4xl font-bold leading-tight text-[#0092B8] md:text-[54px]">
+  Примерная стоимость работ
+</p>
 
-          <h2 className="mt-2 text-4xl font-black">
-            Примерная стоимость работ
-          </h2>
+<div className="mt-8 flex flex-wrap items-center justify-center gap-5">
+  <h2 className="inline-flex items-center gap-3 text-xl font-bold text-[#0092B8]">
+    Цены на услуги
+    <span
+      aria-hidden="true"
+      className="services-arrow inline-block"
+    >
+      →
+    </span>
+  </h2>
+
+  <a
+    href="/price"
+    className="inline-flex items-center justify-center rounded-full bg-[#FDC700] px-8 py-4 text-lg font-normal text-[#171717] transition hover:bg-[#eab800]"
+  >
+    Подробнее
+  </a>
+</div>
           <p className="mt-4 text-slate-600">
   Базовые цены не менялись с 2020 года. Несмотря на рост цен,
   мы сохраняем стоимость основных услуг на прежнем уровне.
@@ -350,9 +529,9 @@ export default function SantehnikPage() {
 <section className="bg-white py-20 text-slate-900">
   <div className="mx-auto max-w-7xl px-6">
 
-    <h2 className="text-4xl font-black">
-      Сантехник в Алматы — вызов сантехника на дом
-    </h2>
+    <h2 className="text-4xl font-black text-[#0092B8]">
+  Сантехник в Алматы — вызов сантехника на дом
+</h2>
 
     <div className="mt-8 max-w-5xl space-y-6 text-lg leading-8 text-slate-700">
 

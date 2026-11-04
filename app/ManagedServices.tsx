@@ -34,34 +34,65 @@ export default function ManagedServices({
   }, [type]);
 
   return (
-    <div
-      className={
-        type === "plumbing"
-          ? "mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4"
-          : "mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3"
-      }
-    >
-      {services.map((service) => (
-        <a
-          key={service.id}
-          href={service.href}
-          className="group flex flex-col rounded-3xl border border-slate-200 bg-white p-6 text-slate-950 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-yellow-50 hover:shadow-lg"
-        >
-          <div className="mb-5 h-1 w-12 rounded-full bg-yellow-400" />
+    <>
+      <style>{`
+        @keyframes managedServiceArrow {
+          0%, 100% {
+            transform: translateX(0);
+          }
+          50% {
+            transform: translateX(6px);
+          }
+        }
 
-          <h3 className="text-xl font-black">{service.title}</h3>
+        .managed-service-arrow {
+          display: inline-block;
+          animation: managedServiceArrow 1.2s ease-in-out infinite;
+        }
 
-          {service.description && (
-            <p className="mt-3 leading-6 text-slate-600">
-              {service.description}
-            </p>
-          )}
+        @media (prefers-reduced-motion: reduce) {
+          .managed-service-arrow {
+            animation: none;
+          }
+        }
+      `}</style>
 
-          <p className="mt-auto pt-6 font-bold text-yellow-600">
-            Подробнее →
-          </p>
-        </a>
-      ))}
-    </div>
+      <div
+        className={
+          type === "plumbing"
+            ? "mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4"
+            : "mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+        }
+      >
+        {services.map((service) => (
+          <a
+            key={service.id}
+            href={service.href}
+            className="group flex min-w-0 flex-col rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#0092B8]/40 hover:bg-white hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0092B8]"
+          >
+            <h3 className="break-words text-lg font-bold leading-6 text-[#0092B8]">
+              {service.title}
+            </h3>
+
+            {service.description && (
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                {service.description}
+              </p>
+            )}
+
+            <span className="mt-auto flex items-center gap-3 pt-4 text-sm font-semibold text-[#0092B8]">
+              <span
+                aria-hidden="true"
+                className="managed-service-arrow text-lg"
+              >
+                →
+              </span>
+
+              Подробнее
+            </span>
+          </a>
+        ))}
+      </div>
+    </>
   );
 }

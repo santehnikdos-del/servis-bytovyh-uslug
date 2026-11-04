@@ -12,19 +12,107 @@ export const metadata = {
 
 const advantages = [
   ["15 лет опыта", "Практический опыт ремонта и монтажа сантехники."],
-  ["1000+ клиентов", "Работаем в квартирах, частных домах и офисах."],
+  ["1000+ клиентов", "Помогаем владельцам квартир, частных домов и офисов."],
   ["Гарантия до 3 лет", "Срок и условия гарантии зависят от выполненных работ."],
   ["Свои мастера", "Свой штат квалифицированных работников."],
   ["Цена заранее", "Согласовываем стоимость до начала работ."],
   ["Без выходных", "Принимаем заявки каждый день."],
 ];
 
+const directions = [
+  [
+    "Сантехник",
+    "Установка и ремонт сантехники, устранение протечек.",
+    "/santehnik",
+  ],
+  [
+    "Электрик",
+    "Помощь с неисправностями электрики и установкой оборудования.",
+    "/elektrik",
+  ],
+  [
+    "Прочистка канализации",
+    "Устранение засоров в квартирах, домах и офисах.",
+    "/prochistka-kanalizacii",
+  ],
+];
+
+const steps = [
+  ["01", "Заявка", "Вы звоните или пишете нам в WhatsApp."],
+  ["02", "Обсуждение", "Уточняем задачу и согласуем время выезда."],
+  [
+    "03",
+    "Оценка и работа",
+    "Мастер осматривает оборудование, согласует цену и выполняет работу.",
+  ],
+  [
+    "04",
+    "Проверка",
+    "Проверяем результат и объясняем условия гарантии.",
+  ],
+];
+
+function Arrow() {
+  return (
+    <span aria-hidden="true" className="about-arrow inline-block">
+      →
+    </span>
+  );
+}
+
+function Check({ text }: { text: string }) {
+  return (
+    <li className="flex items-center gap-3">
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        className="h-7 w-7 shrink-0"
+      >
+        <path
+          fill="#0092B8"
+          d="M12 1 15 3 19 3 20 7 23 10 21 14 21 18 17 20 14 23 10 21 6 21 4 17 1 14 3 10 3 6 7 4Z"
+        />
+        <path
+          className="about-check-line"
+          pathLength="1"
+          d="m7 12 3 3 7-7"
+          fill="none"
+          stroke="white"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+      <span>{text}</span>
+    </li>
+  );
+}
+
 export default function ONasPage() {
   return (
-    <main className="min-h-screen bg-neutral-800 pb-20 text-white md:pb-0">
+    <main className="min-h-screen bg-white pb-20 text-slate-900 md:pb-0">
       <Header />
 
       <style>{`
+        @keyframes aboutArrowMove {
+          0%, 100% { transform: translateX(0); }
+          50% { transform: translateX(8px); }
+        }
+
+        .about-arrow {
+          animation: aboutArrowMove 1.2s ease-in-out infinite;
+        }
+
+        @keyframes aboutCheckDraw {
+          from { stroke-dashoffset: 1; }
+          to { stroke-dashoffset: 0; }
+        }
+
+        .about-check-line {
+          stroke-dasharray: 1;
+          animation: aboutCheckDraw 2s ease-in-out infinite;
+        }
+
         @keyframes aboutCallShine {
           from { transform: translateX(0) skewX(-25deg); }
           to { transform: translateX(1800%) skewX(-25deg); }
@@ -45,7 +133,7 @@ export default function ONasPage() {
           background: linear-gradient(
             90deg,
             transparent,
-            rgba(255, 255, 255, 0.4),
+            rgba(255,255,255,0.4),
             transparent
           );
           animation: aboutCallShine 2.5s linear infinite;
@@ -53,235 +141,246 @@ export default function ONasPage() {
         }
 
         @media (prefers-reduced-motion: reduce) {
+          .about-arrow,
+          .about-check-line,
           .about-call-shine::after {
             animation: none;
           }
         }
       `}</style>
 
-      {/* МОБИЛЬНЫЙ ПЕРВЫЙ ЭКРАН */}
-      <section className="relative overflow-hidden bg-[#333333] px-6 py-8 text-white md:hidden before:pointer-events-none before:absolute before:inset-0 before:z-0 before:bg-[url('/hero-mark.png')] before:bg-center before:bg-no-repeat before:bg-[length:85%_auto] before:opacity-10 [&>*]:relative [&>*]:z-10">
-        <nav
-  aria-label="Хлебные крошки"
-  className="mb-6 flex items-center gap-2 text-sm text-white/70"
->
-  <a href="/" className="hover:text-[#FDC700]">Главная</a>
-  <span aria-hidden="true">→</span>
-  <span aria-current="page" className="text-white">О нас</span>
-</nav>
-        <h1 className="text-center text-3xl font-bold leading-tight text-white">
-          О НАС
-        </h1>
+      {/* МОБИЛЬНЫЙ БАННЕР */}
+      <section className="relative overflow-hidden bg-[#333333] px-6 py-8 text-white md:hidden before:pointer-events-none before:absolute before:inset-0 before:bg-[url('/hero-mark.png')] before:bg-[length:85%_auto] before:bg-center before:bg-no-repeat before:opacity-10">
+        <div className="relative z-10">
+          <nav
+            aria-label="Хлебные крошки"
+            className="mb-6 flex items-center gap-2 text-sm text-white/70"
+          >
+            <a href="/" className="hover:text-[#FDC700]">
+              Главная
+            </a>
+            <span aria-hidden="true">→</span>
+            <span aria-current="page" className="text-white">
+              О нас
+            </span>
+          </nav>
 
-        <div className="mx-auto mt-6 flex w-fit max-w-full items-center justify-center gap-4">
-          <ul className="flex flex-col gap-3 text-left">
-            {[
-              "Свой штат специалистов",
-              "Более 1000 клиентов",
-              "Работаем с 2013 года",
-            ].map((text) => (
-              <li key={text} className="flex items-center gap-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  className="h-7 w-7 shrink-0"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill="#0092B8"
-                    d="m12 1 3 2.2 3.7-.1 1.1 3.5 3.1 2.1-1.2 3.5
-                       1.2 3.5-3.1 2.1-1.1 3.5-3.7-.1L12 23l-3-2.2
-                       -3.7.1-1.1-3.5-3.1-2.1L2.3 12 1.1 8.5l3.1-2.1
-                       1.1-3.5 3.7.1Z"
-                  />
-                  <path
-                    d="m7.5 12 3 3 6-6"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="2.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+          <h1 className="text-center text-3xl font-bold uppercase">
+            О нас
+          </h1>
 
-                <span>{text}</span>
-              </li>
-            ))}
+          <ul className="mx-auto mt-6 flex w-fit flex-col gap-3">
+            <Check text="Свой штат специалистов" />
+            <Check text="Более 1000 клиентов" />
+            <Check text="Гарантия до 3 лет" />
           </ul>
+
+          <p className="mt-7 text-center text-lg leading-7 text-white/85">
+            Сервис бытовых услуг в Алматы. Помогаем с ремонтом,
+            установкой и обслуживанием оборудования вашего дома.
+          </p>
+
+          <a
+            href="tel:+77771696969"
+            className="about-call-shine mx-auto mt-8 flex max-w-sm items-center justify-center rounded-full bg-[#0092B8]/40 px-6 py-4 text-lg"
+          >
+            Связаться с нами
+          </a>
         </div>
-
-        <p className="mt-7 text-center text-lg leading-7">
-          Сервис бытовых услуг в Алматы. Своя команда мастеров,
-          15 лет опыта и более 1000 клиентов.
-          Работаем аккуратно, стоимость согласовываем заранее.
-        </p>
-
-        <a
-          href="tel:+77771696969"
-          className="about-call-shine mx-auto mt-10 flex max-w-sm items-center justify-center rounded-full bg-[#0092B8]/40 px-6 py-4 text-lg font-normal text-white"
-        >
-          Связаться с нами
-        </a>
       </section>
 
-      {/* ПЕРВЫЙ ЭКРАН — КОМПЬЮТЕР */}
-      <section
-        className="relative hidden min-h-[535px] overflow-hidden bg-no-repeat md:block md:bg-[length:100%_auto]"
-        style={{
-          backgroundImage: "url('/master.jpg')",
-          backgroundPosition: "center 0px",
-        }}
+    {/* БАННЕР — КОМПЬЮТЕР */}
+<section
+  className="relative hidden h-[490px] overflow-hidden text-white md:block"
+  style={{ backgroundColor: "#281E12" }}
+>
+  <div className="absolute inset-y-0 right-0 w-[53%]">
+    <img
+      src="/banner-master.jpg"
+      alt="Мастер сервиса бытовых услуг в Алматы"
+      className="h-full w-full object-cover object-[60%_center]"
+    />
+
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-y-0 -left-px w-[240px]"
+      style={{
+        background:
+          "linear-gradient(to right, #281E12 0%, transparent 100%)",
+      }}
+    />
+  </div>
+
+  <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6">
+    <div className="w-[47%]">
+      <nav
+        aria-label="Хлебные крошки"
+        className="mb-5 flex items-center gap-2 text-sm text-white/70"
       >
-        <div className="absolute inset-0 bg-black/20" />
+        <a href="/" className="hover:text-[#FDC700]">
+          Главная
+        </a>
+        <span aria-hidden="true">→</span>
+        <span aria-current="page" className="text-white">
+          О нас
+        </span>
+      </nav>
 
-        <div className="relative z-10 mx-auto flex min-h-[535px] max-w-7xl items-start px-6 pb-8 pt-8">
-   
-          <div className="max-w-5xl">
-  <nav
-    aria-label="Хлебные крошшки"
-    className="mb-6 flex w-full items-center gap-2 text-sm text-white/70"
-  >
-    <a href="/" className="hover:text-[#FDC700]">
-      Главная
-    </a>
-    <span aria-hidden="true">→</span>
-    <span aria-current="page" className="text-white">
-      О нас
-    </span>
-  </nav>
+      <h1 className="whitespace-nowrap text-5xl font-bold uppercase leading-[1.05] lg:text-[64px]">
+  О нашей <span className="text-[#FDC700]">команде</span>
+</h1>
 
-  <p className="font-bold text-yellow-400">
-    Сервис бытовых услуг в Алматы
-  </p>
+      <p className="mt-5 max-w-lg text-lg leading-7 text-white/85">
+        Сервис бытовых услуг в Алматы. Свои мастера,
+        согласованная стоимость и аккуратная работа.
+      </p>
 
-            <h1 className="mt-0 text-5xl font-black leading-tight text-white md:text-7xl">
-              О нас
-            </h1>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <a
+          href="tel:+77771696969"
+          className="about-call-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal transition hover:bg-[#007D9E]"
+        >
+          Вызвать мастера
+        </a>
 
-            <p className="ml-25 mt-10 max-w-2xl text-xl leading-8 text-slate-100">
-              Своя команда квалифицированных мастеров.
-              Выполняем ремонт и монтаж сантехники в квартирах,
-              домах и офисах. Работаем аккуратно и по договорённости.
-            </p>
+        <div className="relative shrink-0">
+          <a
+            href="https://wa.me/77771696969"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-14 items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100"
+          >
+            Написать в WhatsApp
+          </a>
 
-            <div className="ml-50 mt-13 flex flex-wrap gap-9">
-              <a
-                href="tel:+77771696969"
-                className="rounded-full bg-[#FDC700] px-8 py-4 text-lg font-black text-slate-950 shadow-xl transition hover:-translate-y-1 hover:bg-[#e8b700]"
+          {/* СКИДКА */}
+          <div className="pointer-events-none absolute left-[calc(100%-6px)] top-1/2 z-20 h-0 w-0">
+            <div className="about-banner-discount absolute left-0 top-0">
+              <img
+                src="/discount-15.png"
+                alt="Скидка 15% на все услуги"
+                className="absolute left-0 top-[-47px] h-auto w-[180px] max-w-none drop-shadow-[0_5px_7px_rgba(0,0,0,0.25)]"
+              />
+
+              <svg
+                width="30"
+                height="20"
+                viewBox="0 0 30 20"
+                aria-hidden="true"
+                className="absolute -left-[9px] -top-[10px] z-10"
               >
-                📞 Позвонить
-              </a>
-
-              <a
-                href="https://wa.me/77771696969"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-[#0092B8] px-8 py-4 text-lg font-black text-white shadow-xl transition hover:-translate-y-1 hover:bg-[#007a99]"
-              >
-                WhatsApp
-              </a>
-            </div>
-
-            <div className="mx-auto mt-15 grid w-full max-w-[1200px] grid-cols-4 gap-4 px-2 text-white">
-              {[
-                ["/clients.png", "1000+", "довольных клиентов"],
-                ["/time.png", "15 лет", "опыта работы"],
-                ["/guarantee.png", "до 3 лет", "гарантия на работы"],
-                ["/calendar.png", "7 дней", "работаем без выходных"],
-              ].map(([icon, number, caption]) => (
-                <div
-                  key={icon}
-                  className="group relative flex min-w-0 items-center justify-center gap-3 px-2 pb-5"
-                >
-                  <img
-                    src={icon}
-                    alt=""
-                    className="h-14 w-14 shrink-0 object-contain transition-transform duration-300 group-hover:scale-110"
-                  />
-
-                  <div className="origin-left transition-transform duration-300 group-hover:scale-110">
-                    <div className="whitespace-nowrap text-3xl font-black text-[#FDC700]">
-                      {number}
-                    </div>
-                    <div className="text-sm">{caption}</div>
-                  </div>
-
-                  <span className="absolute bottom-4 left-[15%] h-1 w-[70%] origin-center scale-x-50 rounded-full bg-[#FDC700] transition-transform duration-300 group-hover:scale-x-100" />
-                </div>
-              ))}
+                <ellipse
+                  cx="15"
+                  cy="10"
+                  rx="12"
+                  ry="7"
+                  fill="none"
+                  stroke="#64748B"
+                  strokeWidth="4"
+                />
+                <ellipse
+                  cx="15"
+                  cy="9"
+                  rx="12"
+                  ry="7"
+                  fill="none"
+                  stroke="#E2E8F0"
+                  strokeWidth="2"
+                />
+              </svg>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+
+      <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-3 text-base">
+        <Check text="Свои мастера" />
+        <Check text="Цена заранее" />
+        <Check text="Гарантия" />
+      </ul>
+    </div>
+  </div>
+
+  <style>{`
+    @keyframes aboutBannerDiscountSwing {
+      0%, 100% { transform: rotate(-4deg); }
+      50% { transform: rotate(4deg); }
+    }
+
+    .about-banner-discount {
+      transform-origin: 0 0;
+      animation: aboutBannerDiscountSwing 3s ease-in-out infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .about-banner-discount {
+        animation: none;
+      }
+    }
+  `}</style>
+</section>
 
       {/* О КОМАНДЕ */}
-      <section className="bg-white px-5 py-12 text-[#171717] md:py-16">
-        <div className="mx-auto max-w-3xl">
-          <div className="mx-auto mb-3 h-1 w-20 rounded-full bg-[#FDC700]" />
-
-          <p className="text-center text-sm font-bold uppercase tracking-wider text-[#0092B8]">
-            Сервис бытовых услуг
-          </p>
-
-          <h2 className="mt-3 text-center text-3xl font-bold leading-tight md:text-4xl">
-            Мастера, которым можно доверить
-            <br />
-            <span className="text-[#0092B8]">заботу о вашем доме</span>
+      <section className="bg-white px-5 py-12 md:py-16">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-4xl font-bold leading-tight text-[#0092B8] md:text-[54px]">
+            Мастера, которым можно доверить заботу о доме
           </h2>
 
-          <p className="mt-6 text-center text-base leading-relaxed text-slate-700 md:text-lg">
+          <p className="mt-6 text-lg leading-8 text-slate-700">
             Мы — команда мастеров по бытовым услугам в Алматы.
             Наше основное направление — сантехнические работы:
             от замены смесителя до монтажа инженерных систем.
-            Помогаем владельцам квартир, частных домов и коммерческих
-            помещений.
+            Помогаем владельцам квартир, частных домов и
+            коммерческих помещений.
           </p>
 
-          <p className="mt-3 text-center text-sm leading-relaxed text-slate-600 md:text-base">
+          <p className="mt-4 text-base leading-7 text-slate-600">
             Перед началом работы объясняем, что необходимо сделать,
             согласовываем стоимость и порядок выполнения.
-            Принимаем наличную и безналичную оплату, предоставляем документы.
+            Принимаем наличную и безналичную оплату,
+            предоставляем документы.
           </p>
 
-          <div className="mt-7 grid gap-3 sm:grid-cols-2">
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">
             <a
               href="/nashi-raboty"
-              className="rounded-full bg-[#0092B8] px-6 py-4 text-center font-bold text-white"
+              className="inline-flex items-center justify-center gap-3 rounded-full bg-[#0092B8] px-6 py-4 font-bold text-white"
             >
-              Посмотреть работы →
+              <Arrow />
+              Посмотреть работы
             </a>
+
             <a
               href="/otzyvy"
-              className="rounded-full bg-[#FDC700] px-6 py-4 text-center font-bold text-[#171717]"
+              className="inline-flex items-center justify-center gap-3 rounded-full bg-[#FDC700] px-6 py-4 font-bold text-[#171717]"
             >
-              Читать отзывы →
+              <Arrow />
+              Читать отзывы
             </a>
           </div>
         </div>
       </section>
 
       {/* ПРЕИМУЩЕСТВА */}
-      <section className="bg-[#333333] py-16 text-white">
+      <section className="bg-slate-50 py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto mb-3 h-1 w-16 rounded-full bg-[#FDC700]" />
-
-          <p className="text-center font-bold text-[#0092B8]">
+          <h2 className="text-center text-4xl font-bold leading-tight text-[#0092B8] md:text-[54px]">
             Почему выбирают нас
-          </p>
-
-          <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">
-            Опыт, аккуратность и понятные условия
           </h2>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {advantages.map(([title, text]) => (
               <div
                 key={title}
-                className="rounded-3xl border border-white/10 bg-transparent p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#FDC700] hover:bg-white/10 hover:shadow-xl"
+                className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#FDC700] hover:shadow-lg"
               >
-                <div className="mb-4 h-1 w-12 rounded-full bg-[#FDC700]" />
-                <h3 className="text-xl font-bold">{title}</h3>
-                <p className="mt-3 leading-7 text-slate-300">{text}</p>
+                <h3 className="text-xl font-black text-[#0092B8]">
+                  {title}
+                </h3>
+                <p className="mt-3 leading-7 text-slate-600">
+                  {text}
+                </p>
               </div>
             ))}
           </div>
@@ -289,81 +388,63 @@ export default function ONasPage() {
       </section>
 
       {/* НАПРАВЛЕНИЯ */}
-      <section className="bg-white py-16 text-slate-900">
+      <section className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto mb-3 h-1 w-16 rounded-full bg-[#FDC700]" />
-
-          <p className="text-center font-bold text-[#0092B8]">
-            Наши направления
-          </p>
-
-          <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">
+          <h2 className="text-center text-4xl font-bold leading-tight text-[#0092B8] md:text-[54px]">
             Чем можем помочь
           </h2>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              [
-                "Сантехнические работы",
-                "Установка и ремонт сантехники, устранение протечек.",
-                "/santehnik",
-              ],
-              [
-                "Водоснабжение",
-                "Монтаж, разводка и замена труб водоснабжения.",
-                "/zamena-trub",
-              ],
-              [
-                "Прочистка канализации",
-                "Устранение засоров в квартирах, домах и офисах.",
-                "/prochistka-kanalizacii",
-              ],
-            ].map(([title, text, href]) => (
-              <a
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {directions.map(([title, text, href]) => (
+              <div
                 key={title}
-                href={href}
-                className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#FDC700] hover:shadow-lg"
+                className="flex flex-col rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#FDC700] hover:shadow-lg"
               >
-                <h3 className="text-xl font-bold">{title}</h3>
-                <p className="mt-3 leading-7 text-slate-600">{text}</p>
-                <span className="mt-5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#FDC700]">
-                  →
-                </span>
-              </a>
+                <h3 className="text-xl font-black text-[#0092B8]">
+                  {title}
+                </h3>
+
+                <p className="mt-3 leading-7 text-slate-600">
+                  {text}
+                </p>
+
+                <a
+                  href={href}
+                  className="mt-auto inline-flex items-center gap-3 pt-5 font-semibold text-[#0092B8] hover:underline"
+                >
+                  <Arrow />
+                  Подробнее
+                </a>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* КАК РАБОТАЕМ */}
-      <section className="bg-white py-12 text-slate-900 md:py-16">
+      {/* ЭТАПЫ */}
+      <section className="bg-slate-50 py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto mb-3 h-1 w-16 rounded-full bg-[#FDC700]" />
-
-          <p className="text-center font-bold text-[#0092B8]">
+          <h2 className="text-center text-4xl font-bold leading-tight text-[#0092B8] md:text-[54px]">
             Как мы работаем
-          </p>
-
-          <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">
-            От обращения до готового результата
           </h2>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              ["01", "Заявка", "Вы звоните или пишете нам в WhatsApp."],
-              ["02", "Обсуждение", "Уточняем задачу и согласуем время выезда."],
-              ["03", "Оценка и работа", "Мастер проводит осмотр, согласует цену и выполняет работу."],
-              ["04", "Проверка", "Проверяем результат и объясняем условия гарантии."],
-            ].map(([number, title, text]) => (
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {steps.map(([number, title, text]) => (
               <div
                 key={number}
-                className="rounded-3xl border border-slate-200 bg-slate-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#FDC700] hover:shadow-xl"
+                className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#FDC700] hover:shadow-lg"
               >
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#FDC700] text-xl font-black">
                   {number}
                 </div>
-                <h3 className="mt-5 text-xl font-bold">{title}</h3>
-                <p className="mt-3 leading-7 text-slate-600">{text}</p>
+
+                <h3 className="mt-5 text-xl font-black text-[#0092B8]">
+                  {title}
+                </h3>
+
+                <p className="mt-3 leading-7 text-slate-600">
+                  {text}
+                </p>
               </div>
             ))}
           </div>
@@ -371,39 +452,39 @@ export default function ONasPage() {
       </section>
 
       {/* КОНТАКТЫ */}
-      <section id="contacts" className="bg-[#333333] py-16 text-white">
+      <section id="contacts" className="bg-[#0092B8] py-16 text-white">
         <div className="mx-auto max-w-3xl px-6 text-center">
-          <div className="mx-auto mb-3 h-1 w-16 rounded-full bg-[#FDC700]" />
-
-          <p className="font-bold text-[#0092B8]">
+          <p className="font-bold uppercase tracking-wider text-[#FDC700]">
             Весь Алматы и пригород
           </p>
 
-          <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold md:text-[54px] md:leading-tight">
             Обсудим вашу задачу
           </h2>
 
-          <p className="mt-5 text-lg leading-8 text-slate-300">
+          <p className="mt-5 text-lg leading-8 text-white/90">
             Позвоните или напишите в WhatsApp.
-            Расскажите, какая помощь нужна, — уточним детали
-            и согласуем время приезда мастера.
+            Уточним детали, согласуем стоимость и удобное
+            время приезда мастера.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <a
               href="tel:+77771696969"
-              className="rounded-full bg-[#FDC700] px-7 py-4 text-lg font-bold text-slate-950"
+              className="about-call-shine inline-flex items-center gap-3 rounded-full bg-[#FDC700] px-7 py-4 text-lg text-[#171717]"
             >
-              📞 Позвонить
+              <Arrow />
+              Позвонить
             </a>
 
             <a
               href="https://wa.me/77771696969"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-[#0092B8] px-7 py-4 text-lg font-bold text-white"
+              className="inline-flex items-center gap-3 rounded-full bg-white px-7 py-4 text-lg text-[#292929]"
             >
-              WhatsApp
+              <Arrow />
+              Написать в WhatsApp
             </a>
           </div>
         </div>

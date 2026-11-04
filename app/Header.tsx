@@ -75,43 +75,58 @@ export default function Header({
       {/* МОБИЛЬНАЯ ШАПКА */}
       <header className="relative border-b-4 border-yellow-400 bg-white text-slate-950 md:hidden">
         <div className="grid grid-cols-3 items-center">
-         
-
           <button
             type="button"
+            aria-expanded={servicesOpen}
             onClick={() => {
               setServicesOpen(!servicesOpen);
               setMenuOpen(false);
             }}
-className="flex h-14 items-center justify-center gap-1 border-r border-slate-200 text-base font-medium uppercase text-slate-600 hover:bg-yellow-50"          >
-            Услуги <span className="text-[10px]">{servicesOpen ? "▲" : "▼"}</span>
+            className="flex h-14 items-center justify-center gap-1 border-r border-slate-200 text-base font-medium uppercase text-slate-600 hover:bg-yellow-50"
+          >
+            Услуги
+            <span className="text-[10px]">
+              {servicesOpen ? "▲" : "▼"}
+            </span>
           </button>
+
           <a
-  href="/"
-  aria-label="На главную"
-  className="flex h-14 items-center justify-center border-r border-white/20"
->
-  <img src="/hs-logo.png" alt="HS — Сервис бытовых услуг" className="h-10 w-auto" />
-</a>
+            href="/"
+            aria-label="На главную"
+            className="flex h-14 items-center justify-center border-r border-white/20"
+          >
+            <img
+              src="/hs-logo.png"
+              alt="HS — Сервис бытовых услуг"
+              className="h-10 w-auto"
+            />
+          </a>
 
           <button
             type="button"
+            aria-expanded={menuOpen}
             onClick={() => {
               setMenuOpen(!menuOpen);
               setServicesOpen(false);
             }}
-className="flex h-14 items-center justify-center gap-1 text-base font-medium uppercase text-slate-600 hover:bg-yellow-50"          >
-            Меню <span className="text-[10px]">{menuOpen ? "▲" : "▼"}</span>
+            className="flex h-14 items-center justify-center gap-1 text-base font-medium uppercase text-slate-600 hover:bg-yellow-50"
+          >
+            Меню
+            <span className="text-[10px]">
+              {menuOpen ? "▲" : "▼"}
+            </span>
           </button>
         </div>
 
         {servicesOpen && (
-<div className="absolute left-0 top-full z-[200] w-[75%] max-w-sm bg-white text-slate-900 shadow-2xl">            <MobileGroupButton
+          <div className="absolute left-0 top-full z-[200] w-[75%] max-w-sm bg-white text-slate-900 shadow-2xl">
+            <MobileGroupButton
               title="Сантехник"
               href="/santehnik"
               open={plumbingOpen}
-             onClick={() => setPlumbingOpen(!plumbingOpen)}
+              onClick={() => setPlumbingOpen(!plumbingOpen)}
             />
+
             {plumbingOpen && (
               <MobileList
                 items={plumbing}
@@ -121,11 +136,12 @@ className="flex h-14 items-center justify-center gap-1 text-base font-medium upp
             )}
 
             <MobileGroupButton
-  title="Электрик"
-  href="/elektrik"
-  open={electricOpen}
-  onClick={() => setElectricOpen(!electricOpen)}
-/>
+              title="Электрик"
+              href="/elektrik"
+              open={electricOpen}
+              onClick={() => setElectricOpen(!electricOpen)}
+            />
+
             {electricOpen && (
               <MobileList
                 items={electric}
@@ -135,11 +151,12 @@ className="flex h-14 items-center justify-center gap-1 text-base font-medium upp
             )}
 
             <MobileGroupButton
-  title="Прочистка канализации"
-  href="/prochistka-kanalizacii"
-  open={drainOpen}
-  onClick={() => setDrainOpen(!drainOpen)}
-/>
+              title="Прочистка канализации"
+              href="/prochistka-kanalizacii"
+              open={drainOpen}
+              onClick={() => setDrainOpen(!drainOpen)}
+            />
+
             {drainOpen && (
               <div className="bg-sky-50">
                 {[
@@ -159,11 +176,21 @@ className="flex h-14 items-center justify-center gap-1 text-base font-medium upp
               </div>
             )}
 
+            {/* ПЛОТНИК */}
+            <a
+              href="/plotnik"
+              onClick={() => setServicesOpen(false)}
+              className="block border-b border-slate-200 px-5 py-4 font-normal"
+            >
+              Услуги плотника
+            </a>
+
             <MobileGroupButton
               title="Прочие услуги"
               open={otherOpen}
               onClick={() => setOtherOpen(!otherOpen)}
             />
+
             {otherOpen && (
               <div className="bg-sky-50">
                 {otherServices.map((service) => (
@@ -182,23 +209,45 @@ className="flex h-14 items-center justify-center gap-1 text-base font-medium upp
 
         {menuOpen && (
           <div className="absolute right-0 top-full z-[200] w-[75%] max-w-sm bg-white text-slate-900 shadow-2xl">
-            
-            <a href="/" className="block border-b border-slate-200 px-5 py-4 font-normal">
+            <a
+              href="/"
+              className="block border-b border-slate-200 px-5 py-4 font-normal"
+            >
               Главная
             </a>
-            <a href="/o-nas" className="block border-b border-slate-200 px-5 py-4 font-normal">
+
+            <a
+              href="/o-nas"
+              className="block border-b border-slate-200 px-5 py-4 font-normal"
+            >
               О нас
             </a>
-            <a href="/nashi-raboty" className="block border-b border-slate-200 px-5 py-4 font-normal">
+
+            <a
+              href="/nashi-raboty"
+              className="block border-b border-slate-200 px-5 py-4 font-normal"
+            >
               Наши работы
             </a>
-            <a href="/otzyvy" className="block border-b border-slate-200 px-5 py-4 font-normal">
+
+            <a
+              href="/otzyvy"
+              className="block border-b border-slate-200 px-5 py-4 font-normal"
+            >
               Отзывы
             </a>
-            <a href="/price" className="block border-b border-slate-200 px-5 py-4 font-normal">
+
+            <a
+              href="/price"
+              className="block border-b border-slate-200 px-5 py-4 font-normal"
+            >
               Цены
             </a>
-            <a href="/kontakty" className="block bg-sky-700 px-5 py-4 font-black text-white">
+
+            <a
+              href="/kontakty"
+              className="block bg-sky-700 px-5 py-4 font-black text-white"
+            >
               Контакты →
             </a>
           </div>
@@ -217,17 +266,34 @@ className="flex h-14 items-center justify-center gap-1 text-base font-medium upp
               />
             </a>
 
-            <nav className="flex items-center gap-7 font-normal text-x0 ">
-              <a href="/o-nas" className="hover:text-yellow-500">О нас</a>
-              <a href="/nashi-raboty" className="hover:text-yellow-500">Наши работы</a>
-              <a href="/otzyvy" className="hover:text-yellow-500">Отзывы</a>
-              <a href="/price" className="hover:text-yellow-500">Цены</a>
+            <nav className="flex items-center gap-7 font-normal">
+              <a href="/o-nas" className="hover:text-yellow-500">
+                О нас
+              </a>
+              <a
+                href="/nashi-raboty"
+                className="hover:text-yellow-500"
+              >
+                Наши работы
+              </a>
+              <a href="/otzyvy" className="hover:text-yellow-500">
+                Отзывы
+              </a>
+              <a href="/price" className="hover:text-yellow-500">
+                Цены
+              </a>
             </nav>
 
             <div className="flex items-center gap-5">
               <div className="text-right">
-                <p className="text-sm text-slate-500">Ежедневно · Алматы</p>
-                <a href={`tel:+${phone}`} className="text-2xl font-black">
+                <p className="text-sm text-slate-500">
+                  Ежедневно · Алматы
+                </p>
+
+                <a
+                  href={`tel:+${phone}`}
+                  className="text-2xl font-black"
+                >
                   {displayPhone}
                 </a>
               </div>
@@ -244,13 +310,18 @@ className="flex h-14 items-center justify-center gap-1 text-base font-medium upp
           </div>
         </header>
 
+        {/* ЖЁЛТОЕ МЕНЮ */}
         <nav className="bg-yellow-400 text-slate-950 shadow-md">
-<div className="mx-auto flex max-w-7xl items-center justify-center gap-12 px-6 py-0 font-semibold">            
-              <a href="/" className="py-3 hover:opacity-70">
-                Главная
-                </a>
-              <DesktopMenu
-               title="Услуги сантехника"
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-0 px-6 py-0 font-semibold">
+            <a
+              href="/"
+              className="whitespace-nowrap py-3 hover:opacity-70"
+            >
+              Главная
+            </a>
+
+            <DesktopMenu
+              title="Услуги сантехника"
               href="/uslugi-santehnika"
               items={plumbing}
               allTitle="Все услуги →"
@@ -264,9 +335,14 @@ className="flex h-14 items-center justify-center gap-1 text-base font-medium upp
             />
 
             <div className="group relative">
-              <a href="/prochistka-kanalizacii" className="flex items-center gap-2 py-3 hover:opacity-70">
-                Прочистка канализации <span className="text-xs">▼</span>
+              <a
+                href="/prochistka-kanalizacii"
+                className="flex items-center gap-2 whitespace-nowrap py-3 hover:opacity-70"
+              >
+                Прочистка канализации
+                <span className="text-xs">▼</span>
               </a>
+
               <div className="invisible absolute left-0 top-full z-[100] w-72 rounded-b-2xl bg-white p-3 text-slate-900 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100">
                 {[
                   "Устранение засора",
@@ -282,6 +358,7 @@ className="flex h-14 items-center justify-center gap-1 text-base font-medium upp
                     {title}
                   </a>
                 ))}
+
                 <a
                   href="/prochistka-kanalizacii"
                   className="mt-2 block rounded-xl bg-slate-100 px-4 py-3 font-black hover:bg-yellow-400"
@@ -291,9 +368,18 @@ className="flex h-14 items-center justify-center gap-1 text-base font-medium upp
               </div>
             </div>
 
+            {/* ПЛОТНИК */}
+            <a
+              href="/plotnik"
+              className="whitespace-nowrap py-3 hover:opacity-70"
+            >
+              Услуги плотника
+            </a>
+
             <div className="group relative py-1">
-              <span className="flex cursor-pointer items-center gap-2 py-3 hover:opacity-70">
-                Прочие услуги <span className="text-xs">▼</span>
+              <span className="flex cursor-pointer items-center gap-2 whitespace-nowrap py-3 hover:opacity-70">
+                Прочие услуги
+                <span className="text-xs">▼</span>
               </span>
 
               <div className="invisible absolute right-0 top-full z-[9999] w-72 rounded-b-2xl bg-white p-3 text-slate-900 opacity-0 shadow-2xl group-hover:visible group-hover:opacity-100">
@@ -339,16 +425,21 @@ function MobileGroupButton({
           {title}
         </a>
       ) : (
-        <span className="flex-1 px-5 py-4 font-normal">{title}</span>
+        <span className="flex-1 px-5 py-4 font-normal">
+          {title}
+        </span>
       )}
+
       <button
         type="button"
         onClick={onClick}
         aria-label={`Раскрыть: ${title}`}
         aria-expanded={open}
-        className="mr-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#FDC700]"
+        className="mr-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#FDC700]"
       >
-        <span className="text-[10px]">{open ? "▲" : "▼"}</span>
+        <span className="text-[10px]">
+          {open ? "▲" : "▼"}
+        </span>
       </button>
     </div>
   );
@@ -374,7 +465,11 @@ function MobileList({
           {service.title}
         </a>
       ))}
-      <a href={allHref} className="block bg-sky-100 px-7 py-3 font-black">
+
+      <a
+        href={allHref}
+        className="block bg-sky-100 px-7 py-3 font-black"
+      >
         {allTitle}
       </a>
     </div>
@@ -394,8 +489,12 @@ function DesktopMenu({
 }) {
   return (
     <div className="group relative">
-      <a href={href} className="flex items-center gap-2 py-3 hover:opacity-70">
-        {title} <span className="text-xs">▼</span>
+      <a
+        href={href}
+        className="flex items-center gap-2 whitespace-nowrap py-3 hover:opacity-70"
+      >
+        {title}
+        <span className="text-xs">▼</span>
       </a>
 
       <div className="invisible absolute left-0 top-full z-[100] w-72 rounded-b-2xl bg-white p-3 text-slate-900 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100">
