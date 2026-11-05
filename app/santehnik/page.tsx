@@ -1137,22 +1137,23 @@ export default function SantehnikPage() {
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              "Алатауский район",
-              "Алмалинский район",
-              "Ауэзовский район",
-              "Бостандыкский район",
-              "Жетысуский район",
-              "Медеуский район",
-              "Наурызбайский район",
-              "Турксибский район",
-            ].map((district) => (
-              <div
-                key={district}
-                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-yellow-50 hover:shadow-xl"
-              >
-                📍 {district}
-              </div>
-            ))}
+  ["alatauskiy-rayon", "Алатауский район"],
+  ["almalinskiy-rayon", "Алмалинский район"],
+  ["auezovskiy-rayon", "Ауэзовский район"],
+  ["bostandykskiy-rayon", "Бостандыкский район"],
+  ["zhetysuskiy-rayon", "Жетысуский район"],
+  ["medeuskiy-rayon", "Медеуский район"],
+  ["nauryzbayskiy-rayon", "Наурызбайский район"],
+  ["turksibskiy-rayon", "Турксибский район"],
+].map(([slug, name]) => (
+  <a
+    key={slug}
+    href={`/santehnik/${slug}`}
+    className="block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-yellow-50 hover:shadow-xl"
+  >
+    📍 {name}
+  </a>
+))}
           </div>
 
         </div>

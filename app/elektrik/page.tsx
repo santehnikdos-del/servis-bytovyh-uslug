@@ -424,6 +424,49 @@ export default function ElektrikPage() {
         </div>
       </section>
 
+      {/* РАЙОНЫ */}
+<section id="districts" className="bg-white py-12 md:py-16">
+  <div className="mx-auto max-w-7xl px-6">
+    <h2 className="text-center text-3xl font-bold leading-tight text-[#0092B8] md:text-[44px]">
+      Электрик во всех районах Алматы
+    </h2>
+
+    <p className="mt-4 text-center text-lg text-slate-600">
+      Выберите свой район
+    </p>
+
+    <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      {[
+        ["almalinskiy-rayon", "Алмалинский район"],
+        ["medeuskiy-rayon", "Медеуский район"],
+        ["bostandykskiy-rayon", "Бостандыкский район"],
+        ["auezovskiy-rayon", "Ауэзовский район"],
+        ["turksibskiy-rayon", "Турксибский район"],
+        ["nauryzbayskiy-rayon", "Наурызбайский район"],
+        ["alatauskiy-rayon", "Алатауский район"],
+        ["zhetysuskiy-rayon", "Жетысуский район"],
+      ].map(([slug, name]) => (
+        <a
+          key={slug}
+          href={`/elektrik/${slug}`}
+          className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-5 transition hover:border-[#FDC700] hover:bg-yellow-50"
+        >
+          <span
+            aria-hidden="true"
+            className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#FDC700] text-[#292929]"
+          >
+            ✓
+          </span>
+
+          <span className="text-base text-[#292929]">
+            {name}
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
       {/* КОНТАКТЫ */}
       <section className="bg-[#0092B8] py-16 text-white">
         <div className="mx-auto max-w-5xl px-6 text-center">

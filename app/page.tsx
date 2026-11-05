@@ -103,7 +103,7 @@ export default function Home() {
 </section>
 
 
-      {/* ================= ПЕРВЫЙ ЭКРАН ================= */}
+     {/* ================= ПЕРВЫЙ ЭКРАН ================= */}
 <section
   className="relative hidden h-[490px] overflow-hidden text-white md:block"
   style={{ backgroundColor: "#281E12" }}

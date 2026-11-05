@@ -2,6 +2,27 @@ import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.home-services.kz";
+  const districts = [
+  "almalinskiy-rayon",
+  "medeuskiy-rayon",
+  "bostandykskiy-rayon",
+  "auezovskiy-rayon",
+  "turksibskiy-rayon",
+  "nauryzbayskiy-rayon",
+  "alatauskiy-rayon",
+  "zhetysuskiy-rayon",
+];
+
+const districtPages: MetadataRoute.Sitemap = [
+  "santehnik",
+  "elektrik",
+].flatMap((service) =>
+  districts.map((district) => ({
+    url: `${baseUrl}/${service}/${district}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }))
+);
 
   return [
     {
@@ -112,5 +133,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    ...districtPages,
   ];
 }
