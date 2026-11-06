@@ -2,7 +2,7 @@ import Header from "../Header";
 import Footer from "../Footer";
 import ReviewForm from "./ReviewForm";
 import { supabase } from "../../lib/supabase";
-
+export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Отзывы о сантехнике в Алматы | Сервис бытовых услуг",
   description:

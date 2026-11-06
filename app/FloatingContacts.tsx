@@ -136,6 +136,10 @@ export default function FloatingContacts() {
     loadReviews();
   }, []);
 
+  if (pathname === "/admin" || pathname.startsWith("/admin/")) {
+    return null;
+  }
+
   return (
     <>
       {/* ЛИПКАЯ ПЛАШКА РЕЙТИНГА */}
