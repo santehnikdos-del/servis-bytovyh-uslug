@@ -2,7 +2,9 @@ import Header from "../Header";
 import Footer from "../Footer";
 import ReviewForm from "./ReviewForm";
 import { supabase } from "../../lib/supabase";
+
 export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Отзывы о сантехнике в Алматы | Сервис бытовых услуг",
   description:
@@ -218,15 +220,27 @@ function ReviewCard({
         )}
       </div>
 
-      {/* ТЕКСТ */}
-      <p className="mt-4 whitespace-pre-line break-words text-base leading-7 text-slate-600">
-        {review.text}
-      </p>
+            {/* ТЕКСТ */}
+      <details className="review-expand mt-4">
+        <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+          <p className="review-preview line-clamp-2 whitespace-pre-line break-words text-base leading-7 text-slate-600">
+            {review.text}
+          </p>
 
-      <div
-        aria-hidden="true"
-        className="mt-6 h-1 w-12 rounded-full bg-[#FDC700]"
-      />
+          <span className="review-open mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#0092B8]">
+            <span aria-hidden="true" className="review-arrow">
+              →
+            </span>
+            Читать полностью
+          </span>
+
+          <span className="review-close mt-3 hidden text-sm font-semibold text-[#0092B8]">
+            ↑ Свернуть
+          </span>
+        </summary>
+      </details>
+
+      
     </article>
   );
 }
@@ -252,6 +266,38 @@ export default async function OtzyvyPage() {
       />
 
       <style>{`
+        .review-expand[open] .review-preview {
+          display: block;
+          -webkit-line-clamp: unset;
+          overflow: visible;
+        }
+
+        .review-expand[open] .review-open {
+          display: none;
+        }
+
+        .review-expand[open] .review-close {
+          display: inline-block;
+        }
+        .review-arrow {
+          display: inline-block;
+          animation: reviewArrowMove 1.2s ease-in-out infinite;
+        }
+
+        @keyframes reviewArrowMove {
+          0%, 100% {
+            transform: translateX(0);
+          }
+          50% {
+            transform: translateX(5px);
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .review-arrow {
+            animation: none;
+          }
+        }
         @keyframes reviewsShine {
           from {
             transform: translateX(0) skewX(-25deg);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Work = {
   id: string;
@@ -15,19 +15,72 @@ type Work = {
   enabled: boolean;
 };
 
+type SelectedPhoto = {
+  src: string;
+  title: string;
+  label: string;
+};
+
 export default function ManagedWorks() {
   const [works, setWorks] = useState<Work[]>([]);
+  const [selectedPhoto, setSelectedPhoto] =
+    useState<SelectedPhoto | null>(null);
+
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    fetch("/api/works")
-      .then((res) => res.json())
+    const controller = new AbortController();
+
+    fetch("/api/works", { signal: controller.signal })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Ошибка загрузки работ");
+        }
+
+        return res.json();
+      })
       .then((data) => {
         if (Array.isArray(data)) {
-          setWorks(data.filter((work) => work.enabled));
+          setWorks(data.filter((work: Work) => work.enabled));
         }
       })
-      .catch(console.error);
+      .catch((error) => {
+        if (!controller.signal.aborted) {
+          console.error(error);
+        }
+      });
+
+    return () => controller.abort();
   }, []);
+
+  useEffect(() => {
+    if (!selectedPhoto) return;
+
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    const previousOverflow = document.body.style.overflow;
+
+    if (!dialog.open) {
+      dialog.showModal();
+    }
+
+    document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
+
+    return () => {
+      if (dialog.open) {
+        dialog.close();
+      }
+
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [selectedPhoto]);
+
+  function closePhoto() {
+    setSelectedPhoto(null);
+  }
 
   return (
     <section className="mx-auto max-w-7xl px-5 py-8 md:px-6 md:py-10">
@@ -75,13 +128,19 @@ export default function ManagedWorks() {
 
               <div className={`mt-auto grid gap-2 ${photoColumns}`}>
                 {photos.map((photo, index) => (
-                  <a
+                  <button
                     key={`${photo.src}-${index}`}
-                    href={photo.src}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    type="button"
+                    onClick={() =>
+                      setSelectedPhoto({
+                        src: photo.src,
+                        title: work.title,
+                        label: photo.label,
+                      })
+                    }
                     aria-label={`${work.title} — ${photo.label}. Открыть фото`}
-                    className="group relative block h-[180px] min-w-0 overflow-hidden rounded-xl bg-slate-100 md:h-[190px]"
+                    aria-haspopup="dialog"
+                    className="group relative block h-[180px] min-w-0 cursor-zoom-in overflow-hidden rounded-xl bg-slate-100 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0092B8] md:h-[190px]"
                   >
                     <img
                       src={photo.src}
@@ -93,15 +152,89 @@ export default function ManagedWorks() {
                     <span className="absolute bottom-2 left-1 right-1 rounded-md bg-black/60 px-1 py-1 text-center text-[11px] font-medium leading-tight text-white">
                       {photo.label}
                     </span>
-                  </a>
+                  </button>
                 ))}
               </div>
 
-              <div className="ml-1 mt-4 mb-1 h-1 w-12 rounded-full bg-[#FDC700]" />
+              <div className="mb-1 ml-1 mt-4 h-1 w-12 rounded-full bg-[#FDC700]" />
             </article>
           );
         })}
       </div>
+
+      {/* ПРОСМОТР ФОТО */}
+      <dialog
+        ref={dialogRef}
+        aria-label={
+          selectedPhoto
+            ? `${selectedPhoto.title} — ${selectedPhoto.label}`
+            : "Просмотр фотографии"
+        }
+        onCancel={(event) => {
+          event.preventDefault();
+          closePhoto();
+        }}
+        onClose={closePhoto}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) {
+            const bounds = event.currentTarget.getBoundingClientRect();
+
+            if (
+              event.clientX < bounds.left ||
+              event.clientX > bounds.right ||
+              event.clientY < bounds.top ||
+              event.clientY > bounds.bottom
+            ) {
+              closePhoto();
+            }
+          }
+        }}
+        className="fixed inset-0 m-auto max-h-[85dvh] w-[calc(100%-2rem)] max-w-none overflow-y-auto rounded-2xl border-0 bg-white p-0 shadow-2xl backdrop:bg-black/70 md:w-[50vw] md:max-w-[900px]"
+      >
+        {selectedPhoto && (
+          <>
+            <div className="flex items-center justify-between gap-3 border-b border-slate-100 px-4 py-3">
+              <div className="min-w-0">
+                <p className="break-words text-sm font-semibold text-[#0092B8]">
+                  {selectedPhoto.title}
+                </p>
+
+                <p className="mt-1 text-xs text-slate-500">
+                  {selectedPhoto.label}
+                </p>
+              </div>
+
+              <button
+                ref={closeButtonRef}
+                type="button"
+                onClick={closePhoto}
+                aria-label="Закрыть фото"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-[#FDC700] focus-visible:outline-2 focus-visible:outline-[#0092B8]"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  aria-hidden="true"
+                  className="h-5 w-5"
+                >
+                  <path d="m6 6 12 12M18 6 6 18" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="flex items-center justify-center bg-slate-50 p-2 md:p-3">
+              <img
+                src={selectedPhoto.src}
+                alt={`${selectedPhoto.title} — ${selectedPhoto.label}`}
+                className="block max-h-[65dvh] max-w-full rounded-lg object-contain"
+              />
+            </div>
+          </>
+        )}
+      </dialog>
     </section>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { getServicePage } from "../lib/service-pages";
 
 type Review = {
   rating?: number;
@@ -27,7 +28,14 @@ export default function FloatingContacts() {
 
   let phone = "77771696969";
 
-  if (pathname.startsWith("/elektrik")) {
+  const currentService = getServicePage(
+    pathname.split("/").filter(Boolean)[0] || ""
+  );
+
+  if (
+    pathname.startsWith("/elektrik") ||
+    currentService?.group === "electric"
+  ) {
     phone = "77073232632";
   }
 
@@ -66,7 +74,6 @@ export default function FloatingContacts() {
         return;
       }
 
-
       const gtag = (
         window as Window & {
           gtag?: (...args: unknown[]) => void;
@@ -100,7 +107,6 @@ export default function FloatingContacts() {
       document.removeEventListener("click", handleContactClick, true);
     };
   }, [pathname]);
-
 
   useEffect(() => {
     async function loadReviews() {
@@ -147,16 +153,7 @@ export default function FloatingContacts() {
         <a
           href="/otzyvy"
           aria-label="Отзывы клиентов"
-          className="
-            fixed bottom-[72px] left-3 z-[9999]
-            flex items-center gap-1
-            rounded-lg bg-slate-900/95
-            px-2.5 py-1.5
-            text-[11px] font-bold text-white
-            shadow-2xl
-            transition hover:scale-105
-            md:bottom-5 md:left-5
-          "
+          className="fixed bottom-[72px] left-3 z-[9999] flex items-center gap-1 rounded-lg bg-slate-900/95 px-2.5 py-1.5 text-[11px] font-bold text-white shadow-2xl transition hover:scale-105 md:bottom-5 md:left-5"
         >
           <span className="text-sm font-black">
             {averageRating.toFixed(1)}
@@ -174,7 +171,7 @@ export default function FloatingContacts() {
       <div className="fixed bottom-0 left-0 z-[9998] w-full md:hidden">
         <a
           href={`tel:+${phone}`}
-          className="flex h-16 items-center justify-center bg-cyan-600 text-lg font-black text-white shadow-2xl"
+          className="contact-mobile-glow flex h-16 items-center justify-center bg-cyan-600 text-lg font-black text-white"
         >
           📞 Позвонить
         </a>
@@ -186,7 +183,7 @@ export default function FloatingContacts() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"
-        className="fixed bottom-24 right-5 z-[9999] flex h-16 w-16 animate-pulse items-center justify-center rounded-full bg-green-500 text-white shadow-2xl"
+        className="contact-glow contact-glow-whatsapp fixed bottom-24 right-5 z-[9999] flex h-16 w-16 items-center justify-center rounded-full bg-green-500 text-white"
       >
         <svg
           viewBox="0 0 32 32"
@@ -201,10 +198,68 @@ export default function FloatingContacts() {
       <a
         href={`tel:+${phone}`}
         aria-label="Позвонить"
-        className="fixed bottom-5 right-5 z-[9999] hidden h-16 w-16 animate-pulse items-center justify-center rounded-full bg-cyan-600 text-3xl text-white shadow-2xl md:flex"
+        className="contact-glow contact-glow-phone fixed bottom-5 right-5 z-[9999] hidden h-16 w-16 items-center justify-center rounded-full bg-cyan-600 text-3xl text-white md:flex"
       >
         ☎
       </a>
+
+      <style jsx>{`
+        .contact-glow {
+          animation: contact-glow-pulse 2s ease-in-out infinite;
+          transition: transform 0.2s ease;
+        }
+
+        .contact-glow-whatsapp {
+          --glow-color: 34, 197, 94;
+        }
+
+        .contact-glow-phone {
+          --glow-color: 8, 145, 178;
+          animation-delay: -1s;
+        }
+
+        .contact-glow:hover {
+          transform: scale(1.08);
+        }
+
+        .contact-mobile-glow {
+          animation: contact-mobile-pulse 2s ease-in-out infinite;
+          animation-delay: -1s;
+        }
+
+        @keyframes contact-glow-pulse {
+          0%,
+          100% {
+            box-shadow:
+              0 0 0 0 rgba(var(--glow-color), 0.3),
+              0 0 14px 4px rgba(var(--glow-color), 0.25);
+          }
+
+          50% {
+            box-shadow:
+              0 0 0 14px rgba(var(--glow-color), 0),
+              0 0 26px 10px rgba(var(--glow-color), 0.4);
+          }
+        }
+
+        @keyframes contact-mobile-pulse {
+          0%,
+          100% {
+            box-shadow: 0 -3px 12px rgba(8, 145, 178, 0.2);
+          }
+
+          50% {
+            box-shadow: 0 -6px 26px rgba(8, 145, 178, 0.55);
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .contact-glow,
+          .contact-mobile-glow {
+            animation: none;
+          }
+        }
+      `}</style>
     </>
   );
 }
