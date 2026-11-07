@@ -43,7 +43,7 @@ function createDistrictMenu(service: string): ServiceItem[] {
     href:
       service === "elektrik"
         ? `/elektrik/${district.slug}`
-        : `/santehnik/rayony/${district.slug}`,
+        : `/santehnik/${district.slug}`,
   }));
 }
 

@@ -126,7 +126,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   /* РАЙОНЫ САНТЕХНИКА */
   const plumbingDistrictPages: MetadataRoute.Sitemap =
     districts.map((district) => ({
-      url: `${baseUrl}/santehnik/rayony/${district}`,
+      url: `${baseUrl}/santehnik/${district}`,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     }));
