@@ -24,12 +24,14 @@ export default function Home() {
           className="pointer-events-none absolute inset-0 z-0 opacity-10"
         >
           <Image
-            src="/hero-mark.png"
-            alt=""
-            fill
-            sizes="85vw"
-            className="object-contain p-[7.5%]"
-          />
+  src="/hero-mark.png"
+  alt=""
+  fill
+  loading="eager"
+  fetchPriority="high"
+  sizes="85vw"
+  className="object-contain p-[7.5%]"
+/>
         </div>
 
         <div className="relative z-10">
