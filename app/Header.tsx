@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import mobileLogo from "../public/hs-logo.png";
+import desktopLogo from "../public/logo.png";
 
 type HeaderProps = {
   phone?: string;
@@ -1350,9 +1353,10 @@ export default function Header({
             aria-label="На главную"
             className="flex h-14 items-center justify-center"
           >
-            <img
-              src="/hs-logo.png"
+            <Image
+              src={mobileLogo}
               alt="HS — Сервис бытовых услуг"
+              sizes="115px"
               className="h-10 w-auto"
             />
           </a>
@@ -1454,9 +1458,10 @@ export default function Header({
         <header className="bg-white text-slate-900">
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6">
             <a href="/" className="flex shrink-0 items-center">
-              <img
-                src="/logo.png"
+              <Image
+                src={desktopLogo}
                 alt="Сервис бытовых услуг"
+                sizes={`${Math.ceil(80 * desktopLogo.width / desktopLogo.height)}px`}
                 className="h-20 w-auto object-contain"
               />
             </a>
