@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Header from "../Header";
 import Footer from "../Footer";
 import ManagedServices from "../ManagedServices";
@@ -7,7 +8,7 @@ export const metadata = {
   description:
     "Услуги электрика в Алматы. Установка и замена розеток, выключателей, светильников, ремонт электрики и срочный выезд мастера на дом.",
   alternates: {
-    canonical: "https://home-services.kz/elektrik",
+    canonical: "https://www.home-services.kz/elektrik",
   },
 };
 
@@ -167,15 +168,27 @@ export default function ElektrikPage() {
         {/* ФОН — МОБИЛЬНЫЙ */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[url('/hero-mark.png')] bg-[length:85%_auto] bg-center bg-no-repeat opacity-10 md:hidden"
-        />
+          className="pointer-events-none absolute inset-0 opacity-10 md:hidden"
+        >
+          <Image
+            src="/hero-mark.png"
+            alt=""
+            fill
+            loading="eager"
+            fetchPriority="high"
+            sizes="85vw"
+            className="object-contain p-[7.5%]"
+          />
+        </div>
 
         {/* ФОТО — КОМПЬЮТЕР */}
         <div className="absolute inset-y-0 right-0 hidden w-[53%] md:block">
-          <img
+          <Image
             src="/banner-master.jpg"
             alt="Мастер сервиса бытовых услуг в Алматы"
-            className="h-full w-full object-cover object-[60%_center]"
+            fill
+            sizes="(min-width: 768px) 53vw, 1px"
+            className="object-cover object-[60%_center]"
           />
 
           <div
@@ -216,9 +229,9 @@ export default function ElektrikPage() {
             </h1>
 
             <p className="mt-5 max-w-lg text-center text-lg leading-7 text-white/85 md:text-left">
-              Монтаж и ремонт электрики. Замена розеток
-              и выключателей, установка освещения,
-              поиск неисправностей.
+              Монтаж и ремонт электрики. Замена розеток и
+              выключателей, установка освещения, поиск
+              неисправностей.
             </p>
 
             <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 md:mx-0 md:max-w-none md:flex-row md:flex-wrap md:items-center">
@@ -248,6 +261,8 @@ export default function ElektrikPage() {
                     <img
                       src="/discount-15.png"
                       alt=""
+                      loading="lazy"
+                      decoding="async"
                       className="absolute left-0 top-[-47px] w-[180px] max-w-none drop-shadow-lg"
                     />
 
@@ -425,47 +440,47 @@ export default function ElektrikPage() {
       </section>
 
       {/* РАЙОНЫ */}
-<section id="districts" className="bg-white py-12 md:py-16">
-  <div className="mx-auto max-w-7xl px-6">
-    <h2 className="text-center text-3xl font-bold leading-tight text-[#0092B8] md:text-[44px]">
-      Электрик во всех районах Алматы
-    </h2>
+      <section id="districts" className="bg-white py-12 md:py-16">
+        <div className="mx-auto max-w-7xl px-6">
+          <h2 className="text-center text-3xl font-bold leading-tight text-[#0092B8] md:text-[44px]">
+            Электрик во всех районах Алматы
+          </h2>
 
-    <p className="mt-4 text-center text-lg text-slate-600">
-      Выберите свой район
-    </p>
+          <p className="mt-4 text-center text-lg text-slate-600">
+            Выберите свой район
+          </p>
 
-    <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-      {[
-        ["almalinskiy-rayon", "Алмалинский район"],
-        ["medeuskiy-rayon", "Медеуский район"],
-        ["bostandykskiy-rayon", "Бостандыкский район"],
-        ["auezovskiy-rayon", "Ауэзовский район"],
-        ["turksibskiy-rayon", "Турксибский район"],
-        ["nauryzbayskiy-rayon", "Наурызбайский район"],
-        ["alatauskiy-rayon", "Алатауский район"],
-        ["zhetysuskiy-rayon", "Жетысуский район"],
-      ].map(([slug, name]) => (
-        <a
-          key={slug}
-          href={`/elektrik/${slug}`}
-          className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-5 transition hover:border-[#FDC700] hover:bg-yellow-50"
-        >
-          <span
-            aria-hidden="true"
-            className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#FDC700] text-[#292929]"
-          >
-            ✓
-          </span>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              ["almalinskiy-rayon", "Алмалинский район"],
+              ["medeuskiy-rayon", "Медеуский район"],
+              ["bostandykskiy-rayon", "Бостандыкский район"],
+              ["auezovskiy-rayon", "Ауэзовский район"],
+              ["turksibskiy-rayon", "Турксибский район"],
+              ["nauryzbayskiy-rayon", "Наурызбайский район"],
+              ["alatauskiy-rayon", "Алатауский район"],
+              ["zhetysuskiy-rayon", "Жетысуский район"],
+            ].map(([slug, name]) => (
+              <a
+                key={slug}
+                href={`/elektrik/${slug}`}
+                className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-5 transition hover:border-[#FDC700] hover:bg-yellow-50"
+              >
+                <span
+                  aria-hidden="true"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#FDC700] text-[#292929]"
+                >
+                  ✓
+                </span>
 
-          <span className="text-base text-[#292929]">
-            {name}
-          </span>
-        </a>
-      ))}
-    </div>
-  </div>
-</section>
+                <span className="text-base text-[#292929]">
+                  {name}
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* КОНТАКТЫ */}
       <section className="bg-[#0092B8] py-16 text-white">
@@ -479,9 +494,8 @@ export default function ElektrikPage() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/90">
-            Позвоните или напишите нам в WhatsApp.
-            Уточним задачу, согласуем стоимость
-            и удобное время выезда мастера.
+            Позвоните или напишите нам в WhatsApp. Уточним задачу,
+            согласуем стоимость и удобное время выезда мастера.
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
