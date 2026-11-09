@@ -28,8 +28,6 @@ export default function Home() {
             src="/hero-mark.png"
             alt=""
             fill
-            loading="eager"
-            fetchPriority="high"
             sizes="85vw"
             className="object-contain p-[7.5%]"
           />
