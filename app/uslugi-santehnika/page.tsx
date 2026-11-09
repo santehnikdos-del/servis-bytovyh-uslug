@@ -2,12 +2,14 @@ import Header from "../Header";
 import Footer from "../Footer";
 import ManagedServices from "../ManagedServices";
 
+export const revalidate = 60;
+
 export const metadata = {
   title: "Услуги сантехника в Алматы | Сервис бытовых услуг",
   description:
     "Услуги сантехника в Алматы: установка унитаза, смесителя, раковины, ванны, бойлера, замена труб и прочистка канализации.",
   alternates: {
-    canonical: "https://home-services.kz/uslugi-santehnika",
+   canonical: "https://www.home-services.kz/uslugi-santehnika",
   },
 };
 

@@ -17,86 +17,26 @@ export default function Home() {
     <main className="min-h-screen bg-white text-slate-950">
       <Header />
 
-      {/* МОБИЛЬНЫЙ ПЕРВЫЙ ЭКРАН */}
-      <section className="relative overflow-hidden bg-[#333333] px-6 py-8 text-white md:hidden">
+      {/* ПЕРВЫЙ ЭКРАН — ОДНА СЕКЦИЯ ДЛЯ ТЕЛЕФОНА И КОМПЬЮТЕРА */}
+      <section className="relative overflow-hidden bg-[#333333] px-6 py-8 text-white md:h-[490px] md:bg-[#281E12] md:px-0 md:py-0">
+        {/* ТЕЛЕФОН: ВОДЯНОЙ ЗНАК */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-0 opacity-10"
+          className="pointer-events-none absolute inset-0 z-0 opacity-10 md:hidden"
         >
           <Image
-  src="/hero-mark.png"
-  alt=""
-  fill
-  loading="eager"
-  fetchPriority="high"
-  sizes="85vw"
-  className="object-contain p-[7.5%]"
-/>
+            src="/hero-mark.png"
+            alt=""
+            fill
+            loading="eager"
+            fetchPriority="high"
+            sizes="85vw"
+            className="object-contain p-[7.5%]"
+          />
         </div>
 
-        <div className="relative z-10">
-          <h1 className="text-center text-3xl font-bold leading-tight text-white">
-            СЕРВИС БЫТОВЫХ УСЛУГ
-          </h1>
-
-          <div className="mx-auto mt-6 flex w-fit max-w-full items-center justify-center">
-            <ul className="flex flex-col gap-3 text-left">
-              {[
-                "Быстрый выезд",
-                "Гарантия до 3 лет",
-                "Работаем 24/7",
-              ].map((text) => (
-                <li key={text} className="flex items-center gap-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    className="h-7 w-7 shrink-0"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill="#0092B8"
-                      d="m12 1 3 2.2 3.7-.1 1.1 3.5 3.1 2.1-1.2 3.5
-                         1.2 3.5-3.1 2.1-1.1 3.5-3.7-.1L12 23l-3-2.2
-                         -3.7.1-1.1-3.5-3.1-2.1L2.3 12 1.1 8.5l3.1-2.1
-                         1.1-3.5 3.7.1Z"
-                    />
-                    <path
-                      d="m7.5 12 3 3 6-6"
-                      fill="none"
-                      stroke="white"
-                      strokeWidth="2.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-
-                  <span>{text}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <p className="mt-7 text-center text-lg leading-7">
-            Услуги сантехника и электрика в Алматы. Ремонт, установка,
-            прочистка канализации и срочный вызов мастера.
-          </p>
-
-          <a
-            href="tel:+77771696969"
-            className="home-call-button-shine mx-auto mt-10 flex max-w-sm items-center justify-center rounded-full bg-[#0092B8]/40 px-6 py-4 text-lg font-normal text-white"
-          >
-            Вызвать мастера
-          </a>
-        </div>
-      </section>
-
-      {/* ПЕРВЫЙ ЭКРАН — КОМПЬЮТЕР */}
-      <section
-        className="relative hidden h-[490px] overflow-hidden text-white md:block"
-        style={{ backgroundColor: "#281E12" }}
-      >
-        {/* ФОТО СПРАВА */}
-        <div className="absolute inset-y-0 right-0 w-[53%]">
+        {/* КОМПЬЮТЕР: ФОТО СПРАВА */}
+        <div className="absolute inset-y-0 right-0 hidden w-[53%] md:block">
           <Image
             src="/banner-master.jpg"
             alt="Мастер сервиса бытовых услуг"
@@ -115,119 +55,174 @@ export default function Home() {
           />
         </div>
 
-        {/* ТЕКСТ СЛЕВА */}
-        <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6">
-          <div className="relative w-[47%]">
-            <h1 className="relative -top-7 text-5xl font-bold uppercase leading-[1.05] lg:text-[64px]">
-              Сервис
-              <span className="block text-[#FDC700]">
+        <div className="relative z-10 md:mx-auto md:flex md:h-full md:max-w-7xl md:items-center md:px-6">
+          <div className="md:relative md:w-[47%]">
+            {/* ЕДИНСТВЕННЫЙ H1 */}
+            <h1 className="text-center text-3xl font-bold uppercase leading-tight text-white md:relative md:-top-7 md:text-left md:text-5xl md:leading-[1.05] lg:text-[64px]">
+              Сервис{" "}
+              <span className="md:block md:text-[#FDC700]">
                 бытовых услуг
               </span>
             </h1>
 
-            <p className="mt-4 text-lg leading-7 text-white/85">
-              <span className="block whitespace-nowrap">
-                Сантехник, электрик и другие бытовые услуги в Алматы.
-              </span>
-              <span className="block whitespace-nowrap">
-                Ремонт, установка и прочистка канализации.
-              </span>
-            </p>
+            {/* ТОЛЬКО ТЕЛЕФОН */}
+            <div className="md:hidden">
+              <div className="mx-auto mt-6 flex w-fit max-w-full items-center justify-center">
+                <ul className="flex flex-col gap-3 text-left">
+                  {[
+                    "Быстрый выезд",
+                    "Гарантия до 3 лет",
+                    "Работаем 24/7",
+                  ].map((text) => (
+                    <li key={text} className="flex items-center gap-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        className="h-7 w-7 shrink-0"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill="#0092B8"
+                          d="m12 1 3 2.2 3.7-.1 1.1 3.5 3.1 2.1-1.2 3.5
+                             1.2 3.5-3.1 2.1-1.1 3.5-3.7-.1L12 23l-3-2.2
+                             -3.7.1-1.1-3.5-3.1-2.1L2.3 12 1.1 8.5l3.1-2.1
+                             1.1-3.5 3.7.1Z"
+                        />
+                        <path
+                          d="m7.5 12 3 3 6-6"
+                          fill="none"
+                          stroke="white"
+                          strokeWidth="2.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
 
-            <div className="mt-8 flex gap-3">
+                      <span>{text}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <p className="mt-7 text-center text-lg leading-7">
+                Услуги сантехника и электрика в Алматы. Ремонт, установка,
+                прочистка канализации и срочный вызов мастера.
+              </p>
+
               <a
                 href="tel:+77771696969"
-                className="home-call-button-shine inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-[#0092B8]/80 px-6 text-xl font-normal text-white transition hover:bg-[#007D9E]"
+                className="home-call-button-shine mx-auto mt-10 flex max-w-sm items-center justify-center rounded-full bg-[#0092B8]/40 px-6 py-4 text-lg font-normal text-white"
               >
                 Вызвать мастера
               </a>
+            </div>
 
-              <div className="relative shrink-0">
+            {/* ТОЛЬКО КОМПЬЮТЕР */}
+            <div className="hidden md:block">
+              <p className="mt-4 text-lg leading-7 text-white/85">
+                <span className="block whitespace-nowrap">
+                  Сантехник, электрик и другие бытовые услуги в Алматы.
+                </span>
+                <span className="block whitespace-nowrap">
+                  Ремонт, установка и прочистка канализации.
+                </span>
+              </p>
+
+              <div className="mt-8 flex gap-3">
                 <a
-                  href="https://wa.me/77771696969"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-white px-6 text-xl font-normal text-[#292929] transition hover:bg-gray-100"
+                  href="tel:+77771696969"
+                  className="home-call-button-shine inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-[#0092B8]/80 px-6 text-xl font-normal text-white transition hover:bg-[#007D9E]"
                 >
-                  Написать в WhatsApp
+                  Вызвать мастера
                 </a>
 
-                {/* КОЛЬЦО И БИРКА */}
-                <div className="pointer-events-none absolute left-[calc(100%-6px)] top-1/2 z-20 h-0 w-0">
-                  <div className="home-discount-hanging absolute left-0 top-0">
-                    <img
-                      src="/discount-15.png"
-                      alt="Скидка 15% на все услуги"
-                      loading="lazy"
-                      decoding="async"
-                      className="absolute left-0 top-[-47px] h-auto w-[180px] max-w-none drop-shadow-[0_5px_7px_rgba(0,0,0,0.25)]"
-                    />
+                <div className="relative shrink-0">
+                  <a
+                    href="https://wa.me/77771696969"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-white px-6 text-xl font-normal text-[#292929] transition hover:bg-gray-100"
+                  >
+                    Написать в WhatsApp
+                  </a>
 
-                    <svg
-                      width="30"
-                      height="20"
-                      viewBox="0 0 30 20"
-                      aria-hidden="true"
-                      className="absolute -left-[9px] -top-[10px] z-10"
-                    >
-                      <ellipse
-                        cx="15"
-                        cy="10"
-                        rx="12"
-                        ry="7"
-                        fill="none"
-                        stroke="#64748B"
-                        strokeWidth="4"
+                  {/* КОЛЬЦО И БИРКА */}
+                  <div className="pointer-events-none absolute left-[calc(100%-6px)] top-1/2 z-20 h-0 w-0">
+                    <div className="home-discount-hanging absolute left-0 top-0">
+                      <img
+                        src="/discount-15.png"
+                        alt="Скидка 15% на все услуги"
+                        loading="lazy"
+                        decoding="async"
+                        className="absolute left-0 top-[-47px] h-auto w-[180px] max-w-none drop-shadow-[0_5px_7px_rgba(0,0,0,0.25)]"
                       />
-                      <ellipse
-                        cx="15"
-                        cy="9"
-                        rx="12"
-                        ry="7"
-                        fill="none"
-                        stroke="#E2E8F0"
-                        strokeWidth="2"
-                      />
-                    </svg>
+
+                      <svg
+                        width="30"
+                        height="20"
+                        viewBox="0 0 30 20"
+                        aria-hidden="true"
+                        className="absolute -left-[9px] -top-[10px] z-10"
+                      >
+                        <ellipse
+                          cx="15"
+                          cy="10"
+                          rx="12"
+                          ry="7"
+                          fill="none"
+                          stroke="#64748B"
+                          strokeWidth="4"
+                        />
+                        <ellipse
+                          cx="15"
+                          cy="9"
+                          rx="12"
+                          ry="7"
+                          fill="none"
+                          stroke="#E2E8F0"
+                          strokeWidth="2"
+                        />
+                      </svg>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <ul className="mt-10 flex w-max items-center gap-5 text-base">
-              {[
-                "Быстрый выезд",
-                "Гарантия до 3 лет",
-                "Работаем каждый день",
-              ].map((text) => (
-                <li
-                  key={text}
-                  className="flex shrink-0 items-center gap-2 whitespace-nowrap"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                    className="home-check-icon h-7 w-7 shrink-0"
+              <ul className="mt-10 flex w-max items-center gap-5 text-base">
+                {[
+                  "Быстрый выезд",
+                  "Гарантия до 3 лет",
+                  "Работаем каждый день",
+                ].map((text) => (
+                  <li
+                    key={text}
+                    className="flex shrink-0 items-center gap-2 whitespace-nowrap"
                   >
-                    <path
-                      fill="#0092B8"
-                      d="M12 1 15 3 19 3 20 7 23 10 21 14 21 18 17 20 14 23 10 21 6 21 4 17 1 14 3 10 3 6 7 4Z"
-                    />
-                    <path
-                      className="home-check-line"
-                      pathLength="1"
-                      d="m7 12 3 3 7-7"
-                      fill="none"
-                      stroke="white"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  {text}
-                </li>
-              ))}
-            </ul>
+                    <svg
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      className="home-check-icon h-7 w-7 shrink-0"
+                    >
+                      <path
+                        fill="#0092B8"
+                        d="M12 1 15 3 19 3 20 7 23 10 21 14 21 18 17 20 14 23 10 21 6 21 4 17 1 14 3 10 3 6 7 4Z"
+                      />
+                      <path
+                        className="home-check-line"
+                        pathLength="1"
+                        d="m7 12 3 3 7-7"
+                        fill="none"
+                        stroke="white"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    {text}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -273,7 +268,7 @@ export default function Home() {
                 icon: "/plotnik.png",
                 title: "Плотник",
                 text: "Изготовление и ремонт деревянных конструкций.",
-                href: "#contacts",
+                href: "/plotnik",
               },
             ].map(({ icon, title, text, href }) => (
               <a

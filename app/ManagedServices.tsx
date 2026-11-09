@@ -1,37 +1,69 @@
-"use client";
+import Link from "next/link";
+import { createClient } from "@supabase/supabase-js";
 
-import { useEffect, useState } from "react";
+type ServiceRow = {
+  id: number;
+  name: string | null;
+  href: string | null;
+  description: string | null;
+  enabled: boolean | null;
+};
 
 type Service = {
   id: string;
   title: string;
   href: string;
   description: string;
-  enabled: boolean;
 };
 
-export default function ManagedServices({
+async function getServices(
+  type: "plumbing" | "electric"
+): Promise<Service[]> {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!supabaseUrl || !serviceRoleKey) {
+    console.error("Не настроены переменные Supabase");
+    return [];
+  }
+
+  const supabase = createClient(supabaseUrl, serviceRoleKey, {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false,
+    },
+  });
+
+  const table =
+    type === "plumbing" ? "plumbing_services" : "electric_services";
+
+  const { data, error } = await supabase
+    .from(table)
+    .select("*")
+    .order("sort_order", { ascending: true })
+    .order("id", { ascending: true });
+
+  if (error) {
+    console.error(`Ошибка загрузки ${table}:`, error.message);
+    return [];
+  }
+
+  return ((data || []) as ServiceRow[])
+    .filter((row) => row.enabled ?? true)
+    .map((row) => ({
+      id: String(row.id),
+      title: row.name || "",
+      href: row.href || "",
+      description: row.description || "",
+    }));
+}
+
+export default async function ManagedServices({
   type,
 }: {
   type: "plumbing" | "electric";
 }) {
-  const [services, setServices] = useState<Service[]>([]);
-
-  useEffect(() => {
-    const endpoint =
-      type === "plumbing"
-        ? "/api/plumbing-services"
-        : "/api/electric-services";
-
-    fetch(endpoint)
-      .then((res) => res.json())
-      .then((data) => {
-        if (Array.isArray(data)) {
-          setServices(data.filter((service) => service.enabled));
-        }
-      })
-      .catch(console.error);
-  }, [type]);
+  const services = await getServices(type);
 
   return (
     <>
@@ -65,7 +97,7 @@ export default function ManagedServices({
         }
       >
         {services.map((service) => (
-          <a
+          <Link
             key={service.id}
             href={service.href}
             className="group flex min-w-0 flex-col rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#0092B8]/40 hover:bg-white hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0092B8]"
@@ -90,7 +122,7 @@ export default function ManagedServices({
 
               Подробнее
             </span>
-          </a>
+          </Link>
         ))}
       </div>
     </>

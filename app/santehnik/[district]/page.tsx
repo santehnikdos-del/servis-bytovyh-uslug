@@ -34,7 +34,7 @@ export async function generateMetadata({
   if (!district) notFound();
 
   return {
-    title: `Сантехник в ${district.name} районе Алматы | Home Services`,
+        title: `Сантехник в ${district.name} районе Алматы — вызов на дом`,
     description:
       `Вызов сантехника в ${district.name} районе Алматы. ` +
       "Ремонт и установка сантехники, устранение протечек, " +

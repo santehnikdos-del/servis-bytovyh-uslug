@@ -3,6 +3,8 @@ import Header from "../Header";
 import Footer from "../Footer";
 import ManagedServices from "../ManagedServices";
 
+export const revalidate = 60;
+
 export const metadata = {
   title: "Электрик Алматы – вызов электрика на дом | Сервис бытовых услуг",
   description:
