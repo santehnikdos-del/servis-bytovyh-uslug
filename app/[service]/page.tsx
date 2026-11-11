@@ -1,3 +1,4 @@
+import T from "../T";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -102,7 +103,7 @@ export default async function ServicePage({ params }: PageProps) {
           className="mx-auto flex max-w-6xl flex-wrap items-center gap-2 px-5 py-5 text-sm text-slate-500"
         >
           <Link href="/" className="hover:text-[#0092B8]">
-            Главная
+            <T p="service" o={1}>Главная</T>
           </Link>
 
           <span aria-hidden="true">→</span>
@@ -126,11 +127,11 @@ export default async function ServicePage({ params }: PageProps) {
           <div className="overflow-hidden rounded-3xl bg-white shadow-[0_10px_40px_rgba(0,80,120,0.07)]">
             <div className="bg-[#0092B8] px-6 py-9 text-white md:px-10 md:py-12">
               <p className="text-sm font-medium uppercase tracking-wide text-[#FDC700]">
-                Выезд мастера по Алматы и пригороду
+                <T p="service" o={2}>Выезд мастера по Алматы и пригороду</T>
               </p>
 
               <h1 className="mt-4 break-words text-3xl font-bold leading-tight md:text-5xl">
-                {page.name} в Алматы
+                {page.name} <T p="service" o={3}>в Алматы</T>
               </h1>
 
               <p className="mt-5 max-w-3xl text-base leading-7 text-white/90 md:text-lg">
@@ -142,7 +143,7 @@ export default async function ServicePage({ params }: PageProps) {
                   href={`tel:+${phone}`}
                   className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#FDC700] px-7 py-3 font-semibold text-slate-900 transition hover:brightness-105"
                 >
-                  Позвонить
+                  <T p="service" o={4}>Позвонить</T>
                 </a>
 
                 <a
@@ -151,7 +152,7 @@ export default async function ServicePage({ params }: PageProps) {
                   rel="noopener noreferrer"
                   className="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-7 py-3 font-semibold text-[#0092B8] transition hover:bg-slate-100"
                 >
-                  Написать в WhatsApp
+                  <T p="service" o={5}>Написать в WhatsApp</T>
                 </a>
               </div>
             </div>
@@ -159,45 +160,45 @@ export default async function ServicePage({ params }: PageProps) {
             <div className="grid gap-8 px-6 py-8 md:grid-cols-[1.5fr_1fr] md:px-10 md:py-10">
               <div>
                 <h2 className="text-2xl font-semibold text-[#0092B8]">
-                  Как заказать услугу
+                  <T p="service" o={6}>Как заказать услугу</T>
                 </h2>
 
                 <ol className="mt-5 space-y-4 text-base leading-7 text-slate-600">
                   <li>
                     <span className="font-semibold text-[#0092B8]">
-                      1. Расскажите о задаче.
+                      <T p="service" o={7}>1. Расскажите о задаче.</T>
                     </span>{" "}
-                    Позвоните или отправьте описание и фотографии
-                    в WhatsApp.
+                    <T p="service" o={8}>Позвоните или отправьте описание и фотографии
+                    в WhatsApp.</T>
                   </li>
 
                   <li>
                     <span className="font-semibold text-[#0092B8]">
-                      2. Согласуйте детали.
+                      <T p="service" o={9}>2. Согласуйте детали.</T>
                     </span>{" "}
-                    Обсудим объём работ, материалы, стоимость
-                    и удобное время выезда.
+                    <T p="service" o={10}>Обсудим объём работ, материалы, стоимость
+                    и удобное время выезда.</T>
                   </li>
 
                   <li>
                     <span className="font-semibold text-[#0092B8]">
-                      3. Встретьте мастера.
+                      <T p="service" o={11}>3. Встретьте мастера.</T>
                     </span>{" "}
-                    Перед началом подтвердим перечень и стоимость
-                    работ, после выполнения проверим результат.
+                    <T p="service" o={12}>Перед началом подтвердим перечень и стоимость
+                    работ, после выполнения проверим результат.</T>
                   </li>
                 </ol>
               </div>
 
               <aside className="rounded-2xl bg-[#F3F7FA] p-6">
                 <h2 className="text-xl font-semibold text-[#0092B8]">
-                  Стоимость и выезд
+                  <T p="service" o={13}>Стоимость и выезд</T>
                 </h2>
 
                 <p className="mt-3 text-base leading-7 text-slate-600">
-                  Стоимость зависит от объёма задачи, состояния
+                  <T p="service" o={14}>Стоимость зависит от объёма задачи, состояния
                   оборудования и необходимых материалов.
-                  Уточните детали у мастера перед заказом.
+                  Уточните детали у мастера перед заказом.</T>
                 </p>
 
                 <a
@@ -208,7 +209,7 @@ export default async function ServicePage({ params }: PageProps) {
                 </a>
 
                 <p className="mt-2 text-sm text-slate-500">
-                  Весь Алматы и пригород
+                  <T p="service" o={15}>Весь Алматы и пригород</T>
                 </p>
               </aside>
             </div>
@@ -218,7 +219,7 @@ export default async function ServicePage({ params }: PageProps) {
         {/* ДРУГИЕ УСЛУГИ */}
         <section className="mx-auto max-w-6xl px-5 pb-12">
           <h2 className="text-2xl font-semibold text-[#0092B8]">
-            Другие услуги
+            <T p="service" o={16}>Другие услуги</T>
           </h2>
 
           <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

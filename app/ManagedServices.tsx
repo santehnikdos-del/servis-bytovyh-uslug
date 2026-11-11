@@ -1,3 +1,4 @@
+import T from "./T";
 import Link from "next/link";
 import { createClient } from "@supabase/supabase-js";
 
@@ -120,7 +121,7 @@ export default async function ManagedServices({
                 →
               </span>
 
-              Подробнее
+              <T p="managed" o={1}>Подробнее</T>
             </span>
           </Link>
         ))}

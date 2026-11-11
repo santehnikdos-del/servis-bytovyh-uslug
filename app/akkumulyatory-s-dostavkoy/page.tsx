@@ -1,3 +1,4 @@
+import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
 import Script from "next/script";
@@ -42,12 +43,12 @@ export default function AkkumulyatoryPage() {
       <section className="bg-[#303030] px-6 py-8 text-white md:hidden">
 
         <h1 className="text-center text-3xl font-bold text-yellow-400">
-          Аккумуляторы с доставкой по Алматы
+          <T p="akkumulyatory" o={1}>Аккумуляторы с доставкой по Алматы</T>
         </h1>
 
         <p className="mt-4 text-center text-lg font-bold">
-          Подберём автомобильный аккумулятор, доставим по адресу
-          и при необходимости поможем с заменой.
+          <T p="akkumulyatory" o={2}>Подберём автомобильный аккумулятор, доставим по адресу
+          и при необходимости поможем с заменой.</T>
         </p>
 
         <div className="mt-10 grid grid-cols-3 gap-2 text-center">
@@ -59,7 +60,7 @@ export default function AkkumulyatoryPage() {
               className="h-12 w-12 object-contain"
             />
             <p className="mt-3 text-base">
-              Быстрая<br />доставка
+              <T p="akkumulyatory" o={3}>Быстрая</T><br /><T p="akkumulyatory" o={4}>доставка</T>
             </p>
           </div>
 
@@ -70,7 +71,7 @@ export default function AkkumulyatoryPage() {
               className="h-12 w-12 object-contain"
             />
             <p className="mt-3 text-base">
-              Гарантия<br />на товар
+              <T p="akkumulyatory" o={5}>Гарантия</T><br /><T p="akkumulyatory" o={6}>на товар</T>
             </p>
           </div>
 
@@ -81,15 +82,15 @@ export default function AkkumulyatoryPage() {
               className="h-12 w-12 object-contain"
             />
             <p className="mt-3 text-base">
-              Работаем<br />каждый день
+              <T p="akkumulyatory" o={7}>Работаем</T><br /><T p="akkumulyatory" o={8}>каждый день</T>
             </p>
           </div>
 
         </div>
 
         <p className="mt-5 px-5 text-center text-base leading-6">
-          Поможем выбрать аккумулятор под ваш автомобиль
-          и организуем доставку по Алматы.
+          <T p="akkumulyatory" o={9}>Поможем выбрать аккумулятор под ваш автомобиль
+          и организуем доставку по Алматы.</T>
         </p>
 
       </section>
@@ -109,16 +110,16 @@ export default function AkkumulyatoryPage() {
           <div className="max-w-5xl">
 
             <p className="font-bold text-yellow-400">
-              Доставка по Алматы
+              <T p="akkumulyatory" o={10}>Доставка по Алматы</T>
             </p>
 
             <h1 className="mt-2 max-w-4xl text-5xl font-black leading-[1.05] text-white md:text-6xl">
-              Автомобильные аккумуляторы с доставкой
+              <T p="akkumulyatory" o={11}>Автомобильные аккумуляторы с доставкой</T>
             </h1>
 
             <p className="mt-6 max-w-2xl text-xl leading-8 text-slate-100">
-              Подберём аккумулятор для вашего автомобиля,
-              доставим по Алматы и при необходимости поможем с заменой.
+              <T p="akkumulyatory" o={12}>Подберём аккумулятор для вашего автомобиля,
+              доставим по Алматы и при необходимости поможем с заменой.</T>
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -127,7 +128,7 @@ export default function AkkumulyatoryPage() {
               href="tel:+77082000513"
                 className="rounded-full bg-yellow-400 px-8 py-4 text-lg font-black text-slate-950 shadow-xl transition hover:-translate-y-1 hover:bg-yellow-300"
               >
-                📞 Позвонить
+                <T p="akkumulyatory" o={13}>📞 Позвонить</T>
               </a>
 
               <a
@@ -161,9 +162,9 @@ export default function AkkumulyatoryPage() {
                   </div>
 
                   <p className="text-lg font-black text-white">
-                    {line1}
+                    <T p="akkumulyatory" o={14}>{line1}</T>
                     <br />
-                    {line2}
+                    <T p="akkumulyatory" o={15}>{line2}</T>
                   </p>
                 </div>
               ))}
@@ -178,11 +179,11 @@ export default function AkkumulyatoryPage() {
   <div className="mx-auto max-w-7xl px-6">
 
     <p className="font-bold text-yellow-500">
-      Подбор аккумулятора
+      <T p="akkumulyatory" o={16}>Подбор аккумулятора</T>
     </p>
 
     <h2 className="mt-2 text-4xl font-black">
-      Подберём аккумулятор для вашего автомобиля
+      <T p="akkumulyatory" o={17}>Подберём аккумулятор для вашего автомобиля</T>
     </h2>
 
     <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -212,11 +213,11 @@ export default function AkkumulyatoryPage() {
           <div className="mb-4 h-2 w-12 rounded-full bg-yellow-400" />
 
           <h3 className="text-xl font-black">
-            {title}
+            <T p="akkumulyatory" o={18}>{title}</T>
           </h3>
 
           <p className="mt-3 leading-7 text-slate-600">
-            {text}
+            <T p="akkumulyatory" o={19}>{text}</T>
           </p>
 
           
@@ -233,11 +234,11 @@ export default function AkkumulyatoryPage() {
   <div className="mx-auto max-w-7xl px-6">
 
     <p className="font-bold text-yellow-400">
-      Наши преимущества
+      <T p="akkumulyatory" o={20}>Наши преимущества</T>
     </p>
 
     <h2 className="mt-2 text-4xl font-black">
-      Почему покупают аккумуляторы у нас
+      <T p="akkumulyatory" o={21}>Почему покупают аккумуляторы у нас</T>
     </h2>
 
     <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -256,11 +257,11 @@ export default function AkkumulyatoryPage() {
           <div className="mb-4 h-2 w-12 rounded-full bg-yellow-400" />
 
           <h3 className="text-xl font-black">
-            {title}
+            <T p="akkumulyatory" o={22}>{title}</T>
           </h3>
 
           <p className="mt-3 text-slate-200">
-            {text}
+            <T p="akkumulyatory" o={23}>{text}</T>
           </p>
         </div>
       ))}
@@ -274,11 +275,11 @@ export default function AkkumulyatoryPage() {
   <div className="mx-auto max-w-7xl px-6">
 
     <p className="font-bold text-yellow-500">
-      Как мы работаем
+      <T p="akkumulyatory" o={24}>Как мы работаем</T>
     </p>
 
     <h2 className="mt-2 text-4xl font-black">
-      От заказа до установки аккумулятора
+      <T p="akkumulyatory" o={25}>От заказа до установки аккумулятора</T>
     </h2>
 
     <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -309,15 +310,15 @@ export default function AkkumulyatoryPage() {
           className="rounded-3xl border border-slate-200 bg-slate-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-yellow-50 hover:shadow-xl"
         >
           <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-yellow-400 text-xl font-black">
-            {number}
+            <T p="akkumulyatory" o={26}>{number}</T>
           </div>
 
           <h3 className="mt-5 text-xl font-black">
-            {title}
+            <T p="akkumulyatory" o={27}>{title}</T>
           </h3>
 
           <p className="mt-3 text-slate-600">
-            {text}
+            <T p="akkumulyatory" o={28}>{text}</T>
           </p>
         </div>
       ))}
@@ -331,11 +332,11 @@ export default function AkkumulyatoryPage() {
   <div className="mx-auto max-w-7xl px-6">
 
     <p className="font-bold text-yellow-500">
-      Отзывы клиентов
+      <T p="akkumulyatory" o={29}>Отзывы клиентов</T>
     </p>
 
     <h2 className="mt-2 text-4xl font-black">
-      Что говорят наши клиенты
+      <T p="akkumulyatory" o={30}>Что говорят наши клиенты</T>
     </h2>
 
     <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -374,15 +375,15 @@ export default function AkkumulyatoryPage() {
           </div>
 
           <p className="mt-4 leading-7 text-slate-600">
-            “{text}”
+            “<T p="akkumulyatory" o={31}>{text}</T>”
           </p>
 
           <p className="mt-5 font-black">
-            {name}
+            <T p="akkumulyatory" o={32}>{name}</T>
           </p>
 
           <p className="text-sm text-slate-500">
-            Алматы
+            <T p="akkumulyatory" o={33}>Алматы</T>
           </p>
         </div>
       ))}
@@ -396,7 +397,7 @@ export default function AkkumulyatoryPage() {
   <div className="mx-auto max-w-4xl px-6">
 
     <h2 className="text-center text-3xl font-black md:text-4xl">
-      Часто задаваемые вопросы
+      <T p="akkumulyatory" o={34}>Часто задаваемые вопросы</T>
     </h2>
 
     <div className="mt-10 space-y-4">
@@ -432,7 +433,7 @@ export default function AkkumulyatoryPage() {
         >
           <summary className="flex cursor-pointer list-none items-center justify-between px-7 py-7">
             <span className="text-xl font-black text-slate-950">
-              {question}
+              <T p="akkumulyatory" o={35}>{question}</T>
             </span>
 
             <span className="ml-5 text-3xl font-light text-blue-600 transition-transform duration-300 group-open:rotate-45">
@@ -442,7 +443,7 @@ export default function AkkumulyatoryPage() {
 
           <div className="px-7 pb-7">
             <p className="text-lg leading-7 text-slate-600">
-              {answer}
+              <T p="akkumulyatory" o={36}>{answer}</T>
             </p>
           </div>
         </details>
@@ -457,15 +458,15 @@ export default function AkkumulyatoryPage() {
   <div className="mx-auto max-w-7xl px-6">
 
     <p className="font-bold text-yellow-500">
-      Доставка по городу
+      <T p="akkumulyatory" o={37}>Доставка по городу</T>
     </p>
 
     <h2 className="mt-2 text-4xl font-black">
-      Доставка аккумуляторов по всем районам Алматы
+      <T p="akkumulyatory" o={38}>Доставка аккумуляторов по всем районам Алматы</T>
     </h2>
 
     <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
-      Доставляем автомобильные аккумуляторы по Алматы.
+      <T p="akkumulyatory" o={39}>Доставляем автомобильные аккумуляторы по Алматы.</T>
     </p>
 
     <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -498,19 +499,19 @@ export default function AkkumulyatoryPage() {
     <div className="rounded-3xl border border-yellow-400/20 bg-slate-900 p-10">
 
       <p className="font-bold text-yellow-400">
-        Доставка по Алматы
+        <T p="akkumulyatory" o={40}>Доставка по Алматы</T>
       </p>
 
       <div className="mt-3 flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
 
         <div>
           <h2 className="text-4xl font-black md:text-5xl">
-            Нужен аккумулятор?
+            <T p="akkumulyatory" o={41}>Нужен аккумулятор?</T>
           </h2>
 
           <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
-            Позвоните или напишите в WhatsApp. Поможем подобрать
-            аккумулятор для вашего автомобиля и организуем доставку.
+            <T p="akkumulyatory" o={42}>Позвоните или напишите в WhatsApp. Поможем подобрать
+            аккумулятор для вашего автомобиля и организуем доставку.</T>
           </p>
         </div>
 
@@ -519,7 +520,7 @@ export default function AkkumulyatoryPage() {
             href="tel:+77082000513"
             className="rounded-2xl bg-yellow-400 px-8 py-4 text-lg font-black text-slate-950 transition hover:bg-yellow-300"
           >
-            📞 Позвонить
+            <T p="akkumulyatory" o={43}>📞 Позвонить</T>
           </a>
 
           <a

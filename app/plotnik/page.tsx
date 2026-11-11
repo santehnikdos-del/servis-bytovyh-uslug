@@ -1,3 +1,4 @@
+import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
 
@@ -95,7 +96,7 @@ function Check({ text }: { text: string }) {
           strokeLinejoin="round"
         />
       </svg>
-      <span>{text}</span>
+      <span><T p="plotnik" o={1}>{text}</T></span>
     </li>
   );
 }
@@ -195,25 +196,25 @@ export default function PlotnikPage() {
               className="mb-5 flex items-center gap-2 text-sm text-white/70"
             >
               <a href="/" className="hover:text-[#FDC700]">
-                Главная
+                <T p="plotnik" o={2}>Главная</T>
               </a>
               <span aria-hidden="true">→</span>
               <span aria-current="page" className="text-white">
-                Плотник
+                <T p="plotnik" o={3}>Плотник</T>
               </span>
             </nav>
 
             <h1 className="text-center text-3xl font-bold uppercase leading-[1.05] md:text-left md:text-5xl lg:text-[64px]">
-              Плотник
+              <T p="plotnik" o={4}>Плотник</T>
               <span className="block text-[#FDC700]">
-                в Алматы
+                <T p="plotnik" o={5}>в Алматы</T>
               </span>
             </h1>
 
             <p className="mt-5 max-w-lg text-center text-lg leading-7 text-white/85 md:text-left">
-              Ремонт дверей и мебели, установка замков,
+              <T p="plotnik" o={6}>Ремонт дверей и мебели, установка замков,
               сборка мебели, монтаж полок и плинтусов.
-              Поможем с домашними задачами.
+              Поможем с домашними задачами.</T>
             </p>
 
             <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 md:mx-0 md:max-w-none md:flex-row md:flex-wrap md:items-center">
@@ -221,7 +222,7 @@ export default function PlotnikPage() {
                 href="tel:+77771696969"
                 className="carpenter-call-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal transition hover:bg-[#007D9E]"
               >
-                Вызвать мастера
+                <T p="plotnik" o={7}>Вызвать мастера</T>
               </a>
 
               <div className="relative shrink-0">
@@ -231,7 +232,7 @@ export default function PlotnikPage() {
                   rel="noopener noreferrer"
                   className="inline-flex h-14 w-full items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100 md:w-auto"
                 >
-                  Написать в WhatsApp
+                  <T p="plotnik" o={8}>Написать в WhatsApp</T>
                 </a>
 
                 <div
@@ -286,10 +287,10 @@ export default function PlotnikPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
             <p className="font-bold text-[#0092B8]">
-              Услуги плотника
+              <T p="plotnik" o={9}>Услуги плотника</T>
             </p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[48px]">
-              Какая помощь вам нужна?
+              <T p="plotnik" o={10}>Какая помощь вам нужна?</T>
             </h2>
           </div>
 
@@ -300,11 +301,11 @@ export default function PlotnikPage() {
                 className="flex flex-col rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-sm transition hover:border-[#0092B8]/40 hover:shadow-lg"
               >
                 <h3 className="text-lg font-bold text-[#0092B8]">
-                  {service.title}
+                  <T p="plotnik" o={11}>{service.title}</T>
                 </h3>
 
                 <p className="mt-2 text-sm leading-6 text-slate-600">
-                  {service.text}
+                  <T p="plotnik" o={12}>{service.text}</T>
                 </p>
 
                 <a
@@ -317,7 +318,7 @@ export default function PlotnikPage() {
                   className="mt-auto inline-flex items-center gap-3 pt-4 text-sm font-semibold text-[#0092B8]"
                 >
                   <Arrow />
-                  Обсудить работу
+                  <T p="plotnik" o={13}>Обсудить работу</T>
                 </a>
               </article>
             ))}
@@ -329,18 +330,18 @@ export default function PlotnikPage() {
       <section id="prices" className="bg-slate-50 py-12 md:py-16">
         <div className="mx-auto max-w-5xl px-6 text-center">
           <p className="font-bold text-[#0092B8]">
-            Стоимость работ
+            <T p="plotnik" o={14}>Стоимость работ</T>
           </p>
 
           <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[48px]">
-            Сколько стоят услуги плотника?
+            <T p="plotnik" o={15}>Сколько стоят услуги плотника?</T>
           </h2>
 
           <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-600">
-            Цена зависит от объёма работы, состояния мебели
+            <T p="plotnik" o={16}>Цена зависит от объёма работы, состояния мебели
             или дверей, материалов и фурнитуры. Отправьте
             фотографии и описание задачи — уточним детали.
-            Итоговую стоимость согласуем до начала работ.
+            Итоговую стоимость согласуем до начала работ.</T>
           </p>
 
           <a
@@ -350,7 +351,7 @@ export default function PlotnikPage() {
             className="mt-7 inline-flex items-center gap-3 rounded-full bg-[#FDC700] px-8 py-4 text-lg text-[#171717] transition hover:bg-[#eab800]"
           >
             <Arrow />
-            Узнать стоимость
+            <T p="plotnik" o={17}>Узнать стоимость</T>
           </a>
         </div>
       </section>
@@ -359,7 +360,7 @@ export default function PlotnikPage() {
       <section className="py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-center text-3xl font-black leading-tight text-[#0092B8] md:text-[48px]">
-            Как заказать работу
+            <T p="plotnik" o={18}>Как заказать работу</T>
           </h2>
 
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -369,15 +370,15 @@ export default function PlotnikPage() {
                 className="rounded-2xl border border-slate-200 bg-slate-50 p-6"
               >
                 <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#FDC700] text-lg font-bold">
-                  {number}
+                  <T p="plotnik" o={19}>{number}</T>
                 </div>
 
                 <h3 className="mt-4 text-lg font-bold text-[#0092B8]">
-                  {title}
+                  <T p="plotnik" o={20}>{title}</T>
                 </h3>
 
                 <p className="mt-2 leading-7 text-slate-600">
-                  {text}
+                  <T p="plotnik" o={21}>{text}</T>
                 </p>
               </div>
             ))}
@@ -389,7 +390,7 @@ export default function PlotnikPage() {
       <section id="faq" className="bg-slate-50 py-12 md:py-16">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-center text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
-            Вопросы об услугах плотника
+            <T p="plotnik" o={22}>Вопросы об услугах плотника</T>
           </h2>
 
           <div className="mt-8 space-y-3">
@@ -399,7 +400,7 @@ export default function PlotnikPage() {
                 className="group rounded-2xl border border-slate-200 bg-white p-5 transition open:border-[#0092B8]/40 md:p-6"
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-[#0092B8] [&::-webkit-details-marker]:hidden">
-                  {question}
+                  <T p="plotnik" o={23}>{question}</T>
 
                   <span
                     aria-hidden="true"
@@ -410,7 +411,7 @@ export default function PlotnikPage() {
                 </summary>
 
                 <p className="mt-4 leading-7 text-slate-600">
-                  {answer}
+                  <T p="plotnik" o={24}>{answer}</T>
                 </p>
               </details>
             ))}
@@ -422,17 +423,17 @@ export default function PlotnikPage() {
       <section id="contacts" className="bg-[#0092B8] py-16 text-white">
         <div className="mx-auto max-w-5xl px-6 text-center">
           <p className="font-bold uppercase tracking-wider text-[#FDC700]">
-            Сервис бытовых услуг
+            <T p="plotnik" o={25}>Сервис бытовых услуг</T>
           </p>
 
           <h2 className="mt-3 text-3xl font-black leading-tight md:text-[54px]">
-            Нужен плотник?
+            <T p="plotnik" o={26}>Нужен плотник?</T>
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/90">
-            Позвоните или напишите в WhatsApp.
+            <T p="plotnik" o={27}>Позвоните или напишите в WhatsApp.
             Расскажите о задаче — обсудим работу
-            и удобное время приезда мастера.
+            и удобное время приезда мастера.</T>
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -440,7 +441,7 @@ export default function PlotnikPage() {
               href="tel:+77771696969"
               className="carpenter-call-shine inline-flex min-h-14 w-full items-center justify-center rounded-full bg-[#FDC700] px-8 py-4 text-lg text-[#171717] transition hover:bg-[#eab800] sm:w-auto"
             >
-              Вызвать мастера
+              <T p="plotnik" o={28}>Вызвать мастера</T>
             </a>
 
             <a
@@ -449,7 +450,7 @@ export default function PlotnikPage() {
               rel="noopener noreferrer"
               className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-white px-8 py-4 text-lg text-[#292929] transition hover:bg-gray-100 sm:w-auto"
             >
-              Написать в WhatsApp
+              <T p="plotnik" o={29}>Написать в WhatsApp</T>
             </a>
           </div>
         </div>

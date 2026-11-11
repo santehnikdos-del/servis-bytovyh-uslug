@@ -1,3 +1,4 @@
+import T from "./T";
 import Image from "next/image";
 import Header from "./Header";
 import Rayony from "./Rayony";
@@ -57,9 +58,9 @@ export default function Home() {
           <div className="md:relative md:w-[47%]">
             {/* ЕДИНСТВЕННЫЙ H1 */}
             <h1 className="text-center text-3xl font-bold uppercase leading-tight text-white md:relative md:-top-7 md:text-left md:text-5xl md:leading-[1.05] lg:text-[64px]">
-              Сервис{" "}
+              <T p="home" o={1}>Сервис</T>{" "}
               <span className="md:block md:text-[#FDC700]">
-                бытовых услуг
+                <T p="home" o={2}>бытовых услуг</T>
               </span>
             </h1>
 
@@ -96,22 +97,22 @@ export default function Home() {
                         />
                       </svg>
 
-                      <span>{text}</span>
+                      <span><T p="home" o={3}>{text}</T></span>
                     </li>
                   ))}
                 </ul>
               </div>
 
               <p className="mt-7 text-center text-lg leading-7">
-                Услуги сантехника и электрика в Алматы. Ремонт, установка,
-                прочистка канализации и срочный вызов мастера.
+                <T p="home" o={4}>Услуги сантехника и электрика в Алматы. Ремонт, установка,
+                прочистка канализации и срочный вызов мастера.</T>
               </p>
 
               <a
                 href="tel:+77771696969"
                 className="home-call-button-shine mx-auto mt-10 flex max-w-sm items-center justify-center rounded-full bg-[#0092B8]/40 px-6 py-4 text-lg font-normal text-white"
               >
-                Вызвать мастера
+                <T p="home" o={5}>Вызвать мастера</T>
               </a>
             </div>
 
@@ -119,10 +120,10 @@ export default function Home() {
             <div className="hidden md:block">
               <p className="mt-4 text-lg leading-7 text-white/85">
                 <span className="block whitespace-nowrap">
-                  Сантехник, электрик и другие бытовые услуги в Алматы.
+                  <T p="home" o={6}>Сантехник, электрик и другие бытовые услуги в Алматы.</T>
                 </span>
                 <span className="block whitespace-nowrap">
-                  Ремонт, установка и прочистка канализации.
+                  <T p="home" o={7}>Ремонт, установка и прочистка канализации.</T>
                 </span>
               </p>
 
@@ -131,7 +132,7 @@ export default function Home() {
                   href="tel:+77771696969"
                   className="home-call-button-shine inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-[#0092B8]/80 px-6 text-xl font-normal text-white transition hover:bg-[#007D9E]"
                 >
-                  Вызвать мастера
+                  <T p="home" o={8}>Вызвать мастера</T>
                 </a>
 
                 <div className="relative shrink-0">
@@ -141,7 +142,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-white px-6 text-xl font-normal text-[#292929] transition hover:bg-gray-100"
                   >
-                    Написать в WhatsApp
+                    <T p="home" o={9}>Написать в WhatsApp</T>
                   </a>
 
                   {/* КОЛЬЦО И БИРКА */}
@@ -216,7 +217,7 @@ export default function Home() {
                         strokeLinejoin="round"
                       />
                     </svg>
-                    {text}
+                    <T p="home" o={10}>{text}</T>
                   </li>
                 ))}
               </ul>
@@ -233,10 +234,10 @@ export default function Home() {
 
             <h2 className="mt-0 text-3xl font-bold leading-tight text-[#0092B8] md:text-[54px] md:font-black">
               <span className="md:hidden">
-                Какая помощь вам нужна?
+                <T p="home" o={11}>Какая помощь вам нужна?</T>
               </span>
               <span className="hidden md:inline">
-                Сервис бытовых услуг в Алматы
+                <T p="home" o={12}>Сервис бытовых услуг в Алматы</T>
               </span>
             </h2>
           </div>
@@ -285,15 +286,15 @@ export default function Home() {
 
                 <div>
                   <h3 className="text-xl font-bold leading-tight text-[#0092B8] underline decoration-1 underline-offset-4">
-                    {title}
+                    <T p="home" o={13}>{title}</T>
                   </h3>
 
                   <p className="mt-1 text-base leading-5 text-slate-700">
-                    {text}
+                    <T p="home" o={14}>{text}</T>
                   </p>
 
                   <span className="mt-1 inline-flex items-center gap-1 text-sm text-[#0092B8]">
-                    Подробнее
+                    <T p="home" o={15}>Подробнее</T>
                     <span className="text-xs" aria-hidden="true">
                       →
                     </span>
@@ -345,18 +346,18 @@ export default function Home() {
                 />
 
                 <h3 className="mt-2 text-xl font-bold text-slate-950">
-                  {title}
+                  <T p="home" o={16}>{title}</T>
                 </h3>
 
                 <p className="mt-2 text-base leading-6 text-slate-600">
-                  {text}
+                  <T p="home" o={17}>{text}</T>
                 </p>
 
                 <a
                   href={href}
                   className="mt-3 inline-block text-sm font-medium text-[#0092B8] transition hover:underline"
                 >
-                  Подробнее →
+                  <T p="home" o={18}>Подробнее →</T>
                 </a>
               </div>
             ))}
@@ -368,24 +369,24 @@ export default function Home() {
               href="/nashi-raboty"
               className="rounded-full bg-[#0092B8] px-6 py-4 text-center font-bold text-white"
             >
-              Наши работы →
+              <T p="home" o={19}>Наши работы →</T>
             </a>
 
             <a
               href="/otzyvy"
               className="rounded-full bg-[#FDC700] px-6 py-4 text-center font-bold text-[#171717]"
             >
-              Читать отзывы →
+              <T p="home" o={20}>Читать отзывы →</T>
             </a>
           </div>
 
           <p className="mt-8 w-full text-center text-xl leading-8 text-slate-700">
-            <strong>Квалифицированные мастера</strong> с большим опытом
+            <strong><T p="home" o={21}>Квалифицированные мастера</T></strong> <T p="home" o={22}>с большим опытом
             работы. Высокий уровень сервиса и профессиональный подход к
             каждому заказу. Работаем аккуратно и ответственно.
-            Предоставляем необходимые документы и{" "}
-            <strong>гарантию на выполненные работы</strong>. Высокий
-            рейтинг и доверие клиентов.
+            Предоставляем необходимые документы и</T>{" "}
+            <strong><T p="home" o={23}>гарантию на выполненные работы</T></strong><T p="home" o={24}>. Высокий
+            рейтинг и доверие клиентов.</T>
           </p>
 
           {/* ПОКАЗАТЕЛИ */}
@@ -412,11 +413,11 @@ export default function Home() {
 
                   <div>
                     <div className="text-4xl font-semibold leading-tight text-[#0092B8] md:text-3xl md:font-black md:text-white">
-                      {number}
+                      <T p="home" o={25}>{number}</T>
                     </div>
 
                     <p className="mt-1 text-sm leading-5 text-slate-700 md:mt-0 md:text-white">
-                      {caption}
+                      <T p="home" o={26}>{caption}</T>
                     </p>
                   </div>
                 </div>
@@ -431,7 +432,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-black text-[#0092B8] md:text-[54px]">
-              Наши преимущества
+              <T p="home" o={27}>Наши преимущества</T>
             </h2>
           </div>
 
@@ -514,16 +515,16 @@ export default function Home() {
       <section id="contacts" className="bg-[#0092B8] py-16">
         <div className="mx-auto max-w-5xl px-6 text-center">
           <p className="font-bold uppercase tracking-wider text-[#FDC700]">
-            Сервис бытовых услуг
+            <T p="home" o={28}>Сервис бытовых услуг</T>
           </p>
 
           <h2 className="mt-3 text-3xl font-black text-white md:text-4xl">
-            Нужен мастер?
+            <T p="home" o={29}>Нужен мастер?</T>
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-white/90">
-            Позвоните или напишите нам в WhatsApp. Уточним задачу,
-            согласуем стоимость и удобное время выезда мастера.
+            <T p="home" o={30}>Позвоните или напишите нам в WhatsApp. Уточним задачу,
+            согласуем стоимость и удобное время выезда мастера.</T>
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -531,7 +532,7 @@ export default function Home() {
               href="tel:+77771696969"
               className="home-call-button-shine inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-[#007D9E] px-6 text-xl font-normal text-white ring-1 ring-white/30 transition hover:bg-[#007D9E]"
             >
-              Вызвать мастера
+              <T p="home" o={31}>Вызвать мастера</T>
             </a>
 
             <div className="relative shrink-0">
@@ -541,7 +542,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-white px-6 text-xl font-normal text-[#292929] transition hover:bg-gray-100"
               >
-                Написать в WhatsApp
+                <T p="home" o={32}>Написать в WhatsApp</T>
               </a>
 
               {/* КОЛЬЦО И БИРКА */}
@@ -587,7 +588,7 @@ export default function Home() {
           </div>
 
           <p className="mt-6 text-sm text-white/80">
-            Работаем ежедневно по Алматы
+            <T p="home" o={33}>Работаем ежедневно по Алматы</T>
           </p>
         </div>
       </section>
@@ -596,7 +597,7 @@ export default function Home() {
       <section className="bg-white py-16">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-center text-3xl font-black text-slate-950 md:text-4xl">
-            Часто задаваемые вопросы
+            <T p="home" o={34}>Часто задаваемые вопросы</T>
           </h2>
 
           <div className="mt-10 space-y-3">
@@ -628,14 +629,14 @@ export default function Home() {
                 className="group cursor-pointer rounded-xl border border-transparent bg-slate-50 px-6 py-5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:bg-blue-50 hover:shadow-lg"
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between text-xl font-bold text-slate-900">
-                  {question}
+                  <T p="home" o={35}>{question}</T>
                   <span className="text-3xl font-light text-blue-600 transition group-open:rotate-45">
                     +
                   </span>
                 </summary>
 
                 <p className="mt-4 leading-7 text-slate-600">
-                  {answer}
+                  <T p="home" o={36}>{answer}</T>
                 </p>
               </details>
             ))}
@@ -651,72 +652,72 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-x-6 gap-y-6 md:grid-cols-4 md:gap-y-10">
             <div className="col-span-2 md:col-span-1">
               <h3 className="text-2xl font-black text-yellow-400">
-                Сервис бытовых услуг
+                <T p="home" o={37}>Сервис бытовых услуг</T>
               </h3>
 
               <p className="mt-4 max-w-sm text-sm leading-6 text-gray-300">
-                Выезд мастеров по Алматы. Сантехника, электрика,
-                прочистка канализации и другие бытовые услуги.
+                <T p="home" o={38}>Выезд мастеров по Алматы. Сантехника, электрика,
+                прочистка канализации и другие бытовые услуги.</T>
               </p>
             </div>
 
             <div>
               <h3 className="mb-4 text-lg font-black text-yellow-400">
-                Наши услуги
+                <T p="home" o={39}>Наши услуги</T>
               </h3>
 
               <div className="flex flex-col gap-3 text-sm font-semibold">
                 <a href="/santehnik" className="hover:text-yellow-400">
-                  Сантехника
+                  <T p="home" o={40}>Сантехника</T>
                 </a>
                 <a href="/elektrik" className="hover:text-yellow-400">
-                  Электрика
+                  <T p="home" o={41}>Электрика</T>
                 </a>
                 <a
                   href="/prochistka-kanalizacii"
                   className="hover:text-yellow-400"
                 >
-                  Прочистка
+                  <T p="home" o={42}>Прочистка</T>
                 </a>
                 <a
                   href="/uslugi-santehnika"
                   className="hover:text-yellow-400"
                 >
-                  Все услуги
+                  <T p="home" o={43}>Все услуги</T>
                 </a>
               </div>
             </div>
 
             <div>
               <h3 className="mb-4 text-lg font-black text-yellow-400">
-                Информация
+                <T p="home" o={44}>Информация</T>
               </h3>
 
               <div className="flex flex-col gap-3 text-sm font-semibold">
                 <a href="/price" className="hover:text-yellow-400">
-                  Цены
+                  <T p="home" o={45}>Цены</T>
                 </a>
                 <a
                   href="/nashi-raboty"
                   className="hover:text-yellow-400"
                 >
-                  Наши работы
+                  <T p="home" o={46}>Наши работы</T>
                 </a>
                 <a href="/otzyvy" className="hover:text-yellow-400">
-                  Отзывы
+                  <T p="home" o={47}>Отзывы</T>
                 </a>
                 <a href="#contacts" className="hover:text-yellow-400">
-                  Контакты
+                  <T p="home" o={48}>Контакты</T>
                 </a>
               </div>
             </div>
 
             <div className="col-span-2 md:col-span-1">
               <h3 className="mb-3 text-lg font-black text-yellow-400">
-                Связаться с нами
+                <T p="home" o={49}>Связаться с нами</T>
               </h3>
 
-              <p className="text-sm text-gray-400">Ежедневно</p>
+              <p className="text-sm text-gray-400"><T p="home" o={50}>Ежедневно</T></p>
 
               <a
                 href="tel:+77771696969"
@@ -729,8 +730,8 @@ export default function Home() {
 
           <div className="mt-10 border-t border-gray-600 pt-6">
             <div className="flex flex-col gap-2 text-xs text-gray-400 md:flex-row md:items-center md:justify-between md:text-sm">
-              <p>© 2013–2026 Сервис бытовых услуг. Алматы.</p>
-              <p>Сантехник • Электрик • Прочистка канализации</p>
+              <p><T p="home" o={51}>© 2013–2026 Сервис бытовых услуг. Алматы.</T></p>
+              <p><T p="home" o={52}>Сантехник • Электрик • Прочистка канализации</T></p>
             </div>
           </div>
         </div>

@@ -1,3 +1,4 @@
+import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
 import ManagedServices from "../ManagedServices";
@@ -197,13 +198,13 @@ export default function ElektrikContent({
                 href="/"
                 className="transition hover:text-[#FDC700]"
               >
-                Главная
+                <T p="elektrik-rayony" o={1}>Главная</T>
               </a>
 
               <span aria-hidden="true">→</span>
 
               <span aria-current="page" className="text-white">
-                Электрик
+                <T p="elektrik-rayony" o={2}>Электрик</T>
               </span>
             </nav>
 
@@ -214,16 +215,16 @@ export default function ElektrikContent({
       : "text-3xl md:text-5xl lg:text-[64px]"
   }`}
 >
-  Электрик
+  <T p="elektrik-rayony" o={3}>Электрик</T>
   <span className="block text-[#FDC700]">
     {district ? `в ${district} районе Алматы` : "в Алматы"}
   </span>
 </h1>
 
             <p className="mt-5 max-w-lg text-center text-lg leading-7 text-white/85 md:text-left">
-              Монтаж и ремонт электрики. Замена розеток
+              <T p="elektrik-rayony" o={4}>Монтаж и ремонт электрики. Замена розеток
               и выключателей, установка освещения,
-              поиск неисправностей.
+              поиск неисправностей.</T>
             </p>
 
             <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 md:mx-0 md:max-w-none md:flex-row md:flex-wrap md:items-center">
@@ -231,7 +232,7 @@ export default function ElektrikContent({
                 href="tel:+77073232632"
                 className="electric-call-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal transition hover:bg-[#007D9E]"
               >
-                Вызвать электрика
+                <T p="elektrik-rayony" o={5}>Вызвать электрика</T>
               </a>
 
               <div className="relative shrink-0">
@@ -241,7 +242,7 @@ export default function ElektrikContent({
                   rel="noopener noreferrer"
                   className="inline-flex h-14 w-full items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100 md:w-auto"
                 >
-                  Написать в WhatsApp
+                  <T p="elektrik-rayony" o={6}>Написать в WhatsApp</T>
                 </a>
 
                 {/* СКИДКА */}
@@ -298,11 +299,11 @@ export default function ElektrikContent({
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto mb-8 max-w-4xl text-center">
             <p className="font-bold text-[#0092B8]">
-              Услуги электрика
+              <T p="elektrik-rayony" o={7}>Услуги электрика</T>
             </p>
 
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[48px]">
-              Выполняем любые электромонтажные работы
+              <T p="elektrik-rayony" o={8}>Выполняем любые электромонтажные работы</T>
             </h2>
           </div>
 
@@ -315,11 +316,11 @@ export default function ElektrikContent({
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-4xl text-center">
             <p className="font-bold text-[#0092B8]">
-              Почему выбирают нас
+              <T p="elektrik-rayony" o={9}>Почему выбирают нас</T>
             </p>
 
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
-              Надёжный электромонтажный сервис в Алматы
+              <T p="elektrik-rayony" o={10}>Надёжный электромонтажный сервис в Алматы</T>
             </h2>
           </div>
 
@@ -347,11 +348,11 @@ export default function ElektrikContent({
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
             <p className="font-bold text-[#0092B8]">
-              Отзывы клиентов
+              <T p="elektrik-rayony" o={11}>Отзывы клиентов</T>
             </p>
 
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[48px]">
-              Что говорят о нашей работе
+              <T p="elektrik-rayony" o={12}>Что говорят о нашей работе</T>
             </h2>
           </div>
 
@@ -375,7 +376,7 @@ export default function ElektrikContent({
                     </h3>
 
                     <p className="text-sm text-slate-500">
-                      Алматы
+                      <T p="elektrik-rayony" o={13}>Алматы</T>
                     </p>
                   </div>
                 </div>
@@ -400,7 +401,7 @@ export default function ElektrikContent({
       <section id="faq" className="bg-slate-50 py-12 md:py-16">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-center text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
-            Часто задаваемые вопросы
+            <T p="elektrik-rayony" o={14}>Часто задаваемые вопросы</T>
           </h2>
 
           <div className="mt-8 space-y-3">
@@ -433,17 +434,17 @@ export default function ElektrikContent({
       <section className="bg-[#0092B8] py-16 text-white">
         <div className="mx-auto max-w-5xl px-6 text-center">
           <p className="font-bold uppercase tracking-wider text-[#FDC700]">
-            Сервис бытовых услуг
+            <T p="elektrik-rayony" o={15}>Сервис бытовых услуг</T>
           </p>
 
           <h2 className="mt-3 text-3xl font-black leading-tight md:text-[54px]">
-            Нужен электрик?
+            <T p="elektrik-rayony" o={16}>Нужен электрик?</T>
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/90">
-            Позвоните или напишите нам в WhatsApp.
+            <T p="elektrik-rayony" o={17}>Позвоните или напишите нам в WhatsApp.
             Уточним задачу, согласуем стоимость
-            и удобное время выезда мастера.
+            и удобное время выезда мастера.</T>
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -451,7 +452,7 @@ export default function ElektrikContent({
               href="tel:+77073232632"
               className="electric-call-shine inline-flex min-h-14 w-full items-center justify-center rounded-full bg-[#FDC700] px-8 py-4 text-lg text-[#171717] transition hover:bg-[#eab800] sm:w-auto"
             >
-              Вызвать электрика
+              <T p="elektrik-rayony" o={18}>Вызвать электрика</T>
             </a>
 
             <a
@@ -460,7 +461,7 @@ export default function ElektrikContent({
               rel="noopener noreferrer"
               className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-white px-8 py-4 text-lg text-[#292929] transition hover:bg-gray-100 sm:w-auto"
             >
-              Написать в WhatsApp
+              <T p="elektrik-rayony" o={19}>Написать в WhatsApp</T>
             </a>
           </div>
         </div>

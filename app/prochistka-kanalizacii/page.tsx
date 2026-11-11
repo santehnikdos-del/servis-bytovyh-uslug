@@ -1,3 +1,4 @@
+import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
 
@@ -183,7 +184,7 @@ function Check({ text }: { text: string }) {
           strokeLinejoin="round"
         />
       </svg>
-      <span>{text}</span>
+      <span><T p="prochistka-kanalizacii" o={1}>{text}</T></span>
     </li>
   );
 }
@@ -296,25 +297,25 @@ export default function ProchistkaKanalizaciiPage() {
               className="mb-5 flex flex-wrap items-center gap-2 text-sm text-white/70"
             >
               <a href="/" className="hover:text-[#FDC700]">
-                Главная
+                <T p="prochistka-kanalizacii" o={2}>Главная</T>
               </a>
               <span aria-hidden="true">→</span>
               <span aria-current="page" className="text-white">
-                Прочистка канализации
+                <T p="prochistka-kanalizacii" o={3}>Прочистка канализации</T>
               </span>
             </nav>
 
             <h1 className="text-center text-3xl font-bold uppercase leading-[1.1] md:text-left md:text-[40px] lg:text-[48px]">
-              Прочистка канализации
+              <T p="prochistka-kanalizacii" o={4}>Прочистка канализации</T>
               <span className="block text-[#FDC700]">
-                в Алматы
+                <T p="prochistka-kanalizacii" o={5}>в Алматы</T>
               </span>
             </h1>
 
             <p className="mt-5 max-w-lg text-center text-lg leading-7 text-white/85 md:text-left">
-              Устранение засоров труб, раковин, унитазов
+              <T p="prochistka-kanalizacii" o={6}>Устранение засоров труб, раковин, унитазов
               и стояков. Подбираем способ прочистки
-              и согласовываем стоимость заранее.
+              и согласовываем стоимость заранее.</T>
             </p>
 
             <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 md:mx-0 md:max-w-none md:flex-row md:flex-wrap md:items-center">
@@ -322,7 +323,7 @@ export default function ProchistkaKanalizaciiPage() {
                 href="tel:+77771696969"
                 className="drain-call-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal transition hover:bg-[#007D9E]"
               >
-                Вызвать мастера
+                <T p="prochistka-kanalizacii" o={7}>Вызвать мастера</T>
               </a>
 
               <div className="relative shrink-0">
@@ -332,7 +333,7 @@ export default function ProchistkaKanalizaciiPage() {
                   rel="noopener noreferrer"
                   className="inline-flex h-14 w-full items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100 md:w-auto"
                 >
-                  Написать в WhatsApp
+                  <T p="prochistka-kanalizacii" o={8}>Написать в WhatsApp</T>
                 </a>
 
                 {/* СКИДКА */}
@@ -389,10 +390,10 @@ export default function ProchistkaKanalizaciiPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-4xl text-center">
             <p className="font-bold text-[#0092B8]">
-              Услуги прочистки канализации
+              <T p="prochistka-kanalizacii" o={9}>Услуги прочистки канализации</T>
             </p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[48px]">
-              Устраняем засоры любой сложности
+              <T p="prochistka-kanalizacii" o={10}>Устраняем засоры любой сложности</T>
             </h2>
           </div>
 
@@ -404,14 +405,14 @@ export default function ProchistkaKanalizaciiPage() {
                 className="flex min-w-0 flex-col rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#0092B8]/40 hover:bg-white hover:shadow-lg"
               >
                 <h3 className="text-lg font-bold leading-6 text-[#0092B8]">
-                  {service.title}
+                  <T p="prochistka-kanalizacii" o={11}>{service.title}</T>
                 </h3>
                 <p className="mt-2 text-sm leading-6 text-slate-600">
-                  {service.text}
+                  <T p="prochistka-kanalizacii" o={12}>{service.text}</T>
                 </p>
                 <span className="mt-auto flex items-center gap-3 pt-4 text-sm font-semibold text-[#0092B8]">
                   <Arrow />
-                  Подробнее
+                  <T p="prochistka-kanalizacii" o={13}>Подробнее</T>
                 </span>
               </a>
             ))}
@@ -424,15 +425,15 @@ export default function ProchistkaKanalizaciiPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-4xl text-center">
             <p className="font-bold text-[#0092B8]">
-              Цены на прочистку канализации
+              <T p="prochistka-kanalizacii" o={14}>Цены на прочистку канализации</T>
             </p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[48px]">
-              Примерная стоимость работ
+              <T p="prochistka-kanalizacii" o={15}>Примерная стоимость работ</T>
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-600">
-              Точная стоимость зависит от сложности засора
+              <T p="prochistka-kanalizacii" o={16}>Точная стоимость зависит от сложности засора
               и способа прочистки. Цена согласовывается
-              до начала работ.
+              до начала работ.</T>
             </p>
           </div>
 
@@ -443,10 +444,10 @@ export default function ProchistkaKanalizaciiPage() {
                 className="flex flex-col gap-2 border-b border-slate-100 px-5 py-4 transition last:border-0 hover:bg-[#0092B8]/5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 md:px-7 md:py-5"
               >
                 <span className="font-medium leading-7 text-slate-700">
-                  {name}
+                  <T p="prochistka-kanalizacii" o={17}>{name}</T>
                 </span>
                 <span className="shrink-0 font-bold text-[#0092B8]">
-                  {price}
+                  <T p="prochistka-kanalizacii" o={18}>{price}</T>
                 </span>
               </div>
             ))}
@@ -459,10 +460,10 @@ export default function ProchistkaKanalizaciiPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-4xl text-center">
             <p className="font-bold text-[#0092B8]">
-              Почему выбирают нас
+              <T p="prochistka-kanalizacii" o={19}>Почему выбирают нас</T>
             </p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
-              Профессиональная прочистка канализации в Алматы
+              <T p="prochistka-kanalizacii" o={20}>Профессиональная прочистка канализации в Алматы</T>
             </h2>
           </div>
 
@@ -473,10 +474,10 @@ export default function ProchistkaKanalizaciiPage() {
                 className="rounded-2xl border border-slate-200 bg-slate-50 p-6 transition hover:border-[#0092B8]/40 hover:shadow-lg"
               >
                 <h3 className="text-xl font-bold text-[#0092B8]">
-                  {title}
+                  <T p="prochistka-kanalizacii" o={21}>{title}</T>
                 </h3>
                 <p className="mt-2 leading-7 text-slate-600">
-                  {text}
+                  <T p="prochistka-kanalizacii" o={22}>{text}</T>
                 </p>
               </div>
             ))}
@@ -489,10 +490,10 @@ export default function ProchistkaKanalizaciiPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
             <p className="font-bold text-[#0092B8]">
-              Как мы работаем
+              <T p="prochistka-kanalizacii" o={23}>Как мы работаем</T>
             </p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[48px]">
-              От заявки до устранения засора
+              <T p="prochistka-kanalizacii" o={24}>От заявки до устранения засора</T>
             </h2>
           </div>
 
@@ -503,13 +504,13 @@ export default function ProchistkaKanalizaciiPage() {
                 className="rounded-2xl border border-slate-200 bg-white p-6"
               >
                 <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#FDC700] text-lg font-bold text-[#171717]">
-                  {number}
+                  <T p="prochistka-kanalizacii" o={25}>{number}</T>
                 </div>
                 <h3 className="mt-4 text-lg font-bold text-[#0092B8]">
-                  {title}
+                  <T p="prochistka-kanalizacii" o={26}>{title}</T>
                 </h3>
                 <p className="mt-2 leading-7 text-slate-600">
-                  {text}
+                  <T p="prochistka-kanalizacii" o={27}>{text}</T>
                 </p>
               </div>
             ))}
@@ -521,21 +522,21 @@ export default function ProchistkaKanalizaciiPage() {
       <section id="works" className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-5xl px-6 text-center">
           <p className="font-bold text-[#0092B8]">
-            Наши работы
+            <T p="prochistka-kanalizacii" o={28}>Наши работы</T>
           </p>
           <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[48px]">
-            Примеры выполненных работ
+            <T p="prochistka-kanalizacii" o={29}>Примеры выполненных работ</T>
           </h2>
           <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-600">
-            Примеры работ по устранению засоров
-            и прочистке канализации в Алматы.
+            <T p="prochistka-kanalizacii" o={30}>Примеры работ по устранению засоров
+            и прочистке канализации в Алматы.</T>
           </p>
           <a
             href="/nashi-raboty"
             className="mt-7 inline-flex items-center gap-3 rounded-full bg-[#FDC700] px-8 py-4 text-lg text-[#171717] transition hover:bg-[#eab800]"
           >
             <Arrow />
-            Посмотреть работы
+            <T p="prochistka-kanalizacii" o={31}>Посмотреть работы</T>
           </a>
         </div>
       </section>
@@ -545,10 +546,10 @@ export default function ProchistkaKanalizaciiPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
             <p className="font-bold text-[#0092B8]">
-              Отзывы клиентов
+              <T p="prochistka-kanalizacii" o={32}>Отзывы клиентов</T>
             </p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[48px]">
-              Что говорят о нашей работе
+              <T p="prochistka-kanalizacii" o={33}>Что говорят о нашей работе</T>
             </h2>
           </div>
 
@@ -567,10 +568,10 @@ export default function ProchistkaKanalizaciiPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-[#0092B8]">
-                      {name}
+                      <T p="prochistka-kanalizacii" o={34}>{name}</T>
                     </h3>
                     <p className="text-sm text-slate-500">
-                      Алматы
+                      <T p="prochistka-kanalizacii" o={35}>Алматы</T>
                     </p>
                   </div>
                 </div>
@@ -581,7 +582,7 @@ export default function ProchistkaKanalizaciiPage() {
                   <span aria-hidden="true">★★★★★</span>
                 </div>
                 <p className="mt-3 leading-7 text-slate-600">
-                  {text}
+                  <T p="prochistka-kanalizacii" o={36}>{text}</T>
                 </p>
               </article>
             ))}
@@ -593,7 +594,7 @@ export default function ProchistkaKanalizaciiPage() {
       <section id="faq" className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-center text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
-            Часто задаваемые вопросы
+            <T p="prochistka-kanalizacii" o={37}>Часто задаваемые вопросы</T>
           </h2>
 
           <div className="mt-8 space-y-3">
@@ -603,7 +604,7 @@ export default function ProchistkaKanalizaciiPage() {
                 className="group rounded-2xl border border-slate-200 bg-slate-50 p-5 transition open:border-[#0092B8]/40 hover:border-[#0092B8]/40 md:p-6"
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-[#0092B8] [&::-webkit-details-marker]:hidden">
-                  {question}
+                  <T p="prochistka-kanalizacii" o={38}>{question}</T>
                   <span
                     aria-hidden="true"
                     className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#FDC700] text-2xl font-normal text-[#171717] transition-transform group-open:rotate-45"
@@ -612,7 +613,7 @@ export default function ProchistkaKanalizaciiPage() {
                   </span>
                 </summary>
                 <p className="mt-4 leading-7 text-slate-600">
-                  {answer}
+                  <T p="prochistka-kanalizacii" o={39}>{answer}</T>
                 </p>
               </details>
             ))}
@@ -625,14 +626,14 @@ export default function ProchistkaKanalizaciiPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-4xl text-center">
             <p className="font-bold text-[#0092B8]">
-              Выезд по городу
+              <T p="prochistka-kanalizacii" o={40}>Выезд по городу</T>
             </p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
-              Прочистка канализации во всех районах Алматы
+              <T p="prochistka-kanalizacii" o={41}>Прочистка канализации во всех районах Алматы</T>
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-600">
-              Выезжаем на устранение засоров
-              и прочистку канализации по всему Алматы.
+              <T p="prochistka-kanalizacii" o={42}>Выезжаем на устранение засоров
+              и прочистку канализации по всему Алматы.</T>
             </p>
           </div>
 
@@ -654,10 +655,10 @@ export default function ProchistkaKanalizaciiPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
             <p className="font-bold text-[#0092B8]">
-              Контакты
+              <T p="prochistka-kanalizacii" o={43}>Контакты</T>
             </p>
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
-              Вызвать мастера по прочистке канализации
+              <T p="prochistka-kanalizacii" o={44}>Вызвать мастера по прочистке канализации</T>
             </h2>
           </div>
 
@@ -665,7 +666,7 @@ export default function ProchistkaKanalizaciiPage() {
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-2xl bg-slate-50 p-6">
                 <p className="text-sm text-slate-500">
-                  Телефон
+                  <T p="prochistka-kanalizacii" o={45}>Телефон</T>
                 </p>
                 <a
                   href="tel:+77771696969"
@@ -686,25 +687,25 @@ export default function ProchistkaKanalizaciiPage() {
                   className="mt-3 inline-flex items-center gap-3 font-bold text-[#0092B8]"
                 >
                   <Arrow />
-                  Написать
+                  <T p="prochistka-kanalizacii" o={46}>Написать</T>
                 </a>
               </div>
 
               <div className="rounded-2xl bg-slate-50 p-6">
                 <p className="text-sm text-slate-500">
-                  Режим работы
+                  <T p="prochistka-kanalizacii" o={47}>Режим работы</T>
                 </p>
                 <p className="mt-3 text-lg font-bold text-[#0092B8]">
-                  Каждый день · Без выходных
+                  <T p="prochistka-kanalizacii" o={48}>Каждый день · Без выходных</T>
                 </p>
               </div>
 
               <div className="rounded-2xl bg-slate-50 p-6">
                 <p className="text-sm text-slate-500">
-                  Обслуживаем
+                  <T p="prochistka-kanalizacii" o={49}>Обслуживаем</T>
                 </p>
                 <p className="mt-3 text-lg font-bold text-[#0092B8]">
-                  Весь Алматы и пригород
+                  <T p="prochistka-kanalizacii" o={50}>Весь Алматы и пригород</T>
                 </p>
               </div>
             </div>
@@ -725,15 +726,15 @@ export default function ProchistkaKanalizaciiPage() {
       <section className="bg-[#0092B8] py-16 text-white">
         <div className="mx-auto max-w-5xl px-6 text-center">
           <p className="font-bold uppercase tracking-wider text-[#FDC700]">
-            Срочный вызов мастера
+            <T p="prochistka-kanalizacii" o={51}>Срочный вызов мастера</T>
           </p>
           <h2 className="mt-3 text-3xl font-black leading-tight md:text-[54px]">
-            Засорилась канализация?
+            <T p="prochistka-kanalizacii" o={52}>Засорилась канализация?</T>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/90">
-            Позвоните или напишите в WhatsApp.
+            <T p="prochistka-kanalizacii" o={53}>Позвоните или напишите в WhatsApp.
             Уточним проблему и согласуем время
-            выезда мастера по Алматы.
+            выезда мастера по Алматы.</T>
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -741,7 +742,7 @@ export default function ProchistkaKanalizaciiPage() {
               href="tel:+77771696969"
               className="drain-call-shine inline-flex min-h-14 w-full items-center justify-center rounded-full bg-[#FDC700] px-8 py-4 text-lg text-[#171717] transition hover:bg-[#eab800] sm:w-auto"
             >
-              Вызвать мастера
+              <T p="prochistka-kanalizacii" o={54}>Вызвать мастера</T>
             </a>
 
             <a
@@ -750,7 +751,7 @@ export default function ProchistkaKanalizaciiPage() {
               rel="noopener noreferrer"
               className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-white px-8 py-4 text-lg text-[#292929] transition hover:bg-gray-100 sm:w-auto"
             >
-              Написать в WhatsApp
+              <T p="prochistka-kanalizacii" o={55}>Написать в WhatsApp</T>
             </a>
           </div>
         </div>

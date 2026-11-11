@@ -1,3 +1,4 @@
+import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
 import ManagedWorks from "../ManagedWorks";
@@ -18,11 +19,11 @@ function Breadcrumbs() {
       className="mb-5 flex items-center gap-2 text-sm text-white/70"
     >
       <a href="/" className="transition hover:text-[#FDC700]">
-        Главная
+        <T p="nashi-raboty" o={1}>Главная</T>
       </a>
       <span aria-hidden="true">→</span>
       <span aria-current="page" className="text-white">
-        Наши работы
+        <T p="nashi-raboty" o={2}>Наши работы</T>
       </span>
     </nav>
   );
@@ -59,7 +60,7 @@ function Check({ text }: { text: string }) {
           strokeLinejoin="round"
         />
       </svg>
-      <span>{text}</span>
+      <span><T p="nashi-raboty" o={3}>{text}</T></span>
     </li>
   );
 }
@@ -145,7 +146,7 @@ export default function NashiRabotyPage() {
           <Breadcrumbs />
 
           <h1 className="text-center text-3xl font-bold leading-tight">
-            НАШИ РАБОТЫ
+            <T p="nashi-raboty" o={4}>НАШИ РАБОТЫ</T>
           </h1>
 
           <ul className="mx-auto mt-6 flex w-fit flex-col gap-3">
@@ -155,16 +156,16 @@ export default function NashiRabotyPage() {
           </ul>
 
           <p className="mt-7 text-center text-lg leading-7 text-white/85">
-            Показываем результаты работы наших мастеров в Алматы.
+            <T p="nashi-raboty" o={5}>Показываем результаты работы наших мастеров в Алматы.
             Монтаж труб, установка сантехники, водоснабжение
-            и отопление.
+            и отопление.</T>
           </p>
 
           <a
             href="#works-gallery"
             className="works-button-shine mx-auto mt-8 flex max-w-sm items-center justify-center rounded-full bg-[#0092B8]/40 px-6 py-4 text-lg font-normal"
           >
-            Смотреть работы ↓
+            <T p="nashi-raboty" o={6}>Смотреть работы ↓</T>
           </a>
         </div>
       </section>
@@ -196,13 +197,13 @@ export default function NashiRabotyPage() {
             <Breadcrumbs />
 
             <h1 className="whitespace-nowrap text-5xl font-bold uppercase leading-[1.05] lg:text-[64px]">
-  Наши <span className="text-[#FDC700]">работы</span>
+  <T p="nashi-raboty" o={7}>Наши</T> <span className="text-[#FDC700]"><T p="nashi-raboty" o={8}>работы</T></span>
 </h1>
 
             <p className="mt-5 max-w-lg text-lg leading-7 text-white/85">
-              Реальные работы наших мастеров в Алматы.
+              <T p="nashi-raboty" o={9}>Реальные работы наших мастеров в Алматы.
               Монтаж труб, установка сантехники и готовые
-              результаты на фото.
+              результаты на фото.</T>
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -210,7 +211,7 @@ export default function NashiRabotyPage() {
   href="tel:+77771696969"
   className="works-button-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal text-white transition hover:bg-[#007D9E]"
 >
-  Вызвать мастера
+  <T p="nashi-raboty" o={10}>Вызвать мастера</T>
 </a>
 
               <div className="relative shrink-0">
@@ -220,7 +221,7 @@ export default function NashiRabotyPage() {
                   rel="noopener noreferrer"
                   className="inline-flex h-14 items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100"
                 >
-                  Написать в WhatsApp
+                  <T p="nashi-raboty" o={11}>Написать в WhatsApp</T>
                 </a>
 
                 {/* СКИДКА */}
@@ -281,17 +282,17 @@ export default function NashiRabotyPage() {
       <section className="bg-[#0092B8] py-16 text-white">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <p className="font-bold uppercase tracking-wider text-[#FDC700]">
-            Сервис бытовых услуг
+            <T p="nashi-raboty" o={12}>Сервис бытовых услуг</T>
           </p>
 
           <h2 className="mt-3 text-3xl font-bold leading-tight md:text-[54px]">
-            Нужен такой же результат?
+            <T p="nashi-raboty" o={13}>Нужен такой же результат?</T>
           </h2>
 
           <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-white/90">
-            Выполним сантехнические работы в квартире, доме или
+            <T p="nashi-raboty" o={14}>Выполним сантехнические работы в квартире, доме или
             офисе в Алматы. Уточним задачу, рассчитаем стоимость
-            и согласуем удобное время выезда мастера.
+            и согласуем удобное время выезда мастера.</T>
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
@@ -302,7 +303,7 @@ export default function NashiRabotyPage() {
               className="inline-flex items-center justify-center gap-3 rounded-full bg-white px-7 py-4 text-lg font-normal text-[#292929] transition hover:bg-gray-100"
             >
               <Arrow />
-              Написать в WhatsApp
+              <T p="nashi-raboty" o={15}>Написать в WhatsApp</T>
             </a>
 
             <a
@@ -310,7 +311,7 @@ export default function NashiRabotyPage() {
               className="inline-flex items-center justify-center gap-3 rounded-full bg-[#FDC700] px-7 py-4 text-lg font-normal text-[#171717] transition hover:bg-[#eab800]"
             >
               <Arrow />
-              Посмотреть цены
+              <T p="nashi-raboty" o={16}>Посмотреть цены</T>
             </a>
           </div>
         </div>

@@ -1,3 +1,4 @@
+import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
 import { createClient } from "@supabase/supabase-js";
@@ -441,27 +442,27 @@ export default async function CenyPage() {
                 href="/"
                 className="transition hover:text-[#FDC700]"
               >
-                Главная
+                <T p="price" o={1}>Главная</T>
               </a>
 
               <span aria-hidden="true">→</span>
 
               <span aria-current="page" className="text-white">
-                Цены
+                <T p="price" o={2}>Цены</T>
               </span>
             </nav>
 
             <h1 className="text-center text-3xl font-bold uppercase leading-[1.05] md:text-left md:text-5xl lg:text-[64px]">
-              Цены на{" "}
+              <T p="price" o={3}>Цены на</T>{" "}
               <span className="text-[#FDC700]">
-                услуги
+                <T p="price" o={4}>услуги</T>
               </span>
             </h1>
 
             <p className="mt-5 max-w-lg text-center text-lg leading-7 text-white/85 md:text-left">
-              Стоимость сантехнических работ в Алматы.
+              <T p="price" o={5}>Стоимость сантехнических работ в Алматы.
               Согласовываем цену до начала работы —
-              вы заранее знаете, за что платите.
+              вы заранее знаете, за что платите.</T>
             </p>
 
             <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 md:mx-0 md:max-w-none md:flex-row md:flex-wrap md:items-center">
@@ -469,7 +470,7 @@ export default async function CenyPage() {
                 href="tel:+77771696969"
                 className="price-call-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal transition hover:bg-[#007D9E]"
               >
-                Вызвать мастера
+                <T p="price" o={6}>Вызвать мастера</T>
               </a>
 
               <div className="relative shrink-0">
@@ -479,7 +480,7 @@ export default async function CenyPage() {
                   rel="noopener noreferrer"
                   className="inline-flex h-14 w-full items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100 md:w-auto"
                 >
-                  Написать в WhatsApp
+                  <T p="price" o={7}>Написать в WhatsApp</T>
                 </a>
 
                 {/* СКИДКА */}
@@ -570,7 +571,7 @@ export default async function CenyPage() {
             <div key={section.title}>
               <div className="mb-6">
                 <p className="text-sm font-bold uppercase tracking-wider text-[#0092B8]">
-                  Прайс-лист
+                  <T p="price" o={8}>Прайс-лист</T>
                 </p>
 
                 <h2 className="mt-2 text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
@@ -616,29 +617,29 @@ export default async function CenyPage() {
           {/* УСЛОВИЯ */}
           <div className="rounded-3xl border border-[#FDC700]/50 bg-[#FDC700]/10 p-6 md:p-8">
             <h2 className="text-xl font-bold text-[#0092B8]">
-              Что влияет на стоимость
+              <T p="price" o={9}>Что влияет на стоимость</T>
             </h2>
 
             <p className="mt-3 leading-7 text-slate-600">
-              Цены указаны за стандартную работу. Если выполнение
+              <T p="price" o={10}>Цены указаны за стандартную работу. Если выполнение
               работ усложняется из-за трудного доступа, состояния
               коммуникаций или других особенностей объекта,
               стоимость может измениться. Итоговую цену мастер
-              согласует с вами до начала работ.
+              согласует с вами до начала работ.</T>
             </p>
           </div>
 
           {/* ТЕКСТ */}
           <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm md:p-8">
             <h2 className="text-2xl font-bold text-[#0092B8] md:text-3xl">
-              Профессиональные сантехнические работы
+              <T p="price" o={11}>Профессиональные сантехнические работы</T>
             </h2>
 
             <p className="mt-4 max-w-4xl leading-8 text-slate-600">
-              Наши мастера выполняют установку, ремонт и замену
+              <T p="price" o={12}>Наши мастера выполняют установку, ремонт и замену
               сантехнического оборудования различной сложности.
               Перед началом работ мастер оценивает задачу и
-              согласовывает стоимость.
+              согласовывает стоимость.</T>
             </p>
           </div>
         </div>
@@ -648,17 +649,17 @@ export default async function CenyPage() {
       <section className="bg-[#0092B8] py-16 text-white">
         <div className="mx-auto max-w-5xl px-6 text-center">
           <p className="font-bold uppercase tracking-wider text-[#FDC700]">
-            Нужна точная стоимость?
+            <T p="price" o={13}>Нужна точная стоимость?</T>
           </p>
 
           <h2 className="mt-3 text-3xl font-black leading-tight md:text-[54px]">
-            Свяжитесь с мастером
+            <T p="price" o={14}>Свяжитесь с мастером</T>
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/90">
-            Расскажите, какую работу необходимо выполнить.
+            <T p="price" o={15}>Расскажите, какую работу необходимо выполнить.
             Можно отправить фотографии в WhatsApp —
-            уточним задачу и согласуем стоимость.
+            уточним задачу и согласуем стоимость.</T>
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -666,7 +667,7 @@ export default async function CenyPage() {
               href="tel:+77771696969"
               className="price-call-shine inline-flex min-h-14 w-full items-center justify-center rounded-full bg-[#FDC700] px-8 py-4 text-lg text-[#171717] transition hover:bg-[#eab800] sm:w-auto"
             >
-              Вызвать мастера
+              <T p="price" o={16}>Вызвать мастера</T>
             </a>
 
             <a
@@ -675,7 +676,7 @@ export default async function CenyPage() {
               rel="noopener noreferrer"
               className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-white px-8 py-4 text-lg text-[#292929] transition hover:bg-gray-100 sm:w-auto"
             >
-              Написать в WhatsApp
+              <T p="price" o={17}>Написать в WhatsApp</T>
             </a>
           </div>
         </div>

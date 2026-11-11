@@ -1,3 +1,4 @@
+import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
 
@@ -33,20 +34,20 @@ export default function UstanovkaSmesitelyaPage() {
       <section className="bg-sky-800 px-6 py-3 text-white md:py-3">
         <div className="mx-auto max-w-7xl">
           <a href="/santehnik" className="text-cyan-400">
-            ← Услуги сантехника
+            <T p="ustanovka-smesitelya" o={1}>← Услуги сантехника</T>
           </a>
 
           <p className="mt-2 font-bold text-cyan-400">
-            Выезд мастера по Алматы
+            <T p="ustanovka-smesitelya" o={2}>Выезд мастера по Алматы</T>
           </p>
 
           <h1 className="mt-2 max-w-5xl text-5xl font-black leading-tight md:text-6xl">
-            Установка смесителя в Алматы
+            <T p="ustanovka-smesitelya" o={3}>Установка смесителя в Алматы</T>
           </h1>
 
           <p className="mt-3 max-w-3xl text-xl leading-8 text-slate-300">
-            Установим или заменим смеситель на кухне, в ванной или душе.
-            Проверим соединения, устраним протечки и дадим гарантию на работу.
+            <T p="ustanovka-smesitelya" o={4}>Установим или заменим смеситель на кухне, в ванной или душе.
+            Проверим соединения, устраним протечки и дадим гарантию на работу.</T>
           </p>
 
           <div className="mt-3 flex flex-wrap gap-4">
@@ -54,7 +55,7 @@ export default function UstanovkaSmesitelyaPage() {
               href="tel:+77771696969"
               className="rounded-xl bg-blue-600 px-6 py-4 font-bold hover:bg-blue-700"
             >
-              Позвонить
+              <T p="ustanovka-smesitelya" o={5}>Позвонить</T>
             </a>
 
             <a
@@ -77,7 +78,7 @@ export default function UstanovkaSmesitelyaPage() {
               />
               <div>
                 <div className="text-xl font-black md:text-3xl">1000+</div>
-                <div className="text-sm">довольных клиентов</div>
+                <div className="text-sm"><T p="ustanovka-smesitelya" o={6}>довольных клиентов</T></div>
               </div>
             </div>
 
@@ -90,9 +91,9 @@ export default function UstanovkaSmesitelyaPage() {
               />
               <div>
                 <div className="text-[20px] font-black leading-tight md:text-3xl">
-                  30–45 мин
+                  <T p="ustanovka-smesitelya" o={7}>30–45 мин</T>
                 </div>
-                <div className="text-sm">срочный выезд</div>
+                <div className="text-sm"><T p="ustanovka-smesitelya" o={8}>срочный выезд</T></div>
               </div>
             </div>
 
@@ -105,9 +106,9 @@ export default function UstanovkaSmesitelyaPage() {
               />
               <div>
                 <div className="text-[20px] font-black leading-tight md:text-3xl">
-                  до 3 лет
+                  <T p="ustanovka-smesitelya" o={9}>до 3 лет</T>
                 </div>
-                <div className="text-sm">гарантия на работы</div>
+                <div className="text-sm"><T p="ustanovka-smesitelya" o={10}>гарантия на работы</T></div>
               </div>
             </div>
 
@@ -120,9 +121,9 @@ export default function UstanovkaSmesitelyaPage() {
               />
               <div>
                 <div className="text-[20px] font-black leading-tight md:text-3xl">
-                  7 дней
+                  <T p="ustanovka-smesitelya" o={11}>7 дней</T>
                 </div>
-                <div className="text-sm">работаем без выходных</div>
+                <div className="text-sm"><T p="ustanovka-smesitelya" o={12}>работаем без выходных</T></div>
               </div>
             </div>
           </div>
@@ -132,10 +133,10 @@ export default function UstanovkaSmesitelyaPage() {
       {/* ЧТО ВХОДИТ В УСЛУГУ */}
       <section className="bg-white py-12 text-slate-900">
         <div className="mx-auto max-w-7xl px-6">
-          <p className="font-bold text-blue-600">Наши работы</p>
+          <p className="font-bold text-blue-600"><T p="ustanovka-smesitelya" o={13}>Наши работы</T></p>
 
           <h2 className="mt-2 text-4xl font-black">
-            Что входит в услугу
+            <T p="ustanovka-smesitelya" o={14}>Что входит в услугу</T>
           </h2>
 
           <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -144,11 +145,11 @@ export default function UstanovkaSmesitelyaPage() {
                 key={service}
                 className="rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400 hover:shadow-xl"
               >
-                <h3 className="text-xl font-black">{service}</h3>
+                <h3 className="text-xl font-black"><T p="ustanovka-smesitelya" o={15}>{service}</T></h3>
 
                 <p className="mt-3 text-slate-600">
-                  Выполняем аккуратно, согласовываем стоимость заранее и
-                  проверяем работу после установки.
+                  <T p="ustanovka-smesitelya" o={16}>Выполняем аккуратно, согласовываем стоимость заранее и
+                  проверяем работу после установки.</T>
                 </p>
               </div>
             ))}
@@ -161,18 +162,18 @@ export default function UstanovkaSmesitelyaPage() {
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-2">
           <div>
             <p className="font-bold text-blue-600">
-              Почему выбирают нас
+              <T p="ustanovka-smesitelya" o={17}>Почему выбирают нас</T>
             </p>
 
             <h2 className="mt-2 text-4xl font-black">
-              Быстро, аккуратно и с гарантией
+              <T p="ustanovka-smesitelya" o={18}>Быстро, аккуратно и с гарантией</T>
             </h2>
           </div>
 
           <div className="text-lg leading-8 text-slate-600">
-            Мастер приезжает в удобное время, помогает проверить подходящий
+            <T p="ustanovka-smesitelya" o={19}>Мастер приезжает в удобное время, помогает проверить подходящий
             смеситель, аккуратно выполняет монтаж и оставляет после себя
-            порядок.
+            порядок.</T>
           </div>
         </div>
       </section>
@@ -182,11 +183,11 @@ export default function UstanovkaSmesitelyaPage() {
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 px-6 md:flex-row md:items-center">
           <div>
             <h2 className="text-3xl font-black">
-              Нужна установка смесителя?
+              <T p="ustanovka-smesitelya" o={20}>Нужна установка смесителя?</T>
             </h2>
 
             <p className="mt-2 text-slate-300">
-              Позвоните или напишите нам в WhatsApp.
+              <T p="ustanovka-smesitelya" o={21}>Позвоните или напишите нам в WhatsApp.</T>
             </p>
           </div>
 
@@ -195,7 +196,7 @@ export default function UstanovkaSmesitelyaPage() {
               href="tel:+77771696969"
               className="rounded-xl bg-blue-600 px-6 py-4 font-bold hover:bg-blue-700"
             >
-              Позвонить
+              <T p="ustanovka-smesitelya" o={22}>Позвонить</T>
             </a>
 
             <a

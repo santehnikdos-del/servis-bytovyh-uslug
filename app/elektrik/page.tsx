@@ -1,3 +1,4 @@
+import T from "../T";
 import Image from "next/image";
 import Header from "../Header";
 import Footer from "../Footer";
@@ -79,7 +80,7 @@ function Check({ text }: { text: string }) {
         />
       </svg>
 
-      <span>{text}</span>
+      <span><T p="elektrik" o={1}>{text}</T></span>
     </li>
   );
 }
@@ -211,27 +212,27 @@ export default function ElektrikPage() {
                 href="/"
                 className="transition hover:text-[#FDC700]"
               >
-                Главная
+                <T p="elektrik" o={2}>Главная</T>
               </a>
 
               <span aria-hidden="true">→</span>
 
               <span aria-current="page" className="text-white">
-                Электрик
+                <T p="elektrik" o={3}>Электрик</T>
               </span>
             </nav>
 
             <h1 className="text-center text-3xl font-bold uppercase leading-[1.05] md:text-left md:text-5xl lg:text-[64px]">
-              Электрик
+              <T p="elektrik" o={4}>Электрик</T>
               <span className="block text-[#FDC700]">
-                в Алматы
+                <T p="elektrik" o={5}>в Алматы</T>
               </span>
             </h1>
 
             <p className="mt-5 max-w-lg text-center text-lg leading-7 text-white/85 md:text-left">
-              Монтаж и ремонт электрики. Замена розеток и
+              <T p="elektrik" o={6}>Монтаж и ремонт электрики. Замена розеток и
               выключателей, установка освещения, поиск
-              неисправностей.
+              неисправностей.</T>
             </p>
 
             <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 md:mx-0 md:max-w-none md:flex-row md:flex-wrap md:items-center">
@@ -239,7 +240,7 @@ export default function ElektrikPage() {
                 href="tel:+77073232632"
                 className="electric-call-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal transition hover:bg-[#007D9E]"
               >
-                Вызвать электрика
+                <T p="elektrik" o={7}>Вызвать электрика</T>
               </a>
 
               <div className="relative shrink-0">
@@ -249,7 +250,7 @@ export default function ElektrikPage() {
                   rel="noopener noreferrer"
                   className="inline-flex h-14 w-full items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100 md:w-auto"
                 >
-                  Написать в WhatsApp
+                  <T p="elektrik" o={8}>Написать в WhatsApp</T>
                 </a>
 
                 {/* СКИДКА */}
@@ -308,11 +309,11 @@ export default function ElektrikPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto mb-8 max-w-4xl text-center">
             <p className="font-bold text-[#0092B8]">
-              Услуги электрика
+              <T p="elektrik" o={9}>Услуги электрика</T>
             </p>
 
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[48px]">
-              Выполняем любые электромонтажные работы
+              <T p="elektrik" o={10}>Выполняем любые электромонтажные работы</T>
             </h2>
           </div>
 
@@ -325,11 +326,11 @@ export default function ElektrikPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-4xl text-center">
             <p className="font-bold text-[#0092B8]">
-              Почему выбирают нас
+              <T p="elektrik" o={11}>Почему выбирают нас</T>
             </p>
 
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
-              Надёжный электромонтажный сервис в Алматы
+              <T p="elektrik" o={12}>Надёжный электромонтажный сервис в Алматы</T>
             </h2>
           </div>
 
@@ -340,11 +341,11 @@ export default function ElektrikPage() {
                 className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#0092B8]/40 hover:shadow-lg"
               >
                 <h3 className="text-xl font-bold text-[#0092B8]">
-                  {title}
+                  <T p="elektrik" o={13}>{title}</T>
                 </h3>
 
                 <p className="mt-2 leading-7 text-slate-600">
-                  {text}
+                  <T p="elektrik" o={14}>{text}</T>
                 </p>
               </div>
             ))}
@@ -357,11 +358,11 @@ export default function ElektrikPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
             <p className="font-bold text-[#0092B8]">
-              Отзывы клиентов
+              <T p="elektrik" o={15}>Отзывы клиентов</T>
             </p>
 
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[48px]">
-              Что говорят о нашей работе
+              <T p="elektrik" o={16}>Что говорят о нашей работе</T>
             </h2>
           </div>
 
@@ -381,11 +382,11 @@ export default function ElektrikPage() {
 
                   <div>
                     <h3 className="font-bold text-[#0092B8]">
-                      {name}
+                      <T p="elektrik" o={17}>{name}</T>
                     </h3>
 
                     <p className="text-sm text-slate-500">
-                      Алматы
+                      <T p="elektrik" o={18}>Алматы</T>
                     </p>
                   </div>
                 </div>
@@ -398,7 +399,7 @@ export default function ElektrikPage() {
                 </div>
 
                 <p className="mt-3 leading-7 text-slate-600">
-                  {text}
+                  <T p="elektrik" o={19}>{text}</T>
                 </p>
               </article>
             ))}
@@ -410,7 +411,7 @@ export default function ElektrikPage() {
       <section id="faq" className="bg-slate-50 py-12 md:py-16">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-center text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
-            Часто задаваемые вопросы
+            <T p="elektrik" o={20}>Часто задаваемые вопросы</T>
           </h2>
 
           <div className="mt-8 space-y-3">
@@ -420,7 +421,7 @@ export default function ElektrikPage() {
                 className="group rounded-2xl border border-slate-200 bg-white p-5 transition open:border-[#0092B8]/40 hover:border-[#0092B8]/40 md:p-6"
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-[#0092B8] [&::-webkit-details-marker]:hidden">
-                  {question}
+                  <T p="elektrik" o={21}>{question}</T>
 
                   <span
                     aria-hidden="true"
@@ -431,7 +432,7 @@ export default function ElektrikPage() {
                 </summary>
 
                 <p className="mt-4 leading-7 text-slate-600">
-                  {answer}
+                  <T p="elektrik" o={22}>{answer}</T>
                 </p>
               </details>
             ))}
@@ -443,11 +444,11 @@ export default function ElektrikPage() {
       <section id="districts" className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-center text-3xl font-bold leading-tight text-[#0092B8] md:text-[44px]">
-            Электрик во всех районах Алматы
+            <T p="elektrik" o={23}>Электрик во всех районах Алматы</T>
           </h2>
 
           <p className="mt-4 text-center text-lg text-slate-600">
-            Выберите свой район
+            <T p="elektrik" o={24}>Выберите свой район</T>
           </p>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -474,7 +475,7 @@ export default function ElektrikPage() {
                 </span>
 
                 <span className="text-base text-[#292929]">
-                  {name}
+                  <T p="elektrik" o={25}>{name}</T>
                 </span>
               </a>
             ))}
@@ -486,16 +487,16 @@ export default function ElektrikPage() {
       <section className="bg-[#0092B8] py-16 text-white">
         <div className="mx-auto max-w-5xl px-6 text-center">
           <p className="font-bold uppercase tracking-wider text-[#FDC700]">
-            Сервис бытовых услуг
+            <T p="elektrik" o={26}>Сервис бытовых услуг</T>
           </p>
 
           <h2 className="mt-3 text-3xl font-black leading-tight md:text-[54px]">
-            Нужен электрик?
+            <T p="elektrik" o={27}>Нужен электрик?</T>
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/90">
-            Позвоните или напишите нам в WhatsApp. Уточним задачу,
-            согласуем стоимость и удобное время выезда мастера.
+            <T p="elektrik" o={28}>Позвоните или напишите нам в WhatsApp. Уточним задачу,
+            согласуем стоимость и удобное время выезда мастера.</T>
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -503,7 +504,7 @@ export default function ElektrikPage() {
               href="tel:+77073232632"
               className="electric-call-shine inline-flex min-h-14 w-full items-center justify-center rounded-full bg-[#FDC700] px-8 py-4 text-lg text-[#171717] transition hover:bg-[#eab800] sm:w-auto"
             >
-              Вызвать электрика
+              <T p="elektrik" o={29}>Вызвать электрика</T>
             </a>
 
             <a
@@ -512,7 +513,7 @@ export default function ElektrikPage() {
               rel="noopener noreferrer"
               className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-white px-8 py-4 text-lg text-[#292929] transition hover:bg-gray-100 sm:w-auto"
             >
-              Написать в WhatsApp
+              <T p="elektrik" o={30}>Написать в WhatsApp</T>
             </a>
           </div>
         </div>
