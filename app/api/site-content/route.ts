@@ -3,14 +3,22 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { createClient } from "@supabase/supabase-js";
 import { isAdmin } from "../../../lib/admin-auth";
 import {
+  SITE_CONTACTS_KEY,
+  SITE_CONTENT_KEYS,
+  SITE_IMAGES_KEY,
   SITE_PROMO_KEY,
+  SITE_SEO_KEY,
   SITE_TEXTS_KEY,
+  cleanContacts,
+  cleanImages,
   cleanPromo,
+  cleanSeo,
   cleanTexts,
+  rowsToSiteContent,
 } from "../../../lib/site-texts-shared";
 import { SITE_CONTENT_TAG } from "../../../lib/site-texts";
 
-// Тексты страниц и полоса скидки (вкладки «Тексты» и «Скидка» в админке).
+// Тексты, скидка, телефоны, SEO и картинки (вкладки админки).
 // Хранятся в таблице prices служебными записями.
 
 export const dynamic = "force-dynamic";
@@ -26,14 +34,6 @@ function getSupabaseAdmin() {
   });
 }
 
-function parse(value: unknown) {
-  try {
-    return typeof value === "string" ? JSON.parse(value) : null;
-  } catch {
-    return null;
-  }
-}
-
 export async function GET() {
   if (!(await isAdmin())) {
     return NextResponse.json({ error: "Нет доступа" }, { status: 401 });
@@ -42,18 +42,23 @@ export async function GET() {
     const { data, error } = await getSupabaseAdmin()
       .from("prices")
       .select("key,value")
-      .in("key", [SITE_TEXTS_KEY, SITE_PROMO_KEY]);
+      .in("key", SITE_CONTENT_KEYS);
     if (error) throw new Error(error.message);
-    const row = (k: string) => (data || []).find((r) => r.key === k)?.value;
-    return NextResponse.json({
-      texts: cleanTexts(parse(row(SITE_TEXTS_KEY))),
-      promo: cleanPromo(parse(row(SITE_PROMO_KEY))),
-    });
+    return NextResponse.json(rowsToSiteContent(data || []));
   } catch (error) {
     console.error("GET site-content error:", error);
     return NextResponse.json({ error: "Не удалось загрузить данные" }, { status: 500 });
   }
 }
+
+// Какие разделы можно сохранять и как их проверять
+const SECTIONS: [string, string, (v: unknown) => unknown][] = [
+  ["texts", SITE_TEXTS_KEY, cleanTexts],
+  ["promo", SITE_PROMO_KEY, cleanPromo],
+  ["contacts", SITE_CONTACTS_KEY, cleanContacts],
+  ["seo", SITE_SEO_KEY, cleanSeo],
+  ["images", SITE_IMAGES_KEY, cleanImages],
+];
 
 export async function POST(request: Request) {
   if (!(await isAdmin())) {
@@ -66,15 +71,14 @@ export async function POST(request: Request) {
     const body = await request.json();
     const rows: { key: string; value: string }[] = [];
 
-    if (body && "texts" in body) {
-      const value = JSON.stringify(cleanTexts(body.texts));
-      if (value.length > 1_000_000) {
-        return NextResponse.json({ error: "Слишком много текста." }, { status: 413 });
+    for (const [field, key, clean] of SECTIONS) {
+      if (body && typeof body === "object" && field in body) {
+        const value = JSON.stringify(clean(body[field]));
+        if (value.length > 1_000_000) {
+          return NextResponse.json({ error: "Слишком много данных." }, { status: 413 });
+        }
+        rows.push({ key, value });
       }
-      rows.push({ key: SITE_TEXTS_KEY, value });
-    }
-    if (body && "promo" in body) {
-      rows.push({ key: SITE_PROMO_KEY, value: JSON.stringify(cleanPromo(body.promo)) });
     }
     if (!rows.length) {
       return NextResponse.json({ error: "Нечего сохранять" }, { status: 400 });
@@ -83,7 +87,7 @@ export async function POST(request: Request) {
     const { error } = await getSupabaseAdmin().from("prices").upsert(rows, { onConflict: "key" });
     if (error) throw new Error(error.message);
 
-    // Сбросить запомненные тексты и обновить все страницы сайта
+    // Сбросить запомненное содержимое и обновить все страницы сайта
     revalidateTag(SITE_CONTENT_TAG, { expire: 0 });
     revalidatePath("/", "layout");
 

@@ -1,3 +1,4 @@
+import { imgSrc, loadSiteContent } from "../../lib/site-texts";
 import T from "../T";
 import Image, { getImageProps } from "next/image";
 import Link from "next/link";
@@ -290,12 +291,14 @@ function PlumbingIcon({ src }: { src: string }) {
   );
 }
 
-export default function SantehnikContent({
+export default async function SantehnikContent({
   district,
 }: SantehnikContentProps) {
+  const SC = await loadSiteContent();
+
   return (
     <main className="min-h-screen bg-neutral-800 pb-20 text-white md:pb-0">
-      <Header />
+      <Header phone={SC.contacts.main.digits} displayPhone={SC.contacts.main.display} />
 
       {/* ПЕРВЫЙ ЭКРАН — ОДНА СЕКЦИЯ ДЛЯ ТЕЛЕФОНА И КОМПЬЮТЕРА */}
       <section className="relative overflow-hidden bg-[#333333] px-6 py-8 text-white md:h-[490px] md:bg-[#281E12] md:px-0 md:py-0">
@@ -305,7 +308,7 @@ export default function SantehnikContent({
           className="pointer-events-none absolute inset-0 z-0 opacity-10 md:hidden"
         >
           <Image
-            src="/hero-mark.png"
+            src={imgSrc(SC, "/hero-mark.png")}
             alt=""
             fill
             sizes="85vw"
@@ -316,7 +319,7 @@ export default function SantehnikContent({
         {/* КОМПЬЮТЕР: ФОТО СПРАВА */}
         <div className="absolute inset-y-0 right-0 hidden w-[53%] md:block">
           <Image
-            src="/banner-master.jpg"
+            src={imgSrc(SC, "/banner-master.jpg")}
             alt="Сантехник в Алматы"
             fill
             sizes="(min-width: 768px) 53vw, 1px"
@@ -390,7 +393,7 @@ export default function SantehnikContent({
               </p>
 
               <a
-                href="tel:+77771696969"
+                href={`tel:+${SC.contacts.main.digits}`}
                 className="call-button-shine mx-auto mt-10 flex max-w-sm items-center justify-center rounded-full bg-[#0092B8]/40 px-6 py-4 text-lg font-normal text-white"
               >
                 <T p="santehnik" o={3}>Вызвать мастера</T>
@@ -410,7 +413,7 @@ export default function SantehnikContent({
 
               <div className="mt-8 flex gap-3">
                 <a
-                  href="tel:+77771696969"
+                  href={`tel:+${SC.contacts.main.digits}`}
                   className="call-button-shine inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-[#0092B8]/80 px-6 text-xl font-normal text-white transition hover:bg-[#007D9E]"
                 >
                   <T p="santehnik" o={6}>Вызвать мастера</T>
@@ -418,7 +421,7 @@ export default function SantehnikContent({
 
                 <div className="relative shrink-0">
                   <a
-                    href="https://wa.me/77771696969"
+                    href={`https://wa.me/${SC.contacts.main.digits}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-white px-6 text-xl font-normal text-[#292929] transition hover:bg-gray-100"
@@ -430,7 +433,7 @@ export default function SantehnikContent({
                   <div className="pointer-events-none absolute left-[calc(100%-6px)] top-1/2 z-20 h-0 w-0">
                     <div className="santehnik-discount-hanging absolute left-0 top-0">
                       <img
-                        src="/discount-15.png"
+                        src={imgSrc(SC, "/discount-15.png")}
                         alt="Скидка 15% на все услуги"
                         loading="lazy"
                         decoding="async"
@@ -519,7 +522,7 @@ export default function SantehnikContent({
                 key={text}
                 className="grid grid-cols-[44px_1fr] items-center gap-7"
               >
-                <PlumbingIcon src={icon} />
+                <PlumbingIcon src={imgSrc(SC, icon)} />
 
                 <p className="text-[17px] leading-snug md:text-xl">
                   {text}
@@ -1030,17 +1033,17 @@ export default function SantehnikContent({
               <div className="rounded-3xl bg-slate-100 p-6">
                 <p className="text-sm text-slate-500"><T p="santehnik" o={63}>Телефон</T></p>
                 <a
-                  href="tel:+77771696969"
+                  href={`tel:+${SC.contacts.main.digits}`}
                   className="mt-2 block text-2xl font-black"
                 >
-                  +7 777 169 69 69
+                  {SC.contacts.main.display}
                 </a>
               </div>
 
               <div className="rounded-3xl bg-slate-100 p-6">
                 <p className="text-sm text-slate-500">WhatsApp</p>
                 <a
-                  href="https://wa.me/77771696969"
+                  href={`https://wa.me/${SC.contacts.main.digits}`}
                   className="mt-2 block text-2xl font-black text-green-600"
                 >
                   <T p="santehnik" o={64}>Написать в WhatsApp</T>
@@ -1064,7 +1067,7 @@ export default function SantehnikContent({
 
             <div className="overflow-hidden rounded-3xl shadow-xl">
               <iframe
-                src="https://www.google.com/maps?q=Алматы&output=embed"
+                src={imgSrc(SC, "https://www.google.com/maps?q=Алматы&output=embed")}
                 className="h-[520px] w-full border-0"
                 loading="lazy"
                 title="Карта Алматы"
@@ -1096,14 +1099,14 @@ export default function SantehnikContent({
 
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="tel:+77771696969"
+                  href={`tel:+${SC.contacts.main.digits}`}
                   className="rounded-2xl bg-yellow-400 px-8 py-4 text-lg font-black text-slate-950"
                 >
                   <T p="santehnik" o={72}>📞 Позвонить</T>
                 </a>
 
                 <a
-                  href="https://wa.me/77771696969"
+                  href={`https://wa.me/${SC.contacts.main.digits}`}
                   className="rounded-2xl bg-green-500 px-8 py-4 text-lg font-black text-white"
                 >
                   WhatsApp

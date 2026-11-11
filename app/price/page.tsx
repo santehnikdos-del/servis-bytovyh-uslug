@@ -1,9 +1,11 @@
+import type { Metadata } from "next";
+import { imgSrc, loadSiteContent, withSeo } from "../../lib/site-texts";
 import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
 import { createClient } from "@supabase/supabase-js";
 
-export const metadata = {
+const pageMetadata: Metadata = {
   title: "Цены на услуги сантехника в Алматы | Сервис бытовых услуг",
   description:
     "Цены на сантехнические работы в Алматы: монтаж труб, кухня, ванная, туалет, прочистка канализации и установка сантехники.",
@@ -321,6 +323,8 @@ function formatPrice(value: string) {
 }
 
 export default async function CenyPage() {
+  const SC = await loadSiteContent();
+
   const [prices, names] = await Promise.all([
     loadKeyValueTable("prices"),
     loadKeyValueTable("service_names"),
@@ -329,8 +333,8 @@ export default async function CenyPage() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
       <Header
-        phone="77771696969"
-        displayPhone="+7 777 169 69 69"
+        phone={`${SC.contacts.main.digits}`}
+        displayPhone={`${SC.contacts.main.display}`}
       />
 
       <style>{`
@@ -417,7 +421,7 @@ export default async function CenyPage() {
         {/* ФОТО — КОМПЬЮТЕР */}
         <div className="absolute inset-y-0 right-0 hidden w-[53%] md:block">
           <img
-            src="/banner-master.jpg"
+            src={imgSrc(SC, "/banner-master.jpg")}
             alt="Мастер сервиса бытовых услуг в Алматы"
             className="h-full w-full object-cover object-[60%_center]"
           />
@@ -467,7 +471,7 @@ export default async function CenyPage() {
 
             <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 md:mx-0 md:max-w-none md:flex-row md:flex-wrap md:items-center">
               <a
-                href="tel:+77771696969"
+                href={`tel:+${SC.contacts.main.digits}`}
                 className="price-call-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal transition hover:bg-[#007D9E]"
               >
                 <T p="price" o={6}>Вызвать мастера</T>
@@ -475,7 +479,7 @@ export default async function CenyPage() {
 
               <div className="relative shrink-0">
                 <a
-                  href="https://wa.me/77771696969"
+                  href={`https://wa.me/${SC.contacts.main.digits}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-14 w-full items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100 md:w-auto"
@@ -490,7 +494,7 @@ export default async function CenyPage() {
                 >
                   <div className="price-discount absolute left-0 top-0">
                     <img
-                      src="/discount-15.png"
+                      src={imgSrc(SC, "/discount-15.png")}
                       alt=""
                       className="absolute left-0 top-[-47px] w-[180px] max-w-none drop-shadow-lg"
                     />
@@ -664,14 +668,14 @@ export default async function CenyPage() {
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="tel:+77771696969"
+              href={`tel:+${SC.contacts.main.digits}`}
               className="price-call-shine inline-flex min-h-14 w-full items-center justify-center rounded-full bg-[#FDC700] px-8 py-4 text-lg text-[#171717] transition hover:bg-[#eab800] sm:w-auto"
             >
               <T p="price" o={16}>Вызвать мастера</T>
             </a>
 
             <a
-              href="https://wa.me/77771696969"
+              href={`https://wa.me/${SC.contacts.main.digits}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-white px-8 py-4 text-lg text-[#292929] transition hover:bg-gray-100 sm:w-auto"
@@ -683,9 +687,14 @@ export default async function CenyPage() {
       </section>
 
       <Footer
-        phone="77771696969"
-        displayPhone="+7 777 169 69 69"
+        phone={`${SC.contacts.main.digits}`}
+        displayPhone={`${SC.contacts.main.display}`}
       />
     </main>
   );
+}
+
+// Заголовок и описание для поиска можно изменить в админке (вкладка «SEO»)
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeo("/price", pageMetadata);
 }

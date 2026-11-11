@@ -107,7 +107,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { promo } = await loadSiteContent();
+  const { promo, contacts } = await loadSiteContent();
 
   return (
     <html
@@ -136,7 +136,9 @@ export default async function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
+            __html: JSON.stringify(schema)
+              .replaceAll("+77771696969", `+${contacts.main.digits}`)
+              .replace(/</g, "\\u003c"),
           }}
         />
 
@@ -146,7 +148,13 @@ export default async function RootLayout({
         <PromoBar promo={promo} />
         {children}
 
-        <FloatingContacts />
+        <FloatingContacts
+          numbers={{
+            main: contacts.main.digits,
+            electric: contacts.electric.digits,
+            battery: contacts.battery.digits,
+          }}
+        />
       </body>
     </html>
   );

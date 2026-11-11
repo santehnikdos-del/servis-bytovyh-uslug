@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
+import { withSeo } from "../../lib/site-texts";
 import T from "../T";
-export const metadata = {
+const pageMetadata: Metadata = {
   title: "Контакты сантехника в Алматы | Сервис бытовых услуг",
 
   description:
@@ -286,4 +288,9 @@ export default function KontaktyPage() {
 
     </main>
   );
+}
+
+// Заголовок и описание для поиска можно изменить в админке (вкладка «SEO»)
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeo("/kontakty", pageMetadata);
 }

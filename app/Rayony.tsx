@@ -1,3 +1,4 @@
+import { imgSrc, loadSiteContent } from "../lib/site-texts";
 import T from "./T";
 type RayonyProps = {
   service?: string;
@@ -14,7 +15,9 @@ const districts = [
   "Жетысуский район",
 ];
 
-export default function Rayony({ service }: RayonyProps) {
+export default async function Rayony({ service }: RayonyProps) {
+  const SC = await loadSiteContent();
+
   return (
     <section
       id="districts"
@@ -82,7 +85,7 @@ export default function Rayony({ service }: RayonyProps) {
           {/* КАРТА */}
           <div className="min-w-0 overflow-hidden rounded-2xl border border-gray-200 bg-gray-100">
             <iframe
-              src="https://www.google.com/maps?q=Алматы&z=10&output=embed"
+              src={imgSrc(SC, "https://www.google.com/maps?q=Алматы&z=10&output=embed")}
               title="Карта Алматы и пригорода — территория выезда мастеров"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

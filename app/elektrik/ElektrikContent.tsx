@@ -1,3 +1,4 @@
+import { imgSrc, loadSiteContent } from "../../lib/site-texts";
 import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
@@ -79,14 +80,16 @@ type ElektrikContentProps = {
   district?: string;
 };
 
-export default function ElektrikContent({
+export default async function ElektrikContent({
   district,
 }: ElektrikContentProps) {
+  const SC = await loadSiteContent();
+
   return (
     <main className="min-h-screen bg-white text-slate-900">
       <Header
-        phone="77073232632"
-        displayPhone="+7 707 323 26 32"
+        phone={`${SC.contacts.electric.digits}`}
+        displayPhone={`${SC.contacts.electric.display}`}
       />
 
       <style>{`
@@ -173,7 +176,7 @@ export default function ElektrikContent({
         {/* ФОТО — КОМПЬЮТЕР */}
         <div className="absolute inset-y-0 right-0 hidden w-[53%] md:block">
           <img
-            src="/banner-master.jpg"
+            src={imgSrc(SC, "/banner-master.jpg")}
             alt="Мастер сервиса бытовых услуг в Алматы"
             className="h-full w-full object-cover object-[60%_center]"
           />
@@ -229,7 +232,7 @@ export default function ElektrikContent({
 
             <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 md:mx-0 md:max-w-none md:flex-row md:flex-wrap md:items-center">
               <a
-                href="tel:+77073232632"
+                href={`tel:+${SC.contacts.electric.digits}`}
                 className="electric-call-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal transition hover:bg-[#007D9E]"
               >
                 <T p="elektrik-rayony" o={5}>Вызвать электрика</T>
@@ -237,7 +240,7 @@ export default function ElektrikContent({
 
               <div className="relative shrink-0">
                 <a
-                  href="https://wa.me/77073232632"
+                  href={`https://wa.me/${SC.contacts.electric.digits}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-14 w-full items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100 md:w-auto"
@@ -252,7 +255,7 @@ export default function ElektrikContent({
                 >
                   <div className="electric-discount absolute left-0 top-0">
                     <img
-                      src="/discount-15.png"
+                      src={imgSrc(SC, "/discount-15.png")}
                       alt=""
                       className="absolute left-0 top-[-47px] w-[180px] max-w-none drop-shadow-lg"
                     />
@@ -449,14 +452,14 @@ export default function ElektrikContent({
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="tel:+77073232632"
+              href={`tel:+${SC.contacts.electric.digits}`}
               className="electric-call-shine inline-flex min-h-14 w-full items-center justify-center rounded-full bg-[#FDC700] px-8 py-4 text-lg text-[#171717] transition hover:bg-[#eab800] sm:w-auto"
             >
               <T p="elektrik-rayony" o={18}>Вызвать электрика</T>
             </a>
 
             <a
-              href="https://wa.me/77073232632"
+              href={`https://wa.me/${SC.contacts.electric.digits}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-white px-8 py-4 text-lg text-[#292929] transition hover:bg-gray-100 sm:w-auto"
@@ -468,8 +471,8 @@ export default function ElektrikContent({
       </section>
 
       <Footer
-        phone="77073232632"
-        displayPhone="+7 707 323 26 32"
+        phone={`${SC.contacts.electric.digits}`}
+        displayPhone={`${SC.contacts.electric.display}`}
       />
     </main>
   );

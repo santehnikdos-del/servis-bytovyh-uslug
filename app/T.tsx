@@ -1,5 +1,4 @@
-import { appendFileSync } from "fs";
-import { loadSiteContent, normText } from "../lib/site-texts";
+import { collect, loadSiteContent, normText } from "../lib/site-texts";
 
 // Надпись, которую можно изменить в админке (вкладка «Тексты»).
 // p — страница, o — порядковый номер надписи в файле (для списка в админке).
@@ -19,9 +18,7 @@ export default async function T({
   if (!key) return <>{children}</>;
 
   // Только для разработчика: собрать список надписей при сборке
-  if (process.env.COLLECT_SITE_TEXTS) {
-    appendFileSync(process.env.COLLECT_SITE_TEXTS, JSON.stringify({ p, o, k: key }) + "\n");
-  }
+  collect({ p, o, k: key });
 
   const { texts } = await loadSiteContent();
   const value = texts[p]?.[key];

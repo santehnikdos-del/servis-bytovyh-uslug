@@ -1,10 +1,12 @@
+import type { Metadata } from "next";
+import { imgSrc, loadSiteContent, withSeo } from "../lib/site-texts";
 import T from "./T";
 import Image from "next/image";
 import Header from "./Header";
 import Rayony from "./Rayony";
 import HomeReviews from "./HomeReviews";
 
-export const metadata = {
+const pageMetadata: Metadata = {
   title: "Сервис бытовых услуг в Алматы | Сантехник, электрик",
   description:
     "Сантехник, электрик, прочистка канализации и другие бытовые услуги в Алматы. Быстрый выезд мастера, гарантия на выполненные работы.",
@@ -13,10 +15,12 @@ export const metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  const SC = await loadSiteContent();
+
   return (
     <main className="min-h-screen bg-white text-slate-950">
-      <Header />
+      <Header phone={SC.contacts.main.digits} displayPhone={SC.contacts.main.display} />
 
       {/* ПЕРВЫЙ ЭКРАН — ОДНА СЕКЦИЯ ДЛЯ ТЕЛЕФОНА И КОМПЬЮТЕРА */}
       <section className="relative overflow-hidden bg-[#333333] px-6 py-8 text-white md:h-[490px] md:bg-[#281E12] md:px-0 md:py-0">
@@ -26,7 +30,7 @@ export default function Home() {
           className="pointer-events-none absolute inset-0 z-0 opacity-10 md:hidden"
         >
           <Image
-            src="/hero-mark.png"
+            src={imgSrc(SC, "/hero-mark.png")}
             alt=""
             fill
             sizes="85vw"
@@ -37,7 +41,7 @@ export default function Home() {
         {/* КОМПЬЮТЕР: ФОТО СПРАВА */}
         <div className="absolute inset-y-0 right-0 hidden w-[53%] md:block">
           <Image
-            src="/banner-master.jpg"
+            src={imgSrc(SC, "/banner-master.jpg")}
             alt="Мастер сервиса бытовых услуг"
             fill
             sizes="(min-width: 768px) 53vw, 1px"
@@ -109,7 +113,7 @@ export default function Home() {
               </p>
 
               <a
-                href="tel:+77771696969"
+                href={`tel:+${SC.contacts.main.digits}`}
                 className="home-call-button-shine mx-auto mt-10 flex max-w-sm items-center justify-center rounded-full bg-[#0092B8]/40 px-6 py-4 text-lg font-normal text-white"
               >
                 <T p="home" o={5}>Вызвать мастера</T>
@@ -129,7 +133,7 @@ export default function Home() {
 
               <div className="mt-8 flex gap-3">
                 <a
-                  href="tel:+77771696969"
+                  href={`tel:+${SC.contacts.main.digits}`}
                   className="home-call-button-shine inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-[#0092B8]/80 px-6 text-xl font-normal text-white transition hover:bg-[#007D9E]"
                 >
                   <T p="home" o={8}>Вызвать мастера</T>
@@ -137,7 +141,7 @@ export default function Home() {
 
                 <div className="relative shrink-0">
                   <a
-                    href="https://wa.me/77771696969"
+                    href={`https://wa.me/${SC.contacts.main.digits}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-white px-6 text-xl font-normal text-[#292929] transition hover:bg-gray-100"
@@ -149,7 +153,7 @@ export default function Home() {
                   <div className="pointer-events-none absolute left-[calc(100%-6px)] top-1/2 z-20 h-0 w-0">
                     <div className="home-discount-hanging absolute left-0 top-0">
                       <img
-                        src="/discount-15.png"
+                        src={imgSrc(SC, "/discount-15.png")}
                         alt="Скидка 15% на все услуги"
                         loading="lazy"
                         decoding="async"
@@ -276,7 +280,7 @@ export default function Home() {
                 className="grid grid-cols-[60px_minmax(0,1fr)] items-center gap-4"
               >
                 <Image
-                  src={icon}
+                  src={imgSrc(SC, icon)}
                   alt=""
                   width={60}
                   height={60}
@@ -337,7 +341,7 @@ export default function Home() {
                 className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-md transition hover:-translate-y-1 hover:shadow-xl"
               >
                 <Image
-                  src={icon}
+                  src={imgSrc(SC, icon)}
                   alt={title}
                   width={80}
                   height={80}
@@ -403,7 +407,7 @@ export default function Home() {
                   className="md:flex md:items-center md:justify-center md:gap-4"
                 >
                   <Image
-                    src={icon}
+                    src={imgSrc(SC, icon)}
                     alt=""
                     width={56}
                     height={56}
@@ -486,7 +490,7 @@ export default function Home() {
                 <div className="absolute left-4 top-4 h-10 w-10 rounded-tl-xl border-l-4 border-t-4 border-yellow-400" />
 
                 <Image
-                  src={item.icon}
+                  src={imgSrc(SC, item.icon)}
                   alt={item.title}
                   width={80}
                   height={80}
@@ -529,7 +533,7 @@ export default function Home() {
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="tel:+77771696969"
+              href={`tel:+${SC.contacts.main.digits}`}
               className="home-call-button-shine inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-[#007D9E] px-6 text-xl font-normal text-white ring-1 ring-white/30 transition hover:bg-[#007D9E]"
             >
               <T p="home" o={31}>Вызвать мастера</T>
@@ -537,7 +541,7 @@ export default function Home() {
 
             <div className="relative shrink-0">
               <a
-                href="https://wa.me/77771696969"
+                href={`https://wa.me/${SC.contacts.main.digits}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-white px-6 text-xl font-normal text-[#292929] transition hover:bg-gray-100"
@@ -549,7 +553,7 @@ export default function Home() {
               <div className="pointer-events-none absolute left-[calc(100%-6px)] top-1/2 z-20 hidden h-0 w-0 md:block">
                 <div className="home-discount-hanging absolute left-0 top-0">
                   <img
-                    src="/discount-15.png"
+                    src={imgSrc(SC, "/discount-15.png")}
                     alt="Скидка 15% на все услуги"
                     loading="lazy"
                     decoding="async"
@@ -720,10 +724,10 @@ export default function Home() {
               <p className="text-sm text-gray-400"><T p="home" o={50}>Ежедневно</T></p>
 
               <a
-                href="tel:+77771696969"
+                href={`tel:+${SC.contacts.main.digits}`}
                 className="mt-1 block text-2xl font-black text-white"
               >
-                +7 777 169 69 69
+                {SC.contacts.main.display}
               </a>
             </div>
           </div>
@@ -826,4 +830,9 @@ export default function Home() {
       `}</style>
     </main>
   );
+}
+
+// Заголовок и описание для поиска можно изменить в админке (вкладка «SEO»)
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeo("/", pageMetadata);
 }

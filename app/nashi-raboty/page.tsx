@@ -1,9 +1,11 @@
+import type { Metadata } from "next";
+import { imgSrc, loadSiteContent, withSeo } from "../../lib/site-texts";
 import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
 import ManagedWorks from "../ManagedWorks";
 
-export const metadata = {
+const pageMetadata: Metadata = {
   title: "Наши работы сантехника в Алматы | Сервис бытовых услуг",
   description:
     "Примеры выполненных сантехнических работ в Алматы. Монтаж труб, водоснабжения, отопления и сантехнического оборудования.",
@@ -65,12 +67,14 @@ function Check({ text }: { text: string }) {
   );
 }
 
-export default function NashiRabotyPage() {
+export default async function NashiRabotyPage() {
+  const SC = await loadSiteContent();
+
   return (
     <main className="min-h-screen bg-white pb-20 text-slate-900 md:pb-0">
       <Header
-        phone="77771696969"
-        displayPhone="+7 777 169 69 69"
+        phone={`${SC.contacts.main.digits}`}
+        displayPhone={`${SC.contacts.main.display}`}
       />
 
       <style>{`
@@ -177,7 +181,7 @@ export default function NashiRabotyPage() {
       >
         <div className="absolute inset-y-0 right-0 w-[53%]">
           <img
-            src="/banner-master.jpg"
+            src={imgSrc(SC, "/banner-master.jpg")}
             alt="Мастер сервиса бытовых услуг в Алматы"
             className="h-full w-full object-cover object-[60%_center]"
           />
@@ -208,7 +212,7 @@ export default function NashiRabotyPage() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-  href="tel:+77771696969"
+  href={`tel:+${SC.contacts.main.digits}`}
   className="works-button-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal text-white transition hover:bg-[#007D9E]"
 >
   <T p="nashi-raboty" o={10}>Вызвать мастера</T>
@@ -216,7 +220,7 @@ export default function NashiRabotyPage() {
 
               <div className="relative shrink-0">
                 <a
-                  href="https://wa.me/77771696969"
+                  href={`https://wa.me/${SC.contacts.main.digits}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-14 items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100"
@@ -228,7 +232,7 @@ export default function NashiRabotyPage() {
                 <div className="pointer-events-none absolute left-[calc(100%-6px)] top-1/2 z-20 h-0 w-0">
                   <div className="works-discount absolute left-0 top-0">
                     <img
-                      src="/discount-15.png"
+                      src={imgSrc(SC, "/discount-15.png")}
                       alt="Скидка 15% на все услуги"
                       className="absolute left-0 top-[-47px] h-auto w-[180px] max-w-none drop-shadow-[0_5px_7px_rgba(0,0,0,0.25)]"
                     />
@@ -297,7 +301,7 @@ export default function NashiRabotyPage() {
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <a
-              href="https://wa.me/77771696969"
+              href={`https://wa.me/${SC.contacts.main.digits}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-3 rounded-full bg-white px-7 py-4 text-lg font-normal text-[#292929] transition hover:bg-gray-100"
@@ -318,9 +322,14 @@ export default function NashiRabotyPage() {
       </section>
 
       <Footer
-        phone="77771696969"
-        displayPhone="+7 777 169 69 69"
+        phone={`${SC.contacts.main.digits}`}
+        displayPhone={`${SC.contacts.main.display}`}
       />
     </main>
   );
+}
+
+// Заголовок и описание для поиска можно изменить в админке (вкладка «SEO»)
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeo("/nashi-raboty", pageMetadata);
 }

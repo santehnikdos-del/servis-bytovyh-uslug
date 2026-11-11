@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { imgSrc, loadSiteContent, withSeo } from "../../lib/site-texts";
 import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
@@ -6,7 +8,7 @@ import { supabase } from "../../lib/supabase";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = {
+const pageMetadata: Metadata = {
   title: "Отзывы о сантехнике в Алматы | Сервис бытовых услуг",
   description:
     "Отзывы клиентов о сантехнических работах в Алматы. Установка, ремонт, монтаж труб, устранение протечек и другие услуги.",
@@ -247,6 +249,8 @@ function ReviewCard({
 }
 
 export default async function OtzyvyPage() {
+  const SC = await loadSiteContent();
+
   const { data, error } = await supabase
     .from("reviews")
     .select("*")
@@ -262,8 +266,8 @@ export default async function OtzyvyPage() {
   return (
     <main className="min-h-screen bg-white">
       <Header
-        phone="77771696969"
-        displayPhone="+7 777 169 69 69"
+        phone={`${SC.contacts.main.digits}`}
+        displayPhone={`${SC.contacts.main.display}`}
       />
 
       <style>{`
@@ -403,14 +407,14 @@ export default async function OtzyvyPage() {
 
           <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3">
             <a
-              href="tel:+77771696969"
+              href={`tel:+${SC.contacts.main.digits}`}
               className="reviews-call-shine inline-flex min-h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-6 py-3 text-lg font-normal transition hover:bg-[#007D9E]"
             >
               <T p="otzyvy" o={13}>Вызвать мастера</T>
             </a>
 
             <a
-              href="https://wa.me/77771696969"
+              href={`https://wa.me/${SC.contacts.main.digits}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-14 items-center justify-center rounded-full bg-white px-6 py-3 text-lg font-normal text-[#292929] transition hover:bg-gray-100"
@@ -428,7 +432,7 @@ export default async function OtzyvyPage() {
       >
         <div className="absolute inset-y-0 right-0 w-[53%]">
           <img
-            src="/banner-master.jpg"
+            src={imgSrc(SC, "/banner-master.jpg")}
             alt="Мастер сервиса бытовых услуг в Алматы"
             className="h-full w-full object-cover object-[60%_center]"
           />
@@ -461,7 +465,7 @@ export default async function OtzyvyPage() {
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
-                href="tel:+77771696969"
+                href={`tel:+${SC.contacts.main.digits}`}
                 className="reviews-call-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal transition hover:bg-[#007D9E]"
               >
                 <T p="otzyvy" o={18}>Вызвать мастера</T>
@@ -469,7 +473,7 @@ export default async function OtzyvyPage() {
 
               <div className="relative shrink-0">
                 <a
-                  href="https://wa.me/77771696969"
+                  href={`https://wa.me/${SC.contacts.main.digits}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-14 items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100"
@@ -484,7 +488,7 @@ export default async function OtzyvyPage() {
                 >
                   <div className="reviews-discount absolute left-0 top-0">
                     <img
-                      src="/discount-15.png"
+                      src={imgSrc(SC, "/discount-15.png")}
                       alt=""
                       className="absolute left-0 top-[-47px] w-[180px] max-w-none drop-shadow-lg"
                     />
@@ -565,9 +569,14 @@ export default async function OtzyvyPage() {
       </section>
 
       <Footer
-        phone="77771696969"
-        displayPhone="+7 777 169 69 69"
+        phone={`${SC.contacts.main.digits}`}
+        displayPhone={`${SC.contacts.main.display}`}
       />
     </main>
   );
+}
+
+// Заголовок и описание для поиска можно изменить в админке (вкладка «SEO»)
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeo("/otzyvy", pageMetadata);
 }

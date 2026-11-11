@@ -1,10 +1,12 @@
+import type { Metadata } from "next";
+import { imgSrc, loadSiteContent, withSeo } from "../../lib/site-texts";
 import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
 import Script from "next/script";
 import ConversionTracking from "./ConversionTracking";
 
-export const metadata = {
+const pageMetadata: Metadata = {
   title:
     "Автомобильные аккумуляторы с доставкой по Алматы | Сервис бытовых услуг",
   description:
@@ -14,12 +16,14 @@ export const metadata = {
   },
 };
 
-export default function AkkumulyatoryPage() {
+export default async function AkkumulyatoryPage() {
+  const SC = await loadSiteContent();
+
   return (
     <main className="min-h-screen bg-white text-slate-950">
-      <ConversionTracking />
+      <ConversionTracking phone={SC.contacts.battery.digits} />
       <Script
-  src="https://www.googletagmanager.com/gtag/js?id=AW-18420476013"
+  src={imgSrc(SC, "https://www.googletagmanager.com/gtag/js?id=AW-18420476013")}
   strategy="afterInteractive"
 />
 
@@ -34,8 +38,8 @@ export default function AkkumulyatoryPage() {
 
       <div className="[&>div]:!static [&>header]:!static">
   <Header
-    phone="77082000513"
-    displayPhone="+7 708 200 05 13"
+    phone={`${SC.contacts.battery.digits}`}
+    displayPhone={`${SC.contacts.battery.display}`}
   />
 </div>
 
@@ -55,7 +59,7 @@ export default function AkkumulyatoryPage() {
 
           <div className="flex flex-col items-center">
             <img
-              src="/banner-fast.png"
+              src={imgSrc(SC, "/banner-fast.png")}
               alt="Быстрая доставка"
               className="h-12 w-12 object-contain"
             />
@@ -66,7 +70,7 @@ export default function AkkumulyatoryPage() {
 
           <div className="flex flex-col items-center border-x border-white/20">
             <img
-              src="/banner-garantiya.png"
+              src={imgSrc(SC, "/banner-garantiya.png")}
               alt="Гарантия"
               className="h-12 w-12 object-contain"
             />
@@ -77,7 +81,7 @@ export default function AkkumulyatoryPage() {
 
           <div className="flex flex-col items-center">
             <img
-              src="/banner-everyday.png"
+              src={imgSrc(SC, "/banner-everyday.png")}
               alt="Каждый день"
               className="h-12 w-12 object-contain"
             />
@@ -125,14 +129,14 @@ export default function AkkumulyatoryPage() {
             <div className="mt-8 flex flex-wrap gap-4">
 
               <a
-              href="tel:+77082000513"
+              href={`tel:+${SC.contacts.battery.digits}`}
                 className="rounded-full bg-yellow-400 px-8 py-4 text-lg font-black text-slate-950 shadow-xl transition hover:-translate-y-1 hover:bg-yellow-300"
               >
                 <T p="akkumulyatory" o={13}>📞 Позвонить</T>
               </a>
 
               <a
-                href="https://wa.me/77082000513"
+                href={`https://wa.me/${SC.contacts.battery.digits}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full bg-green-500 px-8 py-4 text-lg font-black text-white shadow-xl transition hover:-translate-y-1 hover:bg-green-600"
@@ -155,7 +159,7 @@ export default function AkkumulyatoryPage() {
                 >
                   <div className="mb-4 flex h-14 items-center justify-center">
                     <img
-                      src={icon}
+                      src={imgSrc(SC, icon)}
                       alt=""
                       className="h-12 w-12 object-contain"
                     />
@@ -517,14 +521,14 @@ export default function AkkumulyatoryPage() {
 
         <div className="flex flex-wrap gap-4">
           <a
-            href="tel:+77082000513"
+            href={`tel:+${SC.contacts.battery.digits}`}
             className="rounded-2xl bg-yellow-400 px-8 py-4 text-lg font-black text-slate-950 transition hover:bg-yellow-300"
           >
             <T p="akkumulyatory" o={43}>📞 Позвонить</T>
           </a>
 
           <a
-            href="https://wa.me/77082000513"
+            href={`https://wa.me/${SC.contacts.battery.digits}`}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-2xl bg-green-500 px-8 py-4 text-lg font-black text-white transition hover:bg-green-600"
@@ -544,4 +548,9 @@ export default function AkkumulyatoryPage() {
 
     </main>
   );
+}
+
+// Заголовок и описание для поиска можно изменить в админке (вкладка «SEO»)
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeo("/akkumulyatory-s-dostavkoy", pageMetadata);
 }

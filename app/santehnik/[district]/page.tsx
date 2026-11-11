@@ -1,3 +1,4 @@
+import { withSeo } from "../../../lib/site-texts";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import SantehnikContent from "../SantehnikContent";
@@ -25,7 +26,7 @@ export function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({
+async function baseMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { district: slug } = await params;
@@ -52,4 +53,10 @@ export default async function DistrictPage({ params }: PageProps) {
   if (!district) notFound();
 
   return <SantehnikContent district={district.name} />;
+}
+
+// Заголовок и описание для поиска можно изменить в админке (вкладка «SEO»)
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const { district } = await props.params;
+  return withSeo(`/santehnik/${district}`, await baseMetadata(props));
 }

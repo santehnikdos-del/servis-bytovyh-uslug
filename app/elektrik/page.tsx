@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { imgSrc, loadSiteContent, withSeo } from "../../lib/site-texts";
 import T from "../T";
 import Image from "next/image";
 import Header from "../Header";
@@ -6,7 +8,7 @@ import ManagedServices from "../ManagedServices";
 
 export const revalidate = 60;
 
-export const metadata = {
+const pageMetadata: Metadata = {
   title: "Электрик Алматы – вызов электрика на дом | Сервис бытовых услуг",
   description:
     "Услуги электрика в Алматы. Установка и замена розеток, выключателей, светильников, ремонт электрики и срочный выезд мастера на дом.",
@@ -85,12 +87,14 @@ function Check({ text }: { text: string }) {
   );
 }
 
-export default function ElektrikPage() {
+export default async function ElektrikPage() {
+  const SC = await loadSiteContent();
+
   return (
     <main className="min-h-screen bg-white text-slate-900">
       <Header
-        phone="77073232632"
-        displayPhone="+7 707 323 26 32"
+        phone={`${SC.contacts.electric.digits}`}
+        displayPhone={`${SC.contacts.electric.display}`}
       />
 
       <style>{`
@@ -174,7 +178,7 @@ export default function ElektrikPage() {
           className="pointer-events-none absolute inset-0 opacity-10 md:hidden"
         >
           <Image
-            src="/hero-mark.png"
+            src={imgSrc(SC, "/hero-mark.png")}
             alt=""
             fill
             sizes="85vw"
@@ -185,7 +189,7 @@ export default function ElektrikPage() {
         {/* ФОТО — КОМПЬЮТЕР */}
         <div className="absolute inset-y-0 right-0 hidden w-[53%] md:block">
           <Image
-            src="/banner-master.jpg"
+            src={imgSrc(SC, "/banner-master.jpg")}
             alt="Мастер сервиса бытовых услуг в Алматы"
             fill
             sizes="(min-width: 768px) 53vw, 1px"
@@ -237,7 +241,7 @@ export default function ElektrikPage() {
 
             <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 md:mx-0 md:max-w-none md:flex-row md:flex-wrap md:items-center">
               <a
-                href="tel:+77073232632"
+                href={`tel:+${SC.contacts.electric.digits}`}
                 className="electric-call-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal transition hover:bg-[#007D9E]"
               >
                 <T p="elektrik" o={7}>Вызвать электрика</T>
@@ -245,7 +249,7 @@ export default function ElektrikPage() {
 
               <div className="relative shrink-0">
                 <a
-                  href="https://wa.me/77073232632"
+                  href={`https://wa.me/${SC.contacts.electric.digits}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-14 w-full items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100 md:w-auto"
@@ -260,7 +264,7 @@ export default function ElektrikPage() {
                 >
                   <div className="electric-discount absolute left-0 top-0">
                     <img
-                      src="/discount-15.png"
+                      src={imgSrc(SC, "/discount-15.png")}
                       alt=""
                       loading="lazy"
                       decoding="async"
@@ -501,14 +505,14 @@ export default function ElektrikPage() {
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="tel:+77073232632"
+              href={`tel:+${SC.contacts.electric.digits}`}
               className="electric-call-shine inline-flex min-h-14 w-full items-center justify-center rounded-full bg-[#FDC700] px-8 py-4 text-lg text-[#171717] transition hover:bg-[#eab800] sm:w-auto"
             >
               <T p="elektrik" o={29}>Вызвать электрика</T>
             </a>
 
             <a
-              href="https://wa.me/77073232632"
+              href={`https://wa.me/${SC.contacts.electric.digits}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-white px-8 py-4 text-lg text-[#292929] transition hover:bg-gray-100 sm:w-auto"
@@ -520,9 +524,14 @@ export default function ElektrikPage() {
       </section>
 
       <Footer
-        phone="77073232632"
-        displayPhone="+7 707 323 26 32"
+        phone={`${SC.contacts.electric.digits}`}
+        displayPhone={`${SC.contacts.electric.display}`}
       />
     </main>
   );
+}
+
+// Заголовок и описание для поиска можно изменить в админке (вкладка «SEO»)
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeo("/elektrik", pageMetadata);
 }

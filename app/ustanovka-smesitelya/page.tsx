@@ -1,8 +1,10 @@
+import type { Metadata } from "next";
+import { imgSrc, loadSiteContent, withSeo } from "../../lib/site-texts";
 import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
 
-export const metadata = {
+const pageMetadata: Metadata = {
   title: "Установка смесителя в Алматы | Сервис бытовых услуг",
 
   description:
@@ -22,12 +24,14 @@ const services = [
   "Устранение протечки смесителя",
 ];
 
-export default function UstanovkaSmesitelyaPage() {
+export default async function UstanovkaSmesitelyaPage() {
+  const SC = await loadSiteContent();
+
   return (
     <main className="min-h-[calc(100vh-300px)] bg-slate-950 text-white">
       <Header
-        phone="77771696969"
-        displayPhone="+7 777 169 69 69"
+        phone={`${SC.contacts.main.digits}`}
+        displayPhone={`${SC.contacts.main.display}`}
       />
 
       {/* ПЕРВЫЙ ЭКРАН */}
@@ -52,14 +56,14 @@ export default function UstanovkaSmesitelyaPage() {
 
           <div className="mt-3 flex flex-wrap gap-4">
             <a
-              href="tel:+77771696969"
+              href={`tel:+${SC.contacts.main.digits}`}
               className="rounded-xl bg-blue-600 px-6 py-4 font-bold hover:bg-blue-700"
             >
               <T p="ustanovka-smesitelya" o={5}>Позвонить</T>
             </a>
 
             <a
-              href="https://wa.me/77771696969"
+              href={`https://wa.me/${SC.contacts.main.digits}`}
               className="rounded-xl bg-green-500 px-6 py-4 font-bold hover:bg-green-600"
             >
               WhatsApp
@@ -72,7 +76,7 @@ export default function UstanovkaSmesitelyaPage() {
             {/* КЛИЕНТЫ */}
             <div className="flex items-center justify-center gap-4 rounded-xl p-2 transition-all duration-300 hover:-translate-y-1 hover:bg-sky-600">
               <img
-                src="/clients.png"
+                src={imgSrc(SC, "/clients.png")}
                 alt="Довольные клиенты"
                 className="h-14 w-14 object-contain transition-transform duration-300 group-hover:scale-110"
               />
@@ -85,7 +89,7 @@ export default function UstanovkaSmesitelyaPage() {
             {/* ВЫЕЗД */}
             <div className="flex items-center justify-center gap-4 rounded-xl p-2 transition-all duration-300 hover:-translate-y-1 hover:bg-sky-600">
               <img
-                src="/time.png"
+                src={imgSrc(SC, "/time.png")}
                 alt="Срочный выезд"
                 className="h-14 w-14 object-contain transition-transform duration-300 group-hover:scale-110"
               />
@@ -100,7 +104,7 @@ export default function UstanovkaSmesitelyaPage() {
             {/* ГАРАНТИЯ */}
             <div className="flex items-center justify-center gap-4 rounded-xl p-2 transition-all duration-300 hover:-translate-y-1 hover:bg-sky-600">
               <img
-                src="/guarantee.png"
+                src={imgSrc(SC, "/guarantee.png")}
                 alt="Гарантия"
                 className="h-14 w-14 object-contain transition-transform duration-300 group-hover:scale-110"
               />
@@ -115,7 +119,7 @@ export default function UstanovkaSmesitelyaPage() {
             {/* КАЛЕНДАРЬ */}
             <div className="flex items-center justify-center gap-4 rounded-xl p-2 transition-all duration-300 hover:-translate-y-1 hover:bg-sky-600">
               <img
-                src="/calendar.png"
+                src={imgSrc(SC, "/calendar.png")}
                 alt="Работаем без выходных"
                 className="h-14 w-14 object-contain transition-transform duration-300 group-hover:scale-110"
               />
@@ -193,14 +197,14 @@ export default function UstanovkaSmesitelyaPage() {
 
           <div className="flex flex-wrap gap-4">
             <a
-              href="tel:+77771696969"
+              href={`tel:+${SC.contacts.main.digits}`}
               className="rounded-xl bg-blue-600 px-6 py-4 font-bold hover:bg-blue-700"
             >
               <T p="ustanovka-smesitelya" o={22}>Позвонить</T>
             </a>
 
             <a
-              href="https://wa.me/77771696969"
+              href={`https://wa.me/${SC.contacts.main.digits}`}
               className="rounded-xl bg-green-500 px-6 py-4 font-bold hover:bg-green-600"
             >
               WhatsApp
@@ -210,9 +214,14 @@ export default function UstanovkaSmesitelyaPage() {
       </section>
 
       <Footer
-        phone="77771696969"
-        displayPhone="+7 777 169 69 69"
+        phone={`${SC.contacts.main.digits}`}
+        displayPhone={`${SC.contacts.main.display}`}
       />
     </main>
   );
+}
+
+// Заголовок и описание для поиска можно изменить в админке (вкладка «SEO»)
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeo("/ustanovka-smesitelya", pageMetadata);
 }

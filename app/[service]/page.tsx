@@ -1,3 +1,4 @@
+import { loadSiteContent, withSeo } from "../../lib/site-texts";
 import T from "../T";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -23,7 +24,7 @@ export function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({
+async function baseMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { service } = await params;
@@ -51,6 +52,8 @@ export async function generateMetadata({
 }
 
 export default async function ServicePage({ params }: PageProps) {
+  const SC = await loadSiteContent();
+
   const { service } = await params;
   const page = getServicePage(service);
 
@@ -59,11 +62,11 @@ export default async function ServicePage({ params }: PageProps) {
   const isElectric = page.group === "electric";
   const isDrain = page.group === "drain";
 
-  const phone = isElectric ? "77073232632" : "77771696969";
+  const phone = isElectric ? `${SC.contacts.electric.digits}` : `${SC.contacts.main.digits}`;
 
   const displayPhone = isElectric
-    ? "+7 707 323 26 32"
-    : "+7 777 169 69 69";
+    ? `${SC.contacts.electric.display}`
+    : `${SC.contacts.main.display}`;
 
   const parentHref = isElectric
     ? "/elektrik"
@@ -243,4 +246,10 @@ export default async function ServicePage({ params }: PageProps) {
       />
     </div>
   );
+}
+
+// Заголовок и описание для поиска можно изменить в админке (вкладка «SEO»)
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const { service } = await props.params;
+  return withSeo(`/${service}`, await baseMetadata(props));
 }

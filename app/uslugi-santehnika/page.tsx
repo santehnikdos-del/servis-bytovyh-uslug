@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { imgSrc, loadSiteContent, withSeo } from "../../lib/site-texts";
 import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
@@ -5,7 +7,7 @@ import ManagedServices from "../ManagedServices";
 
 export const revalidate = 60;
 
-export const metadata = {
+const pageMetadata: Metadata = {
   title: "Услуги сантехника в Алматы | Сервис бытовых услуг",
   description:
     "Услуги сантехника в Алматы: установка унитаза, смесителя, раковины, ванны, бойлера, замена труб и прочистка канализации.",
@@ -92,12 +94,14 @@ function Arrow() {
   );
 }
 
-export default function UslugiSantehnikaPage() {
+export default async function UslugiSantehnikaPage() {
+  const SC = await loadSiteContent();
+
   return (
     <main className="min-h-screen bg-white text-slate-900">
       <Header
-        phone="77771696969"
-        displayPhone="+7 777 169 69 69"
+        phone={`${SC.contacts.main.digits}`}
+        displayPhone={`${SC.contacts.main.display}`}
       />
 
       <style>{`
@@ -198,7 +202,7 @@ export default function UslugiSantehnikaPage() {
         {/* ФОТО — КОМПЬЮТЕР */}
         <div className="absolute inset-y-0 right-0 hidden w-[53%] md:block">
           <img
-            src="/banner-master.jpg"
+            src={imgSrc(SC, "/banner-master.jpg")}
             alt="Сантехник сервиса бытовых услуг в Алматы"
             className="h-full w-full object-cover object-[60%_center]"
           />
@@ -260,7 +264,7 @@ export default function UslugiSantehnikaPage() {
 
             <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 md:mx-0 md:max-w-none md:flex-row md:flex-wrap md:items-center">
               <a
-                href="tel:+77771696969"
+                href={`tel:+${SC.contacts.main.digits}`}
                 className="services-call-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal transition hover:bg-[#007D9E]"
               >
                 <T p="uslugi-santehnika" o={9}>Вызвать мастера</T>
@@ -268,7 +272,7 @@ export default function UslugiSantehnikaPage() {
 
               <div className="relative shrink-0">
                 <a
-                  href="https://wa.me/77771696969"
+                  href={`https://wa.me/${SC.contacts.main.digits}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-14 w-full items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100 md:w-auto"
@@ -283,7 +287,7 @@ export default function UslugiSantehnikaPage() {
                 >
                   <div className="services-discount absolute left-0 top-0">
                     <img
-                      src="/discount-15.png"
+                      src={imgSrc(SC, "/discount-15.png")}
                       alt=""
                       className="absolute left-0 top-[-47px] w-[180px] max-w-none drop-shadow-lg"
                     />
@@ -518,14 +522,14 @@ export default function UslugiSantehnikaPage() {
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="tel:+77771696969"
+              href={`tel:+${SC.contacts.main.digits}`}
               className="services-call-shine inline-flex min-h-14 w-full items-center justify-center rounded-full bg-[#FDC700] px-8 py-4 text-lg text-[#171717] transition hover:bg-[#eab800] sm:w-auto"
             >
               <T p="uslugi-santehnika" o={31}>Вызвать мастера</T>
             </a>
 
             <a
-              href="https://wa.me/77771696969"
+              href={`https://wa.me/${SC.contacts.main.digits}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-white px-8 py-4 text-lg text-[#292929] transition hover:bg-gray-100 sm:w-auto"
@@ -537,9 +541,14 @@ export default function UslugiSantehnikaPage() {
       </section>
 
       <Footer
-        phone="77771696969"
-        displayPhone="+7 777 169 69 69"
+        phone={`${SC.contacts.main.digits}`}
+        displayPhone={`${SC.contacts.main.display}`}
       />
     </main>
   );
+}
+
+// Заголовок и описание для поиска можно изменить в админке (вкладка «SEO»)
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeo("/uslugi-santehnika", pageMetadata);
 }

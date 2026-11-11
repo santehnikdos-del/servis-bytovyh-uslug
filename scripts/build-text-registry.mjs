@@ -1,4 +1,4 @@
-// Собирает список надписей для вкладки «Тексты» в админке.
+// Собирает списки для вкладок админки «Тексты», «Картинки» и «SEO».
 // 1) COLLECT_SITE_TEXTS=/tmp/texts.jsonl npm run build   (сборка записывает все надписи <T>)
 // 2) node scripts/build-text-registry.mjs /tmp/texts.jsonl
 import fs from "fs";
@@ -41,8 +41,22 @@ for (const [id, title, path] of PAGES) {
   if (texts.length) pages.push({ id, title, path, texts });
 }
 
-const unknown = [...new Set(rows.map((r) => r.p))].filter((p) => !PAGES.some(([id]) => id === p));
+// Картинки сайта (только свои файлы из public/)
+const images = [...new Set(rows.filter((r) => typeof r.img === "string" && r.img.startsWith("/")).map((r) => r.img))].sort();
+
+// Заголовки для поиска: сначала основные страницы, потом остальные по алфавиту
+const seoMap = new Map();
+for (const r of rows) if (r.seo && !seoMap.has(r.seo)) seoMap.set(r.seo, { path: r.seo, title: r.title || "", description: r.description || "" });
+const mainOrder = PAGES.map(([, , path]) => path);
+const seo = [...seoMap.values()].sort((a, b) => {
+  const ia = mainOrder.indexOf(a.path), ib = mainOrder.indexOf(b.path);
+  if (ia !== -1 || ib !== -1) return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
+  return a.path.localeCompare(b.path);
+});
+
+const unknown = [...new Set(rows.filter((r) => r.p).map((r) => r.p))].filter((p) => !PAGES.some(([id]) => id === p));
 if (unknown.length) console.warn("Нет названия для страниц:", unknown.join(", "));
 
-fs.writeFileSync("lib/site-texts-registry.json", JSON.stringify({ pages }, null, 1) + "\n");
+fs.writeFileSync("lib/site-texts-registry.json", JSON.stringify({ pages, images, seo }, null, 1) + "\n");
 console.log(pages.map((p) => `${p.title}: ${p.texts.length}`).join("\n"));
+console.log(`Картинок: ${images.length}, страниц для SEO: ${seo.length}`);

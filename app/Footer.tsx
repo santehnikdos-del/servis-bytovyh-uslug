@@ -1,13 +1,16 @@
 import T from "./T";
+import { loadSiteContent } from "../lib/site-texts";
 type FooterProps = {
   phone?: string;
   displayPhone?: string;
 };
 
-export default function Footer({
-  phone = "77771696969",
-  displayPhone = "+7 777 169 69 69",
-}: FooterProps) {
+export default async function Footer(props: FooterProps) {
+  // Номер из админки (вкладка «Контакты»), если страница не передала свой
+  const SC = await loadSiteContent();
+  const phone = props.phone || SC.contacts.main.digits;
+  const displayPhone = props.displayPhone || SC.contacts.main.display;
+
   return (
     <>
       {/* FOOTER */}

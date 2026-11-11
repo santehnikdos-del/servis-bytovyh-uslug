@@ -1,8 +1,10 @@
+import type { Metadata } from "next";
+import { imgSrc, loadSiteContent, withSeo } from "../../lib/site-texts";
 import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
 
-export const metadata = {
+const pageMetadata: Metadata = {
   title:
     "Прочистка канализации Алматы – устранение засоров | Сервис бытовых услуг",
   description:
@@ -189,12 +191,14 @@ function Check({ text }: { text: string }) {
   );
 }
 
-export default function ProchistkaKanalizaciiPage() {
+export default async function ProchistkaKanalizaciiPage() {
+  const SC = await loadSiteContent();
+
   return (
     <main className="min-h-screen bg-white pb-20 text-slate-900 md:pb-0">
       <Header
-        phone="77771696969"
-        displayPhone="+7 777 169 69 69"
+        phone={`${SC.contacts.main.digits}`}
+        displayPhone={`${SC.contacts.main.display}`}
       />
 
       <style>{`
@@ -275,7 +279,7 @@ export default function ProchistkaKanalizaciiPage() {
 
         <div className="absolute inset-y-0 right-0 hidden w-[53%] md:block">
           <img
-            src="/banner-master.jpg"
+            src={imgSrc(SC, "/banner-master.jpg")}
             alt="Мастер сервиса бытовых услуг в Алматы"
             className="h-full w-full object-cover object-[60%_center]"
           />
@@ -320,7 +324,7 @@ export default function ProchistkaKanalizaciiPage() {
 
             <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 md:mx-0 md:max-w-none md:flex-row md:flex-wrap md:items-center">
               <a
-                href="tel:+77771696969"
+                href={`tel:+${SC.contacts.main.digits}`}
                 className="drain-call-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal transition hover:bg-[#007D9E]"
               >
                 <T p="prochistka-kanalizacii" o={7}>Вызвать мастера</T>
@@ -328,7 +332,7 @@ export default function ProchistkaKanalizaciiPage() {
 
               <div className="relative shrink-0">
                 <a
-                  href="https://wa.me/77771696969"
+                  href={`https://wa.me/${SC.contacts.main.digits}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-14 w-full items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100 md:w-auto"
@@ -343,7 +347,7 @@ export default function ProchistkaKanalizaciiPage() {
                 >
                   <div className="drain-discount absolute left-0 top-0">
                     <img
-                      src="/discount-15.png"
+                      src={imgSrc(SC, "/discount-15.png")}
                       alt=""
                       className="absolute left-0 top-[-47px] w-[180px] max-w-none drop-shadow-lg"
                     />
@@ -669,10 +673,10 @@ export default function ProchistkaKanalizaciiPage() {
                   <T p="prochistka-kanalizacii" o={45}>Телефон</T>
                 </p>
                 <a
-                  href="tel:+77771696969"
+                  href={`tel:+${SC.contacts.main.digits}`}
                   className="mt-3 block text-xl font-bold text-[#0092B8]"
                 >
-                  +7 777 169 69 69
+                  {SC.contacts.main.display}
                 </a>
               </div>
 
@@ -681,7 +685,7 @@ export default function ProchistkaKanalizaciiPage() {
                   WhatsApp
                 </p>
                 <a
-                  href="https://wa.me/77771696969"
+                  href={`https://wa.me/${SC.contacts.main.digits}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-3 inline-flex items-center gap-3 font-bold text-[#0092B8]"
@@ -712,7 +716,7 @@ export default function ProchistkaKanalizaciiPage() {
 
             <div className="overflow-hidden rounded-3xl border border-slate-200">
               <iframe
-                src="https://www.google.com/maps?q=Алматы&output=embed"
+                src={imgSrc(SC, "https://www.google.com/maps?q=Алматы&output=embed")}
                 className="h-[320px] w-full border-0"
                 loading="lazy"
                 title="Карта Алматы"
@@ -739,14 +743,14 @@ export default function ProchistkaKanalizaciiPage() {
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="tel:+77771696969"
+              href={`tel:+${SC.contacts.main.digits}`}
               className="drain-call-shine inline-flex min-h-14 w-full items-center justify-center rounded-full bg-[#FDC700] px-8 py-4 text-lg text-[#171717] transition hover:bg-[#eab800] sm:w-auto"
             >
               <T p="prochistka-kanalizacii" o={54}>Вызвать мастера</T>
             </a>
 
             <a
-              href="https://wa.me/77771696969"
+              href={`https://wa.me/${SC.contacts.main.digits}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-white px-8 py-4 text-lg text-[#292929] transition hover:bg-gray-100 sm:w-auto"
@@ -758,9 +762,14 @@ export default function ProchistkaKanalizaciiPage() {
       </section>
 
       <Footer
-        phone="77771696969"
-        displayPhone="+7 777 169 69 69"
+        phone={`${SC.contacts.main.digits}`}
+        displayPhone={`${SC.contacts.main.display}`}
       />
     </main>
   );
+}
+
+// Заголовок и описание для поиска можно изменить в админке (вкладка «SEO»)
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeo("/prochistka-kanalizacii", pageMetadata);
 }
