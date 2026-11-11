@@ -131,17 +131,10 @@ export default function AdminServicesPage() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-100 px-5 py-10">
-      <div className="mx-auto max-w-5xl">
+    <main className="py-8">
+      <div className="mx-auto max-w-6xl px-4">
 
-        <a
-          href="/admin"
-          className="font-bold text-blue-600 hover:underline"
-        >
-          ← Назад в админку
-        </a>
-
-        <h1 className="mt-5 text-4xl font-black text-slate-950">
+        <h1 className="text-2xl font-black text-slate-950">
           Прочие услуги
         </h1>
 
@@ -154,7 +147,7 @@ export default function AdminServicesPage() {
 
         <form
           onSubmit={submitService}
-          className="mt-8 rounded-3xl bg-white p-6 shadow"
+          className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
         >
           <h2 className="text-2xl font-black text-slate-950">
             {editingId
