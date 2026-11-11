@@ -1,7 +1,10 @@
+import type { Metadata } from "next";
+import { imgSrc, loadSiteContent, withSeo } from "../../lib/site-texts";
+import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
 
-export const metadata = {
+const pageMetadata: Metadata = {
   title: "О нас | Сервис бытовых услуг в Алматы",
   description:
     "Сервис бытовых услуг в Алматы. Своя команда мастеров, 15 лет опыта, более 1000 клиентов. Согласование стоимости заранее и гарантия на работы.",
@@ -83,15 +86,17 @@ function Check({ text }: { text: string }) {
           strokeLinejoin="round"
         />
       </svg>
-      <span>{text}</span>
+      <span><T p="o-nas" o={1}>{text}</T></span>
     </li>
   );
 }
 
-export default function ONasPage() {
+export default async function ONasPage() {
+  const SC = await loadSiteContent();
+
   return (
     <main className="min-h-screen bg-white pb-20 text-slate-900 md:pb-0">
-      <Header />
+      <Header phone={SC.contacts.main.digits} displayPhone={SC.contacts.main.display} />
 
       <style>{`
         @keyframes aboutArrowMove {
@@ -157,16 +162,16 @@ export default function ONasPage() {
             className="mb-6 flex items-center gap-2 text-sm text-white/70"
           >
             <a href="/" className="hover:text-[#FDC700]">
-              Главная
+              <T p="o-nas" o={2}>Главная</T>
             </a>
             <span aria-hidden="true">→</span>
             <span aria-current="page" className="text-white">
-              О нас
+              <T p="o-nas" o={3}>О нас</T>
             </span>
           </nav>
 
           <h1 className="text-center text-3xl font-bold uppercase">
-            О нас
+            <T p="o-nas" o={4}>О нас</T>
           </h1>
 
           <ul className="mx-auto mt-6 flex w-fit flex-col gap-3">
@@ -176,15 +181,15 @@ export default function ONasPage() {
           </ul>
 
           <p className="mt-7 text-center text-lg leading-7 text-white/85">
-            Сервис бытовых услуг в Алматы. Помогаем с ремонтом,
-            установкой и обслуживанием оборудования вашего дома.
+            <T p="o-nas" o={5}>Сервис бытовых услуг в Алматы. Помогаем с ремонтом,
+            установкой и обслуживанием оборудования вашего дома.</T>
           </p>
 
           <a
-            href="tel:+77771696969"
+            href={`tel:+${SC.contacts.main.digits}`}
             className="about-call-shine mx-auto mt-8 flex max-w-sm items-center justify-center rounded-full bg-[#0092B8]/40 px-6 py-4 text-lg"
           >
-            Связаться с нами
+            <T p="o-nas" o={6}>Связаться с нами</T>
           </a>
         </div>
       </section>
@@ -196,7 +201,7 @@ export default function ONasPage() {
 >
   <div className="absolute inset-y-0 right-0 w-[53%]">
     <img
-      src="/banner-master.jpg"
+      src={imgSrc(SC, "/banner-master.jpg")}
       alt="Мастер сервиса бытовых услуг в Алматы"
       className="h-full w-full object-cover object-[60%_center]"
     />
@@ -218,46 +223,46 @@ export default function ONasPage() {
         className="mb-5 flex items-center gap-2 text-sm text-white/70"
       >
         <a href="/" className="hover:text-[#FDC700]">
-          Главная
+          <T p="o-nas" o={7}>Главная</T>
         </a>
         <span aria-hidden="true">→</span>
         <span aria-current="page" className="text-white">
-          О нас
+          <T p="o-nas" o={8}>О нас</T>
         </span>
       </nav>
 
       <h1 className="whitespace-nowrap text-5xl font-bold uppercase leading-[1.05] lg:text-[64px]">
-  О нашей <span className="text-[#FDC700]">команде</span>
+  <T p="o-nas" o={9}>О нашей</T> <span className="text-[#FDC700]"><T p="o-nas" o={10}>команде</T></span>
 </h1>
 
       <p className="mt-5 max-w-lg text-lg leading-7 text-white/85">
-        Сервис бытовых услуг в Алматы. Свои мастера,
-        согласованная стоимость и аккуратная работа.
+        <T p="o-nas" o={11}>Сервис бытовых услуг в Алматы. Свои мастера,
+        согласованная стоимость и аккуратная работа.</T>
       </p>
 
       <div className="mt-8 flex flex-wrap gap-3">
         <a
-          href="tel:+77771696969"
+          href={`tel:+${SC.contacts.main.digits}`}
           className="about-call-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal transition hover:bg-[#007D9E]"
         >
-          Вызвать мастера
+          <T p="o-nas" o={12}>Вызвать мастера</T>
         </a>
 
         <div className="relative shrink-0">
           <a
-            href="https://wa.me/77771696969"
+            href={`https://wa.me/${SC.contacts.main.digits}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex h-14 items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100"
           >
-            Написать в WhatsApp
+            <T p="o-nas" o={13}>Написать в WhatsApp</T>
           </a>
 
           {/* СКИДКА */}
           <div className="pointer-events-none absolute left-[calc(100%-6px)] top-1/2 z-20 h-0 w-0">
             <div className="about-banner-discount absolute left-0 top-0">
               <img
-                src="/discount-15.png"
+                src={imgSrc(SC, "/discount-15.png")}
                 alt="Скидка 15% на все услуги"
                 className="absolute left-0 top-[-47px] h-auto w-[180px] max-w-none drop-shadow-[0_5px_7px_rgba(0,0,0,0.25)]"
               />
@@ -324,22 +329,22 @@ export default function ONasPage() {
       <section className="bg-white px-5 py-12 md:py-16">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-4xl font-bold leading-tight text-[#0092B8] md:text-[54px]">
-            Мастера, которым можно доверить заботу о доме
+            <T p="o-nas" o={14}>Мастера, которым можно доверить заботу о доме</T>
           </h2>
 
           <p className="mt-6 text-lg leading-8 text-slate-700">
-            Мы — команда мастеров по бытовым услугам в Алматы.
+            <T p="o-nas" o={15}>Мы — команда мастеров по бытовым услугам в Алматы.
             Наше основное направление — сантехнические работы:
             от замены смесителя до монтажа инженерных систем.
             Помогаем владельцам квартир, частных домов и
-            коммерческих помещений.
+            коммерческих помещений.</T>
           </p>
 
           <p className="mt-4 text-base leading-7 text-slate-600">
-            Перед началом работы объясняем, что необходимо сделать,
+            <T p="o-nas" o={16}>Перед началом работы объясняем, что необходимо сделать,
             согласовываем стоимость и порядок выполнения.
             Принимаем наличную и безналичную оплату,
-            предоставляем документы.
+            предоставляем документы.</T>
           </p>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -348,7 +353,7 @@ export default function ONasPage() {
               className="inline-flex items-center justify-center gap-3 rounded-full bg-[#0092B8] px-6 py-4 font-bold text-white"
             >
               <Arrow />
-              Посмотреть работы
+              <T p="o-nas" o={17}>Посмотреть работы</T>
             </a>
 
             <a
@@ -356,7 +361,7 @@ export default function ONasPage() {
               className="inline-flex items-center justify-center gap-3 rounded-full bg-[#FDC700] px-6 py-4 font-bold text-[#171717]"
             >
               <Arrow />
-              Читать отзывы
+              <T p="o-nas" o={18}>Читать отзывы</T>
             </a>
           </div>
         </div>
@@ -366,7 +371,7 @@ export default function ONasPage() {
       <section className="bg-slate-50 py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-center text-4xl font-bold leading-tight text-[#0092B8] md:text-[54px]">
-            Почему выбирают нас
+            <T p="o-nas" o={19}>Почему выбирают нас</T>
           </h2>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -376,10 +381,10 @@ export default function ONasPage() {
                 className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#FDC700] hover:shadow-lg"
               >
                 <h3 className="text-xl font-black text-[#0092B8]">
-                  {title}
+                  <T p="o-nas" o={20}>{title}</T>
                 </h3>
                 <p className="mt-3 leading-7 text-slate-600">
-                  {text}
+                  <T p="o-nas" o={21}>{text}</T>
                 </p>
               </div>
             ))}
@@ -391,7 +396,7 @@ export default function ONasPage() {
       <section className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-center text-4xl font-bold leading-tight text-[#0092B8] md:text-[54px]">
-            Чем можем помочь
+            <T p="o-nas" o={22}>Чем можем помочь</T>
           </h2>
 
           <div className="mt-10 grid gap-5 md:grid-cols-3">
@@ -401,11 +406,11 @@ export default function ONasPage() {
                 className="flex flex-col rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#FDC700] hover:shadow-lg"
               >
                 <h3 className="text-xl font-black text-[#0092B8]">
-                  {title}
+                  <T p="o-nas" o={23}>{title}</T>
                 </h3>
 
                 <p className="mt-3 leading-7 text-slate-600">
-                  {text}
+                  <T p="o-nas" o={24}>{text}</T>
                 </p>
 
                 <a
@@ -413,7 +418,7 @@ export default function ONasPage() {
                   className="mt-auto inline-flex items-center gap-3 pt-5 font-semibold text-[#0092B8] hover:underline"
                 >
                   <Arrow />
-                  Подробнее
+                  <T p="o-nas" o={25}>Подробнее</T>
                 </a>
               </div>
             ))}
@@ -425,7 +430,7 @@ export default function ONasPage() {
       <section className="bg-slate-50 py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-center text-4xl font-bold leading-tight text-[#0092B8] md:text-[54px]">
-            Как мы работаем
+            <T p="o-nas" o={26}>Как мы работаем</T>
           </h2>
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -435,15 +440,15 @@ export default function ONasPage() {
                 className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#FDC700] hover:shadow-lg"
               >
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#FDC700] text-xl font-black">
-                  {number}
+                  <T p="o-nas" o={27}>{number}</T>
                 </div>
 
                 <h3 className="mt-5 text-xl font-black text-[#0092B8]">
-                  {title}
+                  <T p="o-nas" o={28}>{title}</T>
                 </h3>
 
                 <p className="mt-3 leading-7 text-slate-600">
-                  {text}
+                  <T p="o-nas" o={29}>{text}</T>
                 </p>
               </div>
             ))}
@@ -455,36 +460,36 @@ export default function ONasPage() {
       <section id="contacts" className="bg-[#0092B8] py-16 text-white">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <p className="font-bold uppercase tracking-wider text-[#FDC700]">
-            Весь Алматы и пригород
+            <T p="o-nas" o={30}>Весь Алматы и пригород</T>
           </p>
 
           <h2 className="mt-3 text-3xl font-bold md:text-[54px] md:leading-tight">
-            Обсудим вашу задачу
+            <T p="o-nas" o={31}>Обсудим вашу задачу</T>
           </h2>
 
           <p className="mt-5 text-lg leading-8 text-white/90">
-            Позвоните или напишите в WhatsApp.
+            <T p="o-nas" o={32}>Позвоните или напишите в WhatsApp.
             Уточним детали, согласуем стоимость и удобное
-            время приезда мастера.
+            время приезда мастера.</T>
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <a
-              href="tel:+77771696969"
+              href={`tel:+${SC.contacts.main.digits}`}
               className="about-call-shine inline-flex items-center gap-3 rounded-full bg-[#FDC700] px-7 py-4 text-lg text-[#171717]"
             >
               <Arrow />
-              Позвонить
+              <T p="o-nas" o={33}>Позвонить</T>
             </a>
 
             <a
-              href="https://wa.me/77771696969"
+              href={`https://wa.me/${SC.contacts.main.digits}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 rounded-full bg-white px-7 py-4 text-lg text-[#292929]"
             >
               <Arrow />
-              Написать в WhatsApp
+              <T p="o-nas" o={34}>Написать в WhatsApp</T>
             </a>
           </div>
         </div>
@@ -493,4 +498,9 @@ export default function ONasPage() {
       <Footer />
     </main>
   );
+}
+
+// Заголовок и описание для поиска можно изменить в админке (вкладка «SEO»)
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeo("/o-nas", pageMetadata);
 }

@@ -1,3 +1,5 @@
+import { imgSrc, loadSiteContent } from "../lib/site-texts";
+import T from "./T";
 type RayonyProps = {
   service?: string;
 };
@@ -13,7 +15,9 @@ const districts = [
   "Жетысуский район",
 ];
 
-export default function Rayony({ service }: RayonyProps) {
+export default async function Rayony({ service }: RayonyProps) {
+  const SC = await loadSiteContent();
+
   return (
     <section
       id="districts"
@@ -23,7 +27,7 @@ export default function Rayony({ service }: RayonyProps) {
         {/* ЗАГОЛОВОК */}
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-sm font-medium uppercase tracking-widest text-gray-500">
-            География выезда
+            <T p="rayony" o={1}>География выезда</T>
           </p>
 
           <h2 className="mt-3 text-3xl font-bold leading-tight text-[#0092B8] md:text-[44px]">
@@ -73,15 +77,15 @@ export default function Rayony({ service }: RayonyProps) {
             </ul>
 
             <p className="mt-5 border-l-4 border-[#FDC700] pl-4 text-base leading-7 text-gray-600">
-              Быстрый выезд мастера в ваш район.
-              Обслуживаем весь Алматы и пригород.
+              <T p="rayony" o={2}>Быстрый выезд мастера в ваш район.
+              Обслуживаем весь Алматы и пригород.</T>
             </p>
           </div>
 
           {/* КАРТА */}
           <div className="min-w-0 overflow-hidden rounded-2xl border border-gray-200 bg-gray-100">
             <iframe
-              src="https://www.google.com/maps?q=Алматы&z=10&output=embed"
+              src={imgSrc(SC, "https://www.google.com/maps?q=Алматы&z=10&output=embed")}
               title="Карта Алматы и пригорода — территория выезда мастеров"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

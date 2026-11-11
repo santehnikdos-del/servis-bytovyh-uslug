@@ -1,3 +1,5 @@
+import { imgSrc, loadSiteContent } from "../../lib/site-texts";
+import T from "../T";
 import Image, { getImageProps } from "next/image";
 import Link from "next/link";
 import Header from "../Header";
@@ -289,12 +291,14 @@ function PlumbingIcon({ src }: { src: string }) {
   );
 }
 
-export default function SantehnikContent({
+export default async function SantehnikContent({
   district,
 }: SantehnikContentProps) {
+  const SC = await loadSiteContent();
+
   return (
     <main className="min-h-screen bg-neutral-800 pb-20 text-white md:pb-0">
-      <Header />
+      <Header phone={SC.contacts.main.digits} displayPhone={SC.contacts.main.display} />
 
       {/* ПЕРВЫЙ ЭКРАН — ОДНА СЕКЦИЯ ДЛЯ ТЕЛЕФОНА И КОМПЬЮТЕРА */}
       <section className="relative overflow-hidden bg-[#333333] px-6 py-8 text-white md:h-[490px] md:bg-[#281E12] md:px-0 md:py-0">
@@ -304,7 +308,7 @@ export default function SantehnikContent({
           className="pointer-events-none absolute inset-0 z-0 opacity-10 md:hidden"
         >
           <Image
-            src="/hero-mark.png"
+            src={imgSrc(SC, "/hero-mark.png")}
             alt=""
             fill
             sizes="85vw"
@@ -315,7 +319,7 @@ export default function SantehnikContent({
         {/* КОМПЬЮТЕР: ФОТО СПРАВА */}
         <div className="absolute inset-y-0 right-0 hidden w-[53%] md:block">
           <Image
-            src="/banner-master.jpg"
+            src={imgSrc(SC, "/banner-master.jpg")}
             alt="Сантехник в Алматы"
             fill
             sizes="(min-width: 768px) 53vw, 1px"
@@ -342,7 +346,7 @@ export default function SantehnikContent({
                   : "text-3xl leading-tight md:text-5xl md:leading-[1.05] lg:text-[64px]"
               }`}
             >
-              Сантехник{" "}
+              <T p="santehnik" o={1}>Сантехник</T>{" "}
               <span className="md:block md:text-[#FDC700]">
                 {district ? `в ${district} районе Алматы` : "Алматы"}
               </span>
@@ -384,15 +388,15 @@ export default function SantehnikContent({
               </div>
 
               <p className="mt-7 text-center text-lg leading-7">
-                Вызов сантехника на дом. Ремонт, установка, прочистка
-                сантехники и устранение протечек.
+                <T p="santehnik" o={2}>Вызов сантехника на дом. Ремонт, установка, прочистка
+                сантехники и устранение протечек.</T>
               </p>
 
               <a
-                href="tel:+77771696969"
+                href={`tel:+${SC.contacts.main.digits}`}
                 className="call-button-shine mx-auto mt-10 flex max-w-sm items-center justify-center rounded-full bg-[#0092B8]/40 px-6 py-4 text-lg font-normal text-white"
               >
-                Вызвать мастера
+                <T p="santehnik" o={3}>Вызвать мастера</T>
               </a>
             </div>
 
@@ -400,36 +404,36 @@ export default function SantehnikContent({
             <div className="hidden md:block">
               <p className="mt-4 text-lg leading-7 text-white/85">
                 <span className="block whitespace-nowrap">
-                  Установка и ремонт сантехники в Алматы.
+                  <T p="santehnik" o={4}>Установка и ремонт сантехники в Алматы.</T>
                 </span>
                 <span className="block whitespace-nowrap">
-                  Устранение протечек и прочистка канализации.
+                  <T p="santehnik" o={5}>Устранение протечек и прочистка канализации.</T>
                 </span>
               </p>
 
               <div className="mt-8 flex gap-3">
                 <a
-                  href="tel:+77771696969"
+                  href={`tel:+${SC.contacts.main.digits}`}
                   className="call-button-shine inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-[#0092B8]/80 px-6 text-xl font-normal text-white transition hover:bg-[#007D9E]"
                 >
-                  Вызвать мастера
+                  <T p="santehnik" o={6}>Вызвать мастера</T>
                 </a>
 
                 <div className="relative shrink-0">
                   <a
-                    href="https://wa.me/77771696969"
+                    href={`https://wa.me/${SC.contacts.main.digits}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex h-14 min-w-[220px] items-center justify-center whitespace-nowrap rounded-full bg-white px-6 text-xl font-normal text-[#292929] transition hover:bg-gray-100"
                   >
-                    Написать в WhatsApp
+                    <T p="santehnik" o={7}>Написать в WhatsApp</T>
                   </a>
 
                   {/* КОЛЬЦО И БИРКА */}
                   <div className="pointer-events-none absolute left-[calc(100%-6px)] top-1/2 z-20 h-0 w-0">
                     <div className="santehnik-discount-hanging absolute left-0 top-0">
                       <img
-                        src="/discount-15.png"
+                        src={imgSrc(SC, "/discount-15.png")}
                         alt="Скидка 15% на все услуги"
                         loading="lazy"
                         decoding="async"
@@ -507,9 +511,9 @@ export default function SantehnikContent({
       <section className="bg-white px-5 py-12 text-[#171717] md:py-16">
         <div className="mx-auto max-w-3xl">
           <h2 className="text-center text-4xl font-bold leading-tight text-[#0092B8] md:text-[54px]">
-            Столкнулись с проблемой
+            <T p="santehnik" o={8}>Столкнулись с проблемой</T>
             <br />
-            в сантехнике?
+            <T p="santehnik" o={9}>в сантехнике?</T>
           </h2>
 
           <div className="mt-8 space-y-3">
@@ -518,7 +522,7 @@ export default function SantehnikContent({
                 key={text}
                 className="grid grid-cols-[44px_1fr] items-center gap-7"
               >
-                <PlumbingIcon src={icon} />
+                <PlumbingIcon src={imgSrc(SC, icon)} />
 
                 <p className="text-[17px] leading-snug md:text-xl">
                   {text}
@@ -536,19 +540,19 @@ export default function SantehnikContent({
       >
         <div className="mx-auto max-w-3xl">
           <h2 className="mt-3 text-center text-4xl font-bold leading-tight text-[#0092B8] md:text-[54px]">
-            Поможем решить вашу задачу
+            <T p="santehnik" o={10}>Поможем решить вашу задачу</T>
           </h2>
 
           <p className="mt-6 text-center text-base leading-relaxed text-slate-700 md:text-lg">
-            Свой штат квалифицированных работников. Высокий уровень
+            <T p="santehnik" o={11}>Свой штат квалифицированных работников. Высокий уровень
             сервиса. Более 10 лет опыта и более 1000 клиентов. Наши
             мастера выполняют сантехнические работы аккуратно, от
-            замены смесителя до сложного ремонта.
+            замены смесителя до сложного ремонта.</T>
           </p>
 
           <p className="mt-3 text-center text-sm leading-relaxed text-slate-600 md:text-base">
-            Стоимость согласуем заранее. Принимаем наличную и
-            безналичную оплату, предоставляем документы.
+            <T p="santehnik" o={12}>Стоимость согласуем заранее. Принимаем наличную и
+            безналичную оплату, предоставляем документы.</T>
           </p>
 
           <div className="mt-7 grid gap-3 sm:grid-cols-2">
@@ -562,7 +566,7 @@ export default function SantehnikContent({
               >
                 →
               </span>
-              Посмотреть работы
+              <T p="santehnik" o={13}>Посмотреть работы</T>
             </Link>
 
             <Link
@@ -575,7 +579,7 @@ export default function SantehnikContent({
               >
                 →
               </span>
-              Читать отзывы
+              <T p="santehnik" o={14}>Читать отзывы</T>
             </Link>
           </div>
         </div>
@@ -589,7 +593,7 @@ export default function SantehnikContent({
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-10">
             <h2 className="text-center text-4xl font-bold leading-tight text-[#0092B8] md:text-[54px]">
-              Какая помощь вам нужна?
+              <T p="santehnik" o={15}>Какая помощь вам нужна?</T>
             </h2>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-5">
@@ -598,7 +602,7 @@ export default function SantehnikContent({
                   href="/uslugi-santehnika"
                   className="hover:underline"
                 >
-                  Услуги сантехника
+                  <T p="santehnik" o={16}>Услуги сантехника</T>
                 </Link>
 
                 <span
@@ -613,7 +617,7 @@ export default function SantehnikContent({
                 href="/uslugi-santehnika"
                 className="inline-flex items-center justify-center rounded-full bg-[#FDC700] px-8 py-4 text-lg font-normal text-[#171717] transition hover:bg-[#eab800]"
               >
-                Подробнее
+                <T p="santehnik" o={17}>Подробнее</T>
               </Link>
             </div>
           </div>
@@ -643,7 +647,7 @@ export default function SantehnikContent({
                   >
                     →
                   </span>
-                  Подробнее
+                  <T p="santehnik" o={18}>Подробнее</T>
                 </Link>
               </div>
             ))}
@@ -658,12 +662,12 @@ export default function SantehnikContent({
       >
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-center text-4xl font-bold leading-tight text-[#0092B8] md:text-[54px]">
-            Примерная стоимость работ
+            <T p="santehnik" o={19}>Примерная стоимость работ</T>
           </h2>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-5">
             <p className="inline-flex items-center gap-3 text-xl font-bold text-[#0092B8]">
-              Цены на услуги
+              <T p="santehnik" o={20}>Цены на услуги</T>
               <span
                 aria-hidden="true"
                 className="services-arrow inline-block"
@@ -676,13 +680,13 @@ export default function SantehnikContent({
               href="/price"
               className="inline-flex items-center justify-center rounded-full bg-[#FDC700] px-8 py-4 text-lg font-normal text-[#171717] transition hover:bg-[#eab800]"
             >
-              Подробнее
+              <T p="santehnik" o={21}>Подробнее</T>
             </Link>
           </div>
 
           <p className="mt-4 text-slate-600">
-            Базовые цены не менялись с 2020 года. Несмотря на рост цен,
-            мы сохраняем стоимость основных услуг на прежнем уровне.
+            <T p="santehnik" o={22}>Базовые цены не менялись с 2020 года. Несмотря на рост цен,
+            мы сохраняем стоимость основных услуг на прежнем уровне.</T>
           </p>
 
           <div className="mt-10 overflow-hidden rounded-3xl border border-slate-200 bg-white">
@@ -706,55 +710,55 @@ export default function SantehnikContent({
         <section className="bg-white py-20 text-slate-900">
           <div className="mx-auto max-w-7xl px-6">
             <h2 className="text-4xl font-black text-[#0092B8]">
-              Сантехник в {district} районе Алматы — вызов на дом
+              <T p="santehnik" o={23}>Сантехник в</T> {district} <T p="santehnik" o={24}>районе Алматы — вызов на дом</T>
             </h2>
 
             <div className="mt-8 max-w-5xl space-y-6 text-lg leading-8 text-slate-700">
               <p>
-                Выезжаем к клиентам в {district} районе Алматы: в
+                <T p="santehnik" o={25}>Выезжаем к клиентам в</T> {district} <T p="santehnik" o={26}>районе Алматы: в
                 квартиры многоэтажных домов, частные дома, офисы и
                 магазины. Мастер приезжает со своим рабочим
                 инструментом, осматривает неисправность и согласовывает
-                стоимость работ до их начала.
+                стоимость работ до их начала.</T>
               </p>
 
               <p>
-                В {district} районе можно вызвать сантехника для
+                <T p="santehnik" o={27}>В</T> {district} <T p="santehnik" o={28}>районе можно вызвать сантехника для
                 устранения протечек, замены смесителей и труб,
                 установки унитазов, раковин, ванн и бойлеров, а также
                 для прочистки канализации. Если нужно выполнить
-                несколько работ, их можно сделать за один выезд.
+                несколько работ, их можно сделать за один выезд.</T>
               </p>
 
               <p>
-                Чтобы вызвать сантехника, позвоните или напишите в
+                <T p="santehnik" o={29}>Чтобы вызвать сантехника, позвоните или напишите в
                 WhatsApp, назовите адрес и кратко опишите проблему.
-                Время выезда согласуем сразу. Работаем в {district}{" "}
-                районе и во всех остальных районах Алматы каждый день.
+                Время выезда согласуем сразу. Работаем в</T> {district}{" "}
+                <T p="santehnik" o={30}>районе и во всех остальных районах Алматы каждый день.</T>
               </p>
 
               <p>
-                Полный перечень работ смотрите на странице{" "}
+                <T p="santehnik" o={31}>Полный перечень работ смотрите на странице</T>{" "}
                 <Link
                   href="/uslugi-santehnika"
                   className="font-semibold text-sky-700 hover:underline"
                 >
-                  услуги сантехника
+                  <T p="santehnik" o={32}>услуги сантехника</T>
                 </Link>
-                , цены на странице{" "}
+                <T p="santehnik" o={33}>, цены на странице</T>{" "}
                 <Link
                   href="/price"
                   className="font-semibold text-sky-700 hover:underline"
                 >
-                  прайс-листа
+                  <T p="santehnik" o={34}>прайс-листа</T>
                 </Link>
-                , а общую информацию о нашей работе в городе на
-                странице{" "}
+                <T p="santehnik" o={35}>, а общую информацию о нашей работе в городе на
+                странице</T>{" "}
                 <Link
                   href="/santehnik"
                   className="font-semibold text-sky-700 hover:underline"
                 >
-                  сантехник в Алматы
+                  <T p="santehnik" o={36}>сантехник в Алматы</T>
                 </Link>
                 .
               </p>
@@ -765,64 +769,64 @@ export default function SantehnikContent({
         <section className="bg-white py-20 text-slate-900">
           <div className="mx-auto max-w-7xl px-6">
             <h2 className="text-4xl font-black text-[#0092B8]">
-              Сантехник в Алматы — вызов сантехника на дом
+              <T p="santehnik" o={37}>Сантехник в Алматы — вызов сантехника на дом</T>
             </h2>
 
             <div className="mt-8 max-w-5xl space-y-6 text-lg leading-8 text-slate-700">
               <p>
-                Нужен сантехник в Алматы? Наши мастера выполняют
+                <T p="santehnik" o={38}>Нужен сантехник в Алматы? Наши мастера выполняют
                 сантехнические работы в квартирах, частных домах,
                 офисах и других помещениях. Можно вызвать сантехника
-                для устранения протечки, ремонта сантехники,{" "}
+                для устранения протечки, ремонта сантехники,</T>{" "}
                 <Link
                   href="/ustanovka-smesitelya"
                   className="font-semibold text-sky-700 hover:underline"
                 >
-                  замены и установки смесителя
+                  <T p="santehnik" o={39}>замены и установки смесителя</T>
                 </Link>
                 ,{" "}
                 <Link
                   href="/ustanovka-unitaza"
                   className="font-semibold text-sky-700 hover:underline"
                 >
-                  установки унитаза
+                  <T p="santehnik" o={40}>установки унитаза</T>
                 </Link>
                 ,{" "}
                 <Link
                   href="/ustanovka-rakoviny"
                   className="font-semibold text-sky-700 hover:underline"
                 >
-                  установки раковины
+                  <T p="santehnik" o={41}>установки раковины</T>
                 </Link>
                 ,{" "}
                 <Link
                   href="/ustanovka-vanny"
                   className="font-semibold text-sky-700 hover:underline"
                 >
-                  установки ванны
+                  <T p="santehnik" o={42}>установки ванны</T>
                 </Link>
                 ,{" "}
                 <Link
                   href="/ustanovka-dushevoy-kabiny"
                   className="font-semibold text-sky-700 hover:underline"
                 >
-                  душевой кабины
+                  <T p="santehnik" o={43}>душевой кабины</T>
                 </Link>
                 ,{" "}
                 <Link
                   href="/ustanovka-boylera"
                   className="font-semibold text-sky-700 hover:underline"
                 >
-                  бойлера
+                  <T p="santehnik" o={44}>бойлера</T>
                 </Link>
                 ,{" "}
                 <Link
                   href="/zamena-trub"
                   className="font-semibold text-sky-700 hover:underline"
                 >
-                  замены труб
+                  <T p="santehnik" o={45}>замены труб</T>
                 </Link>{" "}
-                и решения других бытовых сантехнических задач.
+                <T p="santehnik" o={46}>и решения других бытовых сантехнических задач.</T>
               </p>
 
               {seoIntro.map((text) => (
@@ -855,11 +859,11 @@ export default function SantehnikContent({
       <section id="about" className="bg-sky-800 py-20 text-white">
         <div className="mx-auto max-w-7xl px-6">
           <p className="font-bold text-yellow-400">
-            Почему выбирают нас
+            <T p="santehnik" o={47}>Почему выбирают нас</T>
           </p>
 
           <h2 className="mt-2 text-4xl font-black">
-            Надёжный сантехнический сервис в Алматы
+            <T p="santehnik" o={48}>Надёжный сантехнический сервис в Алматы</T>
           </h2>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -880,10 +884,10 @@ export default function SantehnikContent({
       {/* КАК РАБОТАЕМ */}
       <section className="bg-white py-20 text-slate-900">
         <div className="mx-auto max-w-7xl px-6">
-          <p className="font-bold text-yellow-500">Как мы работаем</p>
+          <p className="font-bold text-yellow-500"><T p="santehnik" o={49}>Как мы работаем</T></p>
 
           <h2 className="mt-2 text-4xl font-black">
-            Всё просто — от заявки до гарантии
+            <T p="santehnik" o={50}>Всё просто — от заявки до гарантии</T>
           </h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -907,14 +911,14 @@ export default function SantehnikContent({
       {/* НАШИ РАБОТЫ */}
       <section id="works" className="bg-sky-800 py-20 text-white">
         <div className="mx-auto max-w-7xl px-6">
-          <p className="font-bold text-yellow-400">Наши работы</p>
+          <p className="font-bold text-yellow-400"><T p="santehnik" o={51}>Наши работы</T></p>
 
           <h2 className="mt-2 text-4xl font-black">
-            Примеры выполненных работ
+            <T p="santehnik" o={52}>Примеры выполненных работ</T>
           </h2>
 
           <p className="mt-4 max-w-3xl text-slate-300">
-            Реальные примеры сантехнических работ в Алматы.
+            <T p="santehnik" o={53}>Реальные примеры сантехнических работ в Алматы.</T>
           </p>
         </div>
       </section>
@@ -925,10 +929,10 @@ export default function SantehnikContent({
         className="bg-white py-20 text-slate-900"
       >
         <div className="mx-auto max-w-7xl px-6">
-          <p className="font-bold text-yellow-500">Отзывы клиентов</p>
+          <p className="font-bold text-yellow-500"><T p="santehnik" o={54}>Отзывы клиентов</T></p>
 
           <h2 className="mt-2 text-4xl font-black">
-            Что говорят о нашей работе
+            <T p="santehnik" o={55}>Что говорят о нашей работе</T>
           </h2>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -944,7 +948,7 @@ export default function SantehnikContent({
                 </p>
 
                 <p className="mt-5 font-black">{name}</p>
-                <p className="text-sm text-slate-500">Алматы</p>
+                <p className="text-sm text-slate-500"><T p="santehnik" o={56}>Алматы</T></p>
               </div>
             ))}
           </div>
@@ -955,7 +959,7 @@ export default function SantehnikContent({
       <section id="faq" className="bg-white py-16 text-slate-950">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-center text-3xl font-black md:text-4xl">
-            Часто задаваемые вопросы
+            <T p="santehnik" o={57}>Часто задаваемые вопросы</T>
           </h2>
 
           <div className="mt-10 space-y-4">
@@ -988,14 +992,14 @@ export default function SantehnikContent({
       {/* РАЙОНЫ */}
       <section className="bg-slate-100 py-20 text-slate-900">
         <div className="mx-auto max-w-7xl px-6">
-          <p className="font-bold text-yellow-500">Выезд по городу</p>
+          <p className="font-bold text-yellow-500"><T p="santehnik" o={58}>Выезд по городу</T></p>
 
           <h2 className="mt-2 text-4xl font-black">
-            Сантехник во всех районах Алматы
+            <T p="santehnik" o={59}>Сантехник во всех районах Алматы</T>
           </h2>
 
           <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
-            Выезжаем на сантехнические работы по всему Алматы.
+            <T p="santehnik" o={60}>Выезжаем на сантехнические работы по всему Алматы.</T>
           </p>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -1018,52 +1022,52 @@ export default function SantehnikContent({
         className="bg-white py-20 text-slate-900"
       >
         <div className="mx-auto max-w-7xl px-6">
-          <p className="font-bold text-yellow-500">Контакты</p>
+          <p className="font-bold text-yellow-500"><T p="santehnik" o={61}>Контакты</T></p>
 
           <h2 className="mt-2 text-4xl font-black">
-            Свяжитесь с нами
+            <T p="santehnik" o={62}>Свяжитесь с нами</T>
           </h2>
 
           <div className="mt-12 grid gap-10 lg:grid-cols-2">
             <div className="space-y-6">
               <div className="rounded-3xl bg-slate-100 p-6">
-                <p className="text-sm text-slate-500">Телефон</p>
+                <p className="text-sm text-slate-500"><T p="santehnik" o={63}>Телефон</T></p>
                 <a
-                  href="tel:+77771696969"
+                  href={`tel:+${SC.contacts.main.digits}`}
                   className="mt-2 block text-2xl font-black"
                 >
-                  +7 777 169 69 69
+                  {SC.contacts.main.display}
                 </a>
               </div>
 
               <div className="rounded-3xl bg-slate-100 p-6">
                 <p className="text-sm text-slate-500">WhatsApp</p>
                 <a
-                  href="https://wa.me/77771696969"
+                  href={`https://wa.me/${SC.contacts.main.digits}`}
                   className="mt-2 block text-2xl font-black text-green-600"
                 >
-                  Написать в WhatsApp
+                  <T p="santehnik" o={64}>Написать в WhatsApp</T>
                 </a>
               </div>
 
               <div className="rounded-3xl bg-slate-100 p-6">
-                <p className="text-sm text-slate-500">Режим работы</p>
+                <p className="text-sm text-slate-500"><T p="santehnik" o={65}>Режим работы</T></p>
                 <p className="mt-2 text-xl font-bold">
-                  Каждый день · Без выходных
+                  <T p="santehnik" o={66}>Каждый день · Без выходных</T>
                 </p>
               </div>
 
               <div className="rounded-3xl bg-slate-100 p-6">
-                <p className="text-sm text-slate-500">Обслуживаем</p>
+                <p className="text-sm text-slate-500"><T p="santehnik" o={67}>Обслуживаем</T></p>
                 <p className="mt-2 text-xl font-bold">
-                  Весь Алматы и пригород
+                  <T p="santehnik" o={68}>Весь Алматы и пригород</T>
                 </p>
               </div>
             </div>
 
             <div className="overflow-hidden rounded-3xl shadow-xl">
               <iframe
-                src="https://www.google.com/maps?q=Алматы&output=embed"
+                src={imgSrc(SC, "https://www.google.com/maps?q=Алматы&output=embed")}
                 className="h-[520px] w-full border-0"
                 loading="lazy"
                 title="Карта Алматы"
@@ -1078,31 +1082,31 @@ export default function SantehnikContent({
         <div className="mx-auto max-w-7xl px-6">
           <div className="rounded-3xl border border-yellow-400/20 bg-slate-900 p-10">
             <p className="font-bold text-yellow-400">
-              Срочный вызов мастера
+              <T p="santehnik" o={69}>Срочный вызов мастера</T>
             </p>
 
             <div className="mt-3 flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
               <div>
                 <h2 className="text-4xl font-black md:text-5xl">
-                  Нужен сантехник прямо сейчас?
+                  <T p="santehnik" o={70}>Нужен сантехник прямо сейчас?</T>
                 </h2>
 
                 <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
-                  Позвоните или напишите в WhatsApp. Уточним проблему и
-                  согласуем время выезда мастера.
+                  <T p="santehnik" o={71}>Позвоните или напишите в WhatsApp. Уточним проблему и
+                  согласуем время выезда мастера.</T>
                 </p>
               </div>
 
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="tel:+77771696969"
+                  href={`tel:+${SC.contacts.main.digits}`}
                   className="rounded-2xl bg-yellow-400 px-8 py-4 text-lg font-black text-slate-950"
                 >
-                  📞 Позвонить
+                  <T p="santehnik" o={72}>📞 Позвонить</T>
                 </a>
 
                 <a
-                  href="https://wa.me/77771696969"
+                  href={`https://wa.me/${SC.contacts.main.digits}`}
                   className="rounded-2xl bg-green-500 px-8 py-4 text-lg font-black text-white"
                 >
                   WhatsApp

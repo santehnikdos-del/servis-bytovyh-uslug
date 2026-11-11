@@ -3,6 +3,8 @@ import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import FloatingContacts from "./FloatingContacts";
+import PromoBar from "./PromoBar";
+import { loadSiteContent } from "../lib/site-texts";
 import ReviewSchema from "./ReviewSchema";
 
 const geistSans = Geist({
@@ -100,11 +102,13 @@ const schema = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { promo, contacts } = await loadSiteContent();
+
   return (
     <html
       lang="ru"
@@ -132,16 +136,25 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
+            __html: JSON.stringify(schema)
+              .replaceAll("+77771696969", `+${contacts.main.digits}`)
+              .replace(/</g, "\\u003c"),
           }}
         />
 
         {/* РЕАЛЬНЫЙ РЕЙТИНГ ИЗ SUPABASE */}
         <ReviewSchema />
 
+        <PromoBar promo={promo} />
         {children}
 
-        <FloatingContacts />
+        <FloatingContacts
+          numbers={{
+            main: contacts.main.digits,
+            electric: contacts.electric.digits,
+            battery: contacts.battery.digits,
+          }}
+        />
       </body>
     </html>
   );

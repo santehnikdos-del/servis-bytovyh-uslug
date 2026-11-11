@@ -153,8 +153,8 @@ export default function AdminPricesPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-slate-950 p-6 text-white">
-        <div className="mx-auto max-w-5xl">
+      <main className="py-8">
+        <div className="mx-auto max-w-6xl px-4">
           <p className="text-xl">Загрузка цен...</p>
         </div>
       </main>
@@ -162,32 +162,25 @@ export default function AdminPricesPage() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-950 px-4 py-10 text-white md:px-6">
-      <div className="mx-auto max-w-5xl">
-        <div className="mb-8">
-          <a
-            href="/admin"
-            className="text-yellow-400 transition hover:text-yellow-300"
-          >
-            ← Назад в админку
-          </a>
-
-          <h1 className="mt-4 text-3xl font-black md:text-4xl">
-            Управление ценами
+    <main className="py-8 text-slate-900">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="mb-6">
+          <h1 className="text-2xl font-black">
+            Цены
           </h1>
 
-          <p className="mt-2 text-slate-400">
+          <p className="mt-2 text-slate-600">
             Здесь можно изменить название услуги и цену.
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
-          <div className="hidden grid-cols-[1fr_220px] gap-4 border-b border-slate-800 bg-slate-800/60 px-5 py-4 font-bold md:grid">
+        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <div className="hidden grid-cols-[1fr_220px] gap-4 border-b border-slate-200 bg-slate-50 px-5 py-4 font-bold md:grid">
             <div>Название услуги</div>
             <div>Цена</div>
           </div>
 
-          <div className="divide-y divide-slate-800">
+          <div className="divide-y divide-slate-200">
             {fields.map(([key, fallbackName]) => (
               <div
                 key={key}
@@ -202,7 +195,7 @@ export default function AdminPricesPage() {
                     type="text"
                     value={names[key] ?? fallbackName}
                     onChange={(e) => changeName(key, e.target.value)}
-                    className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-yellow-400"
+                    className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200"
                   />
                 </div>
 
@@ -216,7 +209,7 @@ export default function AdminPricesPage() {
                     value={prices[key] ?? ""}
                     onChange={(e) => changePrice(key, e.target.value)}
                     placeholder="Цена"
-                    className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-yellow-400"
+                    className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200"
                   />
                 </div>
               </div>
@@ -224,15 +217,15 @@ export default function AdminPricesPage() {
           </div>
         </div>
 
-        <div className="sticky bottom-4 mt-8 rounded-2xl border border-slate-700 bg-slate-900/95 p-4 shadow-2xl backdrop-blur">
+        <div className="sticky bottom-4 mt-8 rounded-2xl border border-slate-200 bg-white/95 p-4 shadow-2xl backdrop-blur">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <div>
               {message && (
                 <p
                   className={
                     message.includes("сохранены")
-                      ? "font-bold text-green-400"
-                      : "font-bold text-red-400"
+                      ? "font-bold text-green-700"
+                      : "font-bold text-red-600"
                   }
                 >
                   {message}

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-export default function ConversionTracking() {
+export default function ConversionTracking({ phone = "77082000513" }: { phone?: string }) {
   useEffect(() => {
     function handleClick(event: MouseEvent) {
       if (
@@ -23,14 +23,14 @@ export default function ConversionTracking() {
 
       if (
         url.protocol === "tel:" &&
-        url.pathname.replace(/\D/g, "") === "77082000513"
+        url.pathname.replace(/\D/g, "") === phone
       ) {
         sendTo = "AW-18420476013/iIE5CPPD-4wdEO3QyM9E";
       }
 
       if (
         url.hostname === "wa.me" &&
-        url.pathname.replace(/\//g, "") === "77082000513"
+        url.pathname.replace(/\//g, "") === phone
       ) {
         sendTo = "AW-18420476013/uGTkCPbD-4wdEO3QyM9E";
       }
@@ -57,7 +57,7 @@ export default function ConversionTracking() {
     return () => {
       document.removeEventListener("click", handleClick, true);
     };
-  }, []);
+  }, [phone]);
 
   return null;
 }

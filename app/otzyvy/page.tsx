@@ -1,3 +1,6 @@
+import type { Metadata } from "next";
+import { imgSrc, loadSiteContent, withSeo } from "../../lib/site-texts";
+import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
 import ReviewForm from "./ReviewForm";
@@ -5,7 +8,7 @@ import { supabase } from "../../lib/supabase";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = {
+const pageMetadata: Metadata = {
   title: "Отзывы о сантехнике в Алматы | Сервис бытовых услуг",
   description:
     "Отзывы клиентов о сантехнических работах в Алматы. Установка, ремонт, монтаж труб, устранение протечек и другие услуги.",
@@ -88,13 +91,13 @@ function Breadcrumbs() {
       className="mb-5 flex items-center gap-2 text-sm text-white/70"
     >
       <a href="/" className="transition hover:text-[#FDC700]">
-        Главная
+        <T p="otzyvy" o={1}>Главная</T>
       </a>
 
       <span aria-hidden="true">→</span>
 
       <span aria-current="page" className="text-white">
-        Отзывы
+        <T p="otzyvy" o={2}>Отзывы</T>
       </span>
     </nav>
   );
@@ -128,7 +131,7 @@ function Check({ text }: { text: string }) {
         />
       </svg>
 
-      <span>{text}</span>
+      <span><T p="otzyvy" o={3}>{text}</T></span>
     </li>
   );
 }
@@ -178,12 +181,12 @@ function ReviewCard({
           aria-hidden="true"
           className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#0092B8]/10 text-xl font-bold text-[#0092B8]"
         >
-          {initial}
+          <T p="otzyvy" o={4}>{initial}</T>
         </div>
 
         <div className="min-w-0">
           <h3 className="break-words text-lg font-bold text-[#0092B8]">
-            {review.name}
+            <T p="otzyvy" o={5}>{review.name}</T>
           </h3>
 
           <p className="mt-0.5 text-sm text-slate-500">
@@ -215,7 +218,7 @@ function ReviewCard({
             dateTime={validDate.toISOString()}
             className="text-xs text-slate-500"
           >
-            {dateLabel}
+            <T p="otzyvy" o={6}>{dateLabel}</T>
           </time>
         )}
       </div>
@@ -224,18 +227,18 @@ function ReviewCard({
       <details className="review-expand mt-4">
         <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
           <p className="review-preview line-clamp-2 whitespace-pre-line break-words text-base leading-7 text-slate-600">
-            {review.text}
+            <T p="otzyvy" o={7}>{review.text}</T>
           </p>
 
           <span className="review-open mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#0092B8]">
             <span aria-hidden="true" className="review-arrow">
               →
             </span>
-            Читать полностью
+            <T p="otzyvy" o={8}>Читать полностью</T>
           </span>
 
           <span className="review-close mt-3 hidden text-sm font-semibold text-[#0092B8]">
-            ↑ Свернуть
+            <T p="otzyvy" o={9}>↑ Свернуть</T>
           </span>
         </summary>
       </details>
@@ -246,6 +249,8 @@ function ReviewCard({
 }
 
 export default async function OtzyvyPage() {
+  const SC = await loadSiteContent();
+
   const { data, error } = await supabase
     .from("reviews")
     .select("*")
@@ -261,8 +266,8 @@ export default async function OtzyvyPage() {
   return (
     <main className="min-h-screen bg-white">
       <Header
-        phone="77771696969"
-        displayPhone="+7 777 169 69 69"
+        phone={`${SC.contacts.main.digits}`}
+        displayPhone={`${SC.contacts.main.display}`}
       />
 
       <style>{`
@@ -381,9 +386,9 @@ export default async function OtzyvyPage() {
           <Breadcrumbs />
 
           <h1 className="text-center text-3xl font-bold uppercase leading-tight">
-            Отзывы{" "}
+            <T p="otzyvy" o={10}>Отзывы</T>{" "}
             <span className="text-[#FDC700]">
-              клиентов
+              <T p="otzyvy" o={11}>клиентов</T>
             </span>
           </h1>
 
@@ -396,25 +401,25 @@ export default async function OtzyvyPage() {
           </div>
 
           <p className="mt-7 text-center text-lg leading-7 text-white/85">
-            Здесь клиенты делятся впечатлениями о работе наших
-            мастеров в Алматы. Спасибо за ваше доверие!
+            <T p="otzyvy" o={12}>Здесь клиенты делятся впечатлениями о работе наших
+            мастеров в Алматы. Спасибо за ваше доверие!</T>
           </p>
 
           <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3">
             <a
-              href="tel:+77771696969"
+              href={`tel:+${SC.contacts.main.digits}`}
               className="reviews-call-shine inline-flex min-h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-6 py-3 text-lg font-normal transition hover:bg-[#007D9E]"
             >
-              Вызвать мастера
+              <T p="otzyvy" o={13}>Вызвать мастера</T>
             </a>
 
             <a
-              href="https://wa.me/77771696969"
+              href={`https://wa.me/${SC.contacts.main.digits}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-14 items-center justify-center rounded-full bg-white px-6 py-3 text-lg font-normal text-[#292929] transition hover:bg-gray-100"
             >
-              Написать в WhatsApp
+              <T p="otzyvy" o={14}>Написать в WhatsApp</T>
             </a>
           </div>
         </div>
@@ -427,7 +432,7 @@ export default async function OtzyvyPage() {
       >
         <div className="absolute inset-y-0 right-0 w-[53%]">
           <img
-            src="/banner-master.jpg"
+            src={imgSrc(SC, "/banner-master.jpg")}
             alt="Мастер сервиса бытовых услуг в Алматы"
             className="h-full w-full object-cover object-[60%_center]"
           />
@@ -447,33 +452,33 @@ export default async function OtzyvyPage() {
             <Breadcrumbs />
 
             <h1 className="text-5xl font-bold uppercase leading-[1.05] lg:whitespace-nowrap lg:text-[64px]">
-              Отзывы{" "}
+              <T p="otzyvy" o={15}>Отзывы</T>{" "}
               <span className="text-[#FDC700]">
-                клиентов
+                <T p="otzyvy" o={16}>клиентов</T>
               </span>
             </h1>
 
             <p className="mt-5 max-w-lg text-lg leading-7 text-white/85">
-              Здесь клиенты делятся впечатлениями о работе наших
-              мастеров в Алматы. Спасибо за ваше доверие!
+              <T p="otzyvy" o={17}>Здесь клиенты делятся впечатлениями о работе наших
+              мастеров в Алматы. Спасибо за ваше доверие!</T>
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
-                href="tel:+77771696969"
+                href={`tel:+${SC.contacts.main.digits}`}
                 className="reviews-call-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal transition hover:bg-[#007D9E]"
               >
-                Вызвать мастера
+                <T p="otzyvy" o={18}>Вызвать мастера</T>
               </a>
 
               <div className="relative shrink-0">
                 <a
-                  href="https://wa.me/77771696969"
+                  href={`https://wa.me/${SC.contacts.main.digits}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-14 items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100"
                 >
-                  Написать в WhatsApp
+                  <T p="otzyvy" o={19}>Написать в WhatsApp</T>
                 </a>
 
                 {/* СКИДКА */}
@@ -483,7 +488,7 @@ export default async function OtzyvyPage() {
                 >
                   <div className="reviews-discount absolute left-0 top-0">
                     <img
-                      src="/discount-15.png"
+                      src={imgSrc(SC, "/discount-15.png")}
                       alt=""
                       className="absolute left-0 top-[-47px] w-[180px] max-w-none drop-shadow-lg"
                     />
@@ -535,11 +540,11 @@ export default async function OtzyvyPage() {
         <div className="mx-auto max-w-7xl px-5 md:px-6">
           <div className="mb-10 text-center">
             <p className="font-bold text-[#0092B8]">
-              Что говорят клиенты
+              <T p="otzyvy" o={20}>Что говорят клиенты</T>
             </p>
 
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[54px]">
-              Отзывы о нашей работе
+              <T p="otzyvy" o={21}>Отзывы о нашей работе</T>
             </h2>
           </div>
 
@@ -564,9 +569,14 @@ export default async function OtzyvyPage() {
       </section>
 
       <Footer
-        phone="77771696969"
-        displayPhone="+7 777 169 69 69"
+        phone={`${SC.contacts.main.digits}`}
+        displayPhone={`${SC.contacts.main.display}`}
       />
     </main>
   );
+}
+
+// Заголовок и описание для поиска можно изменить в админке (вкладка «SEO»)
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeo("/otzyvy", pageMetadata);
 }

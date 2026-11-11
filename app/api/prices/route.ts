@@ -40,6 +40,8 @@ export async function GET() {
     const prices: Record<string, string> = {};
 
     for (const row of (data || []) as PriceRow[]) {
+      // Служебные записи (например, меню услуг) в цены не попадают
+      if (row.key.startsWith("__")) continue;
       prices[row.key] = row.value;
     }
 
@@ -78,7 +80,9 @@ export async function POST(request: Request) {
 
     const supabase = getSupabaseAdmin();
 
-    const rows = Object.entries(body).map(([key, value]) => ({
+    const rows = Object.entries(body)
+      .filter(([key]) => !key.startsWith("__"))
+      .map(([key, value]) => ({
       key,
       value: String(value ?? ""),
     }));

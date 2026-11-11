@@ -20,13 +20,19 @@ function getReviewWord(count: number) {
   return "отзывов";
 }
 
-export default function FloatingContacts() {
+type ContactNumbers = { main: string; electric: string; battery: string };
+
+export default function FloatingContacts({
+  numbers = { main: "77771696969", electric: "77073232632", battery: "77082000513" },
+}: {
+  numbers?: ContactNumbers;
+}) {
   const pathname = usePathname();
 
   const [reviewCount, setReviewCount] = useState(0);
   const [averageRating, setAverageRating] = useState(0);
 
-  let phone = "77771696969";
+  let phone = numbers.main;
 
   const currentService = getServicePage(
     pathname.split("/").filter(Boolean)[0] || ""
@@ -36,11 +42,11 @@ export default function FloatingContacts() {
     pathname.startsWith("/elektrik") ||
     currentService?.group === "electric"
   ) {
-    phone = "77073232632";
+    phone = numbers.electric;
   }
 
   if (pathname.startsWith("/akkumulyatory-s-dostavkoy")) {
-    phone = "77082000513";
+    phone = numbers.battery;
   }
 
   // Отслеживание всех ссылок телефона и WhatsApp на странице

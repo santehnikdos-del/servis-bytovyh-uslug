@@ -1,4 +1,7 @@
-export const metadata = {
+import type { Metadata } from "next";
+import { withSeo } from "../../lib/site-texts";
+import T from "../T";
+const pageMetadata: Metadata = {
   title: "Контакты сантехника в Алматы | Сервис бытовых услуг",
 
   description:
@@ -18,36 +21,36 @@ export default function KontaktyPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5">
 
           <a href="/" className="text-xl font-black leading-5">
-            Сервис
+            <T p="kontakty" o={1}>Сервис</T>
             <br />
-            бытовых услуг
+            <T p="kontakty" o={2}>бытовых услуг</T>
           </a>
 
           {/* КОМПЬЮТЕР */}
           <nav className="hidden items-center gap-7 text-base font-bold md:flex">
 
             <a href="/uslugi-santehnika" className="hover:text-yellow-400">
-              Услуги
+              <T p="kontakty" o={3}>Услуги</T>
             </a>
 
             <a href="/price" className="hover:text-yellow-400">
-              Цены
+              <T p="kontakty" o={4}>Цены</T>
             </a>
 
             <a href="/nashi-raboty" className="hover:text-yellow-400">
-              Наши работы
+              <T p="kontakty" o={5}>Наши работы</T>
             </a>
 
             <a href="/otzyvy" className="hover:text-yellow-400">
-              Отзывы
+              <T p="kontakty" o={6}>Отзывы</T>
             </a>
 
             <a href="/o-nas" className="hover:text-yellow-400">
-              О нас
+              <T p="kontakty" o={7}>О нас</T>
             </a>
 
             <a href="/kontakty" className="text-yellow-400">
-              Контакты
+              <T p="kontakty" o={8}>Контакты</T>
             </a>
 
           </nav>
@@ -69,38 +72,38 @@ export default function KontaktyPage() {
               href="/"
               className="rounded-xl border border-white/20 px-3 py-2 text-sm font-bold"
             >
-              Главная
+              <T p="kontakty" o={9}>Главная</T>
             </a>
 
             <details className="relative">
               <summary className="cursor-pointer list-none rounded-xl border border-white/20 px-3 py-2 text-sm font-bold">
-                Меню ▾
+                <T p="kontakty" o={10}>Меню ▾</T>
               </summary>
 
               <div className="absolute right-0 top-full z-50 mt-3 w-52 rounded-2xl bg-black p-2 shadow-2xl">
 
                 <a href="/uslugi-santehnika" className="block rounded-xl px-4 py-3">
-                  Услуги
+                  <T p="kontakty" o={11}>Услуги</T>
                 </a>
 
                 <a href="/price" className="block rounded-xl px-4 py-3">
-                  Цены
+                  <T p="kontakty" o={12}>Цены</T>
                 </a>
 
                 <a href="/nashi-raboty" className="block rounded-xl px-4 py-3">
-                  Наши работы
+                  <T p="kontakty" o={13}>Наши работы</T>
                 </a>
 
                 <a href="/otzyvy" className="block rounded-xl px-4 py-3">
-                  Отзывы
+                  <T p="kontakty" o={14}>Отзывы</T>
                 </a>
 
                 <a href="/o-nas" className="block rounded-xl px-4 py-3">
-                  О нас
+                  <T p="kontakty" o={15}>О нас</T>
                 </a>
 
                 <a href="/kontakty" className="block rounded-xl px-4 py-3 text-yellow-400">
-                  Контакты
+                  <T p="kontakty" o={16}>Контакты</T>
                 </a>
 
               </div>
@@ -117,27 +120,27 @@ export default function KontaktyPage() {
 
           <div className="mb-6 flex items-center gap-2 text-sm text-slate-400">
             <a href="/" className="hover:text-yellow-400">
-              Главная
+              <T p="kontakty" o={17}>Главная</T>
             </a>
 
             <span>→</span>
 
             <span className="text-white">
-              Контакты
+              <T p="kontakty" o={18}>Контакты</T>
             </span>
           </div>
 
           <p className="font-bold text-yellow-400">
-            Связаться с нами
+            <T p="kontakty" o={19}>Связаться с нами</T>
           </p>
 
           <h1 className="mt-3 text-4xl font-black md:text-6xl">
-            Контакты
+            <T p="kontakty" o={20}>Контакты</T>
           </h1>
 
           <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">
-            Позвоните или напишите в WhatsApp. Подскажем по стоимости
-            и согласуем удобное время выезда мастера по Алматы.
+            <T p="kontakty" o={21}>Позвоните или напишите в WhatsApp. Подскажем по стоимости
+            и согласуем удобное время выезда мастера по Алматы.</T>
           </p>
 
         </div>
@@ -153,15 +156,15 @@ export default function KontaktyPage() {
             className="rounded-3xl bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
           >
             <p className="text-sm font-bold text-yellow-500">
-              Телефон
+              <T p="kontakty" o={22}>Телефон</T>
             </p>
 
             <h2 className="mt-2 text-2xl font-black text-slate-950">
-              Позвонить мастеру
+              <T p="kontakty" o={23}>Позвонить мастеру</T>
             </h2>
 
             <p className="mt-3 text-slate-600">
-              Принимаем заявки по телефону.
+              <T p="kontakty" o={24}>Принимаем заявки по телефону.</T>
             </p>
           </a>
 
@@ -176,25 +179,25 @@ export default function KontaktyPage() {
             </p>
 
             <h2 className="mt-2 text-2xl font-black">
-              Написать в WhatsApp
+              <T p="kontakty" o={25}>Написать в WhatsApp</T>
             </h2>
 
             <p className="mt-3 text-green-50">
-              Можно отправить фото и описание работы.
+              <T p="kontakty" o={26}>Можно отправить фото и описание работы.</T>
             </p>
           </a>
 
           <div className="rounded-3xl bg-white p-7 shadow-sm">
             <p className="text-sm font-bold text-yellow-500">
-              Зона выезда
+              <T p="kontakty" o={27}>Зона выезда</T>
             </p>
 
             <h2 className="mt-2 text-2xl font-black text-slate-950">
-              Алматы и пригород
+              <T p="kontakty" o={28}>Алматы и пригород</T>
             </h2>
 
             <p className="mt-3 text-slate-600">
-              Выезжаем в разные районы города.
+              <T p="kontakty" o={29}>Выезжаем в разные районы города.</T>
             </p>
           </div>
 
@@ -208,36 +211,36 @@ export default function KontaktyPage() {
 
             <div>
               <h3 className="text-2xl font-black">
-                Сервис бытовых услуг
+                <T p="kontakty" o={30}>Сервис бытовых услуг</T>
               </h3>
 
               <p className="mt-4 max-w-sm leading-7 text-slate-400">
-                Сантехнические работы в Алматы. Ремонт, установка,
-                обслуживание и прочистка канализации.
+                <T p="kontakty" o={31}>Сантехнические работы в Алматы. Ремонт, установка,
+                обслуживание и прочистка канализации.</T>
               </p>
             </div>
 
             <div>
               <h3 className="text-lg font-black text-yellow-400">
-                Навигация
+                <T p="kontakty" o={32}>Навигация</T>
               </h3>
 
               <div className="mt-4 flex flex-col gap-3 text-slate-300">
-                <a href="#services">Услуги</a>
-                <a href="#prices">Цены</a>
-                <a href="#works">Наши работы</a>
-                <a href="#reviews">Отзывы</a>
-                <a href="#contacts">Контакты</a>
+                <a href="#services"><T p="kontakty" o={33}>Услуги</T></a>
+                <a href="#prices"><T p="kontakty" o={34}>Цены</T></a>
+                <a href="#works"><T p="kontakty" o={35}>Наши работы</T></a>
+                <a href="#reviews"><T p="kontakty" o={36}>Отзывы</T></a>
+                <a href="#contacts"><T p="kontakty" o={37}>Контакты</T></a>
               </div>
             </div>
 
             <div>
               <h3 className="text-lg font-black text-yellow-400">
-                Связаться с нами
+                <T p="kontakty" o={38}>Связаться с нами</T>
               </h3>
 
               <div className="mt-4 space-y-3 text-slate-300">
-                <p>📍 Алматы</p>
+                <p><T p="kontakty" o={39}>📍 Алматы</T></p>
                 <a href="tel:+77000000000" className="block">
                   📞 +7 (700) 000-00-00
                 </a>
@@ -247,14 +250,14 @@ export default function KontaktyPage() {
                 >
                   WhatsApp
                 </a>
-                <p>Каждый день · Без выходных</p>
+                <p><T p="kontakty" o={40}>Каждый день · Без выходных</T></p>
               </div>
             </div>
 
           </div>
 
           <div className="mt-10 border-t border-white/10 pt-6 text-sm text-slate-500">
-            © 2013–2026 Сервис бытовых услуг. Все права защищены.
+            <T p="kontakty" o={41}>© 2013–2026 Сервис бытовых услуг. Все права защищены.</T>
           </div>
 
         </div>
@@ -264,7 +267,7 @@ export default function KontaktyPage() {
   href="tel:+7XXXXXXXXXX"
   className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-center bg-green-500 py-4 text-xl font-black text-white shadow-lg md:hidden"
 >
-  📞 ПОЗВОНИТЬ
+  <T p="kontakty" o={42}>📞 ПОЗВОНИТЬ</T>
 </a>
 {/* ПЛАВАЮЩИЙ WHATSAPP */}
 <a
@@ -285,4 +288,9 @@ export default function KontaktyPage() {
 
     </main>
   );
+}
+
+// Заголовок и описание для поиска можно изменить в админке (вкладка «SEO»)
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeo("/kontakty", pageMetadata);
 }

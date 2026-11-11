@@ -1,10 +1,13 @@
+import type { Metadata } from "next";
+import { imgSrc, loadSiteContent, withSeo } from "../../lib/site-texts";
+import T from "../T";
 import Header from "../Header";
 import Footer from "../Footer";
 import ManagedServices from "../ManagedServices";
 
 export const revalidate = 60;
 
-export const metadata = {
+const pageMetadata: Metadata = {
   title: "Услуги сантехника в Алматы | Сервис бытовых услуг",
   description:
     "Услуги сантехника в Алматы: установка унитаза, смесителя, раковины, ванны, бойлера, замена труб и прочистка канализации.",
@@ -75,7 +78,7 @@ function Check({ text }: { text: string }) {
         />
       </svg>
 
-      <span>{text}</span>
+      <span><T p="uslugi-santehnika" o={1}>{text}</T></span>
     </li>
   );
 }
@@ -91,12 +94,14 @@ function Arrow() {
   );
 }
 
-export default function UslugiSantehnikaPage() {
+export default async function UslugiSantehnikaPage() {
+  const SC = await loadSiteContent();
+
   return (
     <main className="min-h-screen bg-white text-slate-900">
       <Header
-        phone="77771696969"
-        displayPhone="+7 777 169 69 69"
+        phone={`${SC.contacts.main.digits}`}
+        displayPhone={`${SC.contacts.main.display}`}
       />
 
       <style>{`
@@ -197,7 +202,7 @@ export default function UslugiSantehnikaPage() {
         {/* ФОТО — КОМПЬЮТЕР */}
         <div className="absolute inset-y-0 right-0 hidden w-[53%] md:block">
           <img
-            src="/banner-master.jpg"
+            src={imgSrc(SC, "/banner-master.jpg")}
             alt="Сантехник сервиса бытовых услуг в Алматы"
             className="h-full w-full object-cover object-[60%_center]"
           />
@@ -222,7 +227,7 @@ export default function UslugiSantehnikaPage() {
                 href="/"
                 className="transition hover:text-[#FDC700]"
               >
-                Главная
+                <T p="uslugi-santehnika" o={2}>Главная</T>
               </a>
 
               <span aria-hidden="true">→</span>
@@ -231,48 +236,48 @@ export default function UslugiSantehnikaPage() {
                 href="/santehnik"
                 className="transition hover:text-[#FDC700]"
               >
-                Сантехник
+                <T p="uslugi-santehnika" o={3}>Сантехник</T>
               </a>
 
               <span aria-hidden="true">→</span>
 
               <span aria-current="page" className="text-white">
-                Услуги
+                <T p="uslugi-santehnika" o={4}>Услуги</T>
               </span>
             </nav>
 
             <h1 className="text-center text-3xl font-bold uppercase leading-[1.1] md:text-left md:text-[40px] lg:text-[48px]">
-  Услуги{" "}
+  <T p="uslugi-santehnika" o={5}>Услуги</T>{" "}
   <span className="text-[#FDC700]">
-    сантехника
+    <T p="uslugi-santehnika" o={6}>сантехника</T>
   </span>
   <span className="block">
-    в Алматы
+    <T p="uslugi-santehnika" o={7}>в Алматы</T>
   </span>
 </h1>
 
             <p className="mt-5 max-w-lg text-center text-lg leading-7 text-white/85 md:text-left">
-              Установка, ремонт и замена сантехники.
+              <T p="uslugi-santehnika" o={8}>Установка, ремонт и замена сантехники.
               Монтаж труб, устранение протечек
-              и прочистка канализации.
+              и прочистка канализации.</T>
             </p>
 
             <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 md:mx-0 md:max-w-none md:flex-row md:flex-wrap md:items-center">
               <a
-                href="tel:+77771696969"
+                href={`tel:+${SC.contacts.main.digits}`}
                 className="services-call-shine inline-flex h-14 items-center justify-center rounded-full bg-[#0092B8]/80 px-7 text-xl font-normal transition hover:bg-[#007D9E]"
               >
-                Вызвать мастера
+                <T p="uslugi-santehnika" o={9}>Вызвать мастера</T>
               </a>
 
               <div className="relative shrink-0">
                 <a
-                  href="https://wa.me/77771696969"
+                  href={`https://wa.me/${SC.contacts.main.digits}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-14 w-full items-center justify-center rounded-full bg-white px-7 text-xl font-normal text-[#292929] transition hover:bg-gray-100 md:w-auto"
                 >
-                  Написать в WhatsApp
+                  <T p="uslugi-santehnika" o={10}>Написать в WhatsApp</T>
                 </a>
 
                 {/* СКИДКА */}
@@ -282,7 +287,7 @@ export default function UslugiSantehnikaPage() {
                 >
                   <div className="services-discount absolute left-0 top-0">
                     <img
-                      src="/discount-15.png"
+                      src={imgSrc(SC, "/discount-15.png")}
                       alt=""
                       className="absolute left-0 top-[-47px] w-[180px] max-w-none drop-shadow-lg"
                     />
@@ -330,11 +335,11 @@ export default function UslugiSantehnikaPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-8 text-center">
             <p className="font-bold text-[#0092B8]">
-              Все услуги
+              <T p="uslugi-santehnika" o={11}>Все услуги</T>
             </p>
 
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[54px]">
-              Выберите нужную работу
+              <T p="uslugi-santehnika" o={12}>Выберите нужную работу</T>
             </h2>
           </div>
 
@@ -347,11 +352,11 @@ export default function UslugiSantehnikaPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-4xl text-center">
             <p className="font-bold text-[#0092B8]">
-              Почему выбирают нас
+              <T p="uslugi-santehnika" o={13}>Почему выбирают нас</T>
             </p>
 
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
-              Надёжный сантехнический сервис в Алматы
+              <T p="uslugi-santehnika" o={14}>Надёжный сантехнический сервис в Алматы</T>
             </h2>
           </div>
 
@@ -367,11 +372,11 @@ export default function UslugiSantehnikaPage() {
                 className="group rounded-3xl border border-slate-200 bg-white px-4 py-7 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[#FDC700] hover:shadow-lg"
               >
                 <p className="text-xl font-black text-[#0092B8] md:text-2xl">
-                  {title}
+                  <T p="uslugi-santehnika" o={15}>{title}</T>
                 </p>
 
                 <p className="mt-2 text-sm text-slate-600 md:text-base">
-                  {text}
+                  <T p="uslugi-santehnika" o={16}>{text}</T>
                 </p>
 
                 <div
@@ -388,17 +393,17 @@ export default function UslugiSantehnikaPage() {
       <section className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-5xl px-6 text-center">
           <p className="font-bold text-[#0092B8]">
-            Стоимость работ
+            <T p="uslugi-santehnika" o={17}>Стоимость работ</T>
           </p>
 
           <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[54px]">
-            Цены на услуги сантехника
+            <T p="uslugi-santehnika" o={18}>Цены на услуги сантехника</T>
           </h2>
 
           <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-600">
-            Итоговая цена зависит от объёма и сложности работы.
+            <T p="uslugi-santehnika" o={19}>Итоговая цена зависит от объёма и сложности работы.
             Мастер согласует стоимость с вами до начала выполнения.
-            Базовые цены можно посмотреть в прайс-листе.
+            Базовые цены можно посмотреть в прайс-листе.</T>
           </p>
 
           <a
@@ -406,7 +411,7 @@ export default function UslugiSantehnikaPage() {
             className="mt-7 inline-flex items-center justify-center gap-3 rounded-full bg-[#FDC700] px-8 py-4 text-lg text-[#171717] transition hover:bg-[#eab800]"
           >
             <Arrow />
-            Смотреть цены
+            <T p="uslugi-santehnika" o={20}>Смотреть цены</T>
           </a>
         </div>
       </section>
@@ -416,11 +421,11 @@ export default function UslugiSantehnikaPage() {
         <div className="mx-auto max-w-4xl px-6">
           <div className="text-center">
             <p className="font-bold text-[#0092B8]">
-              Частые вопросы
+              <T p="uslugi-santehnika" o={21}>Частые вопросы</T>
             </p>
 
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
-              Вопросы об услугах сантехника
+              <T p="uslugi-santehnika" o={22}>Вопросы об услугах сантехника</T>
             </h2>
           </div>
 
@@ -431,7 +436,7 @@ export default function UslugiSantehnikaPage() {
                 className="group rounded-2xl border border-slate-200 bg-white p-5 transition open:border-[#0092B8]/40 hover:border-[#0092B8]/40 md:p-6"
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-[#0092B8] [&::-webkit-details-marker]:hidden">
-                  {question}
+                  <T p="uslugi-santehnika" o={23}>{question}</T>
 
                   <span
                     aria-hidden="true"
@@ -442,7 +447,7 @@ export default function UslugiSantehnikaPage() {
                 </summary>
 
                 <p className="mt-4 leading-7 text-slate-600">
-                  {answer}
+                  <T p="uslugi-santehnika" o={24}>{answer}</T>
                 </p>
               </details>
             ))}
@@ -455,15 +460,15 @@ export default function UslugiSantehnikaPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-4xl text-center">
             <p className="font-bold text-[#0092B8]">
-              Выезд по городу
+              <T p="uslugi-santehnika" o={25}>Выезд по городу</T>
             </p>
 
             <h2 className="mt-3 text-3xl font-black leading-tight text-[#0092B8] md:text-[44px]">
-              Сантехник во всех районах Алматы
+              <T p="uslugi-santehnika" o={26}>Сантехник во всех районах Алматы</T>
             </h2>
 
             <p className="mt-5 text-lg leading-8 text-slate-600">
-              Выезжаем на сантехнические работы по всему Алматы.
+              <T p="uslugi-santehnika" o={27}>Выезжаем на сантехнические работы по всему Алматы.</T>
             </p>
           </div>
 
@@ -502,43 +507,48 @@ export default function UslugiSantehnikaPage() {
       <section className="bg-[#0092B8] py-16 text-white">
         <div className="mx-auto max-w-5xl px-6 text-center">
           <p className="font-bold uppercase tracking-wider text-[#FDC700]">
-            Не нашли нужную услугу?
+            <T p="uslugi-santehnika" o={28}>Не нашли нужную услугу?</T>
           </p>
 
           <h2 className="mt-3 text-3xl font-black leading-tight md:text-[54px]">
-            Свяжитесь с мастером
+            <T p="uslugi-santehnika" o={29}>Свяжитесь с мастером</T>
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/90">
-            Расскажите, какая сантехническая работа вам требуется.
+            <T p="uslugi-santehnika" o={30}>Расскажите, какая сантехническая работа вам требуется.
             Подскажем возможное решение и согласуем удобное
-            время выезда.
+            время выезда.</T>
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="tel:+77771696969"
+              href={`tel:+${SC.contacts.main.digits}`}
               className="services-call-shine inline-flex min-h-14 w-full items-center justify-center rounded-full bg-[#FDC700] px-8 py-4 text-lg text-[#171717] transition hover:bg-[#eab800] sm:w-auto"
             >
-              Вызвать мастера
+              <T p="uslugi-santehnika" o={31}>Вызвать мастера</T>
             </a>
 
             <a
-              href="https://wa.me/77771696969"
+              href={`https://wa.me/${SC.contacts.main.digits}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-white px-8 py-4 text-lg text-[#292929] transition hover:bg-gray-100 sm:w-auto"
             >
-              Написать в WhatsApp
+              <T p="uslugi-santehnika" o={32}>Написать в WhatsApp</T>
             </a>
           </div>
         </div>
       </section>
 
       <Footer
-        phone="77771696969"
-        displayPhone="+7 777 169 69 69"
+        phone={`${SC.contacts.main.digits}`}
+        displayPhone={`${SC.contacts.main.display}`}
       />
     </main>
   );
+}
+
+// Заголовок и описание для поиска можно изменить в админке (вкладка «SEO»)
+export async function generateMetadata(): Promise<Metadata> {
+  return withSeo("/uslugi-santehnika", pageMetadata);
 }
