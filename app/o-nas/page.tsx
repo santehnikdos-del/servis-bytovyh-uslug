@@ -9,7 +9,7 @@ const pageMetadata: Metadata = {
   description:
     "Сервис бытовых услуг в Алматы. Своя команда мастеров, 15 лет опыта, более 1000 клиентов. Согласование стоимости заранее и гарантия на работы.",
   alternates: {
-    canonical: "https://home-services.kz/o-nas",
+    canonical: "https://www.home-services.kz/o-nas",
   },
 };
 
@@ -231,9 +231,9 @@ export default async function ONasPage() {
         </span>
       </nav>
 
-      <h1 className="whitespace-nowrap text-5xl font-bold uppercase leading-[1.05] lg:text-[64px]">
+      <p className="whitespace-nowrap text-5xl font-bold uppercase leading-[1.05] lg:text-[64px]">
   <T p="o-nas" o={9}>О нашей</T> <span className="text-[#FDC700]"><T p="o-nas" o={10}>команде</T></span>
-</h1>
+</p>
 
       <p className="mt-5 max-w-lg text-lg leading-7 text-white/85">
         <T p="o-nas" o={11}>Сервис бытовых услуг в Алматы. Свои мастера,

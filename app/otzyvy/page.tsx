@@ -13,7 +13,7 @@ const pageMetadata: Metadata = {
   description:
     "Отзывы клиентов о сантехнических работах в Алматы. Установка, ремонт, монтаж труб, устранение протечек и другие услуги.",
   alternates: {
-    canonical: "https://home-services.kz/otzyvy",
+    canonical: "https://www.home-services.kz/otzyvy",
   },
 };
 
@@ -451,12 +451,12 @@ export default async function OtzyvyPage() {
           <div className="w-[47%]">
             <Breadcrumbs />
 
-            <h1 className="text-5xl font-bold uppercase leading-[1.05] lg:whitespace-nowrap lg:text-[64px]">
+            <p className="text-5xl font-bold uppercase leading-[1.05] lg:whitespace-nowrap lg:text-[64px]">
               <T p="otzyvy" o={15}>Отзывы</T>{" "}
               <span className="text-[#FDC700]">
                 <T p="otzyvy" o={16}>клиентов</T>
               </span>
-            </h1>
+            </p>
 
             <p className="mt-5 max-w-lg text-lg leading-7 text-white/85">
               <T p="otzyvy" o={17}>Здесь клиенты делятся впечатлениями о работе наших

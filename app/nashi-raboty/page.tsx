@@ -10,7 +10,7 @@ const pageMetadata: Metadata = {
   description:
     "Примеры выполненных сантехнических работ в Алматы. Монтаж труб, водоснабжения, отопления и сантехнического оборудования.",
   alternates: {
-    canonical: "https://home-services.kz/nashi-raboty",
+    canonical: "https://www.home-services.kz/nashi-raboty",
   },
 };
 
@@ -200,9 +200,9 @@ export default async function NashiRabotyPage() {
           <div className="w-[47%]">
             <Breadcrumbs />
 
-            <h1 className="whitespace-nowrap text-5xl font-bold uppercase leading-[1.05] lg:text-[64px]">
+            <p className="whitespace-nowrap text-5xl font-bold uppercase leading-[1.05] lg:text-[64px]">
   <T p="nashi-raboty" o={7}>Наши</T> <span className="text-[#FDC700]"><T p="nashi-raboty" o={8}>работы</T></span>
-</h1>
+</p>
 
             <p className="mt-5 max-w-lg text-lg leading-7 text-white/85">
               <T p="nashi-raboty" o={9}>Реальные работы наших мастеров в Алматы.
