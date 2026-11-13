@@ -9,7 +9,7 @@ const pageMetadata: Metadata = {
   description:
     "Услуги плотника в Алматы: ремонт дверей, установка замков и ручек, сборка и ремонт мебели, монтаж полок и плинтусов. Вызов мастера на дом.",
   alternates: {
-    canonical: "https://home-services.kz/plotnik",
+    canonical: "https://www.home-services.kz/plotnik",
   },
 };
 

@@ -117,9 +117,9 @@ export default async function AkkumulyatoryPage() {
               <T p="akkumulyatory" o={10}>Доставка по Алматы</T>
             </p>
 
-            <h1 className="mt-2 max-w-4xl text-5xl font-black leading-[1.05] text-white md:text-6xl">
+            <p className="mt-2 max-w-4xl text-5xl font-black leading-[1.05] text-white md:text-6xl">
               <T p="akkumulyatory" o={11}>Автомобильные аккумуляторы с доставкой</T>
-            </h1>
+            </p>
 
             <p className="mt-6 max-w-2xl text-xl leading-8 text-slate-100">
               <T p="akkumulyatory" o={12}>Подберём аккумулятор для вашего автомобиля,

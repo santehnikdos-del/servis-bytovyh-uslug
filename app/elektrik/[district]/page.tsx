@@ -41,7 +41,7 @@ async function baseMetadata({
       "Ремонт проводки, замена розеток и выключателей, " +
       "установка светильников и автоматов. Стоимость согласуем до начала работ.",
     alternates: {
-      canonical: `https://home-services.kz/elektrik/${district.slug}`,
+      canonical: `https://www.home-services.kz/elektrik/${district.slug}`,
     },
   };
 }
