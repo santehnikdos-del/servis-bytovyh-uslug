@@ -32,7 +32,9 @@ async function baseMetadata({
 
   if (!page) notFound();
 
-  const title = `${page.name} в Алматы | Сервис бытовых услуг`;
+  // Google показывает примерно 60 символов: название компании добавляем, только если влезает
+  const fullTitle = `${page.name} в Алматы | Сервис бытовых услуг`;
+  const title = fullTitle.length <= 65 ? fullTitle : `${page.name} в Алматы`;
 
   return {
     title,
